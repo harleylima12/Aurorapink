@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="Aurora Pink - Creme Uniformizador de Tom de Pele. Clareia e uniformiza axilas, virilha, coxas, joelhos e cotovelos. Voce escolhe como pagar.">
+    <meta property="og:title" content="Aurora Pink - Pele Uniforme e Radiante">
+    <meta property="og:description" content="Uniformize o tom da sua pele com Aurora Pink. Receba em casa e escolha como prefere pagar.">
+    <meta property="og:type" content="product">
+    <title>Aurora Pink - Creme Uniformizador | Pague Somente na Entrega</title>
+    <link rel="icon" type="image/png" href="images/favicon.png?v=2">
+    <script async="" src="js/fbevents.js"></script><script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];
+      t=b.createElement(e);t.async=!0;
+      t.src=v;
+      s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1311948974109606');
+      fbq('track', 'PageView');
+
+      // Pixel access token (use for server-side Conversions API if needed)
+      // Token: EAAMGF3WfQY0BQxMm76Q1HhSEzmruKyRq60KZBZBiZAN0Rw3SgLophyZAgZByQOOyhWOJjetb0QcvIq2ghKyZAhzrjS7e1DAt3PJJTmFjwZAN6MZAIiSStVHyjvZAPrYItYbHH6CZBQZB3eU4ZCxK0RZA43Ikrn90JweJ85HVtGv7ZA4tNJGzEy2fvSC7IjdExbkfvSp1Fd5wZDZD
+    </script>
+    <script>
+      // When opening index.html directly (file://), React Router may see the full file path
+      // and render the 404 page. Force the browser history to use "/" so the app loads.
+      if (window.location.protocol === 'file:' && window.location.pathname !== '/') {
+        window.history.replaceState(null, '', '/');
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script type="module" crossorigin="" src="js/index-Bzv20fpj.js"></script>
+    <link rel="stylesheet" crossorigin="" href="css/index-ZztBTOnw.css">
+  </head>
+  <body>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1311948974109606&ev=PageView&noscript=1"/></noscript>
+    <div id="root"></div>
+
+    <script>
+      // Botão envia o pedido ao backend para enviar cupom automaticamente (sem abrir cliente de e-mail)
+      function setupCupomButton() {
+        const selectors = [
+          "a[data-testid=\"button-pix-whatsapp\"]",
+          "a[data-testid=\"link-confirmacao-whatsapp\"]",
+        ];
+
+        const whatsappLink = "https://api.whatsapp.com/send/?phone=17988382764&text=Ol%C3%A1+Harley%21+Quero+aprender+violino.+Pode+me+dar+mais+informa%C3%A7%C3%B5es%3F&type=phone_number&app_absent=0";
+
+        selectors.forEach((selector) => {
+          const btn = document.querySelector(selector);
+          if (!btn) return;
+
+          btn.addEventListener("click", async (event) => {
+            event.preventDefault();
+            window.location.href = whatsappLink;
+          });
+        });
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        // O React pode recriar os elementos; tentar configurar novamente após um pequeno delay.
+        setupCupomButton();
+        setTimeout(setupCupomButton, 1000);
+      });
+    </script>
+  
+</body></html>
