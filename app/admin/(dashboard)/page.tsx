@@ -2,14 +2,21 @@ import { getAdminVeiculos } from "@/lib/admin-veiculos";
 import StatCard from "@/components/admin/StatCard";
 import VeiculosTable from "@/components/admin/VeiculosTable";
 import EmptyVeiculos from "@/components/admin/EmptyVeiculos";
+import SuccessBanner from "@/components/admin/SuccessBanner";
 
-export default async function AdminDashboardPage() {
+export default async function AdminDashboardPage({
+  searchParams,
+}: {
+  searchParams: { ok?: string };
+}) {
   const veiculos = await getAdminVeiculos();
   const disponiveis = veiculos.filter((v) => v.status === "disponivel").length;
   const vendidos = veiculos.filter((v) => v.status === "vendido").length;
 
   return (
     <div>
+      <SuccessBanner status={searchParams.ok} />
+
       <h1 className="font-display text-2xl font-bold text-white sm:text-3xl">
         Dashboard
       </h1>

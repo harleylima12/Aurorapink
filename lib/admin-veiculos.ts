@@ -19,6 +19,77 @@ interface RawRow {
   veiculo_fotos: { url: string; ordem: number }[] | null;
 }
 
+export interface AdminVeiculoDetalhe {
+  id: string;
+  marca: string;
+  modelo: string;
+  ano: number;
+  km: number;
+  preco: number;
+  combustivel: string;
+  cambio: string;
+  cor: string;
+  descricao: string | null;
+  destaque: boolean;
+  status: VeiculoStatus;
+  fotos: string[];
+}
+
+/**
+ * Loads one vehicle with every column the edit form needs. Resolves to
+ * null when it doesn't exist (or can't be read), so the page can render
+ * a proper 404 instead of crashing.
+ */
+export async function getVeiculoById(
+  id: string
+): Promise<AdminVeiculoDetalhe | null> {
+  const supabase = await createClient();
+  if (!supabase) return null;
+
+  const { data, error } = await supabase
+    .from("veiculos")
+    .select(
+      "id, marca, modelo, ano, km, preco, combustivel, cambio, cor, descricao, destaque, status, veiculo_fotos(url, ordem)"
+    )
+    .eq("id", id)
+    .order("ordem", { foreignTable: "veiculo_fotos", ascending: true })
+    .maybeSingle();
+
+  if (error || !data) {
+    if (error) console.error("Erro ao buscar veículo:", error.message);
+    return null;
+  }
+
+  const row = data as unknown as RawRow & {
+    ano: number;
+    km: number;
+    combustivel: string;
+    cambio: string;
+    cor: string;
+    descricao: string | null;
+    destaque: boolean;
+  };
+
+  return {
+    id: row.id,
+    marca: row.marca,
+    modelo: row.modelo,
+    ano: row.ano,
+    km: row.km,
+    preco: Number(row.preco),
+    combustivel: row.combustivel,
+    cambio: row.cambio,
+    cor: row.cor,
+    descricao: row.descricao,
+    destaque: row.destaque,
+    status: row.status,
+    fotos: (row.veiculo_fotos ?? [])
+      .slice()
+      .sort((a, b) => a.ordem - b.ordem)
+      .map((foto) => foto.url),
+  };
+}
+
 export async function getAdminVeiculos(): Promise<AdminVeiculoRow[]> {
   const supabase = await createClient();
   if (!supabase) return [];
