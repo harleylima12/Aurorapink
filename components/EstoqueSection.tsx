@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { veiculosMock } from "@/data/veiculos-mock";
+import type { Veiculo } from "@/data/veiculos-mock";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 import VeiculoCard from "./VeiculoCard";
 import RevealOnScroll from "./RevealOnScroll";
@@ -99,19 +99,19 @@ function FiltersPanel({
   );
 }
 
-export default function EstoqueSection() {
+export default function EstoqueSection({ veiculos }: { veiculos: Veiculo[] }) {
   const [selectedMarcas, setSelectedMarcas] = useState<string[]>([]);
   const [selectedFaixas, setSelectedFaixas] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<SortBy>("recente");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   const marcas = useMemo(
-    () => Array.from(new Set(veiculosMock.map((v) => v.marca))).sort(),
-    []
+    () => Array.from(new Set(veiculos.map((v) => v.marca))).sort(),
+    [veiculos]
   );
 
   const veiculosFiltrados = useMemo(() => {
-    const filtrados = veiculosMock.filter((veiculo) => {
+    const filtrados = veiculos.filter((veiculo) => {
       const marcaOk =
         selectedMarcas.length === 0 || selectedMarcas.includes(veiculo.marca);
 
@@ -132,7 +132,7 @@ export default function EstoqueSection() {
       if (sortBy === "maior") return b.preco - a.preco;
       return b.ano - a.ano;
     });
-  }, [selectedMarcas, selectedFaixas, sortBy]);
+  }, [veiculos, selectedMarcas, selectedFaixas, sortBy]);
 
   const toggleMarca = (marca: string) =>
     setSelectedMarcas((prev) => toggleValue(prev, marca));
@@ -158,75 +158,91 @@ export default function EstoqueSection() {
           </div>
         </RevealOnScroll>
 
-        <div className="mb-6 lg:hidden">
-          <button
-            onClick={() => setMobileFiltersOpen(true)}
-            className="rounded-full border border-neutral-700 px-5 py-2 text-sm font-medium text-white"
-          >
-            Filtros
-          </button>
-        </div>
-
-        <div className="flex flex-col gap-10 lg:flex-row">
-          <aside className="hidden lg:block lg:w-64 lg:flex-shrink-0">
-            <div className="sticky top-24">
-              <FiltersPanel
-                marcas={marcas}
-                selectedMarcas={selectedMarcas}
-                onToggleMarca={toggleMarca}
-                selectedFaixas={selectedFaixas}
-                onToggleFaixa={toggleFaixa}
-                onClear={clearFilters}
-              />
-            </div>
-          </aside>
-
-          <div className="flex-1">
-            <div className="mb-6 flex items-center justify-between gap-4">
-              <p className="text-sm text-white/50">
-                <CountUp value={veiculosFiltrados.length} duration={0.5} />{" "}
-                {veiculosFiltrados.length === 1
-                  ? "veículo encontrado"
-                  : "veículos encontrados"}
+        {veiculos.length === 0 ? (
+          <RevealOnScroll delay={0.1}>
+            <div className="rounded-2xl border border-neutral-800 bg-neutral-900 px-8 py-16 text-center">
+              <p className="font-display text-xl font-semibold text-white">
+                Novidades chegando em breve...
               </p>
-
-              <label className="flex items-center gap-2 text-sm text-white/70">
-                <span className="hidden sm:inline">Ordenar por</span>
-                <select
-                  value={sortBy}
-                  onChange={(event) =>
-                    setSortBy(event.target.value as SortBy)
-                  }
-                  className="rounded-full border border-neutral-700 bg-neutral-900 px-4 py-2 text-sm text-white focus:outline-none"
-                >
-                  <option value="recente">Mais recente</option>
-                  <option value="menor">Menor preço</option>
-                  <option value="maior">Maior preço</option>
-                </select>
-              </label>
+              <p className="mt-2 text-sm text-white/60">
+                Estamos atualizando nosso estoque. Volte em breve para
+                conferir os veículos disponíveis.
+              </p>
+            </div>
+          </RevealOnScroll>
+        ) : (
+          <>
+            <div className="mb-6 lg:hidden">
+              <button
+                onClick={() => setMobileFiltersOpen(true)}
+                className="rounded-full border border-neutral-700 px-5 py-2 text-sm font-medium text-white"
+              >
+                Filtros
+              </button>
             </div>
 
-            {veiculosFiltrados.length === 0 ? (
-              <p className="rounded-2xl border border-neutral-800 bg-neutral-900 p-8 text-center text-white/60">
-                Nenhum veículo encontrado com esses filtros.
-              </p>
-            ) : (
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                <AnimatePresence mode="popLayout">
-                  {veiculosFiltrados.map((veiculo, index) => (
-                    <RevealOnScroll
-                      key={veiculo.id}
-                      delay={(index % 6) * 0.06}
-                      layout
+            <div className="flex flex-col gap-10 lg:flex-row">
+              <aside className="hidden lg:block lg:w-64 lg:flex-shrink-0">
+                <div className="sticky top-24">
+                  <FiltersPanel
+                    marcas={marcas}
+                    selectedMarcas={selectedMarcas}
+                    onToggleMarca={toggleMarca}
+                    selectedFaixas={selectedFaixas}
+                    onToggleFaixa={toggleFaixa}
+                    onClear={clearFilters}
+                  />
+                </div>
+              </aside>
+
+              <div className="flex-1">
+                <div className="mb-6 flex items-center justify-between gap-4">
+                  <p className="text-sm text-white/50">
+                    <CountUp value={veiculosFiltrados.length} duration={0.5} />{" "}
+                    {veiculosFiltrados.length === 1
+                      ? "veículo encontrado"
+                      : "veículos encontrados"}
+                  </p>
+
+                  <label className="flex items-center gap-2 text-sm text-white/70">
+                    <span className="hidden sm:inline">Ordenar por</span>
+                    <select
+                      value={sortBy}
+                      onChange={(event) =>
+                        setSortBy(event.target.value as SortBy)
+                      }
+                      className="rounded-full border border-neutral-700 bg-neutral-900 px-4 py-2 text-sm text-white focus:outline-none"
                     >
-                      <VeiculoCard veiculo={veiculo} />
-                    </RevealOnScroll>
-                  ))}
-                </AnimatePresence>
+                      <option value="recente">Mais recente</option>
+                      <option value="menor">Menor preço</option>
+                      <option value="maior">Maior preço</option>
+                    </select>
+                  </label>
+                </div>
+
+                {veiculosFiltrados.length === 0 ? (
+                  <p className="rounded-2xl border border-neutral-800 bg-neutral-900 p-8 text-center text-white/60">
+                    Nenhum veículo encontrado com esses filtros.
+                  </p>
+                ) : (
+                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <AnimatePresence mode="popLayout">
+                      {veiculosFiltrados.map((veiculo, index) => (
+                        <RevealOnScroll
+                          key={veiculo.id}
+                          delay={(index % 6) * 0.06}
+                          layout
+                        >
+                          <VeiculoCard veiculo={veiculo} />
+                        </RevealOnScroll>
+                      ))}
+                    </AnimatePresence>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        </div>
+            </div>
+          </>
+        )}
       </div>
 
       <AnimatePresence>
