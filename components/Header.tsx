@@ -43,17 +43,17 @@ export default function Header() {
       transition={{ duration: 0.3, ease: EASE_OUT_EXPO }}
       className="sticky top-0 z-50 w-full border-b backdrop-blur-md"
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
         <Link
           href="/"
-          className="font-display text-xl font-bold tracking-tight text-white"
+          className="min-w-0 truncate font-display text-lg font-bold tracking-tight text-white sm:text-xl"
         >
           Alvorada Veículos
         </Link>
 
-        <div className="flex items-center gap-2 sm:gap-6">
+        <div className="flex flex-shrink-0 items-center gap-2 sm:gap-6">
           <nav>
-            <ul className="flex items-center gap-5 text-sm font-medium text-white/70 sm:gap-8">
+            <ul className="flex items-center gap-4 text-sm font-medium text-white/70 sm:gap-8">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link

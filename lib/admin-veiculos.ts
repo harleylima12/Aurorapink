@@ -1,4 +1,4 @@
-import type { VeiculoStatus } from "@/lib/types";
+import type { VeiculoFoto, VeiculoStatus } from "@/lib/types";
 import { createClient } from "./supabase-server";
 
 export interface AdminVeiculoRow {
@@ -16,7 +16,7 @@ interface RawRow {
   modelo: string;
   preco: number;
   status: VeiculoStatus;
-  veiculo_fotos: { url: string; ordem: number }[] | null;
+  veiculo_fotos: { url: string; ordem: number; categoria: string | null }[] | null;
 }
 
 export interface AdminVeiculoDetalhe {
@@ -32,7 +32,7 @@ export interface AdminVeiculoDetalhe {
   descricao: string | null;
   destaque: boolean;
   status: VeiculoStatus;
-  fotos: string[];
+  fotos: VeiculoFoto[];
 }
 
 /**
@@ -49,7 +49,7 @@ export async function getVeiculoById(
   const { data, error } = await supabase
     .from("veiculos")
     .select(
-      "id, marca, modelo, ano, km, preco, combustivel, cambio, cor, descricao, destaque, status, veiculo_fotos(url, ordem)"
+      "id, marca, modelo, ano, km, preco, combustivel, cambio, cor, descricao, destaque, status, veiculo_fotos(url, ordem, categoria)"
     )
     .eq("id", id)
     .order("ordem", { foreignTable: "veiculo_fotos", ascending: true })
@@ -86,7 +86,7 @@ export async function getVeiculoById(
     fotos: (row.veiculo_fotos ?? [])
       .slice()
       .sort((a, b) => a.ordem - b.ordem)
-      .map((foto) => foto.url),
+      .map((foto) => ({ url: foto.url, categoria: foto.categoria ?? null })),
   };
 }
 

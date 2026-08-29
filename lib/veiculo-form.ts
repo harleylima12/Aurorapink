@@ -10,6 +10,20 @@ export const CAMBIOS = ["Manual", "Automático"] as const;
 
 export const FOTOS_BUCKET = "fotos-veiculos";
 
+/**
+ * Suggested labels for a photo. The column is free text, so these are
+ * only the shortcuts offered in the form — anything else is still valid.
+ */
+export const CATEGORIAS_FOTO = [
+  "Frente",
+  "Lateral",
+  "Traseira",
+  "Interior",
+  "Motor",
+  "Rodas",
+  "Outro",
+] as const;
+
 /** Form state. Numeric fields stay as strings while the user types. */
 export interface VeiculoFormValues {
   marca: string;

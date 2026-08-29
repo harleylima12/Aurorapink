@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import type { Veiculo } from "@/lib/types";
+import type { Veiculo, VeiculoFoto } from "@/lib/types";
 import { formatKm, formatPrice } from "@/lib/format";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 import VeiculoCard from "./VeiculoCard";
@@ -28,11 +28,12 @@ const SELO_ITENS = [
   "Sem sinistro",
 ];
 
-const DESTAQUES_LABELS = ["Frente", "Lateral", "Traseira", "Interior"];
-
 // A vehicle saved without photos would otherwise index into an empty
 // array and hand next/image an undefined src.
-const FOTO_FALLBACK = "/hero-frames/frame-001.jpg";
+const FOTO_FALLBACK: VeiculoFoto = {
+  url: "/hero-frames/frame-001.jpg",
+  categoria: null,
+};
 
 export default function VeiculoDetail({
   veiculo,
@@ -66,8 +67,13 @@ export default function VeiculoDetail({
       </RevealOnScroll>
 
       <RevealOnScroll className="mt-10">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.4fr_1fr]">
-          <div>
+        {/* min-w-0 on both columns: a grid item defaults to min-width:auto,
+            so the thumbnail strip's intrinsic width (12 photos ≈ 1284px)
+            would blow the 1.4fr track open and shove the spec panel off
+            screen. Zeroing it lets the track hold its share and the strip
+            scroll inside itself, as intended. */}
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+          <div className="min-w-0">
             <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-900">
               <AnimatePresence>
                 <motion.div
@@ -79,7 +85,7 @@ export default function VeiculoDetail({
                   className="absolute inset-0"
                 >
                   <Image
-                    src={fotos[selectedIndex]}
+                    src={fotos[selectedIndex].url}
                     alt={`${veiculo.marca} ${veiculo.modelo} - foto ${
                       selectedIndex + 1
                     }`}
@@ -103,7 +109,7 @@ export default function VeiculoDetail({
             <div className="mt-4 flex gap-3 overflow-x-auto pb-1">
               {fotos.map((foto, index) => (
                 <button
-                  key={foto + index}
+                  key={foto.url + index}
                   onClick={() => setSelectedIndex(index)}
                   className={`relative aspect-[4/3] w-20 flex-shrink-0 overflow-hidden rounded-lg border-2 sm:w-24 ${
                     selectedIndex === index
@@ -113,8 +119,8 @@ export default function VeiculoDetail({
                   aria-label={`Ver foto ${index + 1}`}
                 >
                   <Image
-                    src={foto}
-                    alt=""
+                    src={foto.url}
+                    alt={foto.categoria ?? ""}
                     fill
                     sizes="96px"
                     className="object-cover"
@@ -127,11 +133,11 @@ export default function VeiculoDetail({
               <div className="mt-4 grid grid-cols-2 gap-4">
                 {showcaseFotos.map((foto, index) => (
                   <div
-                    key={foto + index}
+                    key={foto.url + index}
                     className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-900"
                   >
                     <Image
-                      src={foto}
+                      src={foto.url}
                       alt={`${veiculo.marca} ${veiculo.modelo} - ângulo adicional`}
                       fill
                       sizes="(min-width: 1024px) 30vw, 50vw"
@@ -143,7 +149,7 @@ export default function VeiculoDetail({
             )}
           </div>
 
-          <div>
+          <div className="min-w-0">
             <CountUp
               value={veiculo.preco}
               format={formatPrice}
@@ -233,8 +239,11 @@ export default function VeiculoDetail({
           Destaques do veículo
         </p>
         <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {DESTAQUES_LABELS.map((label, index) => (
-            <div key={label} className="group relative overflow-hidden">
+          {fotos.map((foto, index) => (
+            <div
+              key={foto.url + index}
+              className="group relative overflow-hidden"
+            >
               <div
                 className="relative aspect-[3/4] overflow-hidden bg-neutral-900"
                 style={{
@@ -242,8 +251,12 @@ export default function VeiculoDetail({
                 }}
               >
                 <Image
-                  src={fotos[index % fotos.length]}
-                  alt={`${veiculo.marca} ${veiculo.modelo} - ${label}`}
+                  src={foto.url}
+                  alt={
+                    foto.categoria
+                      ? `${veiculo.marca} ${veiculo.modelo} - ${foto.categoria}`
+                      : `${veiculo.marca} ${veiculo.modelo} - foto ${index + 1}`
+                  }
                   fill
                   sizes="(min-width: 640px) 25vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -257,7 +270,12 @@ export default function VeiculoDetail({
                   format={(n) => String(n).padStart(2, "0")}
                   className="font-display text-2xl font-bold text-gold-400/50"
                 />
-                <p className="text-sm font-medium text-white">{label}</p>
+                {/* No category set: the number stands alone. */}
+                {foto.categoria && (
+                  <p className="text-sm font-medium text-white">
+                    {foto.categoria}
+                  </p>
+                )}
               </div>
             </div>
           ))}

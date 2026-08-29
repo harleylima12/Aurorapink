@@ -24,6 +24,7 @@ import {
   type VeiculoFormValues,
 } from "@/lib/veiculo-form";
 import FotosUploader, { type FotoItem } from "./FotosUploader";
+import type { VeiculoFoto } from "@/lib/types";
 
 const inputBase =
   "w-full rounded-lg border bg-neutral-950 px-3.5 py-2.5 text-sm text-white placeholder:text-white/30 transition-colors focus:outline-none focus:ring-1 disabled:opacity-60";
@@ -89,7 +90,7 @@ export interface VeiculoFormProps {
   /** Present when editing; absent when creating from scratch. */
   veiculoId?: string;
   initialValues?: VeiculoFormValues;
-  initialFotos?: string[];
+  initialFotos?: VeiculoFoto[];
 }
 
 export default function VeiculoForm({
@@ -104,7 +105,11 @@ export default function VeiculoForm({
     initialValues ?? emptyVeiculoForm
   );
   const [fotos, setFotos] = useState<FotoItem[]>(() =>
-    initialFotos.map((url, index) => ({ uid: `saved-${index}-${url}`, url }))
+    initialFotos.map((foto, index) => ({
+      uid: `saved-${index}-${foto.url}`,
+      url: foto.url,
+      categoria: foto.categoria ?? "",
+    }))
   );
   const [errors, setErrors] = useState<VeiculoFormErrors>({});
   const [saving, setSaving] = useState(false);
@@ -205,8 +210,13 @@ export default function VeiculoForm({
 
       // 3. Keep the chosen order, dropping whatever failed to upload.
       const ordenadas = fotos
-        .map((foto) => (foto.file ? enviadas.get(foto.uid) : foto.url))
-        .filter((url): url is string => Boolean(url));
+        .map((foto) => {
+          const url = foto.file ? enviadas.get(foto.uid) : foto.url;
+          return url ? { url, categoria: foto.categoria } : null;
+        })
+        .filter((foto): foto is { url: string; categoria: string } =>
+          Boolean(foto)
+        );
 
       if (ordenadas.length === 0) {
         setFormError(
@@ -235,7 +245,7 @@ export default function VeiculoForm({
               const url = foto.file ? enviadas.get(foto.uid) : foto.url;
               if (!url) return foto;
               if (foto.file) URL.revokeObjectURL(foto.url);
-              return { uid: foto.uid, url };
+              return { uid: foto.uid, url, categoria: foto.categoria };
             })
             .filter((foto) => !foto.file || !enviadas.has(foto.uid))
         );

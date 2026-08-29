@@ -1,5 +1,12 @@
 export type VeiculoStatus = "disponivel" | "vendido";
 
+/** One photo of a vehicle, with the optional label the admin assigned. */
+export interface VeiculoFoto {
+  url: string;
+  /** Free text ("Frente", "Motor", ...); null when the admin left it blank. */
+  categoria: string | null;
+}
+
 /** A vehicle as the public site renders it (photos already ordered). */
 export interface Veiculo {
   id: string;
@@ -13,5 +20,5 @@ export interface Veiculo {
   cor: string;
   status: VeiculoStatus;
   destaque?: boolean;
-  fotos: string[];
+  fotos: VeiculoFoto[];
 }

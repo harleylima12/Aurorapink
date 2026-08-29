@@ -14,11 +14,12 @@ export const supabase =
     : null;
 
 const VEICULO_SELECT =
-  "id, marca, modelo, ano, km, preco, combustivel, cambio, cor, status, destaque, veiculo_fotos(url, ordem)";
+  "id, marca, modelo, ano, km, preco, combustivel, cambio, cor, status, destaque, veiculo_fotos(url, ordem, categoria)";
 
 interface VeiculoFotoRow {
   url: string;
   ordem: number;
+  categoria: string | null;
 }
 
 interface VeiculoRow {
@@ -53,7 +54,7 @@ function mapVeiculo(row: VeiculoRow): Veiculo {
     fotos: (row.veiculo_fotos ?? [])
       .slice()
       .sort((a, b) => a.ordem - b.ordem)
-      .map((foto) => foto.url),
+      .map((foto) => ({ url: foto.url, categoria: foto.categoria ?? null })),
   };
 }
 

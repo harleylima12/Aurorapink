@@ -4,12 +4,15 @@ import { useRef, useState, type DragEvent } from "react";
 import Image from "next/image";
 import { Reorder } from "framer-motion";
 import { CloseIcon, DragIcon, PhotoIcon } from "@/components/icons";
+import { CATEGORIAS_FOTO } from "@/lib/veiculo-form";
 
 export interface FotoItem {
   /** Stable key for React/Reorder — not the database id. */
   uid: string;
   /** Public URL (already saved) or an object URL preview (new file). */
   url: string;
+  /** Label shown on the public page; empty means "no label". */
+  categoria: string;
   /** Only present while the photo still needs uploading. */
   file?: File;
 }
@@ -18,6 +21,7 @@ export function makeFotoItem(file: File): FotoItem {
   return {
     uid: `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
     url: URL.createObjectURL(file),
+    categoria: "",
     file,
   };
 }
@@ -127,7 +131,7 @@ export default function FotosUploader({
                 key={foto.uid}
                 value={foto}
                 dragListener={!disabled}
-                className={`flex items-center gap-3 rounded-xl border border-neutral-800 bg-neutral-900 p-2 ${
+                className={`flex flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border border-neutral-800 bg-neutral-900 p-2 ${
                   disabled ? "" : "cursor-grab active:cursor-grabbing"
                 }`}
               >
@@ -148,7 +152,7 @@ export default function FotosUploader({
                   />
                 </div>
 
-                <div className="min-w-0 flex-1">
+                <div className="min-w-[6rem] flex-1">
                   <p className="truncate text-sm text-white">
                     {index === 0 ? "Capa" : `Foto ${index + 1}`}
                   </p>
@@ -156,6 +160,41 @@ export default function FotosUploader({
                     {foto.file ? foto.file.name : "Já enviada"}
                   </p>
                 </div>
+
+                <div className="ml-auto flex flex-shrink-0 items-center gap-1">
+                <select
+                  value={foto.categoria}
+                  disabled={disabled}
+                  aria-label={`Categoria da foto ${index + 1}`}
+                  // The select lives inside a draggable row: without this
+                  // the drag gesture swallows the click that opens it.
+                  onPointerDownCapture={(event) => event.stopPropagation()}
+                  onChange={(event) =>
+                    onChange(
+                      fotos.map((item) =>
+                        item.uid === foto.uid
+                          ? { ...item, categoria: event.target.value }
+                          : item
+                      )
+                    )
+                  }
+                  className="w-32 rounded-lg border border-neutral-700 bg-neutral-950 px-2 py-1.5 text-xs text-white transition-colors focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 disabled:opacity-60"
+                >
+                  <option value="">Sem categoria</option>
+                  {CATEGORIAS_FOTO.map((opcao) => (
+                    <option key={opcao} value={opcao}>
+                      {opcao}
+                    </option>
+                  ))}
+                  {/* An existing free-text value typed outside the form
+                      would vanish from a select that doesn't list it. */}
+                  {foto.categoria &&
+                    !CATEGORIAS_FOTO.includes(
+                      foto.categoria as (typeof CATEGORIAS_FOTO)[number]
+                    ) && (
+                      <option value={foto.categoria}>{foto.categoria}</option>
+                    )}
+                </select>
 
                 <button
                   type="button"
@@ -166,6 +205,7 @@ export default function FotosUploader({
                 >
                   <CloseIcon className="h-4 w-4" />
                 </button>
+                </div>
               </Reorder.Item>
             ))}
           </Reorder.Group>

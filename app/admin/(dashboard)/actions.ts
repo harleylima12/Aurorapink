@@ -72,15 +72,22 @@ export async function updateVeiculo(
   return { id };
 }
 
+export interface FotoPayload {
+  url: string;
+  /** Free text; empty/undefined stores null (no label on the site). */
+  categoria?: string | null;
+}
+
 /**
- * Rewrites the vehicle's whole photo list in one shot: the incoming URLs
- * become rows 0..n in the given order, and any photo that used to belong
- * to this vehicle but isn't in the new list is deleted from Storage too.
- * Handles reordering, removal and additions with a single code path.
+ * Rewrites the vehicle's whole photo list in one shot: the incoming
+ * photos become rows 0..n in the given order, and any photo that used to
+ * belong to this vehicle but isn't in the new list is deleted from
+ * Storage too. Handles reordering, removal, additions and category
+ * changes with a single code path.
  */
 export async function replaceFotos(
   veiculoId: string,
-  urls: string[]
+  fotos: FotoPayload[]
 ): Promise<{ error?: string }> {
   const supabase = await createClient();
   if (!supabase) return { error: "Serviço indisponível no momento." };
@@ -105,9 +112,14 @@ export async function replaceFotos(
     return { error: deleteError.message };
   }
 
-  if (urls.length > 0) {
+  if (fotos.length > 0) {
     const { error: insertError } = await supabase.from("veiculo_fotos").insert(
-      urls.map((url, ordem) => ({ veiculo_id: veiculoId, url, ordem }))
+      fotos.map((foto, ordem) => ({
+        veiculo_id: veiculoId,
+        url: foto.url,
+        ordem,
+        categoria: foto.categoria?.trim() ? foto.categoria.trim() : null,
+      }))
     );
 
     if (insertError) {
@@ -118,7 +130,7 @@ export async function replaceFotos(
 
   // Drop the files that are no longer referenced. A failure here leaves
   // an orphan file but doesn't break the save, so it's only logged.
-  const mantidas = new Set(urls);
+  const mantidas = new Set(fotos.map((foto) => foto.url));
   const removidas = (atuais ?? [])
     .map((foto) => foto.url)
     .filter((url) => !mantidas.has(url))
