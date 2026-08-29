@@ -1,4 +1,4 @@
-import type { VeiculoStatus } from "@/data/veiculos-mock";
+import type { VeiculoStatus } from "@/lib/types";
 import { createClient } from "./supabase-server";
 
 export interface AdminVeiculoRow {

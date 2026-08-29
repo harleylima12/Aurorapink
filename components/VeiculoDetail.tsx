@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import type { Veiculo } from "@/data/veiculos-mock";
+import type { Veiculo } from "@/lib/types";
 import { formatKm, formatPrice } from "@/lib/format";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 import VeiculoCard from "./VeiculoCard";
@@ -30,6 +30,10 @@ const SELO_ITENS = [
 
 const DESTAQUES_LABELS = ["Frente", "Lateral", "Traseira", "Interior"];
 
+// A vehicle saved without photos would otherwise index into an empty
+// array and hand next/image an undefined src.
+const FOTO_FALLBACK = "/hero-frames/frame-001.jpg";
+
 export default function VeiculoDetail({
   veiculo,
   similares,
@@ -39,12 +43,13 @@ export default function VeiculoDetail({
 }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const isVendido = veiculo.status === "vendido";
+  const fotos = veiculo.fotos.length > 0 ? veiculo.fotos : [FOTO_FALLBACK];
 
   const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     `Olá! Tenho interesse no ${veiculo.marca} ${veiculo.modelo} (${veiculo.ano}) anunciado na Alvorada Veículos.`
   )}`;
 
-  const showcaseFotos = veiculo.fotos.slice(1, 3);
+  const showcaseFotos = fotos.slice(1, 3);
 
   return (
     <>
@@ -74,7 +79,7 @@ export default function VeiculoDetail({
                   className="absolute inset-0"
                 >
                   <Image
-                    src={veiculo.fotos[selectedIndex]}
+                    src={fotos[selectedIndex]}
                     alt={`${veiculo.marca} ${veiculo.modelo} - foto ${
                       selectedIndex + 1
                     }`}
@@ -96,7 +101,7 @@ export default function VeiculoDetail({
             </div>
 
             <div className="mt-4 flex gap-3 overflow-x-auto pb-1">
-              {veiculo.fotos.map((foto, index) => (
+              {fotos.map((foto, index) => (
                 <button
                   key={foto + index}
                   onClick={() => setSelectedIndex(index)}
@@ -237,7 +242,7 @@ export default function VeiculoDetail({
                 }}
               >
                 <Image
-                  src={veiculo.fotos[index % veiculo.fotos.length]}
+                  src={fotos[index % fotos.length]}
                   alt={`${veiculo.marca} ${veiculo.modelo} - ${label}`}
                   fill
                   sizes="(min-width: 640px) 25vw, 50vw"

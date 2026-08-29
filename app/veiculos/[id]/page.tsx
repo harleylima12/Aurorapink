@@ -1,26 +1,20 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { veiculosMock } from "@/data/veiculos-mock";
+import { getVeiculoById, getVeiculosSimilares } from "@/lib/supabase";
 import VeiculoDetail from "@/components/VeiculoDetail";
 
-export function generateStaticParams() {
-  return veiculosMock.map((veiculo) => ({ id: veiculo.id }));
-}
-
-export default function VeiculoDetailPage({
+export default async function VeiculoDetailPage({
   params,
 }: {
   params: { id: string };
 }) {
-  const veiculo = veiculosMock.find((item) => item.id === params.id);
+  const veiculo = await getVeiculoById(params.id);
 
   if (!veiculo) {
     notFound();
   }
 
-  const similares = veiculosMock
-    .filter((item) => item.id !== veiculo.id)
-    .slice(0, 3);
+  const similares = await getVeiculosSimilares(veiculo);
 
   return (
     <div className="bg-neutral-950 px-6 py-10 sm:py-14">

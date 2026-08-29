@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase-server";
 import { FOTOS_BUCKET, type VeiculoInput } from "@/lib/veiculo-form";
-import type { VeiculoStatus } from "@/data/veiculos-mock";
+import type { VeiculoStatus } from "@/lib/types";
 
 function refresh() {
   revalidatePath("/admin");

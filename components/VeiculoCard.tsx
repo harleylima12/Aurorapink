@@ -5,7 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import type { Veiculo } from "@/data/veiculos-mock";
+import type { Veiculo } from "@/lib/types";
 import { formatKm, formatPrice } from "@/lib/format";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 import CountUp from "./CountUp";
