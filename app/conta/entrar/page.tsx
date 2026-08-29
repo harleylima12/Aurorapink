@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { createClient } from "@/lib/supabase-browser";
+import { tryCreateClient } from "@/lib/supabase-browser";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 
 export default function EntrarPage() {
@@ -19,7 +19,16 @@ export default function EntrarPage() {
     setError(null);
     setLoading(true);
 
-    const supabase = createClient();
+    const supabase = tryCreateClient();
+
+    if (!supabase) {
+      setError(
+        "Serviço indisponível no momento. Tente novamente em instantes."
+      );
+      setLoading(false);
+      return;
+    }
+
     const { error: signInError } = await supabase.auth.signInWithPassword({
       email,
       password,

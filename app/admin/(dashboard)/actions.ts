@@ -11,6 +11,8 @@ function refresh() {
 
 export async function toggleVeiculoStatus(id: string, novoStatus: VeiculoStatus) {
   const supabase = await createClient();
+  if (!supabase) throw new Error("Serviço indisponível no momento.");
+
   const { error } = await supabase
     .from("veiculos")
     .update({ status: novoStatus })
@@ -22,6 +24,8 @@ export async function toggleVeiculoStatus(id: string, novoStatus: VeiculoStatus)
 
 export async function deleteVeiculo(id: string) {
   const supabase = await createClient();
+  if (!supabase) throw new Error("Serviço indisponível no momento.");
+
   const { error } = await supabase.from("veiculos").delete().eq("id", id);
 
   if (error) throw new Error(error.message);

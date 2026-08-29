@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { User } from "@supabase/supabase-js";
-import { createClient } from "@/lib/supabase-browser";
+import { tryCreateClient } from "@/lib/supabase-browser";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 import { UserIcon } from "./icons";
 
@@ -14,7 +14,8 @@ export default function AccountMenu() {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const supabase = createClient();
+    const supabase = tryCreateClient();
+    if (!supabase) return;
 
     supabase.auth.getUser().then(({ data }) => setUser(data.user));
 
@@ -46,8 +47,8 @@ export default function AccountMenu() {
   }, [open]);
 
   const handleLogout = async () => {
-    const supabase = createClient();
-    await supabase.auth.signOut();
+    const supabase = tryCreateClient();
+    if (supabase) await supabase.auth.signOut();
     setOpen(false);
   };
 

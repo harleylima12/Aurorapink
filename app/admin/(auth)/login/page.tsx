@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { createClient } from "@/lib/supabase-browser";
+import { tryCreateClient } from "@/lib/supabase-browser";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 
 export default function AdminLoginPage() {
@@ -18,7 +18,15 @@ export default function AdminLoginPage() {
     setError(null);
     setLoading(true);
 
-    const supabase = createClient();
+    const supabase = tryCreateClient();
+
+    if (!supabase) {
+      setError(
+        "Serviço indisponível no momento. Tente novamente em instantes."
+      );
+      setLoading(false);
+      return;
+    }
 
     const { data, error: signInError } = await supabase.auth.signInWithPassword({
       email,

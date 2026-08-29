@@ -21,6 +21,7 @@ interface RawRow {
 
 export async function getAdminVeiculos(): Promise<AdminVeiculoRow[]> {
   const supabase = await createClient();
+  if (!supabase) return [];
 
   const { data, error } = await supabase
     .from("veiculos")

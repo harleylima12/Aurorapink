@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { createClient } from "@/lib/supabase-browser";
+import { tryCreateClient } from "@/lib/supabase-browser";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 import {
   GridIcon,
@@ -65,8 +65,8 @@ function LogoutButton({ className }: { className?: string }) {
   const router = useRouter();
 
   const handleLogout = async () => {
-    const supabase = createClient();
-    await supabase.auth.signOut();
+    const supabase = tryCreateClient();
+    if (supabase) await supabase.auth.signOut();
     router.push("/admin/login");
     router.refresh();
   };

@@ -12,6 +12,8 @@ export default async function AdminDashboardLayout({
   children: ReactNode;
 }) {
   const supabase = await createClient();
+  if (!supabase) redirect("/admin/login");
+
   const {
     data: { user },
   } = await supabase.auth.getUser();
