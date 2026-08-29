@@ -1,6 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { EASE_OUT_EXPO } from "@/lib/motion";
 
 const navLinks = [
   { href: "/", label: "Início" },
@@ -9,9 +12,32 @@ const navLinks = [
 ];
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-neutral-800 bg-neutral-950/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <motion.header
+      initial={false}
+      animate={{
+        paddingTop: scrolled ? 10 : 20,
+        paddingBottom: scrolled ? 10 : 20,
+        backgroundColor: scrolled
+          ? "rgba(10,10,10,0.85)"
+          : "rgba(10,10,10,0)",
+        borderBottomColor: scrolled
+          ? "rgba(38,38,38,1)"
+          : "rgba(38,38,38,0)",
+      }}
+      transition={{ duration: 0.3, ease: EASE_OUT_EXPO }}
+      className="sticky top-0 z-50 w-full border-b backdrop-blur-md"
+    >
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
         <Link
           href="/"
           className="font-display text-xl font-bold tracking-tight text-white"
@@ -34,6 +60,6 @@ export default function Header() {
           </ul>
         </nav>
       </div>
-    </header>
+    </motion.header>
   );
 }

@@ -7,7 +7,7 @@ export default function SpecRow({
 }: {
   icon: ReactNode;
   label: string;
-  value?: string;
+  value?: ReactNode;
 }) {
   return (
     <div className="flex items-center gap-3 rounded-xl border border-neutral-800 bg-neutral-900 px-4 py-3">

@@ -3,8 +3,10 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { veiculosMock } from "@/data/veiculos-mock";
+import { EASE_OUT_EXPO } from "@/lib/motion";
 import VeiculoCard from "./VeiculoCard";
 import RevealOnScroll from "./RevealOnScroll";
+import CountUp from "./CountUp";
 
 type SortBy = "recente" | "menor" | "maior";
 
@@ -182,7 +184,7 @@ export default function EstoqueSection() {
           <div className="flex-1">
             <div className="mb-6 flex items-center justify-between gap-4">
               <p className="text-sm text-white/50">
-                {veiculosFiltrados.length}{" "}
+                <CountUp value={veiculosFiltrados.length} duration={0.5} />{" "}
                 {veiculosFiltrados.length === 1
                   ? "veículo encontrado"
                   : "veículos encontrados"}
@@ -210,11 +212,17 @@ export default function EstoqueSection() {
               </p>
             ) : (
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {veiculosFiltrados.map((veiculo, index) => (
-                  <RevealOnScroll key={veiculo.id} delay={(index % 6) * 0.08}>
-                    <VeiculoCard veiculo={veiculo} />
-                  </RevealOnScroll>
-                ))}
+                <AnimatePresence mode="popLayout">
+                  {veiculosFiltrados.map((veiculo, index) => (
+                    <RevealOnScroll
+                      key={veiculo.id}
+                      delay={(index % 6) * 0.06}
+                      layout
+                    >
+                      <VeiculoCard veiculo={veiculo} />
+                    </RevealOnScroll>
+                  ))}
+                </AnimatePresence>
               </div>
             )}
           </div>
@@ -258,13 +266,16 @@ export default function EstoqueSection() {
                 onToggleFaixa={toggleFaixa}
                 onClear={clearFilters}
               />
-              <button
+              <motion.button
                 onClick={() => setMobileFiltersOpen(false)}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ duration: 0.15, ease: EASE_OUT_EXPO }}
                 className="mt-8 w-full rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-neutral-950 transition-colors hover:bg-gold-400"
               >
                 Ver {veiculosFiltrados.length} veículo
                 {veiculosFiltrados.length === 1 ? "" : "s"}
-              </button>
+              </motion.button>
             </motion.div>
           </>
         )}

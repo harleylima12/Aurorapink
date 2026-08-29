@@ -2,7 +2,10 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { EASE_OUT_EXPO } from "@/lib/motion";
+
+const MotionLink = motion.create(Link);
 
 const TOTAL_FRAMES = 300;
 const framePath = (frame: number) =>
@@ -39,6 +42,21 @@ export default function HeroScrollVideo({
 
   const [loadProgress, setLoadProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  // Subtle parallax on the text overlay only — the canvas frame mapping
+  // below is untouched. As the user scrolls through the hero section the
+  // overlay drifts down and fades slightly slower than the raw scroll,
+  // reading as depth against the "fixed" background.
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const overlayY = useTransform(scrollYProgress, [0, 1], [0, 140]);
+  const overlayOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.6, 1],
+    [1, 1, 0]
+  );
 
   const drawFrame = useCallback(
     (frameIndex: number) => {
@@ -231,11 +249,14 @@ export default function HeroScrollVideo({
 
         <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/70 via-black/20 to-black/50" />
 
-        <div className="absolute inset-0 z-20 flex items-center justify-center px-6">
+        <motion.div
+          style={{ y: overlayY, opacity: overlayOpacity }}
+          className="absolute inset-0 z-20 flex items-center justify-center px-6"
+        >
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: EASE_OUT_EXPO }}
             className="flex max-w-3xl flex-col items-center gap-4 text-center sm:gap-6"
           >
             <h1 className="font-display text-3xl font-bold leading-tight text-white sm:text-5xl md:text-6xl">
@@ -245,14 +266,17 @@ export default function HeroScrollVideo({
               Veículos revisados, procedência garantida e condições facilitadas
               para você sair dirigindo hoje.
             </p>
-            <Link
+            <MotionLink
               href="/veiculos"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.15, ease: EASE_OUT_EXPO }}
               className="rounded-full bg-gold-500 px-6 py-2.5 text-sm font-semibold text-neutral-950 transition-colors hover:bg-gold-400 sm:px-8 sm:py-3"
             >
               Ver estoque completo
-            </Link>
+            </MotionLink>
           </motion.div>
-        </div>
+        </motion.div>
 
         {!isLoaded && (
           <div className="absolute inset-0 z-30 flex flex-col items-center justify-center gap-4 bg-black">

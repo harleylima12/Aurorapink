@@ -1,26 +1,38 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { ReactNode } from "react";
+import { forwardRef, type ReactNode } from "react";
+import { EASE_OUT_EXPO } from "@/lib/motion";
 
-export default function RevealOnScroll({
-  children,
-  delay = 0,
-  className,
-}: {
+interface RevealOnScrollProps {
   children: ReactNode;
   delay?: number;
   className?: string;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, ease: "easeOut", delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
+  /** Enable FLIP layout animation (used for lists that reorder/filter). */
+  layout?: boolean;
 }
+
+const RevealOnScroll = forwardRef<HTMLDivElement, RevealOnScrollProps>(
+  function RevealOnScroll({ children, delay = 0, className, layout = false }, ref) {
+    return (
+      <motion.div
+        ref={ref}
+        layout={layout}
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        exit={{
+          opacity: 0,
+          scale: 0.94,
+          transition: { duration: 0.2, ease: "easeIn" },
+        }}
+        transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+);
+
+export default RevealOnScroll;

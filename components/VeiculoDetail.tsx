@@ -5,9 +5,11 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Veiculo } from "@/data/veiculos-mock";
 import { formatKm, formatPrice } from "@/lib/format";
+import { EASE_OUT_EXPO } from "@/lib/motion";
 import VeiculoCard from "./VeiculoCard";
 import RevealOnScroll from "./RevealOnScroll";
 import SpecRow from "./SpecRow";
+import CountUp from "./CountUp";
 import {
   CalendarIcon,
   GaugeIcon,
@@ -62,13 +64,13 @@ export default function VeiculoDetail({
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.4fr_1fr]">
           <div>
             <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-900">
-              <AnimatePresence mode="wait">
+              <AnimatePresence>
                 <motion.div
                   key={selectedIndex}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
                   className="absolute inset-0"
                 >
                   <Image
@@ -137,9 +139,12 @@ export default function VeiculoDetail({
           </div>
 
           <div>
-            <p className="font-display text-4xl font-bold text-white">
-              {formatPrice(veiculo.preco)}
-            </p>
+            <CountUp
+              value={veiculo.preco}
+              format={formatPrice}
+              duration={1}
+              className="block font-display text-4xl font-bold text-white"
+            />
 
             <div className="mt-6">
               <p className="text-xs font-semibold uppercase tracking-wide text-white/50">
@@ -154,7 +159,7 @@ export default function VeiculoDetail({
                 <SpecRow
                   icon={<GaugeIcon className="h-5 w-5" />}
                   label="Quilometragem"
-                  value={formatKm(veiculo.km)}
+                  value={<CountUp value={veiculo.km} format={formatKm} />}
                 />
                 <SpecRow
                   icon={<FuelIcon className="h-5 w-5" />}
@@ -198,14 +203,17 @@ export default function VeiculoDetail({
               </button>
             ) : (
               <>
-                <a
+                <motion.a
                   href={whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ duration: 0.15, ease: EASE_OUT_EXPO }}
                   className="mt-8 flex w-full items-center justify-center rounded-full bg-gold-500 px-6 py-4 text-sm font-semibold text-neutral-950 transition-colors hover:bg-gold-400"
                 >
                   Tenho interesse — Falar no WhatsApp
-                </a>
+                </motion.a>
                 <p className="mt-3 text-center text-xs text-white/40">
                   Atendimento rápido, sem compromisso.
                 </p>
@@ -238,9 +246,12 @@ export default function VeiculoDetail({
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
               </div>
               <div className="absolute bottom-4 left-3">
-                <span className="font-display text-2xl font-bold text-gold-400/50">
-                  0{index + 1}
-                </span>
+                <CountUp
+                  value={index + 1}
+                  duration={0.4}
+                  format={(n) => String(n).padStart(2, "0")}
+                  className="font-display text-2xl font-bold text-gold-400/50"
+                />
                 <p className="text-sm font-medium text-white">{label}</p>
               </div>
             </div>
