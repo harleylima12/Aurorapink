@@ -1,10 +1,17 @@
 import { createClient } from "@supabase/supabase-js";
 import type { Veiculo, VeiculoStatus } from "@/data/veiculos-mock";
 
-export const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+// Built lazily (not `createClient(url!, key!)` at module scope) so a
+// deploy missing these env vars doesn't crash every page that imports
+// this module — it just makes getVeiculos() report the same "nothing
+// to show yet" state as an empty table instead of a 500.
+export const supabase =
+  supabaseUrl && supabaseAnonKey
+    ? createClient(supabaseUrl, supabaseAnonKey)
+    : null;
 
 interface VeiculoFotoRow {
   url: string;
@@ -35,6 +42,13 @@ interface VeiculoRow {
  * page erroring out.
  */
 export async function getVeiculos(): Promise<Veiculo[]> {
+  if (!supabase) {
+    console.error(
+      "Supabase não configurado: defina NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY."
+    );
+    return [];
+  }
+
   try {
     const { data, error } = await supabase
       .from("veiculos")
