@@ -17,12 +17,14 @@ const SELO_ITENS = [
   "Sem sinistro",
 ];
 
+const DESTAQUES_LABELS = ["Frente", "Lateral", "Traseira", "Interior"];
+
 function CheckIcon() {
   return (
     <svg
       viewBox="0 0 20 20"
       fill="none"
-      className="h-5 w-5 flex-shrink-0 text-white"
+      className="h-6 w-6 flex-shrink-0 text-white"
       aria-hidden="true"
     >
       <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.5" />
@@ -51,9 +53,23 @@ export default function VeiculoDetail({
     `Olá! Tenho interesse no ${veiculo.marca} ${veiculo.modelo} (${veiculo.ano}) anunciado na Alvorada Veículos.`
   )}`;
 
+  const showcaseFotos = veiculo.fotos.slice(1, 3);
+
   return (
     <>
       <RevealOnScroll>
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/40">
+          Ficha do veículo
+        </p>
+        <h1 className="mt-2 break-words text-4xl font-black uppercase leading-[0.9] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+          {veiculo.marca}
+        </h1>
+        <p className="mt-3 text-xl font-medium text-white/70 sm:text-2xl">
+          {veiculo.modelo}
+        </p>
+      </RevealOnScroll>
+
+      <RevealOnScroll className="mt-10">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.4fr_1fr]">
           <div>
             <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-900">
@@ -110,23 +126,69 @@ export default function VeiculoDetail({
                 </button>
               ))}
             </div>
+
+            {showcaseFotos.length > 0 && (
+              <div className="mt-4 grid grid-cols-2 gap-4">
+                {showcaseFotos.map((foto, index) => (
+                  <div
+                    key={foto + index}
+                    className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-900"
+                  >
+                    <Image
+                      src={foto}
+                      alt={`${veiculo.marca} ${veiculo.modelo} - ângulo adicional`}
+                      fill
+                      sizes="(min-width: 1024px) 30vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           <div>
-            <p className="text-sm uppercase tracking-wide text-white/50">
-              {veiculo.marca}
-            </p>
-            <h1 className="mt-1 text-3xl font-bold text-white sm:text-4xl">
-              {veiculo.modelo}
-            </h1>
-            <p className="mt-4 text-3xl font-bold text-white">
+            <p className="text-4xl font-bold text-white">
               {formatPrice(veiculo.preco)}
             </p>
 
-            <dl className="mt-8 grid grid-cols-2 gap-x-4 gap-y-5 border-t border-neutral-800 pt-6 text-sm">
+            <div className="mt-6 grid grid-cols-3 divide-x divide-neutral-800 rounded-2xl border border-neutral-800 bg-neutral-900 text-center">
+              <div className="px-2 py-5">
+                <p className="text-2xl font-bold text-white sm:text-3xl">
+                  {veiculo.ano}
+                </p>
+                <p className="mt-1 text-xs uppercase tracking-wide text-white/50">
+                  Ano
+                </p>
+              </div>
+              <div className="px-2 py-5">
+                <p className="text-2xl font-bold text-white sm:text-3xl">
+                  {new Intl.NumberFormat("pt-BR").format(veiculo.km)}
+                </p>
+                <p className="mt-1 text-xs uppercase tracking-wide text-white/50">
+                  Km
+                </p>
+              </div>
+              <div className="px-2 py-5">
+                <p className="text-2xl font-bold text-white sm:text-3xl">
+                  {veiculo.cambio}
+                </p>
+                <p className="mt-1 text-xs uppercase tracking-wide text-white/50">
+                  Câmbio
+                </p>
+              </div>
+            </div>
+
+            <dl className="mt-6 grid grid-cols-2 gap-x-4 gap-y-5 border-t border-neutral-800 pt-6 text-sm">
               <div>
-                <dt className="text-white/50">Ano</dt>
-                <dd className="mt-1 font-medium text-white">{veiculo.ano}</dd>
+                <dt className="text-white/50">Combustível</dt>
+                <dd className="mt-1 font-medium text-white">
+                  {veiculo.combustivel}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-white/50">Cor</dt>
+                <dd className="mt-1 font-medium text-white">{veiculo.cor}</dd>
               </div>
               <div>
                 <dt className="text-white/50">Quilometragem</dt>
@@ -135,38 +197,30 @@ export default function VeiculoDetail({
                 </dd>
               </div>
               <div>
-                <dt className="text-white/50">Combustível</dt>
+                <dt className="text-white/50">Status</dt>
                 <dd className="mt-1 font-medium text-white">
-                  {veiculo.combustivel}
+                  {isVendido ? "Vendido" : "Disponível"}
                 </dd>
-              </div>
-              <div>
-                <dt className="text-white/50">Câmbio</dt>
-                <dd className="mt-1 font-medium text-white">
-                  {veiculo.cambio}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-white/50">Cor</dt>
-                <dd className="mt-1 font-medium text-white">{veiculo.cor}</dd>
               </div>
             </dl>
 
-            <div className="mt-8 rounded-2xl border border-neutral-800 bg-neutral-900 p-6">
+            <div className="mt-8">
               <p className="text-sm font-semibold uppercase tracking-wide text-white">
                 Selo de Confiança Alvorada
               </p>
-              <ul className="mt-4 space-y-3">
+              <div className="mt-4 grid grid-cols-2 gap-3">
                 {SELO_ITENS.map((item) => (
-                  <li
+                  <div
                     key={item}
-                    className="flex items-center gap-3 text-sm text-white/80"
+                    className="flex flex-col items-center gap-2 rounded-xl border border-neutral-800 bg-neutral-900 p-4 text-center"
                   >
                     <CheckIcon />
-                    {item}
-                  </li>
+                    <p className="text-xs font-medium text-white/80">
+                      {item}
+                    </p>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
 
             {isVendido ? (
@@ -177,16 +231,54 @@ export default function VeiculoDetail({
                 Este veículo já foi vendido
               </button>
             ) : (
-              <a
-                href={whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 flex w-full items-center justify-center rounded-full bg-white px-6 py-4 text-sm font-semibold text-neutral-900 transition-colors hover:bg-white/90"
-              >
-                Tenho interesse — Falar no WhatsApp
-              </a>
+              <>
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-8 flex w-full items-center justify-center rounded-full bg-white px-6 py-4 text-sm font-semibold text-neutral-900 transition-colors hover:bg-white/90"
+                >
+                  Tenho interesse — Falar no WhatsApp
+                </a>
+                <p className="mt-3 text-center text-xs text-white/40">
+                  Atendimento rápido, sem compromisso.
+                </p>
+              </>
             )}
           </div>
+        </div>
+      </RevealOnScroll>
+
+      <RevealOnScroll className="mt-16">
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/40">
+          Destaques do veículo
+        </p>
+        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {DESTAQUES_LABELS.map((label, index) => (
+            <div key={label} className="group relative overflow-hidden">
+              <div
+                className="relative aspect-[3/4] overflow-hidden bg-neutral-900"
+                style={{
+                  clipPath: "polygon(0 0, 100% 0, 100% 92%, 0 100%)",
+                }}
+              >
+                <Image
+                  src={veiculo.fotos[index % veiculo.fotos.length]}
+                  alt={`${veiculo.marca} ${veiculo.modelo} - ${label}`}
+                  fill
+                  sizes="(min-width: 640px) 25vw, 50vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+              </div>
+              <div className="absolute bottom-4 left-3">
+                <span className="text-2xl font-bold text-white/40">
+                  0{index + 1}
+                </span>
+                <p className="text-sm font-medium text-white">{label}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </RevealOnScroll>
 
