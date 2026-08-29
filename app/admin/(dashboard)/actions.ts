@@ -94,7 +94,7 @@ export async function replaceFotos(
 
   const { data: atuais, error: fetchError } = await supabase
     .from("veiculo_fotos")
-    .select("url")
+    .select("id, url")
     .eq("veiculo_id", veiculoId);
 
   if (fetchError) {
@@ -102,16 +102,12 @@ export async function replaceFotos(
     return { error: fetchError.message };
   }
 
-  const { error: deleteError } = await supabase
-    .from("veiculo_fotos")
-    .delete()
-    .eq("veiculo_id", veiculoId);
-
-  if (deleteError) {
-    console.error("Erro ao limpar fotos:", deleteError.message);
-    return { error: deleteError.message };
-  }
-
+  // Insert BEFORE deleting. There's no transaction across PostgREST
+  // calls, so deleting first means any failed insert — a missing
+  // column, RLS, a dropped connection — destroys the vehicle's photos
+  // with nothing to restore them from. This way a failure leaves the
+  // old rows exactly as they were; the cost is a brief window where
+  // both sets exist, which the delete below closes.
   if (fotos.length > 0) {
     const { error: insertError } = await supabase.from("veiculo_fotos").insert(
       fotos.map((foto, ordem) => ({
@@ -125,6 +121,20 @@ export async function replaceFotos(
     if (insertError) {
       console.error("Erro ao salvar fotos:", insertError.message);
       return { error: insertError.message };
+    }
+  }
+
+  const idsAntigos = (atuais ?? []).map((foto) => foto.id);
+
+  if (idsAntigos.length > 0) {
+    const { error: deleteError } = await supabase
+      .from("veiculo_fotos")
+      .delete()
+      .in("id", idsAntigos);
+
+    if (deleteError) {
+      console.error("Erro ao limpar fotos antigas:", deleteError.message);
+      return { error: deleteError.message };
     }
   }
 
