@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { EASE_OUT_EXPO } from "@/lib/motion";
@@ -12,6 +13,7 @@ const navLinks = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -20,6 +22,9 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // The admin panel has its own sidebar/chrome — no public nav there.
+  if (pathname?.startsWith("/admin")) return null;
 
   return (
     <motion.header

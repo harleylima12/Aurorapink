@@ -73,3 +73,90 @@ export function CheckIcon(props: React.SVGProps<SVGSVGElement>) {
     </IconBase>
   );
 }
+
+export function GridIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <IconBase {...props}>
+      <rect x="3.5" y="3.5" width="7.5" height="7.5" rx="1.5" />
+      <rect x="13" y="3.5" width="7.5" height="7.5" rx="1.5" />
+      <rect x="3.5" y="13" width="7.5" height="7.5" rx="1.5" />
+      <rect x="13" y="13" width="7.5" height="7.5" rx="1.5" />
+    </IconBase>
+  );
+}
+
+export function CarIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <IconBase {...props}>
+      <path d="M4 16V11.5l1.8-4.6A2 2 0 0 1 7.7 5.6h8.6a2 2 0 0 1 1.9 1.3L20 11.5V16" />
+      <path d="M4 16a1.5 1.5 0 0 0 1.5 1.5h1A1.5 1.5 0 0 0 8 16v-1H4v1Z" />
+      <path d="M16 16a1.5 1.5 0 0 0 1.5 1.5h1A1.5 1.5 0 0 0 20 16v-1h-4v1Z" />
+      <path d="M4 12h16" />
+      <circle cx="7.5" cy="14" r="0.1" />
+      <circle cx="16.5" cy="14" r="0.1" />
+    </IconBase>
+  );
+}
+
+export function PlusIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <IconBase {...props}>
+      <path d="M12 4.5v15M4.5 12h15" />
+    </IconBase>
+  );
+}
+
+export function LogoutIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <IconBase {...props}>
+      <path d="M9 20H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h3" />
+      <path d="M15.5 16.5 20 12l-4.5-4.5" />
+      <path d="M20 12H9" />
+    </IconBase>
+  );
+}
+
+export function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <IconBase {...props}>
+      <path d="M4 6.5h16M4 12h16M4 17.5h16" />
+    </IconBase>
+  );
+}
+
+export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <IconBase {...props}>
+      <path d="M5 5l14 14M19 5 5 19" />
+    </IconBase>
+  );
+}
+
+export function EditIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <IconBase {...props}>
+      <path d="M4 20h4L18.5 9.5a2.1 2.1 0 0 0-3-3L5 17v3Z" />
+      <path d="M14 6.5 17.5 10" />
+    </IconBase>
+  );
+}
+
+export function TrashIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <IconBase {...props}>
+      <path d="M4.5 7h15" />
+      <path d="M9 7V5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5v2" />
+      <path d="M6.5 7 7.3 19a2 2 0 0 0 2 1.9h5.4a2 2 0 0 0 2-1.9L17.5 7" />
+      <path d="M10 11v6M14 11v6" />
+    </IconBase>
+  );
+}
+
+export function ToggleIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <IconBase {...props}>
+      <path d="M7 7h9l-2.5-2.5" />
+      <path d="M17 17H8l2.5 2.5" />
+    </IconBase>
+  );
+}
