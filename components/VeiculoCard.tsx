@@ -9,7 +9,7 @@ export default function VeiculoCard({ veiculo }: { veiculo: Veiculo }) {
   return (
     <Link
       href={`/veiculos/${veiculo.id}`}
-      className="group block overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900 transition-shadow duration-300 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.25)]"
+      className="group block overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900 transition-shadow duration-300 hover:shadow-[0_0_40px_-10px_rgba(217,167,59,0.4)]"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-neutral-950">
         <Image
@@ -21,7 +21,7 @@ export default function VeiculoCard({ veiculo }: { veiculo: Veiculo }) {
         />
 
         {veiculo.destaque && (
-          <span className="absolute left-3 top-3 rounded-full bg-white px-3 py-1 text-xs font-semibold text-neutral-900">
+          <span className="absolute left-3 top-3 rounded-full bg-gold-500 px-3 py-1 text-xs font-semibold text-neutral-950">
             Destaque da semana
           </span>
         )}
@@ -39,13 +39,13 @@ export default function VeiculoCard({ veiculo }: { veiculo: Veiculo }) {
         <p className="text-xs uppercase tracking-wide text-white/50">
           {veiculo.marca}
         </p>
-        <h3 className="mt-1 text-lg font-semibold text-white">
+        <h3 className="mt-1 font-display text-lg font-semibold text-gold-400">
           {veiculo.modelo}
         </h3>
         <p className="mt-2 text-sm text-white/60">
           {veiculo.ano} · {formatKm(veiculo.km)}
         </p>
-        <p className="mt-3 text-xl font-bold text-white">
+        <p className="mt-3 font-display text-xl font-bold text-white">
           {formatPrice(veiculo.preco)}
         </p>
       </div>

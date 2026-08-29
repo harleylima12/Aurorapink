@@ -11,6 +11,16 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        gold: {
+          300: "#F3D28E",
+          400: "#E8BD5C",
+          500: "#D9A73B",
+          600: "#B3852A",
+        },
+      },
+      fontFamily: {
+        display: ["var(--font-display)", "sans-serif"],
+        sans: ["var(--font-sans)", "sans-serif"],
       },
     },
   },

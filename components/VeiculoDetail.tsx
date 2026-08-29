@@ -7,6 +7,15 @@ import type { Veiculo } from "@/data/veiculos-mock";
 import { formatKm, formatPrice } from "@/lib/format";
 import VeiculoCard from "./VeiculoCard";
 import RevealOnScroll from "./RevealOnScroll";
+import SpecRow from "./SpecRow";
+import {
+  CalendarIcon,
+  GaugeIcon,
+  FuelIcon,
+  GearboxIcon,
+  PaintIcon,
+  CheckIcon,
+} from "./icons";
 
 const WHATSAPP_NUMBER = "5511999999999";
 
@@ -18,26 +27,6 @@ const SELO_ITENS = [
 ];
 
 const DESTAQUES_LABELS = ["Frente", "Lateral", "Traseira", "Interior"];
-
-function CheckIcon() {
-  return (
-    <svg
-      viewBox="0 0 20 20"
-      fill="none"
-      className="h-6 w-6 flex-shrink-0 text-white"
-      aria-hidden="true"
-    >
-      <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.5" />
-      <path
-        d="M6.5 10.2l2.3 2.3 4.7-4.9"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 export default function VeiculoDetail({
   veiculo,
@@ -61,10 +50,10 @@ export default function VeiculoDetail({
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/40">
           Ficha do veículo
         </p>
-        <h1 className="mt-2 break-words text-4xl font-black uppercase leading-[0.9] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+        <h1 className="mt-2 break-words font-display text-4xl font-black uppercase leading-[0.9] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
           {veiculo.marca}
         </h1>
-        <p className="mt-3 text-xl font-medium text-white/70 sm:text-2xl">
+        <p className="mt-3 font-display text-xl font-medium text-gold-400 sm:text-2xl">
           {veiculo.modelo}
         </p>
       </RevealOnScroll>
@@ -148,77 +137,54 @@ export default function VeiculoDetail({
           </div>
 
           <div>
-            <p className="text-4xl font-bold text-white">
+            <p className="font-display text-4xl font-bold text-white">
               {formatPrice(veiculo.preco)}
             </p>
 
-            <div className="mt-6 grid grid-cols-3 divide-x divide-neutral-800 rounded-2xl border border-neutral-800 bg-neutral-900 text-center">
-              <div className="px-2 py-5">
-                <p className="text-2xl font-bold text-white sm:text-3xl">
-                  {veiculo.ano}
-                </p>
-                <p className="mt-1 text-xs uppercase tracking-wide text-white/50">
-                  Ano
-                </p>
-              </div>
-              <div className="px-2 py-5">
-                <p className="text-2xl font-bold text-white sm:text-3xl">
-                  {new Intl.NumberFormat("pt-BR").format(veiculo.km)}
-                </p>
-                <p className="mt-1 text-xs uppercase tracking-wide text-white/50">
-                  Km
-                </p>
-              </div>
-              <div className="px-2 py-5">
-                <p className="text-2xl font-bold text-white sm:text-3xl">
-                  {veiculo.cambio}
-                </p>
-                <p className="mt-1 text-xs uppercase tracking-wide text-white/50">
-                  Câmbio
-                </p>
+            <div className="mt-6">
+              <p className="text-xs font-semibold uppercase tracking-wide text-white/50">
+                Ficha técnica
+              </p>
+              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <SpecRow
+                  icon={<CalendarIcon className="h-5 w-5" />}
+                  label="Ano"
+                  value={String(veiculo.ano)}
+                />
+                <SpecRow
+                  icon={<GaugeIcon className="h-5 w-5" />}
+                  label="Quilometragem"
+                  value={formatKm(veiculo.km)}
+                />
+                <SpecRow
+                  icon={<FuelIcon className="h-5 w-5" />}
+                  label="Combustível"
+                  value={veiculo.combustivel}
+                />
+                <SpecRow
+                  icon={<GearboxIcon className="h-5 w-5" />}
+                  label="Câmbio"
+                  value={veiculo.cambio}
+                />
+                <SpecRow
+                  icon={<PaintIcon className="h-5 w-5" />}
+                  label="Cor"
+                  value={veiculo.cor}
+                />
               </div>
             </div>
 
-            <dl className="mt-6 grid grid-cols-2 gap-x-4 gap-y-5 border-t border-neutral-800 pt-6 text-sm">
-              <div>
-                <dt className="text-white/50">Combustível</dt>
-                <dd className="mt-1 font-medium text-white">
-                  {veiculo.combustivel}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-white/50">Cor</dt>
-                <dd className="mt-1 font-medium text-white">{veiculo.cor}</dd>
-              </div>
-              <div>
-                <dt className="text-white/50">Quilometragem</dt>
-                <dd className="mt-1 font-medium text-white">
-                  {formatKm(veiculo.km)}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-white/50">Status</dt>
-                <dd className="mt-1 font-medium text-white">
-                  {isVendido ? "Vendido" : "Disponível"}
-                </dd>
-              </div>
-            </dl>
-
             <div className="mt-8">
-              <p className="text-sm font-semibold uppercase tracking-wide text-white">
+              <p className="text-xs font-semibold uppercase tracking-wide text-white/50">
                 Selo de Confiança Alvorada
               </p>
-              <div className="mt-4 grid grid-cols-2 gap-3">
+              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {SELO_ITENS.map((item) => (
-                  <div
+                  <SpecRow
                     key={item}
-                    className="flex flex-col items-center gap-2 rounded-xl border border-neutral-800 bg-neutral-900 p-4 text-center"
-                  >
-                    <CheckIcon />
-                    <p className="text-xs font-medium text-white/80">
-                      {item}
-                    </p>
-                  </div>
+                    icon={<CheckIcon className="h-5 w-5" />}
+                    label={item}
+                  />
                 ))}
               </div>
             </div>
@@ -236,7 +202,7 @@ export default function VeiculoDetail({
                   href={whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-8 flex w-full items-center justify-center rounded-full bg-white px-6 py-4 text-sm font-semibold text-neutral-900 transition-colors hover:bg-white/90"
+                  className="mt-8 flex w-full items-center justify-center rounded-full bg-gold-500 px-6 py-4 text-sm font-semibold text-neutral-950 transition-colors hover:bg-gold-400"
                 >
                   Tenho interesse — Falar no WhatsApp
                 </a>
@@ -272,7 +238,7 @@ export default function VeiculoDetail({
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
               </div>
               <div className="absolute bottom-4 left-3">
-                <span className="text-2xl font-bold text-white/40">
+                <span className="font-display text-2xl font-bold text-gold-400/50">
                   0{index + 1}
                 </span>
                 <p className="text-sm font-medium text-white">{label}</p>
@@ -284,7 +250,7 @@ export default function VeiculoDetail({
 
       {similares.length > 0 && (
         <RevealOnScroll className="mt-20">
-          <h2 className="text-2xl font-bold text-white sm:text-3xl">
+          <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
             Veículos similares
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

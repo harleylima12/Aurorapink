@@ -238,7 +238,7 @@ export default function HeroScrollVideo({
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex max-w-3xl flex-col items-center gap-4 text-center sm:gap-6"
           >
-            <h1 className="text-3xl font-bold leading-tight text-white sm:text-5xl md:text-6xl">
+            <h1 className="font-display text-3xl font-bold leading-tight text-white sm:text-5xl md:text-6xl">
               Encontre seu próximo carro na Alvorada Veículos
             </h1>
             <p className="text-sm text-white/80 sm:text-lg">
@@ -247,7 +247,7 @@ export default function HeroScrollVideo({
             </p>
             <Link
               href="/veiculos"
-              className="rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-neutral-900 transition-colors hover:bg-white/90 sm:px-8 sm:py-3"
+              className="rounded-full bg-gold-500 px-6 py-2.5 text-sm font-semibold text-neutral-950 transition-colors hover:bg-gold-400 sm:px-8 sm:py-3"
             >
               Ver estoque completo
             </Link>
@@ -258,7 +258,7 @@ export default function HeroScrollVideo({
           <div className="absolute inset-0 z-30 flex flex-col items-center justify-center gap-4 bg-black">
             <div className="h-px w-40 overflow-hidden bg-white/20">
               <div
-                className="h-full bg-white transition-[width] duration-150 ease-out"
+                className="h-full bg-gold-500 transition-[width] duration-150 ease-out"
                 style={{ width: `${loadProgress}%` }}
               />
             </div>

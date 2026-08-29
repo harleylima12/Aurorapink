@@ -62,7 +62,7 @@ function FiltersPanel({
               <label className="flex cursor-pointer items-center gap-2 text-sm text-white/80">
                 <input
                   type="checkbox"
-                  className="h-4 w-4 accent-white"
+                  className="h-4 w-4 accent-gold-500"
                   checked={selectedFaixas.includes(faixa.id)}
                   onChange={() => onToggleFaixa(faixa.id)}
                 />
@@ -83,7 +83,7 @@ function FiltersPanel({
               <label className="flex cursor-pointer items-center gap-2 text-sm text-white/80">
                 <input
                   type="checkbox"
-                  className="h-4 w-4 accent-white"
+                  className="h-4 w-4 accent-gold-500"
                   checked={selectedMarcas.includes(marca)}
                   onChange={() => onToggleMarca(marca)}
                 />
@@ -146,7 +146,7 @@ export default function EstoqueSection() {
       <div className="mx-auto max-w-6xl px-6">
         <RevealOnScroll>
           <div className="mb-12 max-w-2xl">
-            <h2 className="text-3xl font-bold text-white sm:text-4xl">
+            <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
               Nosso Estoque
             </h2>
             <p className="mt-3 text-white/60">
@@ -260,7 +260,7 @@ export default function EstoqueSection() {
               />
               <button
                 onClick={() => setMobileFiltersOpen(false)}
-                className="mt-8 w-full rounded-full bg-white px-6 py-3 text-sm font-semibold text-neutral-900"
+                className="mt-8 w-full rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-neutral-950 transition-colors hover:bg-gold-400"
               >
                 Ver {veiculosFiltrados.length} veículo
                 {veiculosFiltrados.length === 1 ? "" : "s"}

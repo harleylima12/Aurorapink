@@ -26,11 +26,11 @@ export default function VeiculoDetailPage({
     <div className="bg-neutral-950 px-6 py-10 sm:py-14">
       <div className="mx-auto max-w-6xl">
         <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-white/50">
-          <Link href="/" className="hover:text-white">
+          <Link href="/" className="hover:text-gold-400">
             Início
           </Link>
           <span>/</span>
-          <Link href="/veiculos" className="hover:text-white">
+          <Link href="/veiculos" className="hover:text-gold-400">
             Veículos
           </Link>
           <span>/</span>
