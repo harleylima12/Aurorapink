@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { EASE_OUT_EXPO } from "@/lib/motion";
+import AccountMenu from "./AccountMenu";
 
 const navLinks = [
   { href: "/", label: "Início" },
@@ -50,20 +51,23 @@ export default function Header() {
           Alvorada Veículos
         </Link>
 
-        <nav>
-          <ul className="flex items-center gap-8 text-sm font-medium text-white/70">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="transition-colors hover:text-gold-400"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="flex items-center gap-2 sm:gap-6">
+          <nav>
+            <ul className="flex items-center gap-5 text-sm font-medium text-white/70 sm:gap-8">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition-colors hover:text-gold-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <AccountMenu />
+        </div>
       </div>
     </motion.header>
   );
