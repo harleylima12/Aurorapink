@@ -109,14 +109,35 @@ export async function replaceFotos(
   // old rows exactly as they were; the cost is a brief window where
   // both sets exist, which the delete below closes.
   if (fotos.length > 0) {
-    const { error: insertError } = await supabase.from("veiculo_fotos").insert(
-      fotos.map((foto, ordem) => ({
-        veiculo_id: veiculoId,
-        url: foto.url,
-        ordem,
-        categoria: foto.categoria?.trim() ? foto.categoria.trim() : null,
+    const base = fotos.map((foto, ordem) => ({
+      veiculo_id: veiculoId,
+      url: foto.url,
+      ordem,
+    }));
+
+    let { error: insertError } = await supabase.from("veiculo_fotos").insert(
+      base.map((linha, i) => ({
+        ...linha,
+        categoria: fotos[i].categoria?.trim() ? fotos[i].categoria!.trim() : null,
       }))
     );
+
+    // A database that doesn't expose veiculo_fotos.categoria yet should
+    // still be able to save photos — the labels are the only casualty.
+    if (
+      insertError &&
+      `${insertError.message} ${insertError.details ?? ""}`
+        .toLowerCase()
+        .includes("categoria")
+    ) {
+      console.error(
+        "veiculo_fotos.categoria indisponível — salvando fotos sem categoria. " +
+          "Rode a migração 0001 e, em seguida, NOTIFY pgrst, 'reload schema';"
+      );
+      ({ error: insertError } = await supabase
+        .from("veiculo_fotos")
+        .insert(base));
+    }
 
     if (insertError) {
       console.error("Erro ao salvar fotos:", insertError.message);

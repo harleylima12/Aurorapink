@@ -13,13 +13,53 @@ export const supabase =
     ? createClient(supabaseUrl, supabaseAnonKey)
     : null;
 
-const VEICULO_SELECT =
-  "id, marca, modelo, ano, km, preco, combustivel, cambio, cor, status, destaque, veiculo_fotos(url, ordem, categoria)";
+const VEICULO_CAMPOS =
+  "id, marca, modelo, ano, km, preco, combustivel, cambio, cor, status, destaque";
+
+const FOTOS_COM_CATEGORIA = "veiculo_fotos(url, ordem, categoria)";
+const FOTOS_SEM_CATEGORIA = "veiculo_fotos(url, ordem)";
+
+const veiculoSelect = (fotos: string) => `${VEICULO_CAMPOS}, ${fotos}`;
+
+/**
+ * True when the failure is "this database doesn't expose
+ * veiculo_fotos.categoria" — the column is missing (migration not run)
+ * or PostgREST's schema cache predates it (42703 / PGRST204).
+ */
+type ErroConsulta = { message?: string; details?: string | null } | null;
+
+function categoriaIndisponivel(error: ErroConsulta) {
+  if (!error) return false;
+  const texto = `${error.message ?? ""} ${error.details ?? ""}`.toLowerCase();
+  return texto.includes("categoria");
+}
+
+/**
+ * Runs a query asking for the category and, if this database can't serve
+ * that column yet, transparently re-runs it without. Losing the labels
+ * is a far better outcome than an empty vitrine or a 404 on every
+ * vehicle, and it self-heals the moment the column becomes readable.
+ */
+async function comFallbackDeCategoria<T, E extends ErroConsulta>(
+  run: (fotosSelect: string) => PromiseLike<{ data: T; error: E }>
+): Promise<{ data: T; error: E }> {
+  const resultado = await run(FOTOS_COM_CATEGORIA);
+
+  if (!categoriaIndisponivel(resultado.error)) return resultado;
+
+  console.error(
+    "veiculo_fotos.categoria indisponível nesta base — relendo sem as categorias. " +
+      "Rode a migração 0001 e, em seguida, NOTIFY pgrst, 'reload schema';"
+  );
+
+  return run(FOTOS_SEM_CATEGORIA);
+}
 
 interface VeiculoFotoRow {
   url: string;
   ordem: number;
-  categoria: string | null;
+  /** Absent when read through the no-category fallback above. */
+  categoria?: string | null;
 }
 
 interface VeiculoRow {
@@ -75,12 +115,14 @@ export async function getVeiculos(): Promise<Veiculo[]> {
   }
 
   try {
-    const { data, error } = await supabase
-      .from("veiculos")
-      .select(VEICULO_SELECT)
-      .order("created_at", { ascending: false })
-      .order("ordem", { foreignTable: "veiculo_fotos", ascending: true })
-      .returns<VeiculoRow[]>();
+    const { data, error } = await comFallbackDeCategoria((fotos) =>
+      supabase!
+        .from("veiculos")
+        .select(veiculoSelect(fotos))
+        .order("created_at", { ascending: false })
+        .order("ordem", { foreignTable: "veiculo_fotos", ascending: true })
+        .returns<VeiculoRow[]>()
+    );
 
     if (error) {
       console.error("Erro ao buscar veículos no Supabase:", error.message);
@@ -110,12 +152,14 @@ export async function getVeiculoById(id: string): Promise<Veiculo | null> {
   }
 
   try {
-    const { data, error } = await supabase
-      .from("veiculos")
-      .select(VEICULO_SELECT)
-      .eq("id", id)
-      .order("ordem", { foreignTable: "veiculo_fotos", ascending: true })
-      .maybeSingle<VeiculoRow>();
+    const { data, error } = await comFallbackDeCategoria((fotos) =>
+      supabase!
+        .from("veiculos")
+        .select(veiculoSelect(fotos))
+        .eq("id", id)
+        .order("ordem", { foreignTable: "veiculo_fotos", ascending: true })
+        .maybeSingle<VeiculoRow>()
+    );
 
     if (error || !data) {
       if (error) console.error("Erro ao buscar veículo:", error.message);
@@ -148,23 +192,27 @@ export async function getVeiculosSimilares(
     // Two narrow queries instead of one interpolated `.or()` filter, so a
     // brand containing a comma or parenthesis can't corrupt the syntax.
     const [mesmaMarca, faixaPreco] = await Promise.all([
-      supabase
-        .from("veiculos")
-        .select(VEICULO_SELECT)
-        .eq("marca", veiculo.marca)
-        .neq("id", veiculo.id)
-        .order("ordem", { foreignTable: "veiculo_fotos", ascending: true })
-        .limit(limite * 2)
-        .returns<VeiculoRow[]>(),
-      supabase
-        .from("veiculos")
-        .select(VEICULO_SELECT)
-        .gte("preco", precoMin)
-        .lte("preco", precoMax)
-        .neq("id", veiculo.id)
-        .order("ordem", { foreignTable: "veiculo_fotos", ascending: true })
-        .limit(limite * 2)
-        .returns<VeiculoRow[]>(),
+      comFallbackDeCategoria((fotos) =>
+        supabase!
+          .from("veiculos")
+          .select(veiculoSelect(fotos))
+          .eq("marca", veiculo.marca)
+          .neq("id", veiculo.id)
+          .order("ordem", { foreignTable: "veiculo_fotos", ascending: true })
+          .limit(limite * 2)
+          .returns<VeiculoRow[]>()
+      ),
+      comFallbackDeCategoria((fotos) =>
+        supabase!
+          .from("veiculos")
+          .select(veiculoSelect(fotos))
+          .gte("preco", precoMin)
+          .lte("preco", precoMax)
+          .neq("id", veiculo.id)
+          .order("ordem", { foreignTable: "veiculo_fotos", ascending: true })
+          .limit(limite * 2)
+          .returns<VeiculoRow[]>()
+      ),
     ]);
 
     if (mesmaMarca.error) {

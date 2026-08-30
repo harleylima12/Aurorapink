@@ -16,7 +16,7 @@ interface RawRow {
   modelo: string;
   preco: number;
   status: VeiculoStatus;
-  veiculo_fotos: { url: string; ordem: number; categoria: string | null }[] | null;
+  veiculo_fotos: { url: string; ordem: number; categoria?: string | null }[] | null;
 }
 
 export interface AdminVeiculoDetalhe {
@@ -46,14 +46,29 @@ export async function getVeiculoById(
   const supabase = await createClient();
   if (!supabase) return null;
 
-  const { data, error } = await supabase
-    .from("veiculos")
-    .select(
-      "id, marca, modelo, ano, km, preco, combustivel, cambio, cor, descricao, destaque, status, veiculo_fotos(url, ordem, categoria)"
-    )
-    .eq("id", id)
-    .order("ordem", { foreignTable: "veiculo_fotos", ascending: true })
-    .maybeSingle();
+  const campos =
+    "id, marca, modelo, ano, km, preco, combustivel, cambio, cor, descricao, destaque, status";
+
+  const buscar = (fotos: string) =>
+    supabase
+      .from("veiculos")
+      .select(`${campos}, ${fotos}`)
+      .eq("id", id)
+      .order("ordem", { foreignTable: "veiculo_fotos", ascending: true })
+      .maybeSingle();
+
+  let { data, error } = await buscar("veiculo_fotos(url, ordem, categoria)");
+
+  // Same fallback as the public queries: a database that can't serve
+  // veiculo_fotos.categoria yet should still open the edit form, with
+  // the category selects simply starting empty.
+  if (error && `${error.message} ${error.details ?? ""}`.toLowerCase().includes("categoria")) {
+    console.error(
+      "veiculo_fotos.categoria indisponível — abrindo o formulário sem as categorias. " +
+        "Rode a migração 0001 e, em seguida, NOTIFY pgrst, 'reload schema';"
+    );
+    ({ data, error } = await buscar("veiculo_fotos(url, ordem)"));
+  }
 
   if (error || !data) {
     if (error) console.error("Erro ao buscar veículo:", error.message);
