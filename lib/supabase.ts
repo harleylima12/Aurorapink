@@ -14,7 +14,7 @@ export const supabase =
     : null;
 
 const VEICULO_CAMPOS =
-  "id, marca, modelo, ano, km, preco, combustivel, cambio, cor, status, destaque";
+  "id, marca, modelo, ano, km, preco, combustivel, cambio, cor, descricao, status, destaque";
 
 const FOTOS_COM_CATEGORIA = "veiculo_fotos(url, ordem, categoria)";
 const FOTOS_SEM_CATEGORIA = "veiculo_fotos(url, ordem)";
@@ -72,6 +72,7 @@ interface VeiculoRow {
   combustivel: string;
   cambio: string;
   cor: string;
+  descricao: string | null;
   status: VeiculoStatus;
   destaque: boolean;
   veiculo_fotos: VeiculoFotoRow[] | null;
@@ -89,6 +90,7 @@ function mapVeiculo(row: VeiculoRow): Veiculo {
     combustivel: row.combustivel,
     cambio: row.cambio,
     cor: row.cor,
+    descricao: row.descricao ?? null,
     status: row.status,
     destaque: row.destaque,
     fotos: (row.veiculo_fotos ?? [])

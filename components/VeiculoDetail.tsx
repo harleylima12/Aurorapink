@@ -234,53 +234,55 @@ export default function VeiculoDetail({
         </div>
       </RevealOnScroll>
 
-      <RevealOnScroll className="mt-16">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/40">
-          Destaques do veículo
-        </p>
-        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {fotos.map((foto, index) => (
-            <div
-              key={foto.url + index}
-              className="group relative overflow-hidden"
-            >
-              <div
-                className="relative aspect-[3/4] overflow-hidden bg-neutral-900"
-                style={{
-                  clipPath: "polygon(0 0, 100% 0, 100% 92%, 0 100%)",
-                }}
-              >
-                <Image
-                  src={foto.url}
-                  alt={
-                    foto.categoria
-                      ? `${veiculo.marca} ${veiculo.modelo} - ${foto.categoria}`
-                      : `${veiculo.marca} ${veiculo.modelo} - foto ${index + 1}`
-                  }
-                  fill
-                  sizes="(min-width: 640px) 25vw, 50vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+      {(veiculo.descricao || !isVendido) && (
+        <RevealOnScroll className="mt-16">
+          <div
+            className={`grid gap-10 ${
+              veiculo.descricao ? "lg:grid-cols-[1.4fr_1fr]" : "max-w-xl"
+            }`}
+          >
+            {veiculo.descricao && (
+              <div className="min-w-0">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/40">
+                  Sobre este veículo
+                </p>
+                {/* pre-line keeps the line breaks the admin typed in. */}
+                <p className="mt-5 whitespace-pre-line text-base leading-relaxed text-white/70">
+                  {veiculo.descricao}
+                </p>
               </div>
-              <div className="absolute bottom-4 left-3">
-                <CountUp
-                  value={index + 1}
-                  duration={0.4}
-                  format={(n) => String(n).padStart(2, "0")}
-                  className="font-display text-2xl font-bold text-gold-400/50"
-                />
-                {/* No category set: the number stands alone. */}
-                {foto.categoria && (
-                  <p className="text-sm font-medium text-white">
-                    {foto.categoria}
-                  </p>
-                )}
+            )}
+
+            {!isVendido && (
+              <div className="min-w-0 rounded-2xl border border-neutral-800 bg-neutral-900 p-6 sm:p-7">
+                <p className="font-display text-lg font-semibold text-white">
+                  Gostou deste {veiculo.marca}?
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-white/60">
+                  Agende uma visita para ver de perto, ou tire suas dúvidas
+                  agora mesmo com a nossa equipe.
+                </p>
+
+                <motion.a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ duration: 0.15, ease: EASE_OUT_EXPO }}
+                  className="mt-6 flex w-full items-center justify-center rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-neutral-950 transition-colors hover:bg-gold-400"
+                >
+                  Falar no WhatsApp
+                </motion.a>
+
+                <p className="mt-3 text-center text-xs text-white/40">
+                  Resposta rápida, sem compromisso.
+                </p>
               </div>
-            </div>
-          ))}
-        </div>
-      </RevealOnScroll>
+            )}
+          </div>
+        </RevealOnScroll>
+      )}
 
       {similares.length > 0 && (
         <RevealOnScroll className="mt-20">

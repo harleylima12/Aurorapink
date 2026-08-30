@@ -18,6 +18,8 @@ export interface Veiculo {
   combustivel: string;
   cambio: string;
   cor: string;
+  /** Free text written by the admin; null when left blank. */
+  descricao: string | null;
   status: VeiculoStatus;
   destaque?: boolean;
   fotos: VeiculoFoto[];
