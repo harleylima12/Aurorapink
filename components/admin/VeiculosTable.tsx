@@ -1,11 +1,12 @@
 "use client";
 
-import { useTransition } from "react";
+import { useMemo, useState, useTransition } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { formatPrice } from "@/lib/format";
 import { EditIcon, ToggleIcon, TrashIcon } from "@/components/icons";
 import { toggleVeiculoStatus, deleteVeiculo } from "@/app/admin/(dashboard)/actions";
+import { useFeedback } from "@/components/ui/Feedback";
 import type { AdminVeiculoRow } from "@/lib/admin-veiculos";
 
 function StatusBadge({ isVendido }: { isVendido: boolean }) {
@@ -24,35 +25,59 @@ function StatusBadge({ isVendido }: { isVendido: boolean }) {
 
 function VeiculoRow({ veiculo }: { veiculo: AdminVeiculoRow }) {
   const [isPending, startTransition] = useTransition();
+  const { toast, confirmar } = useFeedback();
   const isVendido = veiculo.status === "vendido";
   const nome = `${veiculo.marca} ${veiculo.modelo}`;
 
-  const handleToggle = () => {
+  const handleToggle = async () => {
     const novoStatus = isVendido ? "disponivel" : "vendido";
-    const confirmMsg = isVendido
-      ? `Marcar "${nome}" como disponível novamente?`
-      : `Marcar "${nome}" como vendido?`;
-    if (!window.confirm(confirmMsg)) return;
-    startTransition(() => {
-      toggleVeiculoStatus(veiculo.id, novoStatus);
+    const ok = await confirmar({
+      titulo: isVendido ? "Marcar como disponível?" : "Marcar como vendido?",
+      mensagem: isVendido
+        ? `"${nome}" volta a aparecer na vitrine como disponível.`
+        : `"${nome}" deixa de aceitar contato e passa a exibir a tarja de vendido.`,
+      confirmar: isVendido ? "Marcar disponível" : "Marcar vendido",
+    });
+    if (!ok) return;
+
+    startTransition(async () => {
+      try {
+        await toggleVeiculoStatus(veiculo.id, novoStatus);
+        toast(
+          isVendido
+            ? `"${nome}" está disponível novamente.`
+            : `"${nome}" foi marcado como vendido.`
+        );
+      } catch {
+        toast("Não foi possível alterar o status. Tente novamente.", "erro");
+      }
     });
   };
 
-  const handleDelete = () => {
-    const ok = window.confirm(
-      `Excluir "${nome}" permanentemente? Essa ação não pode ser desfeita.`
-    );
+  const handleDelete = async () => {
+    const ok = await confirmar({
+      titulo: "Excluir veículo?",
+      mensagem: `"${nome}" e todas as suas fotos serão removidos permanentemente. Essa ação não pode ser desfeita.`,
+      destrutivo: true,
+      confirmar: "Excluir",
+    });
     if (!ok) return;
-    startTransition(() => {
-      deleteVeiculo(veiculo.id);
+
+    startTransition(async () => {
+      try {
+        await deleteVeiculo(veiculo.id);
+        toast(`"${nome}" foi excluído.`);
+      } catch {
+        toast("Não foi possível excluir o veículo. Tente novamente.", "erro");
+      }
     });
   };
 
   return (
     <tr
-      className={
-        isPending ? "opacity-50 transition-opacity" : "transition-opacity"
-      }
+      className={`transition-colors hover:bg-neutral-900/70 ${
+        isPending ? "opacity-50" : ""
+      }`}
     >
       <td className="py-2.5 pl-4 pr-3">
         <div className="relative h-11 w-11 flex-shrink-0 overflow-hidden rounded-lg bg-neutral-800">
@@ -113,25 +138,110 @@ function VeiculoRow({ veiculo }: { veiculo: AdminVeiculoRow }) {
   );
 }
 
+type Coluna = "veiculo" | "preco" | "status";
+
+function Cabecalho({
+  coluna,
+  label,
+  ordem,
+  onOrdenar,
+  className,
+}: {
+  coluna: Coluna;
+  label: string;
+  ordem: { coluna: Coluna; asc: boolean };
+  onOrdenar: (c: Coluna) => void;
+  className?: string;
+}) {
+  const ativa = ordem.coluna === coluna;
+  return (
+    <th className={className}>
+      <button
+        type="button"
+        onClick={() => onOrdenar(coluna)}
+        aria-sort={ativa ? (ordem.asc ? "ascending" : "descending") : "none"}
+        className={`flex items-center gap-1.5 font-medium uppercase tracking-wide transition-colors hover:text-white ${
+          ativa ? "text-gold-400" : "text-white/50"
+        }`}
+      >
+        {label}
+        <span aria-hidden="true" className="text-[9px] leading-none">
+          {ativa ? (ordem.asc ? "▲" : "▼") : "↕"}
+        </span>
+      </button>
+    </th>
+  );
+}
+
 export default function VeiculosTable({
   veiculos,
 }: {
   veiculos: AdminVeiculoRow[];
 }) {
+  const [ordem, setOrdem] = useState<{ coluna: Coluna; asc: boolean }>({
+    coluna: "veiculo",
+    asc: true,
+  });
+
+  const ordenados = useMemo(() => {
+    const copia = [...veiculos];
+    copia.sort((a, b) => {
+      let r = 0;
+      if (ordem.coluna === "preco") {
+        r = a.preco - b.preco;
+      } else if (ordem.coluna === "status") {
+        r = a.status.localeCompare(b.status);
+      } else {
+        r = `${a.marca} ${a.modelo}`.localeCompare(`${b.marca} ${b.modelo}`, "pt-BR");
+      }
+      return ordem.asc ? r : -r;
+    });
+    return copia;
+  }, [veiculos, ordem]);
+
+  const ordenar = (coluna: Coluna) =>
+    setOrdem((atual) =>
+      atual.coluna === coluna
+        ? { coluna, asc: !atual.asc }
+        : { coluna, asc: true }
+    );
+
   return (
     <div className="overflow-x-auto rounded-2xl border border-neutral-800">
       <table className="w-full min-w-[560px] text-left">
-        <thead className="border-b border-neutral-800 bg-neutral-900 text-xs uppercase tracking-wide text-white/50">
+        <thead className="border-b border-neutral-800 bg-neutral-900 text-xs">
           <tr>
-            <th className="py-3 pl-4 pr-3 font-medium">Foto</th>
-            <th className="px-3 py-3 font-medium">Veículo</th>
-            <th className="px-3 py-3 font-medium">Preço</th>
-            <th className="px-3 py-3 font-medium">Status</th>
-            <th className="py-3 pl-3 pr-4 text-right font-medium">Ações</th>
+            <th className="py-3 pl-4 pr-3 font-medium uppercase tracking-wide text-white/50">
+              Foto
+            </th>
+            <Cabecalho
+              coluna="veiculo"
+              label="Veículo"
+              ordem={ordem}
+              onOrdenar={ordenar}
+              className="px-3 py-3"
+            />
+            <Cabecalho
+              coluna="preco"
+              label="Preço"
+              ordem={ordem}
+              onOrdenar={ordenar}
+              className="px-3 py-3"
+            />
+            <Cabecalho
+              coluna="status"
+              label="Status"
+              ordem={ordem}
+              onOrdenar={ordenar}
+              className="px-3 py-3"
+            />
+            <th className="py-3 pl-3 pr-4 text-right font-medium uppercase tracking-wide text-white/50">
+              Ações
+            </th>
           </tr>
         </thead>
         <tbody className="divide-y divide-neutral-800 bg-neutral-950">
-          {veiculos.map((veiculo) => (
+          {ordenados.map((veiculo) => (
             <VeiculoRow key={veiculo.id} veiculo={veiculo} />
           ))}
         </tbody>

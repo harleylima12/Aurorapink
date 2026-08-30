@@ -23,6 +23,61 @@ function toggleValue(list: string[], value: string): string[] {
     : [...list, value];
 }
 
+/**
+ * Filter option rendered as a pill. When selected it fills with a soft
+ * gold gradient and picks up a glowing border, instead of the browser's
+ * default white checkbox. The input stays in the DOM (visually hidden)
+ * so keyboard and screen-reader behaviour is unchanged.
+ */
+function OpcaoFiltro({
+  label,
+  checked,
+  onChange,
+}: {
+  label: string;
+  checked: boolean;
+  onChange: () => void;
+}) {
+  return (
+    <label
+      className={`group flex cursor-pointer items-center gap-2.5 rounded-lg border px-3 py-2 text-sm transition-all duration-200 ${
+        checked
+          ? "border-gold-500/50 bg-gradient-to-r from-gold-500/20 to-gold-500/5 text-white shadow-[0_0_12px_-4px_rgba(217,167,59,0.6)]"
+          : "border-transparent text-white/70 hover:border-neutral-700 hover:bg-neutral-900 hover:text-white"
+      }`}
+    >
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={onChange}
+        className="peer sr-only"
+      />
+      <span
+        aria-hidden="true"
+        className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded border transition-all duration-200 peer-focus-visible:ring-2 peer-focus-visible:ring-gold-400 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-neutral-950 ${
+          checked
+            ? "border-gold-400 bg-gold-500"
+            : "border-neutral-600 group-hover:border-neutral-500"
+        }`}
+      >
+        {checked && (
+          <svg viewBox="0 0 12 12" className="h-2.5 w-2.5 text-neutral-950">
+            <path
+              d="M2 6.2 4.6 8.8 10 3.2"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        )}
+      </span>
+      {label}
+    </label>
+  );
+}
+
 interface FiltersPanelProps {
   marcas: string[];
   selectedMarcas: string[];
@@ -58,18 +113,14 @@ function FiltersPanel({
         <p className="text-xs font-semibold uppercase tracking-wide text-white/50">
           Faixa de preço
         </p>
-        <ul className="mt-3 space-y-2">
+        <ul className="mt-3 space-y-1">
           {FAIXAS_PRECO.map((faixa) => (
             <li key={faixa.id}>
-              <label className="flex cursor-pointer items-center gap-2 text-sm text-white/80">
-                <input
-                  type="checkbox"
-                  className="h-4 w-4 accent-gold-500"
-                  checked={selectedFaixas.includes(faixa.id)}
-                  onChange={() => onToggleFaixa(faixa.id)}
-                />
-                {faixa.label}
-              </label>
+              <OpcaoFiltro
+                label={faixa.label}
+                checked={selectedFaixas.includes(faixa.id)}
+                onChange={() => onToggleFaixa(faixa.id)}
+              />
             </li>
           ))}
         </ul>
@@ -79,18 +130,14 @@ function FiltersPanel({
         <p className="text-xs font-semibold uppercase tracking-wide text-white/50">
           Marca
         </p>
-        <ul className="mt-3 space-y-2">
+        <ul className="mt-3 space-y-1">
           {marcas.map((marca) => (
             <li key={marca}>
-              <label className="flex cursor-pointer items-center gap-2 text-sm text-white/80">
-                <input
-                  type="checkbox"
-                  className="h-4 w-4 accent-gold-500"
-                  checked={selectedMarcas.includes(marca)}
-                  onChange={() => onToggleMarca(marca)}
-                />
-                {marca}
-              </label>
+              <OpcaoFiltro
+                label={marca}
+                checked={selectedMarcas.includes(marca)}
+                onChange={() => onToggleMarca(marca)}
+              />
             </li>
           ))}
         </ul>

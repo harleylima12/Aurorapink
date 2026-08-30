@@ -19,6 +19,50 @@ body {
   h4 {
     @apply font-display;
   }
+
+  /* One focus treatment for the whole site, keyboard-only, replacing the
+     browser's blue outline. :focus-visible keeps it off mouse clicks. */
+  :focus {
+    outline: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.gold.400");
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Inputs carry their own ring, so the outline would double up. */
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: none;
+  }
+
+  /* Interactive elements share one timing curve instead of each
+     component inventing its own. */
+  a,
+  button,
+  select,
+  input,
+  textarea,
+  [role="button"] {
+    transition-property: color, background-color, border-color, box-shadow,
+      opacity, transform;
+    transition-duration: 220ms;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer utilities {

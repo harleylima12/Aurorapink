@@ -10,6 +10,31 @@ export const CAMBIOS = ["Manual", "Automático"] as const;
 
 export const FOTOS_BUCKET = "fotos-veiculos";
 
+/** Accepted image types. Mirrored by the bucket policy (migration 0002). */
+export const TIPOS_FOTO_ACEITOS = [
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+] as const;
+
+/** 8 MB per photo, matching the bucket's own file_size_limit. */
+export const TAMANHO_MAX_FOTO = 8 * 1024 * 1024;
+
+/**
+ * Checks one picked file. Returns null when it's fine, or a message
+ * naming the file and what's wrong with it.
+ */
+export function validarFoto(file: File): string | null {
+  if (!TIPOS_FOTO_ACEITOS.includes(file.type as (typeof TIPOS_FOTO_ACEITOS)[number])) {
+    return `${file.name}: formato não aceito (use JPG, PNG ou WebP).`;
+  }
+  if (file.size > TAMANHO_MAX_FOTO) {
+    const mb = (file.size / 1024 / 1024).toFixed(1);
+    return `${file.name}: ${mb} MB excede o limite de 8 MB por foto.`;
+  }
+  return null;
+}
+
 /**
  * Suggested labels for a photo. The column is free text, so these are
  * only the shortcuts offered in the form — anything else is still valid.

@@ -1,5 +1,5 @@
 import { tryCreateClient } from "./supabase-browser";
-import { FOTOS_BUCKET } from "./veiculo-form";
+import { FOTOS_BUCKET, validarFoto } from "./veiculo-form";
 
 /**
  * Uploads happen from the browser (not a Server Action) so the admin's
@@ -40,6 +40,12 @@ export async function uploadFoto(
   veiculoId: string,
   file: File
 ): Promise<{ url?: string; error?: string }> {
+  // Re-checked here as well as at pick time: this is the last gate on
+  // our side before the bytes leave the browser. The bucket policy
+  // (migration 0002) is what actually enforces it server-side.
+  const invalido = validarFoto(file);
+  if (invalido) return { error: invalido };
+
   const supabase = tryCreateClient();
   if (!supabase) return { error: "Serviço de upload indisponível." };
 
@@ -51,7 +57,10 @@ export async function uploadFoto(
       .from(FOTOS_BUCKET)
       .upload(path, file, { cacheControl: "3600", upsert: false });
 
-    if (error) return { error: error.message };
+    if (error) {
+      console.error("[uploadFoto]", error.message);
+      return { error: "falha ao enviar o arquivo" };
+    }
 
     const { data } = supabase.storage.from(FOTOS_BUCKET).getPublicUrl(path);
 
@@ -59,8 +68,7 @@ export async function uploadFoto(
 
     return { url: data.publicUrl };
   } catch (err) {
-    return {
-      error: err instanceof Error ? err.message : "Falha inesperada no upload.",
-    };
+    console.error("[uploadFoto]", err);
+    return { error: "falha inesperada no envio" };
   }
 }

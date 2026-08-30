@@ -2,12 +2,17 @@ import Link from "next/link";
 import { getAdminVeiculos } from "@/lib/admin-veiculos";
 import VeiculosTable from "@/components/admin/VeiculosTable";
 import EmptyVeiculos from "@/components/admin/EmptyVeiculos";
+import Breadcrumb from "@/components/admin/Breadcrumb";
 
 export default async function AdminVeiculosPage() {
   const veiculos = await getAdminVeiculos();
 
   return (
     <div>
+      <Breadcrumb
+        trilha={[{ label: "Dashboard", href: "/admin" }, { label: "Veículos" }]}
+      />
+
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="font-display text-2xl font-bold text-white sm:text-3xl">

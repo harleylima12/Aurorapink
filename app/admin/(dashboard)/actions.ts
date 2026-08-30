@@ -29,6 +29,18 @@ function storagePathFromUrl(url: string): string | null {
   }
 }
 
+/**
+ * What the user is allowed to see. Postgres messages name tables,
+ * columns and constraints, so they stay in the server log and the UI
+ * gets a plain sentence instead.
+ */
+const ERRO_GENERICO =
+  "Não foi possível concluir a operação. Tente novamente em instantes.";
+
+function registrar(contexto: string, erro: { message?: string } | null) {
+  console.error(`[${contexto}]`, erro?.message ?? erro);
+}
+
 export interface ActionResult {
   id?: string;
   error?: string;
@@ -45,8 +57,8 @@ export async function createVeiculo(input: VeiculoInput): Promise<ActionResult> 
     .single();
 
   if (error || !data) {
-    console.error("Erro ao criar veículo:", error?.message);
-    return { error: error?.message ?? "Não foi possível salvar o veículo." };
+    registrar("createVeiculo", error);
+    return { error: ERRO_GENERICO };
   }
 
   refresh();
@@ -63,8 +75,8 @@ export async function updateVeiculo(
   const { error } = await supabase.from("veiculos").update(input).eq("id", id);
 
   if (error) {
-    console.error("Erro ao atualizar veículo:", error.message);
-    return { error: error.message };
+    registrar("updateVeiculo", error);
+    return { error: ERRO_GENERICO };
   }
 
   refresh();
@@ -98,8 +110,8 @@ export async function replaceFotos(
     .eq("veiculo_id", veiculoId);
 
   if (fetchError) {
-    console.error("Erro ao ler fotos atuais:", fetchError.message);
-    return { error: fetchError.message };
+    registrar("replaceFotos/ler", fetchError);
+    return { error: ERRO_GENERICO };
   }
 
   // Insert BEFORE deleting. There's no transaction across PostgREST
@@ -140,8 +152,8 @@ export async function replaceFotos(
     }
 
     if (insertError) {
-      console.error("Erro ao salvar fotos:", insertError.message);
-      return { error: insertError.message };
+      registrar("replaceFotos/inserir", insertError);
+      return { error: ERRO_GENERICO };
     }
   }
 
@@ -154,8 +166,8 @@ export async function replaceFotos(
       .in("id", idsAntigos);
 
     if (deleteError) {
-      console.error("Erro ao limpar fotos antigas:", deleteError.message);
-      return { error: deleteError.message };
+      registrar("replaceFotos/limpar", deleteError);
+      return { error: ERRO_GENERICO };
     }
   }
 
@@ -192,7 +204,10 @@ export async function toggleVeiculoStatus(id: string, novoStatus: VeiculoStatus)
     .update({ status: novoStatus })
     .eq("id", id);
 
-  if (error) throw new Error(error.message);
+  if (error) {
+    registrar("toggleVeiculoStatus", error);
+    throw new Error(ERRO_GENERICO);
+  }
   refresh();
   revalidatePath(`/veiculos/${id}`);
 }
@@ -224,6 +239,9 @@ export async function deleteVeiculo(id: string) {
 
   const { error } = await supabase.from("veiculos").delete().eq("id", id);
 
-  if (error) throw new Error(error.message);
+  if (error) {
+    registrar("deleteVeiculo", error);
+    throw new Error(ERRO_GENERICO);
+  }
   refresh();
 }

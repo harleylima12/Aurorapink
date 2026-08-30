@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 import { uploadFoto } from "@/lib/upload-fotos";
 import {
@@ -59,11 +59,24 @@ function Field({
         {label}
       </label>
       {children}
-      {error ? (
-        <p className="mt-1.5 text-sm text-red-400">{error}</p>
-      ) : hint ? (
-        <p className="mt-1.5 text-xs text-white/40">{hint}</p>
-      ) : null}
+      <AnimatePresence mode="wait" initial={false}>
+        {error ? (
+          <motion.p
+            key="erro"
+            initial={{ opacity: 0, y: -4, height: 0 }}
+            animate={{ opacity: 1, y: 0, height: "auto" }}
+            exit={{ opacity: 0, y: -4, height: 0 }}
+            transition={{ duration: 0.2, ease: EASE_OUT_EXPO }}
+            className="mt-1.5 overflow-hidden text-sm text-red-400"
+          >
+            {error}
+          </motion.p>
+        ) : hint ? (
+          <p key="dica" className="mt-1.5 text-xs text-white/40">
+            {hint}
+          </p>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }

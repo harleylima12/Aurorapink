@@ -52,6 +52,14 @@ export default function VeiculoDetail({
 
   const showcaseFotos = fotos.slice(1, 3);
 
+  // "Foto frontal do RAM 2500 Night Edition" quando há categoria, com o
+  // número da foto como reserva. Miniaturas ficam com alt vazio: são
+  // controles rotulados pelo aria-label do botão, não conteúdo.
+  const descreverFoto = (foto: VeiculoFoto, indice: number) =>
+    foto.categoria
+      ? `Foto ${foto.categoria.toLowerCase()} do ${veiculo.marca} ${veiculo.modelo}`
+      : `Foto ${indice + 1} do ${veiculo.marca} ${veiculo.modelo} ${veiculo.ano}`;
+
   return (
     <>
       <RevealOnScroll>
@@ -86,9 +94,7 @@ export default function VeiculoDetail({
                 >
                   <Image
                     src={fotos[selectedIndex].url}
-                    alt={`${veiculo.marca} ${veiculo.modelo} - foto ${
-                      selectedIndex + 1
-                    }`}
+                    alt={descreverFoto(fotos[selectedIndex], selectedIndex)}
                     fill
                     priority
                     sizes="(min-width: 1024px) 60vw, 100vw"
@@ -120,7 +126,7 @@ export default function VeiculoDetail({
                 >
                   <Image
                     src={foto.url}
-                    alt={foto.categoria ?? ""}
+                    alt=""
                     fill
                     sizes="96px"
                     className="object-cover"
@@ -138,7 +144,7 @@ export default function VeiculoDetail({
                   >
                     <Image
                       src={foto.url}
-                      alt={`${veiculo.marca} ${veiculo.modelo} - ângulo adicional`}
+                      alt={descreverFoto(foto, index + 1)}
                       fill
                       sizes="(min-width: 1024px) 30vw, 50vw"
                       className="object-cover"
