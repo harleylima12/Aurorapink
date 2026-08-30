@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 import AccountMenu from "./AccountMenu";
+import Logo from "./Logo";
 
 const navLinks = [
   { href: "/", label: "Início" },
@@ -44,11 +45,8 @@ export default function Header() {
       className="sticky top-0 z-50 w-full border-b backdrop-blur-md"
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
-        <Link
-          href="/"
-          className="min-w-0 truncate font-display text-lg font-bold tracking-tight text-white sm:text-xl"
-        >
-          Alvorada Veículos
+        <Link href="/" aria-label="Alvorada Veículos" className="min-w-0 shrink">
+          <Logo className="h-10 w-auto sm:h-12" />
         </Link>
 
         <div className="flex flex-shrink-0 items-center gap-2 sm:gap-6">

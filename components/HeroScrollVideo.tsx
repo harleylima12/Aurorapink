@@ -2,12 +2,23 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { EASE_OUT_EXPO } from "@/lib/motion";
+import HeroLoader from "./HeroLoader";
 
 const MotionLink = motion.create(Link);
 
 const TOTAL_FRAMES = 300;
+
+// Frames needed before scrubbing is unlocked. The rest stream in behind
+// the scenes, so the visitor waits on ~10% of the sequence instead of
+// all 7 MB of it.
+const LOTE_INICIAL = 30;
+
+// How many of the remaining frames to fetch at once. Browsers cap
+// concurrent connections per host anyway; small batches keep the
+// already-loaded range growing in order instead of at random.
+const LOTE_FUNDO = 12;
 const framePath = (frame: number) =>
   `/hero-frames/frame-${String(frame).padStart(3, "0")}.jpg`;
 
@@ -37,11 +48,12 @@ export default function HeroScrollVideo({
   const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
+  const carregadasRef = useRef<boolean[]>([]);
   const currentFrameRef = useRef(0);
   const tickingRef = useRef(false);
 
   const [loadProgress, setLoadProgress] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
   // Subtle parallax on the text overlay only — the canvas frame mapping
   // below is untouched. As the user scrolls through the hero section the
@@ -58,10 +70,29 @@ export default function HeroScrollVideo({
     [1, 1, 0]
   );
 
+  // With frames streaming in, a fast scroll can land on one that hasn't
+  // arrived. Draw the closest frame that has, so the canvas shows a
+  // slightly stale image instead of going blank.
+  const frameDisponivel = useCallback((frameIndex: number) => {
+    const carregadas = carregadasRef.current;
+    if (carregadas[frameIndex]) return frameIndex;
+
+    for (let d = 1; d < TOTAL_FRAMES; d += 1) {
+      const antes = frameIndex - d;
+      if (antes >= 0 && carregadas[antes]) return antes;
+      const depois = frameIndex + d;
+      if (depois < TOTAL_FRAMES && carregadas[depois]) return depois;
+    }
+    return -1;
+  }, []);
+
   const drawFrame = useCallback(
     (frameIndex: number) => {
       const canvas = canvasRef.current;
-      const img = imagesRef.current[frameIndex];
+      const alvo = frameDisponivel(frameIndex);
+      if (alvo < 0) return;
+
+      const img = imagesRef.current[alvo];
       if (!canvas || !img || !img.complete || img.naturalWidth === 0) return;
 
       const ctx = canvas.getContext("2d");
@@ -150,7 +181,7 @@ export default function HeroScrollVideo({
         ctx.fillRect(offsetX, bottomGapStart - fadeSize, drawWidth, fadeSize);
       }
     },
-    [focalY]
+    [focalY, frameDisponivel]
   );
 
   const updateFrameFromScroll = useCallback(() => {
@@ -172,24 +203,56 @@ export default function HeroScrollVideo({
     drawFrame(frameIndex);
   }, [drawFrame]);
 
-  // Preload every frame before allowing scroll-scrubbing to begin.
+  // Load the opening batch, unlock the hero, then keep streaming the
+  // rest in the background. Firing all 300 requests at once only made
+  // them queue behind each other, so nothing was usable until the very
+  // last one landed.
   useEffect(() => {
     let cancelled = false;
-    let loadedCount = 0;
-    const images: HTMLImageElement[] = new Array(TOTAL_FRAMES);
 
-    for (let i = 0; i < TOTAL_FRAMES; i++) {
-      const img = new Image();
-      img.src = framePath(i + 1);
-      img.onload = img.onerror = () => {
-        if (cancelled) return;
-        loadedCount += 1;
-        setLoadProgress(Math.round((loadedCount / TOTAL_FRAMES) * 100));
-        if (loadedCount === TOTAL_FRAMES) setIsLoaded(true);
-      };
-      images[i] = img;
-    }
+    const images: HTMLImageElement[] = new Array(TOTAL_FRAMES);
+    const carregadas: boolean[] = new Array(TOTAL_FRAMES).fill(false);
     imagesRef.current = images;
+    carregadasRef.current = carregadas;
+
+    const carregar = (i: number) =>
+      new Promise<void>((resolve) => {
+        const img = new Image();
+        const pronto = () => {
+          carregadas[i] = true;
+          resolve();
+        };
+        img.onload = pronto;
+        // A broken frame must not stall the sequence; it just stays
+        // unavailable and the nearest neighbour covers for it.
+        img.onerror = () => resolve();
+        img.src = framePath(i + 1);
+        images[i] = img;
+      });
+
+    (async () => {
+      let feitas = 0;
+      await Promise.all(
+        Array.from({ length: LOTE_INICIAL }, (_, i) =>
+          carregar(i).then(() => {
+            if (cancelled) return;
+            feitas += 1;
+            setLoadProgress(Math.round((feitas / LOTE_INICIAL) * 100));
+          })
+        )
+      );
+
+      if (cancelled) return;
+      setIsReady(true);
+
+      for (let inicio = LOTE_INICIAL; inicio < TOTAL_FRAMES; inicio += LOTE_FUNDO) {
+        if (cancelled) return;
+        const tamanho = Math.min(LOTE_FUNDO, TOTAL_FRAMES - inicio);
+        await Promise.all(
+          Array.from({ length: tamanho }, (_, k) => carregar(inicio + k))
+        );
+      }
+    })();
 
     return () => {
       cancelled = true;
@@ -225,7 +288,7 @@ export default function HeroScrollVideo({
 
   // Frame is derived purely from scroll position, throttled via rAF.
   useEffect(() => {
-    if (!isLoaded) return;
+    if (!isReady) return;
 
     const handleScroll = () => {
       if (tickingRef.current) return;
@@ -240,7 +303,7 @@ export default function HeroScrollVideo({
     updateFrameFromScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isLoaded, updateFrameFromScroll]);
+  }, [isReady, updateFrameFromScroll]);
 
   return (
     <section ref={sectionRef} className="relative h-[400vh]">
@@ -255,7 +318,7 @@ export default function HeroScrollVideo({
         >
           <motion.div
             initial={{ opacity: 0, y: 24 }}
-            animate={isLoaded ? { opacity: 1, y: 0 } : {}}
+            animate={isReady ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: EASE_OUT_EXPO }}
             className="flex max-w-3xl flex-col items-center gap-4 text-center sm:gap-6"
           >
@@ -278,19 +341,9 @@ export default function HeroScrollVideo({
           </motion.div>
         </motion.div>
 
-        {!isLoaded && (
-          <div className="absolute inset-0 z-30 flex flex-col items-center justify-center gap-4 bg-black">
-            <div className="h-px w-40 overflow-hidden bg-white/20">
-              <div
-                className="h-full bg-gold-500 transition-[width] duration-150 ease-out"
-                style={{ width: `${loadProgress}%` }}
-              />
-            </div>
-            <p className="text-xs uppercase tracking-[0.3em] text-white/50">
-              {loadProgress}%
-            </p>
-          </div>
-        )}
+        <AnimatePresence>
+          {!isReady && <HeroLoader key="loader" progresso={loadProgress} />}
+        </AnimatePresence>
       </div>
     </section>
   );

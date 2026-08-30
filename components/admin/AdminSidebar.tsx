@@ -14,6 +14,7 @@ import {
   MenuIcon,
   CloseIcon,
 } from "@/components/icons";
+import Logo from "@/components/Logo";
 
 const NAV_ITEMS = [
   { href: "/admin", label: "Dashboard", icon: GridIcon },
@@ -23,8 +24,11 @@ const NAV_ITEMS = [
 
 function Wordmark() {
   return (
-    <span className="font-display text-lg font-bold text-white">
-      Alvorada <span className="text-gold-400">Admin</span>
+    <span className="flex min-w-0 items-center gap-2.5">
+      <Logo className="h-9 w-auto" />
+      <span className="font-display text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">
+        Admin
+      </span>
     </span>
   );
 }
