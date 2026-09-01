@@ -1,4 +1,5 @@
 import HeroScrollVideo from "@/components/HeroScrollVideo";
+import DestaquesCarousel from "@/components/DestaquesCarousel";
 import EstoqueSection from "@/components/EstoqueSection";
 import { getVeiculos } from "@/lib/supabase";
 
@@ -12,6 +13,7 @@ export default async function Home() {
   return (
     <>
       <HeroScrollVideo />
+      <DestaquesCarousel veiculos={veiculos} />
       <EstoqueSection veiculos={veiculos} />
     </>
   );
