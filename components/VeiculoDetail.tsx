@@ -1,0 +1,309 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
+import type { Veiculo, VeiculoFoto } from "@/lib/types";
+import { formatKm, formatPrice } from "@/lib/format";
+import { EASE_OUT_EXPO } from "@/lib/motion";
+import VeiculoCard from "./VeiculoCard";
+import RevealOnScroll from "./RevealOnScroll";
+import SpecRow from "./SpecRow";
+import CountUp from "./CountUp";
+import {
+  CalendarIcon,
+  GaugeIcon,
+  FuelIcon,
+  GearboxIcon,
+  PaintIcon,
+  CheckIcon,
+} from "./icons";
+
+const WHATSAPP_NUMBER = "5511999999999";
+
+const SELO_ITENS = [
+  "Revisado",
+  "Documentação em dia",
+  "Km confere",
+  "Sem sinistro",
+];
+
+// A vehicle saved without photos would otherwise index into an empty
+// array and hand next/image an undefined src.
+const FOTO_FALLBACK: VeiculoFoto = {
+  url: "/hero-frames/frame-001.jpg",
+  categoria: null,
+};
+
+export default function VeiculoDetail({
+  veiculo,
+  similares,
+}: {
+  veiculo: Veiculo;
+  similares: Veiculo[];
+}) {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const isVendido = veiculo.status === "vendido";
+  const fotos = veiculo.fotos.length > 0 ? veiculo.fotos : [FOTO_FALLBACK];
+
+  const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    `Olá! Tenho interesse no ${veiculo.marca} ${veiculo.modelo} (${veiculo.ano}) anunciado na Alvorada Veículos.`
+  )}`;
+
+  const showcaseFotos = fotos.slice(1, 3);
+
+  // "Foto frontal do RAM 2500 Night Edition" quando há categoria, com o
+  // número da foto como reserva. Miniaturas ficam com alt vazio: são
+  // controles rotulados pelo aria-label do botão, não conteúdo.
+  const descreverFoto = (foto: VeiculoFoto, indice: number) =>
+    foto.categoria
+      ? `Foto ${foto.categoria.toLowerCase()} do ${veiculo.marca} ${veiculo.modelo}`
+      : `Foto ${indice + 1} do ${veiculo.marca} ${veiculo.modelo} ${veiculo.ano}`;
+
+  return (
+    <>
+      <RevealOnScroll>
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/40">
+          Ficha do veículo
+        </p>
+        <h1 className="mt-2 break-words font-display text-4xl font-black uppercase leading-[0.9] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+          {veiculo.marca}
+        </h1>
+        <p className="mt-3 font-display text-xl font-medium text-gold-400 sm:text-2xl">
+          {veiculo.modelo}
+        </p>
+      </RevealOnScroll>
+
+      <RevealOnScroll className="mt-10">
+        {/* min-w-0 on both columns: a grid item defaults to min-width:auto,
+            so the thumbnail strip's intrinsic width (12 photos ≈ 1284px)
+            would blow the 1.4fr track open and shove the spec panel off
+            screen. Zeroing it lets the track hold its share and the strip
+            scroll inside itself, as intended. */}
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+          <div className="min-w-0">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-900">
+              <AnimatePresence>
+                <motion.div
+                  key={selectedIndex}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={fotos[selectedIndex].url}
+                    alt={descreverFoto(fotos[selectedIndex], selectedIndex)}
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 60vw, 100vw"
+                    className="object-cover"
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              {isVendido && (
+                <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/55">
+                  <span className="-rotate-6 border-2 border-white px-6 py-2 text-lg font-bold uppercase tracking-[0.3em] text-white">
+                    Vendido
+                  </span>
+                </div>
+              )}
+            </div>
+
+            <div className="mt-4 flex gap-3 overflow-x-auto pb-1">
+              {fotos.map((foto, index) => (
+                <button
+                  key={foto.url + index}
+                  onClick={() => setSelectedIndex(index)}
+                  className={`relative aspect-[4/3] w-20 flex-shrink-0 overflow-hidden rounded-lg border-2 sm:w-24 ${
+                    selectedIndex === index
+                      ? "border-white"
+                      : "border-transparent opacity-70 hover:opacity-100"
+                  }`}
+                  aria-label={`Ver foto ${index + 1}`}
+                >
+                  <Image
+                    src={foto.url}
+                    alt=""
+                    fill
+                    sizes="96px"
+                    className="object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+
+            {showcaseFotos.length > 0 && (
+              <div className="mt-4 grid grid-cols-2 gap-4">
+                {showcaseFotos.map((foto, index) => (
+                  <div
+                    key={foto.url + index}
+                    className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-900"
+                  >
+                    <Image
+                      src={foto.url}
+                      alt={descreverFoto(foto, index + 1)}
+                      fill
+                      sizes="(min-width: 1024px) 30vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="min-w-0">
+            <CountUp
+              value={veiculo.preco}
+              format={formatPrice}
+              duration={1}
+              className="block font-display text-4xl font-bold text-white"
+            />
+
+            <div className="mt-6">
+              <p className="text-xs font-semibold uppercase tracking-wide text-white/50">
+                Ficha técnica
+              </p>
+              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <SpecRow
+                  icon={<CalendarIcon className="h-5 w-5" />}
+                  label="Ano"
+                  value={String(veiculo.ano)}
+                />
+                <SpecRow
+                  icon={<GaugeIcon className="h-5 w-5" />}
+                  label="Quilometragem"
+                  value={<CountUp value={veiculo.km} format={formatKm} />}
+                />
+                <SpecRow
+                  icon={<FuelIcon className="h-5 w-5" />}
+                  label="Combustível"
+                  value={veiculo.combustivel}
+                />
+                <SpecRow
+                  icon={<GearboxIcon className="h-5 w-5" />}
+                  label="Câmbio"
+                  value={veiculo.cambio}
+                />
+                <SpecRow
+                  icon={<PaintIcon className="h-5 w-5" />}
+                  label="Cor"
+                  value={veiculo.cor}
+                />
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <p className="text-xs font-semibold uppercase tracking-wide text-white/50">
+                Selo de Confiança Alvorada
+              </p>
+              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {SELO_ITENS.map((item) => (
+                  <SpecRow
+                    key={item}
+                    icon={<CheckIcon className="h-5 w-5" />}
+                    label={item}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {isVendido ? (
+              <button
+                disabled
+                className="mt-8 w-full cursor-not-allowed rounded-full bg-neutral-800 px-6 py-4 text-sm font-semibold text-white/40"
+              >
+                Este veículo já foi vendido
+              </button>
+            ) : (
+              <>
+                <motion.a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ duration: 0.15, ease: EASE_OUT_EXPO }}
+                  className="mt-8 flex w-full items-center justify-center rounded-full bg-gold-500 px-6 py-4 text-sm font-semibold text-neutral-950 transition-colors hover:bg-gold-400"
+                >
+                  Tenho interesse — Falar no WhatsApp
+                </motion.a>
+                <p className="mt-3 text-center text-xs text-white/40">
+                  Atendimento rápido, sem compromisso.
+                </p>
+              </>
+            )}
+          </div>
+        </div>
+      </RevealOnScroll>
+
+      {(veiculo.descricao || !isVendido) && (
+        <RevealOnScroll className="mt-16">
+          <div
+            className={`grid gap-10 ${
+              veiculo.descricao ? "lg:grid-cols-[1.4fr_1fr]" : "max-w-xl"
+            }`}
+          >
+            {veiculo.descricao && (
+              <div className="min-w-0">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/40">
+                  Sobre este veículo
+                </p>
+                {/* pre-line keeps the line breaks the admin typed in. */}
+                <p className="mt-5 whitespace-pre-line text-base leading-relaxed text-white/70">
+                  {veiculo.descricao}
+                </p>
+              </div>
+            )}
+
+            {!isVendido && (
+              <div className="min-w-0 rounded-2xl border border-neutral-800 bg-neutral-900 p-6 sm:p-7">
+                <p className="font-display text-lg font-semibold text-white">
+                  Gostou deste {veiculo.marca}?
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-white/60">
+                  Agende uma visita para ver de perto, ou tire suas dúvidas
+                  agora mesmo com a nossa equipe.
+                </p>
+
+                <motion.a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ duration: 0.15, ease: EASE_OUT_EXPO }}
+                  className="mt-6 flex w-full items-center justify-center rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-neutral-950 transition-colors hover:bg-gold-400"
+                >
+                  Falar no WhatsApp
+                </motion.a>
+
+                <p className="mt-3 text-center text-xs text-white/40">
+                  Resposta rápida, sem compromisso.
+                </p>
+              </div>
+            )}
+          </div>
+        </RevealOnScroll>
+      )}
+
+      {similares.length > 0 && (
+        <RevealOnScroll className="mt-20">
+          <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
+            Veículos similares
+          </h2>
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {similares.map((similar, index) => (
+              <RevealOnScroll key={similar.id} delay={index * 0.08}>
+                <VeiculoCard veiculo={similar} />
+              </RevealOnScroll>
+            ))}
+          </div>
+        </RevealOnScroll>
+      )}
+    </>
+  );
+}
