@@ -346,8 +346,6 @@ img{ display: block; max-width: 100%; }
    Hero — fora do eixo, retrato sangrando à direita
    ========================================================================= */
 
-.hero__fig{ margin-top: 48px; }   /* espaço só entre texto e retrato, não antes da faixa */
-
 .hero__txt{ position: relative; z-index: 2; }
 
 .hero__byline{ font-size: 15px; color: var(--ink); max-width: 34em; }
@@ -367,11 +365,12 @@ img{ display: block; max-width: 100%; }
 .hero__lede{ margin-top: 28px; }
 .s-hero .btn{ margin-top: 36px; }
 
-.hero__fig{ grid-column: full-start / full-end; margin: 0; }
+/* 48px só entre texto e retrato; nada entre o retrato e a faixa de credenciais. */
+.hero__fig{ grid-column: full-start / full-end; margin: 48px 0 0; }
 @media (min-width: 960px){
   .s-hero{ align-items: start; }
   .hero__txt{ grid-row: 1; padding-top: 96px; }   /* desalinhamento proposital */
-  .hero__fig{ grid-row: 1; grid-column: content-end / full-end; align-self: end; margin-top: 0; }
+  .hero__fig{ grid-row: 1; grid-column: content-end / full-end; align-self: end; margin: 0; }
 }
 
 /* =========================================================================
