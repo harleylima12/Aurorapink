@@ -11,7 +11,8 @@
   --gold-700:  #A98A6B;
   --ink:       #6A553D;
   --ink-900:   #3A2C1E;
-  --muted:     #767573;
+  --muted:     #767573;  /* 4,18:1 sobre --bg — só em texto >= 24px   */
+  --muted-700: #686765;  /* 5,13:1 sobre --bg, 4,56:1 sobre --surface */
   --cta:       #705236;
   --cta-hover: #5A4029;
   --on-cta:    #FFFDF8;
@@ -99,11 +100,11 @@ img{ display: block; max-width: 100%; }
 .l-run--on-dark{ color: var(--bg); }
 
 /* texto de apoio — 15px, nunca menor.
-   Usa --ink (6,40:1) e não --muted (4,18:1), que reprova no AA a 15px. */
+   Usa --muted-700 (5,13:1): abaixo de 24px, --muted daria 4,18:1 e reprova no AA. */
 .l-sup{
   font-size: 15px;
   line-height: 1.6;
-  color: var(--ink);
+  color: var(--muted-700);
   max-width: 34em;
   margin: 0;
 }
@@ -170,17 +171,15 @@ img{ display: block; max-width: 100%; }
 .s{ position: relative; z-index: 1; }
 
 /* Ritmo vertical desigual — fonte única de padding, por seção. */
-.s-hero{ padding-block: 88px; }
+.s-hero{ padding-block: 88px 0; }   /* a faixa de credenciais fecha o hero */
 .s-ba  { padding-block: 72px; }
 .s-trat{ padding-block: 64px; }
-.s-cred{ padding-block: 40px; }
 .s-def { padding-block: 56px; }
 
 @media (min-width: 960px){
-  .s-hero{ padding-block: 160px; }
+  .s-hero{ padding-block: 160px 0; }
   .s-ba  { padding-block: 128px; }
   .s-trat{ padding-block: 112px; }
-  .s-cred{ padding-block: 56px; }
   .s-def { padding-block: 96px; }
 }
 
@@ -338,7 +337,7 @@ img{ display: block; max-width: 100%; }
   white-space: pre;
   font-size: 15px;
   line-height: 1.6;
-  color: var(--muted);           /* texto de sistema, some quando a foto chega */
+  color: var(--muted-700);       /* texto de sistema, some quando a foto chega */
   padding: 16px;
 }
 .slot.is-loaded::after{ content: none; }
@@ -347,7 +346,7 @@ img{ display: block; max-width: 100%; }
    Hero — fora do eixo, retrato sangrando à direita
    ========================================================================= */
 
-.s-hero{ row-gap: 48px; }
+.hero__fig{ margin-top: 48px; }   /* espaço só entre texto e retrato, não antes da faixa */
 
 .hero__txt{ position: relative; z-index: 2; }
 
@@ -372,14 +371,20 @@ img{ display: block; max-width: 100%; }
 @media (min-width: 960px){
   .s-hero{ align-items: start; }
   .hero__txt{ grid-row: 1; padding-top: 96px; }   /* desalinhamento proposital */
-  .hero__fig{ grid-row: 1; grid-column: content-end / full-end; }
+  .hero__fig{ grid-row: 1; grid-column: content-end / full-end; align-self: end; margin-top: 0; }
 }
 
 /* =========================================================================
    Faixa de credenciais
    ========================================================================= */
 
-.s-cred{ background: var(--surface); border-block: 1px solid var(--line); }
+.cred-band{
+  grid-column: full-start / full-end;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  padding-block: 40px;
+}
+@media (min-width: 960px){ .cred-band{ padding-block: 56px; } }
 
 .cred{
   display: grid;
@@ -396,8 +401,8 @@ img{ display: block; max-width: 100%; }
 .cred__i dt{ font-size: 15px; color: var(--ink); }
 .cred__v{
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(26px, 3vw, 34px);
-  line-height: 1.15;
+  font-size: clamp(19px, 1.7vw, 23px);
+  line-height: 1.25;
   color: var(--ink-900);
   margin: 6px 0 0;
   display: flex;

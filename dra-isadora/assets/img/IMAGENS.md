@@ -1,4 +1,4 @@
-# Imagens do site — Dra. Isadora
+# Imagens do site — Dra. Isadora Alves
 
 Coloque os arquivos nesta pasta (`assets/img/`) com **exatamente** estes nomes.
 Enquanto um arquivo não existe, o site mostra o nome dele e a proporção esperada
@@ -16,7 +16,7 @@ e vai cortar o que sobrar pelo centro.
 |---|---|---|---|
 | `hero-isadora.jpg` | 4:5 | 880 × 1100 px | Retrato principal, sangra na borda direita |
 
-**Alt escrito:** "Dra. Isadora, cirurgiã-dentista, em pé no consultório, olhando para a câmera."
+**Alt escrito:** "Dra. Isadora Alves, dentista, de jaleco, em fundo claro."
 
 Observação: esta é a única imagem com `fetchpriority="high"` — ela carrega primeiro.
 O terço superior do enquadramento aparece atrás do header; deixe respiro em cima.
@@ -29,7 +29,7 @@ O terço superior do enquadramento aparece atrás do header; deixe respiro em ci
 |---|---|---|---|
 | `sobre-isadora.jpg` | 3:4 | 900 × 1200 px | Seção "Sobre a Dra. Isadora", coluna direita |
 
-**Alt escrito:** "Dra. Isadora atendendo no consultório, de jaleco, durante uma consulta."
+**Alt escrito:** "Dra. Isadora Alves atendendo no consultório, durante uma consulta."
 
 ---
 
@@ -43,10 +43,10 @@ de ângulo diferente.
 
 | Arquivo | Proporção | Mínimo | Onde aparece |
 |---|---|---|---|
-| `antes-01.jpg` | 1:1 | 1200 × 1200 px | Caso 1, camada de cima |
-| `depois-01.jpg` | 1:1 | 1200 × 1200 px | Caso 1, camada de baixo |
-| `antes-02.jpg` | 1:1 | 1200 × 1200 px | Caso 2 |
-| `depois-02.jpg` | 1:1 | 1200 × 1200 px | Caso 2 |
+| `antes-01.jpg` | 1:1 | 1200 × 1200 px | Caso 1 — lentes em resina, camada de cima |
+| `depois-01.jpg` | 1:1 | 1200 × 1200 px | Caso 1 — lentes em resina, camada de baixo |
+| `antes-02.jpg` | 1:1 | 1200 × 1200 px | Caso 2 — clareamento |
+| `depois-02.jpg` | 1:1 | 1200 × 1200 px | Caso 2 — clareamento |
 | `antes-03.jpg` | 1:1 | 1200 × 1200 px | Caso 3 |
 | `depois-03.jpg` | 1:1 | 1200 × 1200 px | Caso 3 |
 | `antes-04.jpg` | 1:1 | 1200 × 1200 px | Caso 4 |
@@ -54,6 +54,10 @@ de ângulo diferente.
 
 **Alt escrito (antes):** "Sorriso do paciente antes do tratamento."
 **Alt escrito (depois):** "Sorriso do paciente depois do tratamento, mesmo enquadramento da foto anterior."
+
+Os casos 1 e 2 correspondem aos pares que já existiam no site anterior (lentes em resina e
+clareamento). Os casos 3 e 4 ainda não têm par definido — se você só tiver dois, me avise que
+eu reduzo o seletor para dois botões.
 
 ⚠️ Só publique par de antes/depois com autorização escrita do paciente. A legenda
 de conformidade já está fixa no HTML e não deve ser removida.
@@ -91,7 +95,7 @@ principal centralizado na vertical nessas duas.
 | `og-cover.jpg` | 1200 × 630 px | Prévia no WhatsApp, Facebook, Instagram e Twitter |
 | `apple-touch-icon.png` | 180 × 180 px | Ícone ao salvar o site na tela inicial do iPhone |
 
-**Alt do og-cover:** "Dra. Isadora em seu consultório de odontologia."
+**Alt do og-cover:** "Dra. Isadora Alves em seu consultório em Fernandópolis."
 
 No `og-cover.jpg`, deixe o rosto fora dos 100 px das bordas — vários apps cortam
 a prévia. Não coloque texto pequeno: ele fica ilegível na miniatura.
