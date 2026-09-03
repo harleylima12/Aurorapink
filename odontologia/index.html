@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0E4C57">
+
+<title data-seo="title">Clínica Odontológica</title>
+<meta name="description" data-seo="description" content="">
+<link rel="canonical" data-seo="canonical" href="">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" data-seo="og:title" content="">
+<meta property="og:description" data-seo="og:description" content="">
+<meta property="og:image" data-seo="og:image" content="">
+<meta property="og:url" data-seo="og:url" content="">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230E4C57'/><path d='M16 8c-3 0-4-1.2-6 0-2.4 1.4-2.4 5-1.4 8.4C9.4 19.4 10.6 24 12.6 24c1.6 0 1.8-2.6 3.4-2.6s1.8 2.6 3.4 2.6c2 0 3.2-4.6 4-7.6 1-3.4 1-7-1.4-8.4-2-1.2-3 0-6 0z' fill='%2335C4B5'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ============================ CABEÇALHO ============================ -->
+<header class="cabecalho" id="cabecalho">
+  <div class="container cabecalho__grade">
+
+    <a class="marca" href="#inicio">
+      <svg class="marca__simbolo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <path d="M16 8c-3 0-4-1.2-6 0-2.4 1.4-2.4 5-1.4 8.4C9.4 19.4 10.6 24 12.6 24c1.6 0 1.8-2.6 3.4-2.6s1.8 2.6 3.4 2.6c2 0 3.2-4.6 4-7.6 1-3.4 1-7-1.4-8.4-2-1.2-3 0-6 0z"/>
+      </svg>
+      <span class="marca__texto" data-bind="nomeCurto">Clínica</span>
+    </a>
+
+    <button class="menu-botao" id="menu-botao" aria-expanded="false" aria-controls="menu-principal">
+      <span class="menu-botao__barras" aria-hidden="true"></span>
+      <span class="sr">Abrir menu de navegação</span>
+    </button>
+
+    <nav class="menu" id="menu-principal" aria-label="Navegação principal">
+      <ul class="menu__lista">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Tratamentos</a></li>
+        <li><a href="#galeria">A clínica</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#horarios">Horários</a></li>
+        <li><a href="#localizacao">Localização</a></li>
+      </ul>
+      <a class="botao botao--acento menu__cta" data-acao="whatsapp" href="#contato">
+        <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-whats"></use></svg>
+        Agendar avaliação
+      </a>
+    </nav>
+
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ============================== HERO =============================== -->
+<section class="hero" id="inicio">
+  <div class="container hero__grade">
+
+    <div class="hero__texto">
+      <p class="eyebrow" data-bind="categoria">Odontologia</p>
+
+      <h1 class="hero__titulo">
+        <span data-bind="nome">Clínica Odontológica</span>
+      </h1>
+
+      <p class="hero__frase" data-bind="tagline" data-pendente-classe="pendente">
+        Frase de posicionamento
+      </p>
+
+      <div class="hero__acoes">
+        <a class="botao botao--acento botao--grande" data-acao="whatsapp" href="#contato">
+          <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-whats"></use></svg>
+          Agendar pelo WhatsApp
+        </a>
+        <a class="botao botao--contorno botao--grande" data-acao="telefone" href="#contato">
+          <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-fone"></use></svg>
+          <span data-bind="telefone">Telefone</span>
+        </a>
+      </div>
+
+      <div class="hero__provas" data-slot="reputacao-hero" hidden>
+        <div class="estrelas" data-slot="estrelas-hero" aria-hidden="true"></div>
+        <p class="hero__provas-texto">
+          <strong data-bind="nota"></strong>
+          <span data-bind="totalAvaliacoes"></span>
+        </p>
+      </div>
+    </div>
+
+    <div class="hero__arte">
+      <div class="arco" data-slot="hero-imagem">
+        <div class="arco__marca-agua" aria-hidden="true">
+          <svg viewBox="0 0 32 32" focusable="false">
+            <path d="M16 8c-3 0-4-1.2-6 0-2.4 1.4-2.4 5-1.4 8.4C9.4 19.4 10.6 24 12.6 24c1.6 0 1.8-2.6 3.4-2.6s1.8 2.6 3.4 2.6c2 0 3.2-4.6 4-7.6 1-3.4 1-7-1.4-8.4-2-1.2-3 0-6 0z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="selo" data-slot="selo-horario" hidden>
+        <span class="selo__ponto" aria-hidden="true"></span>
+        <span data-slot="selo-texto"></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================== SOBRE ============================== -->
+<section class="secao" id="sobre">
+  <div class="container secao__grade-2">
+
+    <div class="secao__cabeca">
+      <p class="eyebrow">Sobre a clínica</p>
+      <h2 class="titulo">Cuidado que começa pela escuta</h2>
+    </div>
+
+    <div class="prosa">
+      <p data-bind="descricao" data-pendente-classe="pendente">Descrição do negócio</p>
+
+      <dl class="fatos" data-slot="fatos"></dl>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ SERVIÇOS ============================= -->
+<section class="secao secao--areia" id="servicos">
+  <div class="container">
+
+    <div class="secao__cabeca secao__cabeca--centro">
+      <p class="eyebrow">Tratamentos</p>
+      <h2 class="titulo">O que oferecemos</h2>
+    </div>
+
+    <div class="cartoes" data-slot="servicos"></div>
+
+  </div>
+</section>
+
+<!-- ============================= GALERIA ============================= -->
+<section class="secao" id="galeria">
+  <div class="container">
+
+    <div class="secao__cabeca secao__cabeca--centro">
+      <p class="eyebrow">A clínica</p>
+      <h2 class="titulo">Um ambiente pensado para acalmar</h2>
+    </div>
+
+    <div class="galeria" data-slot="galeria"></div>
+
+  </div>
+</section>
+
+<!-- =========================== DEPOIMENTOS =========================== -->
+<section class="secao secao--areia" id="depoimentos">
+  <div class="container">
+
+    <div class="secao__cabeca secao__cabeca--centro">
+      <p class="eyebrow">Depoimentos</p>
+      <h2 class="titulo">O que dizem os pacientes</h2>
+      <p class="secao__apoio" data-slot="reputacao-resumo"></p>
+    </div>
+
+    <div class="trilho-envolve">
+      <div class="trilho" data-slot="depoimentos" tabindex="0" role="group"
+           aria-label="Avaliações de pacientes publicadas no Google"></div>
+      <div class="trilho__setas" data-slot="setas" hidden>
+        <button class="seta" data-trilho="anterior"><span class="sr">Depoimento anterior</span>
+          <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta"></use></svg></button>
+        <button class="seta seta--proxima" data-trilho="proximo"><span class="sr">Próximo depoimento</span>
+          <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta"></use></svg></button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ HORÁRIOS ============================= -->
+<section class="secao" id="horarios">
+  <div class="container secao__grade-2">
+
+    <div class="secao__cabeca">
+      <p class="eyebrow">Horários</p>
+      <h2 class="titulo">Quando estamos abertos</h2>
+      <div class="selo selo--estatico" data-slot="selo-horario-2" hidden>
+        <span class="selo__ponto" aria-hidden="true"></span>
+        <span data-slot="selo-texto-2"></span>
+      </div>
+    </div>
+
+    <div class="horarios" data-slot="horarios"></div>
+
+  </div>
+</section>
+
+<!-- =========================== LOCALIZAÇÃO =========================== -->
+<section class="secao secao--areia" id="localizacao">
+  <div class="container">
+
+    <div class="secao__cabeca secao__cabeca--centro">
+      <p class="eyebrow">Localização</p>
+      <h2 class="titulo">Como chegar até nós</h2>
+    </div>
+
+    <div class="local">
+      <div class="local__ficha">
+        <address class="endereco" data-slot="endereco"></address>
+        <a class="botao botao--escuro" data-acao="rotas" href="#" hidden>
+          <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-pin"></use></svg>
+          Como chegar
+        </a>
+        <ul class="comodidades" data-slot="comodidades"></ul>
+      </div>
+      <div class="local__mapa" data-slot="mapa"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================= CONTATO ============================= -->
+<section class="secao chamada" id="contato">
+  <div class="container chamada__caixa">
+
+    <p class="eyebrow eyebrow--claro">Vamos conversar</p>
+    <h2 class="titulo titulo--claro">Agende sua avaliação</h2>
+    <p class="chamada__apoio">
+      Tire suas dúvidas pelo WhatsApp ou ligue direto para a recepção.
+    </p>
+
+    <div class="chamada__acoes">
+      <a class="botao botao--acento botao--grande" data-acao="whatsapp" href="#">
+        <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-whats"></use></svg>
+        Chamar no WhatsApp
+      </a>
+      <a class="botao botao--claro botao--grande" data-acao="telefone" href="#">
+        <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-fone"></use></svg>
+        <span data-bind="telefone">Telefone</span>
+      </a>
+    </div>
+
+    <ul class="redes" data-slot="redes"></ul>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ============================== RODAPÉ ============================= -->
+<footer class="rodape">
+  <div class="container rodape__grade">
+
+    <div>
+      <a class="marca marca--rodape" href="#inicio">
+        <svg class="marca__simbolo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path d="M16 8c-3 0-4-1.2-6 0-2.4 1.4-2.4 5-1.4 8.4C9.4 19.4 10.6 24 12.6 24c1.6 0 1.8-2.6 3.4-2.6s1.8 2.6 3.4 2.6c2 0 3.2-4.6 4-7.6 1-3.4 1-7-1.4-8.4-2-1.2-3 0-6 0z"/>
+        </svg>
+        <span data-bind="nomeCurto">Clínica</span>
+      </a>
+      <p class="rodape__resp" data-slot="responsavel"></p>
+    </div>
+
+    <div>
+      <h2 class="rodape__titulo">Contato</h2>
+      <ul class="rodape__lista" data-slot="rodape-contato"></ul>
+    </div>
+
+    <div>
+      <h2 class="rodape__titulo">Endereço</h2>
+      <address class="rodape__endereco" data-slot="rodape-endereco"></address>
+    </div>
+
+    <div>
+      <h2 class="rodape__titulo">Redes</h2>
+      <ul class="rodape__lista" data-slot="rodape-redes"></ul>
+    </div>
+
+  </div>
+
+  <div class="container rodape__base">
+    <p>&copy; <span data-slot="ano"></span> <span data-bind="nome">Clínica</span>. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- ===================== BOTÃO FLUTUANTE WHATSAPP ==================== -->
+<a class="flutuante" data-acao="whatsapp" href="#contato" hidden>
+  <svg class="flutuante__icone" aria-hidden="true" focusable="false"><use href="#i-whats"></use></svg>
+  <span class="sr">Falar no WhatsApp</span>
+</a>
+
+<!-- ========================= SPRITE DE ÍCONES ======================== -->
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+  <symbol id="i-whats" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.2 8.2 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43h-.47c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.59 4.11 3.63.58.25 1.02.4 1.37.51.58.18 1.1.16 1.51.1.46-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"/>
+  </symbol>
+  <symbol id="i-fone" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/>
+  </symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/>
+  </symbol>
+  <symbol id="i-seta" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m15 18-6-6 6-6"/>
+  </symbol>
+  <symbol id="i-estrela" viewBox="0 0 24 24">
+    <path fill="currentColor" d="m12 17.27 5.18 3.13-1.37-5.89 4.57-3.96-6.02-.51L12 4.5 9.64 10.04l-6.02.51 4.57 3.96-1.37 5.89L12 17.27Z"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/>
+  </symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.8 3.8 0 0 1-1.38-.9 3.8 3.8 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 5.68a4.16 4.16 0 1 0 0 8.32 4.16 4.16 0 0 0 0-8.32Zm0 6.86a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4Zm5.3-7.02a.97.97 0 1 1-1.94 0 .97.97 0 0 1 1.94 0Z"/>
+  </symbol>
+  <symbol id="i-face" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12Z"/>
+  </symbol>
+  <symbol id="i-relogio" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 7v5l3 2"/>
+    <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
+  </symbol>
+</svg>
+
+<script src="js/dados.js"></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>
