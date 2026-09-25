@@ -1,0 +1,21 @@
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+
+# CSVs originais da Olist (licença CC BY-NC-SA; baixe com scripts/baixar_dados.py)
+dados/*
+!dados/validacao.md
+
+# Node / build (Fase 2+)
+node_modules/
+dist/
+coverage/
+playwright-report/
+test-results/
+
+# Pesos do modelo (Fase 4): arquivos grandes demais para o git
+public/models/
+
+# Temporários do preparar_dados.py
+public/data/_*.parquet
