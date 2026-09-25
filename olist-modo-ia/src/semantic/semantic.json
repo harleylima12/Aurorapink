@@ -1,0 +1,258 @@
+{
+  "version": 1,
+  "dataset": {
+    "id": "olist",
+    "name": "Vendas Olist",
+    "description": "e-commerce brasileiro: itens vendidos, pedidos, entregas, pagamentos e avaliações, de set/2016 a set/2018",
+    "table": "fato_itens",
+    "order_key": "pedido_sk",
+    "order_columns": [
+      "order_status",
+      "data_compra",
+      "data_entrega",
+      "data_estimada",
+      "dias_entrega",
+      "status_entrega",
+      "nota",
+      "forma_pagamento",
+      "parcelas",
+      "cliente_sk",
+      "cidade_cliente",
+      "estado_cliente"
+    ],
+    "time_column": "data_compra",
+    "source": "Brazilian E-Commerce Public Dataset by Olist",
+    "license": "CC BY-NC-SA 4.0"
+  },
+  "metrics": {
+    "faturamento": {
+      "label": "Faturamento",
+      "sql": "SUM(price)",
+      "format": "brl",
+      "grain": "item",
+      "empty_is_zero": true,
+      "polarity": "higher_is_better",
+      "synonyms": ["receita", "vendas", "faturou", "quanto vendeu", "valor vendido", "venda", "fatura"],
+      "description": "Soma do preço dos itens, sem frete"
+    },
+    "frete_total": {
+      "label": "Frete total",
+      "sql": "SUM(freight_value)",
+      "format": "brl",
+      "grain": "item",
+      "empty_is_zero": true,
+      "polarity": "neutral",
+      "synonyms": ["frete", "valor do frete", "gasto com frete", "custo do frete"],
+      "description": "Soma do frete cobrado nos itens"
+    },
+    "frete_medio": {
+      "label": "Frete médio por pedido",
+      "sql": "SUM(freight_value) / COUNT(DISTINCT pedido_sk)",
+      "format": "brl",
+      "grain": "item",
+      "polarity": "lower_is_better",
+      "synonyms": ["frete médio", "frete por pedido", "média do frete", "frete mais caro"],
+      "description": "Frete total dividido pelo número de pedidos"
+    },
+    "pedidos": {
+      "label": "Pedidos",
+      "sql": "COUNT(DISTINCT pedido_sk)",
+      "format": "int",
+      "grain": "item",
+      "empty_is_zero": true,
+      "polarity": "higher_is_better",
+      "synonyms": ["quantidade de pedidos", "compras", "ordens", "número de pedidos", "vendas realizadas"],
+      "description": "Número de pedidos distintos"
+    },
+    "itens": {
+      "label": "Itens vendidos",
+      "sql": "COUNT(*)",
+      "format": "int",
+      "grain": "item",
+      "empty_is_zero": true,
+      "polarity": "higher_is_better",
+      "synonyms": ["itens", "unidades", "quantidade vendida", "produtos vendidos", "volume"],
+      "description": "Número de itens vendidos (uma linha por item)"
+    },
+    "ticket_medio": {
+      "label": "Ticket médio",
+      "sql": "SUM(price) / COUNT(DISTINCT pedido_sk)",
+      "format": "brl",
+      "grain": "item",
+      "polarity": "higher_is_better",
+      "synonyms": ["valor médio por pedido", "gasto médio", "ticket", "média por pedido"],
+      "description": "Faturamento dividido pelo número de pedidos"
+    },
+    "preco_medio": {
+      "label": "Preço médio do item",
+      "sql": "AVG(price)",
+      "format": "brl",
+      "grain": "item",
+      "polarity": "neutral",
+      "synonyms": ["preço médio", "valor médio do item", "preço dos produtos"],
+      "description": "Média do preço dos itens vendidos"
+    },
+    "clientes": {
+      "label": "Clientes",
+      "sql": "COUNT(DISTINCT cliente_sk)",
+      "format": "int",
+      "grain": "item",
+      "empty_is_zero": true,
+      "polarity": "higher_is_better",
+      "synonyms": ["clientes únicos", "compradores", "consumidores", "quantos clientes"],
+      "description": "Número de clientes únicos (customer_unique_id)"
+    },
+    "prazo_medio_entrega": {
+      "label": "Prazo médio de entrega",
+      "sql": "AVG(dias_entrega)",
+      "format": "dias",
+      "grain": "order",
+      "polarity": "lower_is_better",
+      "synonyms": ["prazo de entrega", "tempo de entrega", "dias para entregar", "demora na entrega", "prazo"],
+      "description": "Média de dias corridos entre a compra e a entrega, só pedidos entregues"
+    },
+    "pct_no_prazo": {
+      "label": "% no prazo",
+      "sql": "COUNT(*) FILTER (WHERE status_entrega = 'No Prazo') / NULLIF(COUNT(*) FILTER (WHERE status_entrega <> 'Não Entregue'), 0)",
+      "format": "pct",
+      "grain": "order",
+      "polarity": "higher_is_better",
+      "synonyms": ["entregas no prazo", "pontualidade", "percentual no prazo", "no prazo"],
+      "description": "Pedidos entregues até o dia estimado, sobre os pedidos entregues"
+    },
+    "pct_atraso": {
+      "label": "% de atraso",
+      "sql": "COUNT(*) FILTER (WHERE status_entrega = 'Atrasado') / NULLIF(COUNT(*) FILTER (WHERE status_entrega <> 'Não Entregue'), 0)",
+      "format": "pct",
+      "grain": "order",
+      "polarity": "lower_is_better",
+      "synonyms": ["atraso", "atrasos", "entregas atrasadas", "percentual de atraso", "taxa de atraso"],
+      "description": "Pedidos entregues depois do dia estimado, sobre os pedidos entregues"
+    },
+    "nota_media": {
+      "label": "Nota média",
+      "sql": "AVG(nota)",
+      "format": "dec2",
+      "grain": "order",
+      "polarity": "higher_is_better",
+      "synonyms": ["avaliação", "satisfação", "review", "nota dos clientes", "nota", "avaliações"],
+      "description": "Média da nota por pedido (de 1 a 5); cada pedido pesa igual"
+    }
+  },
+  "dimensions": {
+    "tempo": {
+      "type": "tempo",
+      "label": "Período",
+      "column": "data_compra",
+      "grains": ["dia", "semana", "mes", "trimestre", "ano"],
+      "default_grain": "mes",
+      "synonyms": ["mês a mês", "ao longo do tempo", "por mês", "evolução", "data", "período"]
+    },
+    "categoria": {
+      "type": "categoria",
+      "label": "Categoria",
+      "column": "categoria",
+      "synonyms": ["produto", "tipo de produto", "segmento", "departamento", "categorias"]
+    },
+    "estado_cliente": {
+      "type": "categoria",
+      "label": "Estado do cliente",
+      "column": "estado_cliente",
+      "synonyms": ["uf", "estado", "estados", "uf do cliente"],
+      "value_aliases": {
+        "AC": ["acre"],
+        "AL": ["alagoas"],
+        "AM": ["amazonas"],
+        "AP": ["amapá"],
+        "BA": ["bahia"],
+        "CE": ["ceará"],
+        "DF": ["distrito federal", "brasília"],
+        "ES": ["espírito santo"],
+        "GO": ["goiás"],
+        "MA": ["maranhão"],
+        "MG": ["minas gerais", "minas"],
+        "MS": ["mato grosso do sul"],
+        "MT": ["mato grosso"],
+        "PA": ["pará"],
+        "PB": ["paraíba"],
+        "PE": ["pernambuco"],
+        "PI": ["piauí"],
+        "PR": ["paraná"],
+        "RJ": ["rio de janeiro", "rio"],
+        "RN": ["rio grande do norte"],
+        "RO": ["rondônia"],
+        "RR": ["roraima"],
+        "RS": ["rio grande do sul"],
+        "SC": ["santa catarina"],
+        "SE": ["sergipe"],
+        "SP": ["são paulo", "sampa"],
+        "TO": ["tocantins"]
+      }
+    },
+    "cidade_cliente": {
+      "type": "categoria",
+      "label": "Cidade do cliente",
+      "sql": "cidade_cliente || ' (' || estado_cliente || ')'",
+      "synonyms": ["cidade", "cidades", "município"],
+      "description": "Cidade + UF, porque há nomes repetidos entre estados"
+    },
+    "estado_vendedor": {
+      "type": "categoria",
+      "label": "Estado do vendedor",
+      "column": "estado_vendedor",
+      "synonyms": ["uf do vendedor", "estado de origem", "origem do vendedor", "de onde sai"]
+    },
+    "status_entrega": {
+      "type": "categoria",
+      "label": "Status de entrega",
+      "column": "status_entrega",
+      "order": ["No Prazo", "Atrasado", "Não Entregue"],
+      "synonyms": ["entrega", "situação da entrega", "atrasado ou no prazo"],
+      "value_aliases": {
+        "No Prazo": ["no prazo", "em dia", "pontual"],
+        "Atrasado": ["atrasado", "atrasados", "atraso", "fora do prazo"],
+        "Não Entregue": ["não entregue", "não entregues", "pendente", "em trânsito"]
+      }
+    },
+    "forma_pagamento": {
+      "type": "categoria",
+      "label": "Forma de pagamento",
+      "column": "forma_pagamento",
+      "synonyms": ["pagamento", "meio de pagamento", "como pagou", "forma de pagar"],
+      "value_aliases": {
+        "Cartão de crédito": ["cartão", "crédito", "cartão de crédito"],
+        "Boleto": ["boleto bancário"],
+        "Voucher": ["vale", "cupom"],
+        "Cartão de débito": ["débito", "cartão de débito"]
+      }
+    },
+    "faixa_de_preco": {
+      "type": "faixa",
+      "label": "Faixa de preço",
+      "column": "price",
+      "synonyms": ["faixa de preço", "faixa de valor", "preço", "ticket do item"],
+      "description": "Preço do item; o limite de baixo entra na faixa (R$ 50 conta em R$ 50–100)",
+      "buckets": [
+        { "label": "< R$ 50", "max": 50 },
+        { "label": "R$ 50–100", "max": 100 },
+        { "label": "R$ 100–200", "max": 200 },
+        { "label": "R$ 200–500", "max": 500 },
+        { "label": "R$ 500–1.000", "max": 1000 },
+        { "label": "≥ R$ 1.000", "max": null }
+      ]
+    }
+  },
+  "defaults": {
+    "periodo": { "de": "2016-09-04", "ate": "2018-09-03" },
+    "limit": 10
+  },
+  "out_of_scope_hints": {
+    "lucro": "Não há dados de custo. Posso mostrar faturamento ou ticket médio.",
+    "margem": "Não há dados de custo. Posso mostrar faturamento ou ticket médio.",
+    "custo": "A base não tem custo dos produtos. Posso mostrar faturamento ou frete.",
+    "estoque": "A base não tem estoque. Posso mostrar itens vendidos por categoria.",
+    "devolução": "A base não registra devoluções. Posso mostrar pedidos não entregues ou a nota média.",
+    "marketing": "A base não tem campanhas nem canais de aquisição. Posso mostrar a evolução das vendas.",
+    "meta": "A base não tem metas. Posso comparar com o mesmo período do ano anterior."
+  }
+}
