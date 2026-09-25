@@ -10,7 +10,7 @@ import path from 'node:path';
 
 import { describe, expect, it } from 'vitest';
 
-import { cabecalhosSeguranca, cspProducao } from '../../csp.config.ts';
+import { cabecalhosSeguranca, cspProducao, cspProducaoPara, DOMINIOS_PESOS_DEMO } from '../../csp.config.ts';
 import { RAIZ } from './ajuda/duckdbNode';
 
 function arquivos(pasta: string): string[] {
@@ -70,5 +70,23 @@ describe('guardas', () => {
     expect(cspProducao).not.toContain("'unsafe-eval'");
     expect(cspProducao).toMatch(/connect-src 'self';/);
     expect(cspProducao).not.toMatch(/https?:/);
+  });
+
+  it('modo local = CSP estrita; modo demo libera SÓ os domínios dos pesos, e só no connect-src', () => {
+    expect(cspProducaoPara('local')).toBe(cspProducao);
+    const demo = cspProducaoPara('demo');
+    const externos = demo.match(/https:\/\/[^\s;]+/g) ?? [];
+    expect(externos).toEqual([...DOMINIOS_PESOS_DEMO]);
+    for (const d of DOMINIOS_PESOS_DEMO) expect(d).toMatch(/^https:\/\/([a-z0-9-]+\.)*(huggingface\.co|hf\.co)$/);
+    const connect = demo.split(';').find((d) => d.trim().startsWith('connect-src')) ?? '';
+    for (const d of DOMINIOS_PESOS_DEMO) expect(connect).toContain(d);
+  });
+
+  it('o motor falso só entra no app com VITE_PERMITIR_MOTOR_FALSO=1', () => {
+    const arquivos = ['src/modo-ia/useIALocal.ts'];
+    for (const a of arquivos) {
+      const texto = readFileSync(path.join(RAIZ, a), 'utf8');
+      expect(texto).toMatch(/import\.meta\.env\.VITE_PERMITIR_MOTOR_FALSO === '1' && falso\s*\?\s*import\('\.\.\/ai\/motorFalso'\)/);
+    }
   });
 });

@@ -11,8 +11,9 @@
  * - worker-src blob:: reservado para o worker do WebLLM (Fase 4).
  * - style-src 'unsafe-inline': o React e o ECharts aplicam estilos no atributo style.
  * - img-src data: blob:: exportar gráfico como PNG (Fase 3).
- * - connect-src 'self': dados, WASM e extensão do DuckDB vêm do próprio site.
- *   Os domínios dos pesos do modelo (modo demo) entram só na Fase 4/6, medidos.
+ * - connect-src 'self': dados, WASM, extensão do DuckDB e model_lib da IA vêm do próprio site.
+ *   No modo "demo" da IA (VITE_MODEL_SOURCE=demo), os pesos vêm do Hugging Face: só esses
+ *   domínios entram (DOMINIOS_PESOS_DEMO). No modo "local", nenhum domínio externo.
  */
 
 const base: Record<string, string[]> = {
@@ -29,27 +30,57 @@ const base: Record<string, string[]> = {
   'frame-ancestors': ["'none'"],
 };
 
+/**
+ * Domínios dos pesos no modo demo. ATENÇÃO: lista de CANDIDATOS, ainda não medida. O Hugging Face
+ * é bloqueado na nuvem onde a Fase 4 foi escrita (docs/DECISOES.md D29). No PC: baixar o modelo no
+ * modo demo, ver no DevTools (Rede, coluna Domínio) quais aparecem e tirar daqui os que não aparecerem.
+ * O `/resolve/` do Hugging Face redireciona para a CDN de arquivos grandes (LFS ou Xet).
+ */
+export const DOMINIOS_PESOS_DEMO = [
+  'https://huggingface.co',
+  'https://cdn-lfs.hf.co',
+  'https://cdn-lfs-us-1.hf.co',
+  'https://cdn-lfs-eu-1.hf.co',
+  'https://cas-bridge.xethub.hf.co',
+] as const;
+
+export type FontePesos = 'demo' | 'local';
+
 function montar(diretivas: Record<string, string[]>): string {
   return Object.entries(diretivas)
     .map(([nome, valores]) => `${nome} ${valores.join(' ')}`)
     .join('; ');
 }
 
-/** Política de produção (build + preview + Vercel). */
+function comPesos(fonte: FontePesos): Record<string, string[]> {
+  return fonte === 'demo' ? { ...base, 'connect-src': [...(base['connect-src'] ?? []), ...DOMINIOS_PESOS_DEMO] } : base;
+}
+
+const semFrameAncestors = (d: Record<string, string[]>) => Object.fromEntries(Object.entries(d).filter(([nome]) => nome !== 'frame-ancestors'));
+
+/** Política de produção ESTRITA (modo local: nenhum domínio externo). É a do vercel.json por enquanto. */
 export const cspProducao = montar(base);
 
+/** Política de produção para a fonte de pesos escolhida no build. */
+export const cspProducaoPara = (fonte: FontePesos) => montar(comPesos(fonte));
+
 /** No <meta>, frame-ancestors é ignorado (e gera aviso no console), então sai. */
-export const cspMeta = montar(Object.fromEntries(Object.entries(base).filter(([nome]) => nome !== 'frame-ancestors')));
+export const cspMeta = montar(semFrameAncestors(base));
+export const cspMetaPara = (fonte: FontePesos) => montar(semFrameAncestors(comPesos(fonte)));
 
 /**
  * Só no `npm run dev`: o React Refresh injeta um <script> inline e o HMR usa
  * WebSocket. Nunca vai para produção.
  */
-export const cspDesenvolvimento = montar({
-  ...base,
-  'script-src': [...(base['script-src'] ?? []), "'unsafe-inline'"],
-  'connect-src': [...(base['connect-src'] ?? []), 'ws://localhost:*', 'ws://127.0.0.1:*'],
-});
+export const cspDesenvolvimentoPara = (fonte: FontePesos) => {
+  const d = comPesos(fonte);
+  return montar({
+    ...d,
+    'script-src': [...(d['script-src'] ?? []), "'unsafe-inline'"],
+    'connect-src': [...(d['connect-src'] ?? []), 'ws://localhost:*', 'ws://127.0.0.1:*'],
+  });
+};
+export const cspDesenvolvimento = cspDesenvolvimentoPara('local');
 
 export function cabecalhosSeguranca(csp: string): Record<string, string> {
   return {
