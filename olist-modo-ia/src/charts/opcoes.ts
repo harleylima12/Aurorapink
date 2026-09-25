@@ -225,3 +225,65 @@ export function opcoesDispersao(entrada: EntradaDispersao): EChartsCoreOption {
     ],
   };
 }
+
+export interface EntradaCascata {
+  inicio: { rotulo: string; valor: number };
+  passos: { rotulo: string; delta: number }[];
+  fim: { rotulo: string; valor: number };
+  formato: Formato;
+  descricao: string;
+}
+
+/** Cascata (ponte) da variação: barra invisível de base + barra visível do delta de cada segmento. */
+export function opcoesCascata(entrada: EntradaCascata): EChartsCoreOption {
+  const categorias = [entrada.inicio.rotulo, ...entrada.passos.map((p) => p.rotulo), entrada.fim.rotulo];
+  const base: number[] = [0];
+  const visivel: { value: number; itemStyle: { color: unknown } }[] = [{ value: entrada.inicio.valor, itemStyle: { color: CORES.roxo } }];
+  const deltas: (number | null)[] = [null];
+  let nivel = entrada.inicio.valor;
+  for (const p of entrada.passos) {
+    const fim = nivel + p.delta;
+    base.push(Math.min(nivel, fim));
+    visivel.push({ value: Math.abs(p.delta), itemStyle: { color: p.delta < 0 ? CORES.alerta : CORES.destaque } });
+    deltas.push(p.delta);
+    nivel = fim;
+  }
+  base.push(0);
+  visivel.push({ value: entrada.fim.valor, itemStyle: { color: CORES.roxo } });
+  const niveis = [entrada.inicio.valor, entrada.fim.valor, ...base.slice(1, -1)];
+  const menor = Math.min(...niveis);
+  const maior = Math.max(entrada.inicio.valor, entrada.fim.valor);
+  const piso = menor > 0 ? Math.max(0, menor - (maior - menor) * 0.6) : undefined;
+  deltas.push(null);
+  const rotuloDe = (i: number) => {
+    const d = deltas[i];
+    if (d === null || d === undefined) return formatar(visivel[i]?.value ?? null, entrada.formato, { compacto: true });
+    const texto = formatar(d, entrada.formato, { compacto: true });
+    return d > 0 ? `+${texto}` : texto;
+  };
+  return {
+    aria: { enabled: true, label: { description: entrada.descricao } },
+    grid: { ...GRID, top: 24 },
+    tooltip: {
+      trigger: 'item',
+      formatter: (params: unknown) => {
+        const [item] = comoLista(params);
+        const i = typeof item?.dataIndex === 'number' ? item.dataIndex : 0;
+        return `${escapar(categorias[i])}: <b>${escapar(rotuloDe(i))}</b>`;
+      },
+    },
+    xAxis: { type: 'category', data: categorias, axisLabel: { ...TEXTO_EIXO, interval: 0, rotate: 30, width: 90, overflow: 'truncate' } },
+    // Eixo começa perto dos valores (não no zero): senão as variações somem ao lado dos totais.
+    yAxis: { type: 'value', min: piso, axisLabel: { ...TEXTO_EIXO, formatter: (v: number) => formatar(v, entrada.formato, { compacto: true }) } },
+    series: [
+      { type: 'bar', stack: 'cascata', silent: true, itemStyle: { color: 'transparent' }, data: base, tooltip: { show: false } },
+      {
+        type: 'bar',
+        stack: 'cascata',
+        data: visivel,
+        barMaxWidth: 44,
+        label: { show: true, position: 'top', color: CORES.texto, fontSize: 10, formatter: (p: { dataIndex?: number }) => rotuloDe(p.dataIndex ?? 0) },
+      },
+    ],
+  };
+}
