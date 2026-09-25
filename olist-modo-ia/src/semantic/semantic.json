@@ -32,7 +32,19 @@
       "grain": "item",
       "empty_is_zero": true,
       "polarity": "higher_is_better",
-      "synonyms": ["receita", "vendas", "faturou", "quanto vendeu", "valor vendido", "venda", "fatura"],
+      "synonyms": [
+        "receita",
+        "vendas",
+        "faturou",
+        "quanto vendeu",
+        "valor vendido",
+        "venda",
+        "fatura",
+        "grana",
+        "dinheiro",
+        "receita total",
+        "faturamento total"
+      ],
       "description": "Soma do preço dos itens, sem frete"
     },
     "frete_total": {
@@ -42,7 +54,11 @@
       "grain": "item",
       "empty_is_zero": true,
       "polarity": "neutral",
-      "synonyms": ["frete", "valor do frete", "gasto com frete", "custo do frete"],
+      "synonyms": [
+        "frete",
+        "valor do frete",
+        "gasto com frete"
+      ],
       "description": "Soma do frete cobrado nos itens"
     },
     "frete_medio": {
@@ -51,7 +67,12 @@
       "format": "brl",
       "grain": "item",
       "polarity": "lower_is_better",
-      "synonyms": ["frete médio", "frete por pedido", "média do frete", "frete mais caro"],
+      "synonyms": [
+        "frete médio",
+        "frete por pedido",
+        "média do frete",
+        "frete mais caro"
+      ],
       "description": "Frete total dividido pelo número de pedidos"
     },
     "pedidos": {
@@ -61,7 +82,16 @@
       "grain": "item",
       "empty_is_zero": true,
       "polarity": "higher_is_better",
-      "synonyms": ["quantidade de pedidos", "compras", "ordens", "número de pedidos", "vendas realizadas"],
+      "synonyms": [
+        "quantidade de pedidos",
+        "compras",
+        "ordens",
+        "número de pedidos",
+        "vendas realizadas",
+        "qtd de pedidos",
+        "quantidade de vendas",
+        "numero de vendas"
+      ],
       "description": "Número de pedidos distintos"
     },
     "itens": {
@@ -71,7 +101,16 @@
       "grain": "item",
       "empty_is_zero": true,
       "polarity": "higher_is_better",
-      "synonyms": ["itens", "unidades", "quantidade vendida", "produtos vendidos", "volume"],
+      "synonyms": [
+        "itens",
+        "unidades",
+        "quantidade vendida",
+        "produtos vendidos",
+        "volume",
+        "produtos vendidos",
+        "quantos produtos",
+        "unidades vendidas"
+      ],
       "description": "Número de itens vendidos (uma linha por item)"
     },
     "ticket_medio": {
@@ -80,7 +119,12 @@
       "format": "brl",
       "grain": "item",
       "polarity": "higher_is_better",
-      "synonyms": ["valor médio por pedido", "gasto médio", "ticket", "média por pedido"],
+      "synonyms": [
+        "valor médio por pedido",
+        "gasto médio",
+        "ticket",
+        "média por pedido"
+      ],
       "description": "Faturamento dividido pelo número de pedidos"
     },
     "preco_medio": {
@@ -89,7 +133,11 @@
       "format": "brl",
       "grain": "item",
       "polarity": "neutral",
-      "synonyms": ["preço médio", "valor médio do item", "preço dos produtos"],
+      "synonyms": [
+        "preço médio",
+        "valor médio do item",
+        "preço dos produtos"
+      ],
       "description": "Média do preço dos itens vendidos"
     },
     "clientes": {
@@ -99,7 +147,12 @@
       "grain": "item",
       "empty_is_zero": true,
       "polarity": "higher_is_better",
-      "synonyms": ["clientes únicos", "compradores", "consumidores", "quantos clientes"],
+      "synonyms": [
+        "clientes únicos",
+        "compradores",
+        "consumidores",
+        "quantos clientes"
+      ],
       "description": "Número de clientes únicos (customer_unique_id)"
     },
     "prazo_medio_entrega": {
@@ -108,7 +161,13 @@
       "format": "dias",
       "grain": "order",
       "polarity": "lower_is_better",
-      "synonyms": ["prazo de entrega", "tempo de entrega", "dias para entregar", "demora na entrega", "prazo"],
+      "synonyms": [
+        "prazo de entrega",
+        "tempo de entrega",
+        "dias para entregar",
+        "demora na entrega",
+        "prazo"
+      ],
       "description": "Média de dias corridos entre a compra e a entrega, só pedidos entregues"
     },
     "pct_no_prazo": {
@@ -117,7 +176,12 @@
       "format": "pct",
       "grain": "order",
       "polarity": "higher_is_better",
-      "synonyms": ["entregas no prazo", "pontualidade", "percentual no prazo", "no prazo"],
+      "synonyms": [
+        "entregas no prazo",
+        "pontualidade",
+        "percentual no prazo",
+        "no prazo"
+      ],
       "description": "Pedidos entregues até o dia estimado, sobre os pedidos entregues"
     },
     "pct_atraso": {
@@ -126,7 +190,13 @@
       "format": "pct",
       "grain": "order",
       "polarity": "lower_is_better",
-      "synonyms": ["atraso", "atrasos", "entregas atrasadas", "percentual de atraso", "taxa de atraso"],
+      "synonyms": [
+        "atraso",
+        "atrasos",
+        "entregas atrasadas",
+        "percentual de atraso",
+        "taxa de atraso"
+      ],
       "description": "Pedidos entregues depois do dia estimado, sobre os pedidos entregues"
     },
     "nota_media": {
@@ -135,7 +205,14 @@
       "format": "dec2",
       "grain": "order",
       "polarity": "higher_is_better",
-      "synonyms": ["avaliação", "satisfação", "review", "nota dos clientes", "nota", "avaliações"],
+      "synonyms": [
+        "avaliação",
+        "satisfação",
+        "review",
+        "nota dos clientes",
+        "nota",
+        "avaliações"
+      ],
       "description": "Média da nota por pedido (de 1 a 5); cada pedido pesa igual"
     }
   },
@@ -144,106 +221,263 @@
       "type": "tempo",
       "label": "Período",
       "column": "data_compra",
-      "grains": ["dia", "semana", "mes", "trimestre", "ano"],
+      "grains": [
+        "dia",
+        "semana",
+        "mes",
+        "trimestre",
+        "ano"
+      ],
       "default_grain": "mes",
-      "synonyms": ["mês a mês", "ao longo do tempo", "por mês", "evolução", "data", "período"]
+      "synonyms": [
+        "mês a mês",
+        "ao longo do tempo",
+        "por mês",
+        "evolução",
+        "data",
+        "período"
+      ]
     },
     "categoria": {
       "type": "categoria",
       "label": "Categoria",
       "column": "categoria",
-      "synonyms": ["produto", "tipo de produto", "segmento", "departamento", "categorias"]
+      "synonyms": [
+        "produto",
+        "tipo de produto",
+        "segmento",
+        "departamento",
+        "categorias"
+      ]
     },
     "estado_cliente": {
       "type": "categoria",
       "label": "Estado do cliente",
       "column": "estado_cliente",
-      "synonyms": ["uf", "estado", "estados", "uf do cliente"],
+      "synonyms": [
+        "uf",
+        "estado",
+        "estados",
+        "uf do cliente"
+      ],
       "value_aliases": {
-        "AC": ["acre"],
-        "AL": ["alagoas"],
-        "AM": ["amazonas"],
-        "AP": ["amapá"],
-        "BA": ["bahia"],
-        "CE": ["ceará"],
-        "DF": ["distrito federal", "brasília"],
-        "ES": ["espírito santo"],
-        "GO": ["goiás"],
-        "MA": ["maranhão"],
-        "MG": ["minas gerais", "minas"],
-        "MS": ["mato grosso do sul"],
-        "MT": ["mato grosso"],
-        "PA": ["pará"],
-        "PB": ["paraíba"],
-        "PE": ["pernambuco"],
-        "PI": ["piauí"],
-        "PR": ["paraná"],
-        "RJ": ["rio de janeiro", "rio"],
-        "RN": ["rio grande do norte"],
-        "RO": ["rondônia"],
-        "RR": ["roraima"],
-        "RS": ["rio grande do sul"],
-        "SC": ["santa catarina"],
-        "SE": ["sergipe"],
-        "SP": ["são paulo", "sampa"],
-        "TO": ["tocantins"]
+        "AC": [
+          "acre"
+        ],
+        "AL": [
+          "alagoas"
+        ],
+        "AM": [
+          "amazonas"
+        ],
+        "AP": [
+          "amapá"
+        ],
+        "BA": [
+          "bahia"
+        ],
+        "CE": [
+          "ceará"
+        ],
+        "DF": [
+          "distrito federal",
+          "brasília"
+        ],
+        "ES": [
+          "espírito santo"
+        ],
+        "GO": [
+          "goiás"
+        ],
+        "MA": [
+          "maranhão"
+        ],
+        "MG": [
+          "minas gerais",
+          "minas"
+        ],
+        "MS": [
+          "mato grosso do sul"
+        ],
+        "MT": [
+          "mato grosso"
+        ],
+        "PA": [
+          "pará"
+        ],
+        "PB": [
+          "paraíba"
+        ],
+        "PE": [
+          "pernambuco"
+        ],
+        "PI": [
+          "piauí"
+        ],
+        "PR": [
+          "paraná"
+        ],
+        "RJ": [
+          "rio de janeiro",
+          "rio"
+        ],
+        "RN": [
+          "rio grande do norte"
+        ],
+        "RO": [
+          "rondônia"
+        ],
+        "RR": [
+          "roraima"
+        ],
+        "RS": [
+          "rio grande do sul"
+        ],
+        "SC": [
+          "santa catarina"
+        ],
+        "SE": [
+          "sergipe"
+        ],
+        "SP": [
+          "são paulo",
+          "sampa"
+        ],
+        "TO": [
+          "tocantins"
+        ]
       }
     },
     "cidade_cliente": {
       "type": "categoria",
       "label": "Cidade do cliente",
       "sql": "cidade_cliente || ' (' || estado_cliente || ')'",
-      "synonyms": ["cidade", "cidades", "município"],
+      "synonyms": [
+        "cidade",
+        "cidades",
+        "município"
+      ],
       "description": "Cidade + UF, porque há nomes repetidos entre estados"
     },
     "estado_vendedor": {
       "type": "categoria",
       "label": "Estado do vendedor",
       "column": "estado_vendedor",
-      "synonyms": ["uf do vendedor", "estado de origem", "origem do vendedor", "de onde sai"]
+      "synonyms": [
+        "uf do vendedor",
+        "estado de origem",
+        "origem do vendedor",
+        "de onde sai"
+      ]
     },
     "status_entrega": {
       "type": "categoria",
       "label": "Status de entrega",
       "column": "status_entrega",
-      "order": ["No Prazo", "Atrasado", "Não Entregue"],
-      "synonyms": ["entrega", "situação da entrega", "atrasado ou no prazo"],
+      "order": [
+        "No Prazo",
+        "Atrasado",
+        "Não Entregue"
+      ],
+      "synonyms": [
+        "entrega",
+        "situação da entrega",
+        "atrasado ou no prazo"
+      ],
       "value_aliases": {
-        "No Prazo": ["no prazo", "em dia", "pontual"],
-        "Atrasado": ["atrasado", "atrasados", "atraso", "fora do prazo"],
-        "Não Entregue": ["não entregue", "não entregues", "pendente", "em trânsito"]
+        "No Prazo": [
+          "no prazo",
+          "em dia",
+          "pontual"
+        ],
+        "Atrasado": [
+          "atrasado",
+          "atrasados",
+          "atrasada",
+          "atrasadas",
+          "fora do prazo"
+        ],
+        "Não Entregue": [
+          "não entregue",
+          "não entregues",
+          "pendente",
+          "em trânsito"
+        ]
       }
     },
     "forma_pagamento": {
       "type": "categoria",
       "label": "Forma de pagamento",
       "column": "forma_pagamento",
-      "synonyms": ["pagamento", "meio de pagamento", "como pagou", "forma de pagar"],
+      "synonyms": [
+        "pagamento",
+        "meio de pagamento",
+        "como pagou",
+        "forma de pagar"
+      ],
       "value_aliases": {
-        "Cartão de crédito": ["cartão", "crédito", "cartão de crédito"],
-        "Boleto": ["boleto bancário"],
-        "Voucher": ["vale", "cupom"],
-        "Cartão de débito": ["débito", "cartão de débito"]
+        "Cartão de crédito": [
+          "cartão",
+          "crédito",
+          "cartão de crédito"
+        ],
+        "Boleto": [
+          "boleto bancário"
+        ],
+        "Voucher": [
+          "vale",
+          "cupom"
+        ],
+        "Cartão de débito": [
+          "débito",
+          "cartão de débito"
+        ]
       }
     },
     "faixa_de_preco": {
       "type": "faixa",
       "label": "Faixa de preço",
       "column": "price",
-      "synonyms": ["faixa de preço", "faixa de valor", "preço", "ticket do item"],
+      "synonyms": [
+        "faixa de preço",
+        "faixa de valor",
+        "preço",
+        "ticket do item"
+      ],
       "description": "Preço do item; o limite de baixo entra na faixa (R$ 50 conta em R$ 50–100)",
       "buckets": [
-        { "label": "< R$ 50", "max": 50 },
-        { "label": "R$ 50–100", "max": 100 },
-        { "label": "R$ 100–200", "max": 200 },
-        { "label": "R$ 200–500", "max": 500 },
-        { "label": "R$ 500–1.000", "max": 1000 },
-        { "label": "≥ R$ 1.000", "max": null }
+        {
+          "label": "< R$ 50",
+          "max": 50
+        },
+        {
+          "label": "R$ 50–100",
+          "max": 100
+        },
+        {
+          "label": "R$ 100–200",
+          "max": 200
+        },
+        {
+          "label": "R$ 200–500",
+          "max": 500
+        },
+        {
+          "label": "R$ 500–1.000",
+          "max": 1000
+        },
+        {
+          "label": "≥ R$ 1.000",
+          "max": null
+        }
       ]
     }
   },
   "defaults": {
-    "periodo": { "de": "2016-09-04", "ate": "2018-09-03" },
+    "periodo": {
+      "de": "2016-09-04",
+      "ate": "2018-09-03"
+    },
     "limit": 10
   },
   "out_of_scope_hints": {

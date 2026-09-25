@@ -29,6 +29,16 @@ export function anoAnterior(iso: string): string {
   return paraIso(alvo);
 }
 
+function ehMesesInteiros(from: string, to: string): boolean {
+  return from.endsWith('-01') && somarDias(to, 1).endsWith('-01');
+}
+
+function mesesEntre(from: string, to: string): number {
+  const a = paraData(from);
+  const b = paraData(to);
+  return (b.getUTCFullYear() - a.getUTCFullYear()) * 12 + b.getUTCMonth() - a.getUTCMonth() + 1;
+}
+
 export function periodoDoAno(ano: number): { from: string; to: string } {
   return { from: `${ano}-01-01`, to: `${ano}-12-31` };
 }
@@ -47,6 +57,12 @@ export function specDeComparacao(spec: QuerySpec): QuerySpec | null {
   if (tempo.compare === 'mesmo_periodo_ano_anterior') {
     from = anoAnterior(tempo.from);
     to = anoAnterior(tempo.to);
+  } else if (ehMesesInteiros(tempo.from, tempo.to)) {
+    // Meses inteiros (mês, trimestre, ano): o período anterior também é de meses inteiros (dez -> nov).
+    const meses = mesesEntre(tempo.from, tempo.to);
+    const inicio = paraData(tempo.from);
+    from = paraIso(new Date(Date.UTC(inicio.getUTCFullYear(), inicio.getUTCMonth() - meses, 1)));
+    to = somarDias(tempo.from, -1);
   } else {
     const dias = Math.round((paraData(tempo.to).getTime() - paraData(tempo.from).getTime()) / DIA_MS);
     to = somarDias(tempo.from, -1);

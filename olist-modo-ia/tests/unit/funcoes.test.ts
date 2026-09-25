@@ -78,7 +78,11 @@ describe('períodos', () => {
     const base = { intent: 'kpi' as const, metrics: ['faturamento'], dimensions: [], filters: [] };
     expect(specDeComparacao(base)).toBeNull();
     const nov = { ...base, time: { from: '2017-11-01', to: '2017-11-30', compare: 'periodo_anterior' as const } };
-    expect(specDeComparacao(nov)?.time).toEqual({ from: '2017-10-02', to: '2017-10-31', compare: 'nenhum' });
+    expect(specDeComparacao(nov)?.time).toEqual({ from: '2017-10-01', to: '2017-10-31', compare: 'nenhum' });
+    const semana = { ...base, time: { from: '2017-11-20', to: '2017-11-26', compare: 'periodo_anterior' as const } };
+    expect(specDeComparacao(semana)?.time).toEqual({ from: '2017-11-13', to: '2017-11-19', compare: 'nenhum' });
+    const tri = { ...base, time: { from: '2018-04-01', to: '2018-06-30', compare: 'periodo_anterior' as const } };
+    expect(specDeComparacao(tri)?.time).toEqual({ from: '2018-01-01', to: '2018-03-31', compare: 'nenhum' });
     const ano = { ...base, time: { from: '2018-01-01', to: '2018-08-31', compare: 'mesmo_periodo_ano_anterior' as const } };
     expect(specDeComparacao(ano)?.time).toEqual({ from: '2017-01-01', to: '2017-08-31', compare: 'nenhum' });
     expect(() => specDeComparacao({ ...base, time: { compare: 'periodo_anterior' } })).toThrow();
