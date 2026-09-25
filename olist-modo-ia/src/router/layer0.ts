@@ -29,6 +29,11 @@ export interface Roteamento {
   rastro: string[];
   /** Para intent "esclarecer": o texto que cada chip envia. */
   sugestoes?: string[];
+  /**
+   * A Camada 0 não entendeu direito (confiança baixa, palavras desconhecidas, follow-up que não mudou nada).
+   * Com a IA local pronta, a pergunta vai para a Camada 1 (planejador); sem ela, vale a resposta daqui.
+   */
+  paraCamada1?: boolean;
 }
 
 export const LIMIAR_CONFIANCA = 0.45;
@@ -339,7 +344,7 @@ export function criarRoteador(semantica: Semantica, valores: Valores, ancora: st
       if (limite !== undefined) novo.limit = limite;
       rastro.push('continuação da pergunta anterior');
       const mudou = JSON.stringify(novo) !== JSON.stringify(anterior);
-      return { spec: novo, confianca: mudou ? 0.8 : 0.3, rotuloPeriodo: tempo.periodo?.rotulo, rastro };
+      return { spec: novo, confianca: mudou ? 0.8 : 0.3, rotuloPeriodo: tempo.periodo?.rotulo, rastro, ...(mudou && !fuzzy && !desconhecidas.length ? {} : { paraCamada1: true }) };
     }
 
     // --- Pergunta vaga ------------------------------------------------------------
@@ -358,14 +363,16 @@ export function criarRoteador(semantica: Semantica, valores: Valores, ancora: st
         },
         confianca: 0.7,
         rastro,
+        paraCamada1: true,
       };
     }
-    if (nadaUtil) return esclarecer('O que você quer ver?', OPCOES_VAGAS, PERGUNTAS_VAGAS, 0.9, rastro);
+    if (nadaUtil) return { ...esclarecer('O que você quer ver?', OPCOES_VAGAS, PERGUNTAS_VAGAS, 0.9, rastro), paraCamada1: true };
 
     // Categoria ambígua ("móveis"): pergunta qual.
     if (ambiguos.length && ![...valoresPorDim.keys()].includes('categoria')) {
       const opcoes = (ambiguos[0] ?? []).slice(0, 3);
-      return esclarecer('Qual destas categorias?', opcoes, opcoes.map((o) => `${pergunta} — ${o}`), 0.6, rastro);
+      const qual = esclarecer('Qual destas categorias?', opcoes, opcoes.map((o) => `${pergunta} — ${o}`), 0.6, rastro);
+      return fuzzy || desconhecidas.length ? { ...qual, paraCamada1: true } : qual;
     }
 
     // --- Monta o spec -------------------------------------------------------------
@@ -462,15 +469,18 @@ export function criarRoteador(semantica: Semantica, valores: Valores, ancora: st
     if (confianca < LIMIAR_CONFIANCA) {
       const [m] = metricas;
       const rotulo = semantica.metrics[m ?? 'faturamento']?.label ?? 'Faturamento';
-      return esclarecer(
+      const duvida = esclarecer(
         'Não tenho certeza do que você quer ver. Seria um destes?',
         [`${rotulo} total`, `${rotulo} mês a mês`, `${rotulo} por estado`],
         [`${rotulo} total`, `${rotulo} mês a mês`, `${rotulo} por estado`],
         confianca,
         rastro,
       );
+      return { ...duvida, paraCamada1: true };
     }
-    return { spec, confianca, rotuloPeriodo, rastro };
+    // Palpite por digitação corrigida ou palavra desconhecida: a IA (se pronta) revê a pergunta.
+    const palpite = fuzzy || desconhecidas.length > 0;
+    return { spec, confianca, rotuloPeriodo, rastro, ...(palpite ? { paraCamada1: true } : {}) };
   }
 
   return { rotear };

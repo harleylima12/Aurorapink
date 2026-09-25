@@ -2,6 +2,9 @@
  * Pipeline do Modo Rápido (seção 4): pergunta -> Camada 0 -> validação (Zod) -> compilador SQL
  * -> DuckDB -> motor de insights -> seletor de gráfico -> narrador por template.
  *
+ * Fase 4: se a Camada 0 não entendeu (`paraCamada1`) e a IA local está pronta, a pergunta vai para
+ * o planejador (Camada 1), que devolve só um QuerySpec; o resto do caminho é o MESMO.
+ *
  * Recebe o banco por uma interface (`Executor`), então roda igual no navegador (DuckDB-WASM
  * no worker) e nos testes (DuckDB-WASM no Node).
  */
@@ -13,7 +16,10 @@ import { compilar, type ColunaResultado } from '../query/compiler';
 import { anoAnterior, specDeComparacao } from '../query/periodo';
 import { criarSchemaQuerySpec, type QuerySpec } from '../query/spec';
 import { periodoMes } from '../query/timeParser';
-import type { Roteador, Roteamento } from '../router/layer0';
+import { narrarComIA } from '../ai/narrator';
+import { planejar } from '../ai/planner';
+import type { MotorLLM } from '../ai/tipos';
+import type { Roteador, Roteamento, Valores } from '../router/layer0';
 import type { Semantica } from '../semantic/schema';
 
 export interface Executor {
@@ -32,7 +38,8 @@ export interface ConsultaFeita {
 export interface Resposta {
   id: string;
   pergunta: string;
-  modo: 'rapido';
+  /** Quem montou o spec: a Camada 0 (regras) ou a Camada 1 (IA local). */
+  modo: 'rapido' | 'ia';
   tipo: 'dados' | 'esclarecer' | 'fora_de_escopo' | 'erro';
   spec: QuerySpec;
   confianca: number;
@@ -45,8 +52,34 @@ export interface Resposta {
   grafico?: SelecaoGrafico;
   texto: TextoResposta;
   sugestoes?: string[];
+  /** Camada 1: prompt, saída crua do modelo e validação (aparece em "Como calculei"). */
+  planejamento?: InfoPlanejamento;
+  /** Quem escreveu o texto: o template (sempre primeiro) ou a IA (depois, se passar no validador). */
+  narracao: InfoNarracao;
   /** Da pergunta até a resposta pronta (roteamento + SQL + insights + texto). */
   ms: number;
+}
+
+export interface InfoPlanejamento {
+  modelo: string;
+  versaoPrompt: string;
+  bruto: string;
+  valido: boolean;
+  erros: string[];
+  ajustes: string[];
+  ms: number;
+  /** Tamanho do prompt (caracteres), para acompanhar o custo em GPU fraca. */
+  caracteresPrompt: number;
+}
+
+export interface InfoNarracao {
+  origem: 'template' | 'ia';
+  modelo?: string;
+  versaoPrompt?: string;
+  ms?: number;
+  /** Por que o texto da IA foi rejeitado (o template ficou). */
+  rejeitada?: string[];
+  bruto?: string;
 }
 
 export interface ContextoResposta {
@@ -55,6 +88,8 @@ export interface ContextoResposta {
   roteador: Roteador;
   mesesParciais: ReadonlySet<string>;
   ancora: string;
+  /** IA local pronta (Camada 1). Sem ela, tudo fica na Camada 0. */
+  ia?: { motor: MotorLLM; valores: Valores };
 }
 
 let contador = 0;
@@ -73,7 +108,49 @@ function rotuloDeDatas(from?: string, to?: string): string | undefined {
 export async function responder(pergunta: string, ctx: ContextoResposta, anterior: QuerySpec | null = null): Promise<Resposta> {
   const t0 = performance.now();
   const roteamento = ctx.roteador.rotear(pergunta, anterior);
+  if (roteamento.paraCamada1 && ctx.ia) {
+    try {
+      const p = await planejar({ motor: ctx.ia.motor, semantica: ctx.semantica, valores: ctx.ia.valores, pergunta, anterior, ancora: ctx.ancora });
+      const planejamento: InfoPlanejamento = {
+        modelo: ctx.ia.motor.id,
+        versaoPrompt: p.versaoPrompt,
+        bruto: p.bruto,
+        valido: p.valido,
+        erros: p.erros,
+        ajustes: p.ajustes,
+        ms: p.ms,
+        caracteresPrompt: p.mensagens.reduce((n, m) => n + m.content.length, 0),
+      };
+      const rastro = [
+        `Camada 0 com baixa confiança (${Math.round(roteamento.confianca * 100)}%): pergunta enviada à IA local`,
+        `Camada 1: ${ctx.ia.motor.id}, prompt ${p.versaoPrompt}, ${Math.round(p.ms)} ms`,
+        ...(p.valido ? ['spec do modelo validado (Zod + valores da base)'] : p.erros.map((e) => `spec rejeitado: ${e}`)),
+        ...p.ajustes.map((a) => `ajuste: ${a}`),
+      ];
+      const r = await executarRoteamento(pergunta, { spec: p.spec, confianca: p.valido ? 0.7 : 0, rastro, sugestoes: p.spec.clarify?.options }, ctx, t0);
+      return { ...r, modo: 'ia', planejamento };
+    } catch (erro) {
+      const motivo = erro instanceof Error ? erro.message : String(erro);
+      const r = await executarRoteamento(pergunta, roteamento, ctx, t0);
+      return { ...r, rastro: [...r.rastro, `IA local falhou (${motivo}); resposta da Camada 0`] };
+    }
+  }
   return executarRoteamento(pergunta, roteamento, ctx, t0);
+}
+
+/**
+ * Troca o texto do template pelo da IA, se ele passar no validador (placeholders, sem números soltos,
+ * sem causa afirmada). Rejeitou ou deu erro? Fica o template, com o motivo registrado.
+ */
+export async function narrarComMotor(r: Resposta, motor: MotorLLM, aoParcial?: (t: string) => void): Promise<Resposta> {
+  if (r.tipo !== 'dados' || !r.fatos.length) return r;
+  try {
+    const n = await narrarComIA(motor, r.pergunta, r.texto.titulo, r.fatos, aoParcial);
+    if (n.ok && n.texto) return { ...r, texto: n.texto, narracao: { origem: 'ia', modelo: motor.id, versaoPrompt: n.versaoPrompt, ms: n.ms, bruto: n.bruto } };
+    return { ...r, narracao: { origem: 'template', modelo: motor.id, versaoPrompt: n.versaoPrompt, ms: n.ms, rejeitada: n.erros, bruto: n.bruto } };
+  } catch (erro) {
+    return { ...r, narracao: { origem: 'template', modelo: motor.id, rejeitada: [erro instanceof Error ? erro.message : String(erro)] } };
+  }
 }
 
 export async function responderSpec(titulo: string, spec: QuerySpec, ctx: ContextoResposta): Promise<Resposta> {
@@ -97,6 +174,7 @@ async function executarRoteamento(pergunta: string, roteamento: Roteamento, ctx:
     linhas: [],
     fatos: [],
     texto: { titulo: '', bullets: [] },
+    narracao: { origem: 'template' },
     ms: 0,
   };
   const fim = (r: Resposta): Resposta => ({ ...r, ms: performance.now() - t0 });
