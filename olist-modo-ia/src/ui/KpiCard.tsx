@@ -3,7 +3,6 @@ import { caminhoSparkline } from '../charts/sparkline';
 import { aplicarFiltros, type Filtros } from '../dashboard/filtros';
 import { specsDoKpi, type DefinicaoKpi } from '../dashboard/paginas';
 import { formatar } from '../format/numeros';
-import { semanticaOlist } from '../semantic';
 import { ComoCalculei } from './ComoCalculei';
 import { useDados } from './contexto';
 import { resultadoAtual, useConsulta } from './useConsulta';
@@ -12,18 +11,20 @@ const LARGURA = 96;
 const ALTURA = 32;
 
 export function KpiCard({ definicao, filtros }: { definicao: DefinicaoKpi; filtros: Filtros }) {
-  const { meta } = useDados();
-  const metrica = semanticaOlist.metrics[definicao.metrica];
+  const { meta, semantica } = useDados();
+  const metrica = semantica.metrics[definicao.metrica];
+  const temTempo = semantica.dimensions.tempo?.type === 'tempo';
   const specs = specsDoKpi(definicao.metrica);
   const estadoValor = useConsulta(aplicarFiltros(specs.valor, filtros));
-  const estadoSerie = useConsulta(aplicarFiltros(specs.serie, filtros));
+  // Sem coluna de data não há minissérie: repete o spec do valor (vem do cache, custo zero).
+  const estadoSerie = useConsulta(aplicarFiltros(temTempo ? specs.serie : specs.valor, filtros));
   if (!metrica) return null;
 
   const resultado = resultadoAtual(estadoValor);
   const bruto = resultado?.linhas[0]?.[definicao.metrica];
   const valor = typeof bruto === 'number' ? bruto : null;
   const serie = resultadoAtual(estadoSerie);
-  const valoresSerie = serie
+  const valoresSerie = serie && temTempo
     ? completarMeses(serie.linhas, 'tempo', [{ id: definicao.metrica, zeroQuandoVazio: metrica.empty_is_zero }])
         // Meses com poucos pedidos (2016, set/2018) distorcem a escala da minissérie.
         .filter((l) => !meta.mesesParciais.has(String(l.tempo)))

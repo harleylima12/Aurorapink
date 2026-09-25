@@ -57,3 +57,18 @@ export async function insightsAutomaticos(ctx: ContextoResposta): Promise<Respos
 
   return [sazonal, atraso, estados];
 }
+
+/**
+ * Insights ao abrir o Modo IA sobre uma PLANILHA: os mesmos specs do dashboard automático, passando
+ * pelo pipeline normal (fatos + template + validador). Nada específico da Olist.
+ */
+export function insightsDaPlanilha(specs: readonly { titulo: string; spec: QuerySpec }[]): (ctx: ContextoResposta) => Promise<Resposta[]> {
+  return async (ctx) => {
+    const lista: Resposta[] = [];
+    for (const { titulo, spec } of specs.slice(0, 3)) {
+      const r = await responderSpec(titulo, spec, ctx);
+      if (r.tipo === 'dados') lista.push({ ...r, texto: { ...r.texto, titulo } });
+    }
+    return lista;
+  };
+}

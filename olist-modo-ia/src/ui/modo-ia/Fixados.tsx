@@ -3,13 +3,12 @@ import { useEffect, useMemo, useState } from 'react';
 import { CHAVES, lerFixados, type Fixado } from '../../modo-ia/armazenamento';
 import { responderSpec, type ContextoResposta, type Resposta } from '../../modo-ia/responder';
 import { criarRoteador } from '../../router/layer0';
-import { semanticaOlist } from '../../semantic';
 import { useDados } from '../contexto';
 import { CartaoResposta } from './CartaoResposta';
 
 /** Respostas fixadas pelo Modo IA, recalculadas a cada abertura (nada de número guardado). */
 export function Fixados() {
-  const { motor, meta } = useDados();
+  const { motor, meta, semantica } = useDados();
   const [fixados, setFixados] = useState<Fixado[]>(() => lerFixados());
   const [respostas, setRespostas] = useState<Record<string, Resposta>>({});
 
@@ -22,8 +21,8 @@ export function Fixados() {
   }, []);
 
   const ctx = useMemo<ContextoResposta>(
-    () => ({ executor: motor, semantica: semanticaOlist, roteador: criarRoteador(semanticaOlist, {}, meta.ancora), mesesParciais: meta.mesesParciais, ancora: meta.ancora }),
-    [motor, meta],
+    () => ({ executor: motor, semantica, roteador: criarRoteador(semantica, {}, meta.ancora), mesesParciais: meta.mesesParciais, ancora: meta.ancora }),
+    [motor, meta, semantica],
   );
 
   useEffect(() => {

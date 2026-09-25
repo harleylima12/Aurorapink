@@ -11,7 +11,9 @@ export function consultaValoresDistintos(semantica: Semantica): { sql: string } 
     .map(([id, d]) => {
       if (d.type !== 'categoria') return '';
       const expressao = d.column ? `"${d.column}"` : `(${d.sql ?? ''})`;
-      return `SELECT DISTINCT '${id}' AS dimensao, CAST(${expressao} AS VARCHAR) AS valor FROM "${semantica.dataset.table}"`;
+      return `SELECT DISTINCT '${id}' AS dimensao, CAST(${expressao} AS VARCHAR) AS valor FROM "${semantica.dataset.table}" WHERE ${expressao} IS NOT NULL`;
     });
+  // Planilha sem nenhuma dimensão de categoria: consulta vazia (o roteador segue sem valores).
+  if (!partes.length) return { sql: 'SELECT NULL::VARCHAR AS dimensao, NULL::VARCHAR AS valor LIMIT 0' };
   return { sql: `${partes.join('\nUNION ALL\n')}\nORDER BY dimensao, valor` };
 }

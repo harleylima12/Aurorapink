@@ -24,6 +24,8 @@ export interface EntradaPromptPlanejador {
   maxMetricas?: number;
   maxDimensoes?: number;
   maxExemplos?: number;
+  /** Few-shots da base (planilha do Modo Universal); padrão: os da Olist. */
+  exemplos?: readonly Exemplo[];
 }
 
 /** Texto do banco vai para o prompt só como rótulo curto e sem caracteres de controle (P6). */
@@ -101,7 +103,7 @@ export function montarMensagensPlanejador(e: EntradaPromptPlanejador): MensagemC
   ].join('\n');
 
   const mensagens: MensagemChat[] = [{ role: 'system', content: sistema }];
-  for (const ex of selecionarExemplos(e.pergunta, e.maxExemplos ?? 8)) {
+  for (const ex of selecionarExemplos(e.pergunta, e.maxExemplos ?? 8, e.exemplos)) {
     mensagens.push({ role: 'user', content: `SPEC_ANTERIOR: ${ex.anterior ? JSON.stringify(ex.anterior) : 'null'}\nPERGUNTA: ${ex.pergunta}` });
     mensagens.push({ role: 'assistant', content: JSON.stringify(ex.spec) });
   }

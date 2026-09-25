@@ -8,7 +8,7 @@ import type { DefinicaoVisual } from '../dashboard/paginas';
 import type { Linha } from '../data/duckdb';
 import { formatar, rotuloPeriodo } from '../format/numeros';
 import type { Grao } from '../query/spec';
-import { semanticaOlist } from '../semantic';
+import type { Semantica } from '../semantic/schema';
 import { ComoCalculei } from './ComoCalculei';
 import { useDados } from './contexto';
 import { Grafico } from './Grafico';
@@ -16,10 +16,10 @@ import { resultadoAtual, useConsulta, type ResultadoConsulta } from './useConsul
 
 const numero = (v: unknown): number | null => (typeof v === 'number' && Number.isFinite(v) ? v : null);
 
-function montar(def: DefinicaoVisual, resultado: ResultadoConsulta, parciais: ReadonlySet<string>): { opcoes: EChartsCoreOption; descricao: string } {
+function montar(def: DefinicaoVisual, resultado: ResultadoConsulta, parciais: ReadonlySet<string>, semantica: Semantica): { opcoes: EChartsCoreOption; descricao: string } {
   const [idMetrica, idMetrica2] = def.spec.metrics;
   const [idDimensao] = def.spec.dimensions;
-  const metrica = idMetrica ? semanticaOlist.metrics[idMetrica] : undefined;
+  const metrica = idMetrica ? semantica.metrics[idMetrica] : undefined;
   if (!metrica || !idMetrica || !idDimensao) throw new Error(`visual ${def.id} mal definido`);
   let linhas: Linha[] = resultado.linhas;
 
@@ -40,9 +40,9 @@ function montar(def: DefinicaoVisual, resultado: ResultadoConsulta, parciais: Re
   }
 
   if (def.tipo === 'dispersao') {
-    const metrica2 = idMetrica2 ? semanticaOlist.metrics[idMetrica2] : undefined;
+    const metrica2 = idMetrica2 ? semantica.metrics[idMetrica2] : undefined;
     if (!metrica2 || !idMetrica2) throw new Error(`visual ${def.id} precisa de 2 métricas`);
-    const descricao = `Gráfico de dispersão: ${metrica.label} (horizontal) e ${metrica2.label} (vertical), um ponto por ${semanticaOlist.dimensions[idDimensao]?.label.toLowerCase() ?? idDimensao}.`;
+    const descricao = `Gráfico de dispersão: ${metrica.label} (horizontal) e ${metrica2.label} (vertical), um ponto por ${semantica.dimensions[idDimensao]?.label.toLowerCase() ?? idDimensao}.`;
     return {
       descricao,
       opcoes: opcoesDispersao({
@@ -57,7 +57,7 @@ function montar(def: DefinicaoVisual, resultado: ResultadoConsulta, parciais: Re
   const categorias = linhas.map((l) => String(l[idDimensao]));
   const valores = linhas.map((l) => numero(l[idMetrica]));
   const [primeira] = categorias;
-  const descricao = `Gráfico de barras: ${metrica.label} por ${semanticaOlist.dimensions[idDimensao]?.label.toLowerCase() ?? idDimensao}. ${primeira ? `Primeiro: ${primeira}, ${formatar(valores[0] ?? null, metrica.format)}.` : 'Sem dados.'}`;
+  const descricao = `Gráfico de barras: ${metrica.label} por ${semantica.dimensions[idDimensao]?.label.toLowerCase() ?? idDimensao}. ${primeira ? `Primeiro: ${primeira}, ${formatar(valores[0] ?? null, metrica.format)}.` : 'Sem dados.'}`;
   return {
     descricao,
     opcoes: opcoesBarras({
@@ -73,10 +73,10 @@ function montar(def: DefinicaoVisual, resultado: ResultadoConsulta, parciais: Re
 }
 
 export function Visual({ definicao, filtros, aoRenderizar }: { definicao: DefinicaoVisual; filtros: Filtros; aoRenderizar?: () => void }) {
-  const { meta } = useDados();
+  const { meta, semantica } = useDados();
   const estado = useConsulta(aplicarFiltros(definicao.spec, filtros));
   const resultado = resultadoAtual(estado);
-  const montado = useMemo(() => (resultado ? montar(definicao, resultado, meta.mesesParciais) : null), [definicao, resultado, meta.mesesParciais]);
+  const montado = useMemo(() => (resultado ? montar(definicao, resultado, meta.mesesParciais, semantica) : null), [definicao, resultado, meta.mesesParciais, semantica]);
   const altura = definicao.tipo === 'barra' && (definicao.spec.limit ?? 10) > 10 ? 380 : 280;
   const tituloId = `titulo-${definicao.id}`;
 

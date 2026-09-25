@@ -16,6 +16,7 @@ import { compilar, type ColunaResultado } from '../query/compiler';
 import { anoAnterior, specDeComparacao } from '../query/periodo';
 import { criarSchemaQuerySpec, type QuerySpec } from '../query/spec';
 import { periodoMes } from '../query/timeParser';
+import type { Exemplo } from '../ai/prompts/exemplos';
 import type { MotorLLM } from '../ai/tipos';
 import type { Roteador, Roteamento, Valores } from '../router/layer0';
 import type { Semantica } from '../semantic/schema';
@@ -89,6 +90,8 @@ export interface ContextoResposta {
   ancora: string;
   /** IA local pronta (Camada 1). Sem ela, tudo fica na Camada 0. */
   ia?: { motor: MotorLLM; valores: Valores };
+  /** Few-shots do planejador para esta base (planilha); sem isso, os da Olist. */
+  exemplosIA?: readonly Exemplo[];
 }
 
 let contador = 0;
@@ -111,7 +114,7 @@ export async function responder(pergunta: string, ctx: ContextoResposta, anterio
     try {
       // Import dinâmico: o código da Camada 1 só é baixado quando a IA local está ativa.
       const { planejar } = await import('../ai/planner');
-      const p = await planejar({ motor: ctx.ia.motor, semantica: ctx.semantica, valores: ctx.ia.valores, pergunta, anterior, ancora: ctx.ancora });
+      const p = await planejar({ motor: ctx.ia.motor, semantica: ctx.semantica, valores: ctx.ia.valores, pergunta, anterior, ancora: ctx.ancora, exemplos: ctx.exemplosIA });
       const planejamento: InfoPlanejamento = {
         modelo: ctx.ia.motor.id,
         versaoPrompt: p.versaoPrompt,

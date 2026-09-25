@@ -3,7 +3,6 @@ import { useEffect, useMemo, useState } from 'react';
 import type { Linha } from '../data/duckdb';
 import { compilar, type SqlCompilado } from '../query/compiler';
 import type { QuerySpec } from '../query/spec';
-import { semanticaOlist } from '../semantic';
 import { useDados } from './contexto';
 
 export interface ResultadoConsulta {
@@ -21,18 +20,18 @@ export type EstadoConsulta =
 
 /** Compila o spec e roda no DuckDB. Enquanto recarrega (filtro mudou), mantém o resultado anterior na tela. */
 export function useConsulta(spec: QuerySpec): EstadoConsulta {
-  const { motor } = useDados();
+  const { motor, semantica } = useDados();
   const chave = JSON.stringify(spec);
   const [estado, setEstado] = useState<EstadoConsulta>({ status: 'carregando', anterior: null });
 
   const compilado = useMemo(() => {
     try {
-      return { ok: true as const, spec, sql: compilar(spec, semanticaOlist) };
+      return { ok: true as const, spec, sql: compilar(spec, semantica) };
     } catch (erro) {
       return { ok: false as const, mensagem: erro instanceof Error ? erro.message : String(erro) };
     }
     // O spec é recriado a cada render; a chave (JSON) diz se ele mudou de verdade.
-  }, [chave]);
+  }, [chave, semantica]);
 
   useEffect(() => {
     if (!compilado.ok) {

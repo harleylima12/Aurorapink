@@ -15,13 +15,17 @@ const SUGESTOES = [
 ];
 
 interface Props {
+  /** Chips de pergunta (a planilha manda os dela, com as colunas reais). */
+  sugestoes?: readonly string[];
+  /** Linha abaixo do campo (a da Olist avisa que os filtros não se aplicam). */
+  nota?: string;
   estado: EstadoModoIA;
   ia: ControleIA;
   aoFechar: () => void;
   campo: React.RefObject<HTMLInputElement | null>;
 }
 
-export function PainelIA({ estado, ia, aoFechar, campo }: Props) {
+export function PainelIA({ estado, ia, aoFechar, campo, sugestoes = SUGESTOES, nota = 'As respostas usam a base inteira; os filtros da barra lateral não se aplicam aqui.' }: Props) {
   const [texto, setTexto] = useState('');
   const corpo = useRef<HTMLDivElement>(null);
 
@@ -79,7 +83,7 @@ export function PainelIA({ estado, ia, aoFechar, campo }: Props) {
 
       <footer className="painel-ia-rodape">
         <div className="chips chips-rolagem" role="group" aria-label="Sugestões de perguntas">
-          {SUGESTOES.map((s) => (
+          {sugestoes.map((s) => (
             <button key={s} type="button" className="chip" onClick={() => enviar(s)} disabled={!estado.pronto}>
               {s}
             </button>
@@ -102,7 +106,7 @@ export function PainelIA({ estado, ia, aoFechar, campo }: Props) {
             Enviar
           </button>
         </form>
-        <p className="nota">As respostas usam a base inteira; os filtros da barra lateral não se aplicam aqui.</p>
+        <p className="nota">{nota}</p>
       </footer>
     </aside>
   );

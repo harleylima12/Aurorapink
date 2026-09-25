@@ -7,6 +7,7 @@
 import { criarSchemaQuerySpec, type QuerySpec } from '../query/spec';
 import { resolverValor } from '../query/valueResolver';
 import type { Semantica } from '../semantic/schema';
+import type { Exemplo } from './prompts/exemplos';
 import { montarMensagensPlanejador, VERSAO_PROMPT_PLANEJADOR } from './prompts/planner';
 import { schemaQuerySpecParaModelo } from './schemaModelo';
 import type { MensagemChat, MotorLLM } from './tipos';
@@ -18,6 +19,7 @@ export interface EntradaPlanejador {
   pergunta: string;
   anterior: QuerySpec | null;
   ancora: string;
+  exemplos?: readonly Exemplo[];
 }
 
 export interface ResultadoPlanejador {
@@ -105,14 +107,18 @@ export function validarSpecDoModelo(
     if (m && !corrigido.sort) corrigido.sort = { by: m, dir: 'desc' };
   }
   if (corrigido.intent === 'explicar_variacao' && !corrigido.dimensions.filter((d) => d !== 'tempo').length) {
-    corrigido.dimensions = ['categoria'];
-    ajustes.push('explicar_variacao sem dimensão: categoria');
+    // Sem dimensão: a primeira de categoria da base ("categoria" na Olist; a 1ª coluna de categoria numa planilha).
+    const primeira = Object.entries(semantica.dimensions).find(([, d]) => d.type === 'categoria')?.[0];
+    if (primeira) {
+      corrigido.dimensions = [primeira];
+      ajustes.push(`explicar_variacao sem dimensão: ${primeira}`);
+    }
   }
   return { spec: corrigido, valido: true, erros: [], ajustes };
 }
 
 export async function planejar(e: EntradaPlanejador): Promise<ResultadoPlanejador> {
-  const mensagens = montarMensagensPlanejador({ semantica: e.semantica, pergunta: e.pergunta, anterior: e.anterior, ancora: e.ancora, valores: e.valores });
+  const mensagens = montarMensagensPlanejador({ semantica: e.semantica, pergunta: e.pergunta, anterior: e.anterior, ancora: e.ancora, valores: e.valores, exemplos: e.exemplos });
   const resposta = await e.motor.completar({
     mensagens,
     schemaJson: JSON.stringify(schemaQuerySpecParaModelo(e.semantica)),

@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
+import type { Exemplo } from '../ai/prompts/exemplos';
 import type { MotorLLM } from '../ai/tipos';
 import type { Motor } from '../data/duckdb';
 import type { QuerySpec } from '../query/spec';
 import { criarRoteador, type Valores } from '../router/layer0';
 import { consultaValoresDistintos } from '../router/valores';
 import { semanticaOlist } from '../semantic';
+import type { Semantica } from '../semantic/schema';
 import { insightsAutomaticos } from './insightsAutomaticos';
 import { registrarFalhaNarrador } from './armazenamento';
 import { narrarComMotor, responder, responderSpec, type ContextoResposta, type Resposta } from './responder';
@@ -18,6 +20,15 @@ export interface EntradaHistorico {
   narrando?: boolean;
 }
 
+/** O que muda de uma base para outra (Olist x planilha). Passe um objeto ESTÁVEL (useMemo). */
+export interface ExtrasModoIA {
+  semantica: Semantica;
+  gerarInsights: (ctx: ContextoResposta) => Promise<Resposta[]>;
+  exemplosIA?: readonly Exemplo[];
+}
+
+export const PADRAO_OLIST: ExtrasModoIA = { semantica: semanticaOlist, gerarInsights: insightsAutomaticos };
+
 export interface EstadoModoIA {
   pronto: boolean;
   erro: string | null;
@@ -28,8 +39,8 @@ export interface EstadoModoIA {
   contexto: ContextoResposta | null;
 }
 
-async function carregarValores(motor: Motor): Promise<Valores> {
-  const { sql } = consultaValoresDistintos(semanticaOlist);
+async function carregarValores(motor: Motor, semantica: Semantica): Promise<Valores> {
+  const { sql } = consultaValoresDistintos(semantica);
   const { linhas } = await motor.consultar(sql);
   const valores: Record<string, string[]> = {};
   for (const l of linhas) (valores[String(l.dimensao)] ??= []).push(String(l.valor));
@@ -41,7 +52,15 @@ async function carregarValores(motor: Motor): Promise<Valores> {
  * Com a IA local pronta (`llm`), perguntas que a Camada 0 não resolve vão para o planejador, e o
  * texto do template é reescrito pela IA depois (se passar no validador).
  */
-export function useModoIA(motor: Motor, ancora: string, mesesParciais: ReadonlySet<string>, ativo: boolean, llm: MotorLLM | null = null): EstadoModoIA {
+export function useModoIA(
+  motor: Motor,
+  ancora: string,
+  mesesParciais: ReadonlySet<string>,
+  ativo: boolean,
+  llm: MotorLLM | null = null,
+  extras: ExtrasModoIA = PADRAO_OLIST,
+): EstadoModoIA {
+  const { semantica, gerarInsights, exemplosIA } = extras;
   const [base, setContexto] = useState<ContextoResposta | null>(null);
   const [valores, setValores] = useState<Valores | null>(null);
   const contexto = useMemo<ContextoResposta | null>(() => (base && llm && valores ? { ...base, ia: { motor: llm, valores } } : base), [base, llm, valores]);
@@ -51,15 +70,25 @@ export function useModoIA(motor: Motor, ancora: string, mesesParciais: ReadonlyS
   const [pensando, setPensando] = useState(false);
   const anterior = useRef<QuerySpec | null>(null);
 
+  // Planilha nova = semântica nova: recomeça do zero (histórico e follow-ups não valem mais).
+  useEffect(() => {
+    setContexto(null);
+    setValores(null);
+    setHistorico([]);
+    setInsights([]);
+    anterior.current = null;
+  }, [semantica]);
+
   useEffect(() => {
     if (!ativo || base) return;
     let vivo = true;
-    carregarValores(motor)
+    carregarValores(motor, semantica)
       .then(async (valores) => {
         const ctx: ContextoResposta = {
           executor: motor,
-          semantica: semanticaOlist,
-          roteador: criarRoteador(semanticaOlist, valores, ancora),
+          semantica,
+          roteador: criarRoteador(semantica, valores, ancora),
+          exemplosIA,
           mesesParciais,
           ancora,
         };
@@ -72,19 +101,19 @@ export function useModoIA(motor: Motor, ancora: string, mesesParciais: ReadonlyS
     return () => {
       vivo = false;
     };
-  }, [ativo, base, motor, ancora, mesesParciais]);
+  }, [ativo, base, motor, ancora, mesesParciais, semantica, exemplosIA]);
 
   // Efeito separado: se ficasse no de cima, o setContexto desmontaria o efeito antes dos insights chegarem.
   useEffect(() => {
     if (!base) return;
     let vivo = true;
-    insightsAutomaticos(base)
+    gerarInsights(base)
       .then((lista) => vivo && setInsights(lista))
       .catch((e: unknown) => vivo && setErro(e instanceof Error ? e.message : String(e)));
     return () => {
       vivo = false;
     };
-  }, [base]);
+  }, [base, gerarInsights]);
 
   const perguntar = useCallback(
     async (pergunta: string) => {

@@ -47,6 +47,10 @@ export interface Motor {
   versaoPacote: string;
   tempos: TemposCarga;
   consultar(sql: string, params?: readonly Parametro[]): Promise<Resultado>;
+  /** Modo Universal: registra os bytes de uma planilha como arquivo virtual (só na memória do navegador). */
+  registrarArquivo(nome: string, bytes: Uint8Array): Promise<void>;
+  /** Sem cache (DDL e leituras da planilha). */
+  executar(sql: string): Promise<Linha[]>;
 }
 
 // O manifesto só existe depois de `npm run baixar-extensoes` (caminho final).
@@ -174,6 +178,12 @@ export async function iniciarMotor(): Promise<Motor> {
   return {
     fonte,
     versaoPacote: duckdb.PACKAGE_VERSION,
+    async registrarArquivo(nome, bytes) {
+      await db.registerFileBuffer(nome, bytes);
+    },
+    async executar(sql) {
+      return (await executar(sql, [])).linhas;
+    },
     tempos: { motorMs: fimMotor - inicio, dadosMs: fim - fimMotor, totalMs: fim - inicio },
     consultar(sql, params = []) {
       // Cache por SQL + parâmetros: a mesma pergunta não roda duas vezes.
