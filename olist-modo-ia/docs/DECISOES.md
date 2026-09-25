@@ -225,3 +225,50 @@ Formato: **contexto → decisão → alternativa descartada**. As decisões da F
 - O TypeScript 7 (compilador nativo) ainda não é suportado pelo typescript-eslint. As regras que importam viraram testes
   (`tests/unit/guardas.test.ts`): nada de `innerHTML`/`dangerouslySetInnerHTML`/`eval`, nada de `any`, nenhuma URL de
   CDN, Zod só via `src/zod.ts`.
+
+## Fase 3: Modo Rápido
+
+### D23. Camada 0 por dicionário + "frase mais longa primeiro"
+
+- **Contexto:** o Modo Rápido precisa acertar perguntas comuns em menos de 300 ms, sem modelo.
+- **Decisão:** um dicionário montado a partir do `semantic.json` (métricas, dimensões e sinônimos) e dos **valores
+  reais da base** (categorias, UFs, formas de pagamento...). O texto é normalizado, o parser de tempo tira os trechos
+  de data, e cada trecho restante casa com a frase MAIS LONGA do dicionário ("rio grande do sul" antes de "rio",
+  "no prazo" antes de "prazo"). Erros de digitação passam pelo fuse.js (limiar 0,3), só nas palavras que sobraram.
+  Regras de intenção decidem o tipo de pergunta, e uma nota de confiança (limiar 0,45) decide entre responder,
+  perguntar de volta com chips ou avisar que o dado não existe.
+- **Regras que valem entrevista:** UFs que também são palavras ("SE", "TO", "PE") só contam em maiúsculas ou depois
+  de "em/no/de"; "nota **dos clientes**" não vira a métrica clientes (substantivo depois de preposição é contexto);
+  dimensão categórica com até 8 valores vira comparação, com mais valores vira ranking (top 10).
+- **Descartado:** LLM para tudo (lento e sem necessidade para perguntas comuns) e regex por pergunta (não generaliza).
+
+### D24. Suíte parcial e resultado honesto
+
+- `evals/perguntas.json`: 76 perguntas (fáceis, médias, difíceis, follow-ups, ambíguas, fora de escopo, digitação).
+  56 foram escritas **junto** com as regras (o 100% delas é otimista). 20 foram escritas **às cegas** depois das
+  regras e rodadas uma vez: **16/20 (80%)** na primeira rodada. Os 4 erros eram lacunas reais (substantivo de contexto
+  virando métrica, correção de digitação somando métrica, "custo do frete" como sinônimo de frete, "natal"), foram
+  corrigidos, e a suíte inteira passou a 76/76. A Fase 7 amplia para 80+ com perguntas novas, que não servem para ajuste.
+
+### D25. Motor de insights, narrador e validador numérico
+
+- Fatos determinísticos (`src/insights/engine.ts`): total, líder e participação, top 3, maior/menor, diferença entre
+  grupos, outliers (z > 2), pico/mínimo/tendência (regressão linear) sem os meses com poucos pedidos, variação contra
+  o período de comparação e decomposição da variação (`drivers.ts`), em que a soma das contribuições é exatamente o
+  delta total.
+- O narrador (`src/narrator/templates.ts`) só usa `valor_formatado` dos fatos. O validador (`validador.ts`) confere
+  que todo número do texto está num fato; um teste roda TODAS as perguntas da suíte e exige zero números soltos.
+  Na Fase 4 o mesmo validador barra a saída da IA.
+- "Por que caiu?" mostra ONDE a variação aconteceu (quais categorias), nunca a causa. O texto diz isso explicitamente.
+- "Período anterior" de meses inteiros é o mês (trimestre, ano) anterior do calendário: dez/2017 compara com nov/2017.
+
+### D26. Seletor de gráfico e "Outros"
+
+- Regras da seção 12. "Outros" só aparece quando a lista foi cortada nas 15 barras; num "top 5" pedido pelo usuário,
+  ele esmagava o gráfico (R$ 4,29 mi contra R$ 770 mil do líder). A cascata mostra os 3 segmentos que mais empurraram
+  na direção da variação + 1 na contrária + "Outros", com o eixo começando perto dos valores.
+
+### D27. O Modo IA não usa os filtros da barra lateral
+
+- A pergunta é autossuficiente ("em 2018", "em SP"); misturar com filtros escondidos tornaria a resposta difícil de
+  explicar. O painel avisa isso no rodapé. Fixados e 👍/👎 ficam no `localStorage` (a Fase 6 traz o "Apagar dados locais").

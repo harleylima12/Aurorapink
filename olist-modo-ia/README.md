@@ -14,7 +14,8 @@ Dashboard da base pública da Olist com **Modo IA 100% local** (WebLLM + DuckDB-
 | 0. Plano | ✅ aprovado |
 | 1. Dados | ✅ Parquet gerado e conferido com o Power BI: [`dados/validacao.md`](dados/validacao.md) |
 | 2. Base | ✅ dashboard de 3 páginas, compilador spec→SQL, CSP; prints em [`docs/prints/fase2`](docs/prints/fase2) |
-| 3 a 8 | a fazer |
+| 3. Modo Rápido | ✅ perguntas em PT-BR respondidas sem IA em < 100 ms (p95); prints em [`docs/prints/fase3`](docs/prints/fase3) |
+| 4 a 8 | a fazer |
 
 ## Fase 1: preparar os dados
 
@@ -40,7 +41,7 @@ Requer Node 22.12+.
 npm ci
 npm run baixar-extensoes      # caminho final: leitor de Parquet servido pelo app (precisa de extensions.duckdb.org uma vez)
 npm run dev                   # http://localhost:5173
-npm test                      # testes unitários (Vitest)
+npm test                      # testes unitários (Vitest) + suíte da Camada 0 (evals/perguntas.json)
 npx playwright install chromium && npx playwright test   # e2e no build de produção
 ```
 

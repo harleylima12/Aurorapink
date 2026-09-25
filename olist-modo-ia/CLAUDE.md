@@ -40,13 +40,14 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
 
 - **Fase 0 (plano):** concluída.
 - **Fase 1 (dados):** aprovada. Parquet batendo com o Power BI no centavo (`dados/validacao.md`).
-- **Fase 2 (base):** concluída na nuvem, aguardando o OK do Harley. Vite 8 + React 19 + TS 7 strict; DuckDB-WASM 1.32.0 local; `src/semantic/semantic.json`; QuerySpec em Zod (`src/query/spec.ts`); compilador puro (`src/query/compiler.ts`); dashboard de 3 páginas com filtros Ano/Estado e "Como calculei". Testes: `npm test` (89), `npx playwright test` (11 + prints com `PRINTS=1`), `python -m pytest tests/dados` (57). Medições em `docs/BENCHMARK.md`; prints em `docs/prints/fase2/`.
+- **Fase 2 (base):** aprovada. Dashboard de 3 páginas, compilador spec→SQL, CSP.
+- **Fase 3 (Modo Rápido):** concluída na nuvem, aguardando o OK do Harley. Parser de tempo (`src/query/timeParser.ts`), Camada 0 (`src/router/layer0.ts`), motor de insights e decomposição (`src/insights/`), seletor de gráfico (`src/charts/selector.ts`), narrador por template + validador numérico (`src/narrator/`), pipeline (`src/modo-ia/responder.ts`) e painel "✨ Modo IA" (`src/ui/modo-ia/`). Suíte `evals/perguntas.json` (76; 80% nas 20 cegas na 1ª rodada, 76/76 depois). Latência p95 96 ms. Testes: `npm test` (102), `npx playwright test` (15 + prints com `PRINTS=1`), `python -m pytest tests/dados` (57). Prints em `docs/prints/fase3/`.
 - **Caminho de dados:** o app usa o `.duckdb` PROVISÓRIO até alguém rodar `npm run baixar-extensoes` (D17). O rodapé mostra qual caminho está ativo.
-- **Validar no PC do Harley (antes/no início da Fase 3):**
+- **Validar no PC do Harley (continua pendente):**
   1. `npm ci`, `npx playwright install chromium`, `npm run baixar-extensoes` (primeiro download: registra o SHA-256 no lock; commitar lock, manifesto e `public/duckdb-extensions/`).
   2. `npx playwright test`: o teste do rodapé passa a exigir "Parquet (caminho final)"; conferir zero violações de CSP e a auditoria de rede.
   3. `RODADAS=5 npx playwright test medicoes` e anotar no BENCHMARK.md (tamanho real da extensão incluso).
   4. `python scripts/preparar_dados.py` no Windows (caminho com acento e espaço).
   5. Conferir o frete total no card do Power BI (D16).
   6. Decidir se o `.duckdb` provisório fica como plano B ou sai (Fase 6).
-- **Próximo passo:** Fase 3 (Modo Rápido), depois do OK do Harley.
+- **Próximo passo:** Fase 4 (IA local com WebLLM), depois do OK do Harley. Precisa do PC (WebGPU) para testar o modelo de verdade; na nuvem dá para escrever o worker, o planejador com JSON Schema e os testes sem GPU.
