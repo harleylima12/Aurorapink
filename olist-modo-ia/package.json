@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@duckdb/duckdb-wasm": "1.32.0",
+    "@mlc-ai/web-llm": "0.2.85",
     "echarts": "6.1.0",
     "fuse.js": "7.5.0",
     "react": "19.3.0",
