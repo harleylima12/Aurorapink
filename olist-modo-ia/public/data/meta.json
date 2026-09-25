@@ -1,0 +1,34 @@
+{
+  "dataset": "olist",
+  "nome": "Vendas Olist",
+  "descricao": "E-commerce brasileiro (Olist): itens vendidos, pedidos, entregas, pagamentos e avaliações",
+  "fonte": "Brazilian E-Commerce Public Dataset by Olist (Kaggle / github.com/olist/work-at-olist-data)",
+  "licenca": "CC BY-NC-SA 4.0",
+  "periodo": {
+    "de": "2016-09-04",
+    "ate": "2018-09-03"
+  },
+  "data_ancora": "2018-08-31",
+  "linhas": {
+    "fato_itens": 112101,
+    "ids_pedido": 98199,
+    "ids_cliente": 94983,
+    "ids_produto": 32729,
+    "ids_vendedor": 3053
+  },
+  "arquivos": {
+    "fato": "fato_itens.parquet",
+    "ids_pedido": "ids_pedido.parquet",
+    "ids_cliente": "ids_cliente.parquet",
+    "ids_produto": "ids_produto.parquet",
+    "ids_vendedor": "ids_vendedor.parquet"
+  },
+  "regras": {
+    "status_excluidos": [
+      "canceled",
+      "unavailable"
+    ],
+    "faturamento": "soma de price, sem frete",
+    "grao": "uma linha por item; atributos de pedido se repetem e são deduplicados por pedido_sk"
+  }
+}
