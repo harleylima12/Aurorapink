@@ -27,6 +27,25 @@ export interface CargaWebLLM {
 
 export class SemWebGpu extends Error {}
 
+/** O servidor (Vite/Vercel) devolve o index.html para arquivo que não existe: confere o tipo, não só o status. */
+async function existe(url: string, tipoProibido = 'text/html'): Promise<boolean> {
+  try {
+    const r = await fetch(url, { method: 'HEAD' });
+    return r.ok && !(r.headers.get('content-type') ?? '').includes(tipoProibido);
+  } catch {
+    return false;
+  }
+}
+
+async function conferirArquivos(registro: RegistroModelo, fonte: 'demo' | 'local'): Promise<void> {
+  if (!(await existe(registro.model_lib))) {
+    throw new Error(`a biblioteca do modelo não está no site (${new URL(registro.model_lib).pathname}). Rode: npm run baixar-modelo -- --so-libs`);
+  }
+  if (fonte === 'local' && !(await existe(`${registro.model}resolve/main/mlc-chat-config.json`))) {
+    throw new Error(`os pesos de ${registro.model_id} não estão em public/models. Rode: npm run baixar-modelo -- --modelo ${registro.model_id}`);
+  }
+}
+
 export async function carregarWebLLM(aoProgresso: (p: ProgressoCarga) => void, opcoes: { forcarModelo?: string } = {}): Promise<CargaWebLLM> {
   const t0 = performance.now();
   const gpu = await detectarGpu();
@@ -36,11 +55,27 @@ export async function carregarWebLLM(aoProgresso: (p: ProgressoCarga) => void, o
 
   const fonte = lerFonte(import.meta.env.VITE_MODEL_SOURCE);
   const registro = registroParaApp(escolha.modelo, fonte, location.origin);
+  await conferirArquivos(registro, fonte);
   const worker = new Worker(new URL('./engine.worker.ts', import.meta.url), { type: 'module' });
-  const engine = await webllm.CreateWebWorkerMLCEngine(worker, registro.model_id, {
-    appConfig: { model_list: [registro], cacheBackend: 'cache' },
-    initProgressCallback: (r) => aoProgresso({ fracao: r.progress, texto: r.text, segundos: r.timeElapsed }),
-  });
+  let engine: Awaited<ReturnType<typeof webllm.CreateWebWorkerMLCEngine>>;
+  try {
+    engine = await webllm.CreateWebWorkerMLCEngine(worker, registro.model_id, {
+      appConfig: { model_list: [registro], cacheBackend: 'cache' },
+      initProgressCallback: (r) => aoProgresso({ fracao: r.progress, texto: r.text, segundos: r.timeElapsed }),
+    });
+  } catch (e) {
+    worker.terminate();
+    const msg = e instanceof Error ? e.message : String(e);
+    if (/failed to fetch|networkerror|load failed/i.test(msg)) {
+      const onde = new URL(registro.model).host;
+      throw new Error(
+        fonte === 'demo'
+          ? `não consegui baixar os pesos do modelo de ${onde} (rede bloqueada ou sem internet). Alternativa: modo local (npm run baixar-modelo)`
+          : `não consegui ler os pesos do modelo neste site (${msg})`,
+      );
+    }
+    throw e;
+  }
   const segundosCarga = (performance.now() - t0) / 1000;
 
   const pensa = registro.model_id.startsWith('Qwen3');

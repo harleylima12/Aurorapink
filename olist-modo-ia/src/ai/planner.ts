@@ -30,6 +30,8 @@ export interface ResultadoPlanejador {
   versaoPrompt: string;
   mensagens: MensagemChat[];
   ajustes: string[];
+  /** Números do WebLLM (tokens, ttft, tokens/s): vão para o BENCHMARK no PC. */
+  metricas?: Record<string, number>;
 }
 
 export const MAX_TOKENS_PLANEJADOR = 256;
@@ -117,5 +119,6 @@ export async function planejar(e: EntradaPlanejador): Promise<ResultadoPlanejado
     maxTokens: MAX_TOKENS_PLANEJADOR,
   });
   const v = validarSpecDoModelo(resposta.texto, e.semantica, e.valores);
-  return { ...v, bruto: resposta.texto, ms: resposta.ms, versaoPrompt: VERSAO_PROMPT_PLANEJADOR, mensagens };
+  const metricas = { ...resposta.metricas, ...(resposta.tokensEntrada ? { tokens_entrada: resposta.tokensEntrada } : {}), ...(resposta.tokensSaida ? { tokens_saida: resposta.tokensSaida } : {}) };
+  return { ...v, bruto: resposta.texto, ms: resposta.ms, versaoPrompt: VERSAO_PROMPT_PLANEJADOR, mensagens, metricas };
 }

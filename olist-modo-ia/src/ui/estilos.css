@@ -967,3 +967,9 @@ select {
   flex-basis: 64px;
   width: 64px;
 }
+
+.ativar-ia .erro {
+  margin: 0 0 8px;
+  padding: 0;
+  font-size: 12.5px;
+}

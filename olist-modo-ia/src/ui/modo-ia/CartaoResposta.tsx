@@ -142,6 +142,13 @@ export function CartaoResposta({ resposta, msTela, selo, aoEscolher, fixadoId, n
               </h3>
               <pre>{resposta.planejamento.bruto}</pre>
               {!resposta.planejamento.valido && <pre>rejeitado: {resposta.planejamento.erros.join('; ')}</pre>}
+              {resposta.planejamento.metricas && Object.keys(resposta.planejamento.metricas).length > 0 && (
+                <pre data-metricas-webllm>
+                  {Object.entries(resposta.planejamento.metricas)
+                    .map(([k, v]) => `${k}: ${formatar(v, 'dec2')}`)
+                    .join('\n')}
+                </pre>
+              )}
             </>
           )}
           <h3>QuerySpec</h3>

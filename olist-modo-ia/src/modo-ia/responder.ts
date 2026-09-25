@@ -68,6 +68,7 @@ export interface InfoPlanejamento {
   ms: number;
   /** Tamanho do prompt (caracteres), para acompanhar o custo em GPU fraca. */
   caracteresPrompt: number;
+  metricas?: Record<string, number>;
 }
 
 export interface InfoNarracao {
@@ -120,6 +121,7 @@ export async function responder(pergunta: string, ctx: ContextoResposta, anterio
         ajustes: p.ajustes,
         ms: p.ms,
         caracteresPrompt: p.mensagens.reduce((n, m) => n + m.content.length, 0),
+        metricas: p.metricas,
       };
       const rastro = [
         `Camada 0 sem certeza (${roteamento.paraCamada1}; confiança ${Math.round(roteamento.confianca * 100)}%): pergunta enviada à IA local`,
