@@ -90,7 +90,8 @@ export const semanticaSchema = z
       table: identificador,
       order_key: identificador,
       order_columns: z.array(identificador),
-      time_column: identificador,
+      /** Opcional: planilha do Modo Universal sem nenhuma data não tem eixo de tempo. */
+      time_column: identificador.optional(),
       source: z.string().optional(),
       license: z.string().optional(),
     }),

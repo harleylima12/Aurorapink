@@ -1,0 +1,58 @@
+{
+  "geradoEm": "npm test",
+  "certas": 82,
+  "total": 82,
+  "acerto": 100,
+  "porArquivo": {
+    "vendas_br.csv": {
+      "certas": 13,
+      "total": 13,
+      "erros": []
+    },
+    "clientes.csv": {
+      "certas": 8,
+      "total": 8,
+      "erros": []
+    },
+    "financeiro_titulo_total.csv": {
+      "certas": 6,
+      "total": 6,
+      "erros": []
+    },
+    "rh_ficticio.csv": {
+      "certas": 12,
+      "total": 12,
+      "erros": []
+    },
+    "estoque.tsv": {
+      "certas": 10,
+      "total": 10,
+      "erros": []
+    },
+    "baguncada.csv": {
+      "certas": 9,
+      "total": 9,
+      "erros": []
+    },
+    "desenhada.csv": {
+      "certas": 0,
+      "total": 0,
+      "erros": []
+    },
+    "cega_escola.csv": {
+      "certas": 8,
+      "total": 8,
+      "erros": []
+    },
+    "cega_chamados.csv": {
+      "certas": 9,
+      "total": 9,
+      "erros": []
+    },
+    "cega_vendas_en.csv": {
+      "certas": 7,
+      "total": 7,
+      "erros": []
+    }
+  }
+}

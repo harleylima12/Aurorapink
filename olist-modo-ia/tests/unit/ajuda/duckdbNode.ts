@@ -46,6 +46,8 @@ function normalizar(valor: unknown): Valor {
 
 export interface BancoTeste {
   consultar(sql: string, params?: readonly (string | number)[]): Linha[];
+  /** Registra bytes como arquivo virtual (planilhas do Modo Universal). */
+  registrarArquivo(nome: string, dados: Uint8Array): void;
 }
 
 export async function abrirBancoTeste(): Promise<BancoTeste> {
@@ -73,6 +75,9 @@ export async function abrirBancoTeste(): Promise<BancoTeste> {
     t.toArray().map((l) => Object.fromEntries(Object.entries(l.toJSON()).map(([k, v]) => [k, normalizar(v)])));
 
   return {
+    registrarArquivo(nome, dados) {
+      db.registerFileBuffer(nome, dados);
+    },
     consultar(sql, params = []) {
       if (params.length === 0) return paraLinhas(conn.query(sql));
       const preparada = conn.prepare(sql);

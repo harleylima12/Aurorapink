@@ -173,12 +173,13 @@ export function compilar(spec: QuerySpec, semantica: Semantica): SqlCompilado {
 
   // 1. Filtros (tudo parametrizado).
   const onde: string[] = [];
-  const colunaTempo = nome(semantica.dataset.time_column);
   for (const [limite, operador] of [
     [spec.time?.from, '>='],
     [spec.time?.to, '<='],
   ] as const) {
     if (limite === undefined) continue;
+    if (!semantica.dataset.time_column) throw new ErroCompilacao('esta base não tem coluna de data para filtrar período');
+    const colunaTempo = nome(semantica.dataset.time_column);
     if (!DATA_ISO.test(limite)) throw new ErroCompilacao('período exige datas AAAA-MM-DD');
     onde.push(`${colunaTempo} ${operador} CAST(? AS DATE)`);
     params.push(limite);
