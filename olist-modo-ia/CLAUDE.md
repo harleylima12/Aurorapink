@@ -38,7 +38,15 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
 
 ## Estado atual
 
-- **Fase 0 (plano):** concluída. As respostas do Harley estão na seção 6 do `docs/FASE0_PLANO.md`: período = base inteira, definições de entrega e frete = as propostas, GPU = detectar na Fase 4.
-- **Fase 1 (dados):** concluída, aguardando o OK do Harley. `scripts/preparar_dados.py` gera `public/data/fato_itens.parquet` (1,77 MB, 112.101 itens × 20 colunas), `ids_*.parquet` (chaves substitutas → IDs originais) e `meta.json` (âncora 31/08/2018). Os números batem com o Power BI no centavo: faturamento R$ 13.494.400,74 · pedidos 98.199 · ticket médio R$ 137,42 · clientes únicos 94.983 (`dados/validacao.md`). Testes: `python -m pytest tests/dados -q` (55).
-- **Em aberto:** o frete total (R$ 2.245.816,19) difere do anotado na Fase 0 (R$ 2.241.126,29). Conferir no Power BI (D16).
-- **Próximo passo:** Fase 2 (base), depois do OK do Harley. Primeiro teste: carregar a extensão `parquet` self-hosted no DuckDB-WASM (D15); se falhar, plano B = arquivo `.duckdb`. Também: dimensão cidade agrupada por cidade + UF (D11) e agregados `DECIMAL` convertidos para `DOUBLE` (D4).
+- **Fase 0 (plano):** concluída.
+- **Fase 1 (dados):** aprovada. Parquet batendo com o Power BI no centavo (`dados/validacao.md`).
+- **Fase 2 (base):** concluída na nuvem, aguardando o OK do Harley. Vite 8 + React 19 + TS 7 strict; DuckDB-WASM 1.32.0 local; `src/semantic/semantic.json`; QuerySpec em Zod (`src/query/spec.ts`); compilador puro (`src/query/compiler.ts`); dashboard de 3 páginas com filtros Ano/Estado e "Como calculei". Testes: `npm test` (89), `npx playwright test` (11 + prints com `PRINTS=1`), `python -m pytest tests/dados` (57). Medições em `docs/BENCHMARK.md`; prints em `docs/prints/fase2/`.
+- **Caminho de dados:** o app usa o `.duckdb` PROVISÓRIO até alguém rodar `npm run baixar-extensoes` (D17). O rodapé mostra qual caminho está ativo.
+- **Validar no PC do Harley (antes/no início da Fase 3):**
+  1. `npm ci`, `npx playwright install chromium`, `npm run baixar-extensoes` (primeiro download: registra o SHA-256 no lock; commitar lock, manifesto e `public/duckdb-extensions/`).
+  2. `npx playwright test`: o teste do rodapé passa a exigir "Parquet (caminho final)"; conferir zero violações de CSP e a auditoria de rede.
+  3. `RODADAS=5 npx playwright test medicoes` e anotar no BENCHMARK.md (tamanho real da extensão incluso).
+  4. `python scripts/preparar_dados.py` no Windows (caminho com acento e espaço).
+  5. Conferir o frete total no card do Power BI (D16).
+  6. Decidir se o `.duckdb` provisório fica como plano B ou sai (Fase 6).
+- **Próximo passo:** Fase 3 (Modo Rápido), depois do OK do Harley.

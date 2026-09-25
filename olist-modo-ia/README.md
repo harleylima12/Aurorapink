@@ -13,7 +13,8 @@ Dashboard da base pública da Olist com **Modo IA 100% local** (WebLLM + DuckDB-
 |---|---|
 | 0. Plano | ✅ aprovado |
 | 1. Dados | ✅ Parquet gerado e conferido com o Power BI: [`dados/validacao.md`](dados/validacao.md) |
-| 2 a 8 | a fazer |
+| 2. Base | ✅ dashboard de 3 páginas, compilador spec→SQL, CSP; prints em [`docs/prints/fase2`](docs/prints/fase2) |
+| 3 a 8 | a fazer |
 
 ## Fase 1: preparar os dados
 
@@ -25,11 +26,26 @@ source .venv/bin/activate             # Windows (PowerShell): .venv\Scripts\Acti
 pip install -r scripts/requirements.txt
 python scripts/baixar_dados.py        # baixa o que faltar em ./dados e confere o SHA-256 (--verificar só confere)
 python scripts/preparar_dados.py      # gera public/data/*.parquet, meta.json e dados/validacao.md
-python -m pytest tests/dados -q       # 55 testes
+python -m pytest tests/dados -q       # 57 testes
 ```
 
 O `preparar_dados.py` termina com erro se os totais não baterem com o Power BI (faturamento R$ 13.494.400,74 ·
 98.199 pedidos · ticket médio R$ 137,42 · 94.983 clientes únicos).
+
+## Fase 2: rodar o dashboard
+
+Requer Node 22.12+.
+
+```bash
+npm ci
+npm run baixar-extensoes      # caminho final: leitor de Parquet servido pelo app (precisa de extensions.duckdb.org uma vez)
+npm run dev                   # http://localhost:5173
+npm test                      # testes unitários (Vitest)
+npx playwright install chromium && npx playwright test   # e2e no build de produção
+```
+
+Sem `npm run baixar-extensoes`, o app usa um arquivo `.duckdb` provisório com os mesmos dados
+(`python scripts/gerar_duckdb_provisorio.py`) e avisa no rodapé. Ver `docs/DECISOES.md` (D15 e D17).
 
 ## Dados e licença
 

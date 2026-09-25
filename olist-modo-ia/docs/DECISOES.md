@@ -158,3 +158,70 @@ Formato: **contexto → decisão → alternativa descartada**. As decisões da F
   pedido e vendedor, e só produtos com categoria.
 - **Situação:** não é critério de aceite. Precisa ser conferido no card de frete do Power BI. Se o Power BI mostrar
   R$ 2.245.816,19, o número da Fase 0 é que estava errado.
+
+## Fase 2: base
+
+### D17. Caminho FINAL × caminho PROVISÓRIO dos dados (sem extensions.duckdb.org nesta nuvem)
+
+- **Contexto:** o DuckDB-WASM 1.32.0 precisa da extensão `parquet` (D15), e `extensions.duckdb.org` está bloqueado nesta
+  sessão por decisão do Harley (não liberar por enquanto).
+- **FINAL (pronto, falta validar no PC):**
+  - `npm run baixar-extensoes` (`scripts/baixar-extensoes.mjs`) descobre a versão do motor pelo próprio pacote
+    instalado (v1.4.3), baixa `parquet.duckdb_extension.wasm` para `wasm_mvp` e `wasm_eh`, confere o SHA-256 contra
+    `scripts/extensoes-duckdb.lock.json` e grava em `public/duckdb-extensions/v1.4.3/<plataforma>/`, mais o
+    manifesto `src/data/extensoes-duckdb.gerado.json`. Tudo em duas etapas: nada é gravado se algum arquivo falhar.
+  - Como o hash oficial não pôde ser obtido aqui, o lock começa vazio (`{}`): no primeiro download o script registra
+    o hash ("confiança no primeiro uso") e pede commit; daí em diante, arquivo diferente é recusado. A segunda trava é
+    a assinatura digital, conferida pelo próprio DuckDB no `LOAD`.
+  - No app (`src/data/duckdb.ts`): com o manifesto presente, `SET custom_extension_repository = '<site>/duckdb-extensions'`
+    + `LOAD parquet` + `read_parquet('fato_itens.parquet')`.
+- **PROVISÓRIO (usado aqui):** `scripts/gerar_duckdb_provisorio.py` copia o Parquet para
+  `public/data/provisorio/fato_itens.duckdb` (formato v1.0.0, lido pelo motor 1.4.3 sem extensão), aberto com `ATTACH`.
+  Os dados são idênticos (teste `tests/dados/test_provisorio.py`, `EXCEPT ALL` nos dois sentidos).
+- **Escolha automática e visível:** sem manifesto → provisório; com manifesto → final; se o final falhar, cai no
+  provisório com o motivo no rodapé (P4). `VITE_FONTE_DADOS=duckdb|parquet|auto` força um dos dois.
+- **O que foi verificado no Chromium, com uma extensão FALSA:** o DuckDB pediu exatamente
+  `/duckdb-extensions/v1.4.3/wasm_eh/parquet.duckdb_extension.wasm` ao próprio site (o layout do script), recusou o
+  arquivo por "signature is either missing or invalid" e o app caiu no provisório com os mesmos números, zero
+  violações de CSP e nenhuma requisição externa.
+- **Não verificado (PC do Harley):** o download real, o `LOAD` da extensão assinada e a leitura do Parquet no navegador.
+- **Descartado:** baixar a extensão de espelhos (seria contornar o bloqueio de rede) e ligar o autoload.
+
+### D18. Compilador: grão de pedido com subconsulta DISTINCT e junção por dimensões
+
+- Métricas `grain: "order"` rodam sobre `SELECT DISTINCT pedido_sk, <colunas de pedido>, <dimensões> FROM base`; as de
+  item, direto na base; as duas partes se juntam por `IS NOT DISTINCT FROM` nas dimensões. Resultado testado nos dados:
+  nota 4,117 (e não 4,045), 6.531 atrasados no recorte B, pedido em 2 categorias conta nas duas.
+- Valores do usuário sempre como parâmetro `?`; nomes de coluna só da camada semântica, com checagem de formato
+  (`^[a-z][a-z0-9_]*$`). Teste de injeção: `"SP') OR 1=1 --"` retorna 0 pedidos.
+- Agregados convertidos para `DOUBLE` no próprio SQL (`CAST(... AS DOUBLE)`), além de `castDecimalToDouble` na conexão.
+- **Descartado:** calcular tudo por item (erra a nota) ou gerar SQL a partir de templates de texto com os valores colados.
+
+### D19. Zod em modo `jitless`
+
+- O Zod 4 testa `new Function` para acelerar a validação; a CSP bloqueia e o navegador registrava 2 violações em cada
+  carga, mesmo com o erro tratado. `src/zod.ts` liga `z.config({ jitless: true })` e todo o código importa de lá (teste
+  de guarda). Resultado: 0 violações.
+- **Descartado:** liberar `'unsafe-eval'` na CSP.
+
+### D20. CSP no cabeçalho desde a Fase 2
+
+- Política única em `csp.config.ts`, usada no `vite preview` (produção), no `<meta>` do build e no `vercel.json`
+  (teste confere que são iguais). Os testes e2e rodam contra o build de produção e conferem o cabeçalho também no
+  arquivo do worker do DuckDB. No `npm run dev`, a CSP ganha `'unsafe-inline'` (React Refresh) e `ws:` (HMR), só em dev.
+
+### D21. Dashboard 100% por QuerySpec
+
+- Cada KPI, minissérie e gráfico é um QuerySpec (`src/dashboard/paginas.ts`) compilado na hora; um teste valida todos
+  contra o mesmo schema que a IA vai usar. Cada painel tem "Como calculei" (spec, SQL, parâmetros, ms e tabela de
+  dados, que também serve de alternativa acessível ao gráfico). Cache por SQL + parâmetros.
+- Meses com poucos pedidos (set–dez/2016, set/2018, pela regra dos 10% da mediana) aparecem sombreados nos gráficos
+  mensais e saem das minisséries dos KPIs; meses sem nenhum pedido (nov/2016) viram 0 (soma) ou vazio (média).
+- Cidade agrupada como "Cidade (UF)" (resolve o pendente de D11).
+- Tooltips do ECharts escapados com `format.encodeHTML` (ajuste 11); teste com `<img onerror>`.
+
+### D22. Sem ESLint por enquanto; guardas por teste
+
+- O TypeScript 7 (compilador nativo) ainda não é suportado pelo typescript-eslint. As regras que importam viraram testes
+  (`tests/unit/guardas.test.ts`): nada de `innerHTML`/`dangerouslySetInnerHTML`/`eval`, nada de `any`, nenhuma URL de
+  CDN, Zod só via `src/zod.ts`.
