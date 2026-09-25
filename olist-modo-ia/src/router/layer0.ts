@@ -30,10 +30,11 @@ export interface Roteamento {
   /** Para intent "esclarecer": o texto que cada chip envia. */
   sugestoes?: string[];
   /**
-   * A Camada 0 não entendeu direito (confiança baixa, palavras desconhecidas, follow-up que não mudou nada).
-   * Com a IA local pronta, a pergunta vai para a Camada 1 (planejador); sem ela, vale a resposta daqui.
+   * Por que a Camada 0 não confia na própria leitura (confiança baixa, palavras desconhecidas, digitação
+   * corrigida, follow-up que não mudou nada). Com a IA local pronta, a pergunta vai para a Camada 1
+   * (planejador); sem ela, vale a resposta daqui.
    */
-  paraCamada1?: boolean;
+  paraCamada1?: string;
 }
 
 export const LIMIAR_CONFIANCA = 0.45;
@@ -263,8 +264,11 @@ export function criarRoteador(semantica: Semantica, valores: Valores, ancora: st
     const valoresPorDim = new Map<string, string[]>();
     const ambiguos: string[][] = [];
     let fuzzy = false;
+    // Valor da base achado por digitação corrigida ("retrasado" -> Atrasado, "carioca" -> Acaiaca): palpite arriscado.
+    let valorPalpite = false;
     for (const a of achados) {
       fuzzy ||= a.fuzzy;
+      valorPalpite ||= a.fuzzy && a.entrada.tipo === 'valor';
       const { tipo, id, valores: vals } = a.entrada;
       if (tipo === 'metrica' && !metricas.includes(id)) metricas.push(id);
       if (tipo === 'dimensao' && !dimensoes.includes(id)) dimensoes.push(id);
@@ -344,7 +348,7 @@ export function criarRoteador(semantica: Semantica, valores: Valores, ancora: st
       if (limite !== undefined) novo.limit = limite;
       rastro.push('continuação da pergunta anterior');
       const mudou = JSON.stringify(novo) !== JSON.stringify(anterior);
-      return { spec: novo, confianca: mudou ? 0.8 : 0.3, rotuloPeriodo: tempo.periodo?.rotulo, rastro, ...(mudou && !fuzzy && !desconhecidas.length ? {} : { paraCamada1: true }) };
+      return { spec: novo, confianca: mudou ? 0.8 : 0.3, rotuloPeriodo: tempo.periodo?.rotulo, rastro, ...(mudou && !valorPalpite ? {} : { paraCamada1: mudou ? 'continuação com valor corrigido por digitação (palpite)' : 'continuação que não mudou nada' }) };
     }
 
     // --- Pergunta vaga ------------------------------------------------------------
@@ -363,16 +367,16 @@ export function criarRoteador(semantica: Semantica, valores: Valores, ancora: st
         },
         confianca: 0.7,
         rastro,
-        paraCamada1: true,
+        paraCamada1: 'nenhuma palavra conhecida',
       };
     }
-    if (nadaUtil) return { ...esclarecer('O que você quer ver?', OPCOES_VAGAS, PERGUNTAS_VAGAS, 0.9, rastro), paraCamada1: true };
+    if (nadaUtil) return { ...esclarecer('O que você quer ver?', OPCOES_VAGAS, PERGUNTAS_VAGAS, 0.9, rastro), paraCamada1: 'nada reconhecido' };
 
     // Categoria ambígua ("móveis"): pergunta qual.
     if (ambiguos.length && ![...valoresPorDim.keys()].includes('categoria')) {
       const opcoes = (ambiguos[0] ?? []).slice(0, 3);
       const qual = esclarecer('Qual destas categorias?', opcoes, opcoes.map((o) => `${pergunta} — ${o}`), 0.6, rastro);
-      return fuzzy || desconhecidas.length ? { ...qual, paraCamada1: true } : qual;
+      return valorPalpite ? { ...qual, paraCamada1: 'categoria ambígua e valor corrigido por digitação' } : qual;
     }
 
     // --- Monta o spec -------------------------------------------------------------
@@ -476,11 +480,10 @@ export function criarRoteador(semantica: Semantica, valores: Valores, ancora: st
         confianca,
         rastro,
       );
-      return { ...duvida, paraCamada1: true };
+      return { ...duvida, paraCamada1: 'confiança abaixo do limiar' };
     }
     // Palpite por digitação corrigida ou palavra desconhecida: a IA (se pronta) revê a pergunta.
-    const palpite = fuzzy || desconhecidas.length > 0;
-    return { spec, confianca, rotuloPeriodo, rastro, ...(palpite ? { paraCamada1: true } : {}) };
+    return { spec, confianca, rotuloPeriodo, rastro, ...(valorPalpite ? { paraCamada1: 'valor corrigido por digitação (palpite)' } : {}) };
   }
 
   return { rotear };

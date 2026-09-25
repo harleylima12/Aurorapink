@@ -16,13 +16,15 @@ interface Props {
   aoEscolher?: (pergunta: string) => void;
   /** No dashboard (fixados): troca "Fixar" por "Desafixar". */
   fixadoId?: string;
+  /** A IA local está reescrevendo o texto (o do template fica até ela terminar e passar no validador). */
+  narrando?: boolean;
 }
 
 function duracao(ms: number): string {
   return ms < 1000 ? `${Math.max(1, Math.round(ms))} ms` : `${formatar(ms / 1000, 'dec2')} s`;
 }
 
-export function CartaoResposta({ resposta, msTela, selo, aoEscolher, fixadoId }: Props) {
+export function CartaoResposta({ resposta, msTela, selo, aoEscolher, fixadoId, narrando }: Props) {
   const grafico = useRef<EChartsType | null>(null);
   const [aviso, setAviso] = useState('');
   const [voto, setVoto] = useState<'bom' | 'ruim' | null>(null);
@@ -60,7 +62,14 @@ export function CartaoResposta({ resposta, msTela, selo, aoEscolher, fixadoId }:
   };
 
   return (
-    <article className={`resposta resposta-${tipo}`} data-tipo={tipo} data-intent={resposta.spec.intent} aria-label={texto.titulo}>
+    <article
+      className={`resposta resposta-${tipo}`}
+      data-tipo={tipo}
+      data-intent={resposta.spec.intent}
+      data-modo={resposta.modo}
+      data-texto={resposta.narracao.origem}
+      aria-label={texto.titulo}
+    >
       {selo && <p className="resposta-selo-topo">{selo}</p>}
       {resposta.pergunta && !selo && <p className="resposta-pergunta">“{resposta.pergunta}”</p>}
       <h3 className="resposta-titulo">{texto.titulo}</h3>
@@ -96,7 +105,7 @@ export function CartaoResposta({ resposta, msTela, selo, aoEscolher, fixadoId }:
       )}
 
       {texto.bullets.length > 0 && (
-        <ul className="resposta-bullets">
+        <ul className={`resposta-bullets${narrando ? ' narrando' : ''}`}>
           {texto.bullets.map((b, i) => (
             <li key={i}>{b}</li>
           ))}
@@ -113,16 +122,28 @@ export function CartaoResposta({ resposta, msTela, selo, aoEscolher, fixadoId }:
         </div>
       )}
 
+      {narrando && <p className="nota narrando-aviso" role="status">IA local revisando o texto…</p>}
       <p className="resposta-selo" data-ms={Math.round(msTela ?? resposta.ms)}>
-        respondido em {duracao(msTela ?? resposta.ms)} · Modo Rápido
-        {tipo === 'dados' && resposta.confianca < 1 ? ` · confiança ${formatar(resposta.confianca, 'pct')}` : ''}
+        respondido em {duracao(msTela ?? resposta.ms)} · <span className={`selo-modo selo-${resposta.modo}`}>{resposta.modo === 'ia' ? 'IA' : 'Modo Rápido'}</span>
+        {tipo === 'dados' && resposta.confianca < 1 && resposta.modo === 'rapido' ? ` · confiança ${formatar(resposta.confianca, 'pct')}` : ''}
+        {tipo === 'dados' && !narrando && resposta.narracao.modelo ? ` · texto: ${resposta.narracao.origem === 'ia' ? 'IA' : 'template'}` : ''}
       </p>
 
       <details className="como-calculei">
         <summary>Como calculei · {resposta.consultas.length} {resposta.consultas.length === 1 ? 'consulta' : 'consultas'} · {formatar(resposta.consultas.reduce((s, c) => s + c.ms, 0), 'dec1')} ms no DuckDB</summary>
         <div className="como-corpo">
-          <h3>Entendi assim (Camada 0, sem IA)</h3>
+          <h3>{resposta.modo === 'ia' ? 'Entendi assim (Camada 1, IA local)' : 'Entendi assim (Camada 0, sem IA)'}</h3>
           <pre>{resposta.rastro.join('\n') || '—'}</pre>
+          {resposta.planejamento && (
+            <>
+              <h3>
+                Saída crua do modelo · {resposta.planejamento.modelo} · {resposta.planejamento.versaoPrompt} · {duracao(resposta.planejamento.ms)} · prompt com{' '}
+                {formatar(resposta.planejamento.caracteresPrompt, 'int')} caracteres
+              </h3>
+              <pre>{resposta.planejamento.bruto}</pre>
+              {!resposta.planejamento.valido && <pre>rejeitado: {resposta.planejamento.erros.join('; ')}</pre>}
+            </>
+          )}
           <h3>QuerySpec</h3>
           <pre>{JSON.stringify(resposta.spec, null, 2)}</pre>
           {resposta.consultas.map((c) => (
@@ -138,6 +159,15 @@ export function CartaoResposta({ resposta, msTela, selo, aoEscolher, fixadoId }:
             <>
               <h3>Fatos usados no texto</h3>
               <pre>{resposta.fatos.map((f) => `${f.id}: ${f.rotulo} = ${f.valor_formatado}`).join('\n')}</pre>
+            </>
+          )}
+          {resposta.narracao.modelo && (
+            <>
+              <h3>
+                Texto · {resposta.narracao.origem === 'ia' ? `escrito pela IA (${resposta.narracao.versaoPrompt ?? ''}, ${duracao(resposta.narracao.ms ?? 0)}), valores preenchidos pelo app` : 'template (o da IA foi rejeitado pelo validador)'}
+              </h3>
+              {resposta.narracao.rejeitada && <pre>{resposta.narracao.rejeitada.join('\n')}</pre>}
+              {resposta.narracao.bruto && <pre>{resposta.narracao.bruto}</pre>}
             </>
           )}
         </div>

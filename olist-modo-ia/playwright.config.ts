@@ -25,6 +25,9 @@ export default defineConfig({
     command: `npm run build && npx vite preview --port ${PORTA} --strictPort --host 127.0.0.1`,
     url: `http://127.0.0.1:${PORTA}`,
     reuseExistingServer: !process.env.CI,
+    // Build de teste: modo "local" (CSP estrita, sem domínio externo) e motor falso liberado por ?motor=falso.
+    // O motor falso NÃO entra no build normal (tests/e2e/ia-local.spec.ts confere).
+    env: { ...process.env, VITE_MODEL_SOURCE: 'local', VITE_PERMITIR_MOTOR_FALSO: '1' } as Record<string, string>,
     timeout: 240_000,
   },
 });

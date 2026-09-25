@@ -621,6 +621,85 @@ select {
   color: var(--texto-2);
 }
 
+.status-ia[data-status='ia'] .ponto {
+  background: var(--roxo);
+  box-shadow: 0 0 8px var(--roxo);
+}
+
+.status-ia[data-status='baixando'] .ponto {
+  animation: pulsar 1.2s ease-in-out infinite;
+}
+
+@keyframes pulsar {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.barra-ia {
+  width: 100%;
+  height: 6px;
+  margin-top: 6px;
+  appearance: none;
+  border: none;
+  border-radius: 999px;
+  background: var(--borda);
+  overflow: hidden;
+}
+
+.barra-ia::-webkit-progress-bar {
+  background: var(--borda);
+}
+
+.barra-ia::-webkit-progress-value {
+  background: var(--gradiente);
+}
+
+.barra-ia::-moz-progress-bar {
+  background: var(--gradiente);
+}
+
+.ativar-ia {
+  margin-top: 8px;
+}
+
+.botao-ativar-ia {
+  background: var(--gradiente);
+  color: #0b1120;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.botao-ativar-ia:focus-visible {
+  outline: 2px solid var(--texto);
+  outline-offset: 2px;
+}
+
+.selo-modo {
+  font-weight: 600;
+}
+
+.selo-ia {
+  color: var(--roxo);
+}
+
+.resposta-bullets.narrando {
+  opacity: 0.6;
+}
+
+.narrando-aviso {
+  color: var(--roxo);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-ia[data-status='baixando'] .ponto {
+    animation: none;
+  }
+}
+
 .fechar {
   background: transparent;
   border: 1px solid var(--borda);

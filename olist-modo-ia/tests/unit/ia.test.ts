@@ -245,7 +245,7 @@ describe('pipeline com o motor falso (Camada 0 -> Camada 1)', () => {
   it('as perguntas do motor falso não são resolvidas pela Camada 0 sozinha', () => {
     for (const p of Object.keys(PLANOS_FALSOS)) {
       if (p.startsWith('e ')) continue;
-      expect(ctx.roteador.rotear(p, null).paraCamada1, p).toBe(true);
+      expect(ctx.roteador.rotear(p, null).paraCamada1, p).toBeTruthy();
     }
   });
 

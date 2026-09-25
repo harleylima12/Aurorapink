@@ -16,8 +16,6 @@ import { compilar, type ColunaResultado } from '../query/compiler';
 import { anoAnterior, specDeComparacao } from '../query/periodo';
 import { criarSchemaQuerySpec, type QuerySpec } from '../query/spec';
 import { periodoMes } from '../query/timeParser';
-import { narrarComIA } from '../ai/narrator';
-import { planejar } from '../ai/planner';
 import type { MotorLLM } from '../ai/tipos';
 import type { Roteador, Roteamento, Valores } from '../router/layer0';
 import type { Semantica } from '../semantic/schema';
@@ -110,6 +108,8 @@ export async function responder(pergunta: string, ctx: ContextoResposta, anterio
   const roteamento = ctx.roteador.rotear(pergunta, anterior);
   if (roteamento.paraCamada1 && ctx.ia) {
     try {
+      // Import dinâmico: o código da Camada 1 só é baixado quando a IA local está ativa.
+      const { planejar } = await import('../ai/planner');
       const p = await planejar({ motor: ctx.ia.motor, semantica: ctx.semantica, valores: ctx.ia.valores, pergunta, anterior, ancora: ctx.ancora });
       const planejamento: InfoPlanejamento = {
         modelo: ctx.ia.motor.id,
@@ -122,7 +122,7 @@ export async function responder(pergunta: string, ctx: ContextoResposta, anterio
         caracteresPrompt: p.mensagens.reduce((n, m) => n + m.content.length, 0),
       };
       const rastro = [
-        `Camada 0 com baixa confiança (${Math.round(roteamento.confianca * 100)}%): pergunta enviada à IA local`,
+        `Camada 0 sem certeza (${roteamento.paraCamada1}; confiança ${Math.round(roteamento.confianca * 100)}%): pergunta enviada à IA local`,
         `Camada 1: ${ctx.ia.motor.id}, prompt ${p.versaoPrompt}, ${Math.round(p.ms)} ms`,
         ...(p.valido ? ['spec do modelo validado (Zod + valores da base)'] : p.erros.map((e) => `spec rejeitado: ${e}`)),
         ...p.ajustes.map((a) => `ajuste: ${a}`),
@@ -145,6 +145,7 @@ export async function responder(pergunta: string, ctx: ContextoResposta, anterio
 export async function narrarComMotor(r: Resposta, motor: MotorLLM, aoParcial?: (t: string) => void): Promise<Resposta> {
   if (r.tipo !== 'dados' || !r.fatos.length) return r;
   try {
+    const { narrarComIA } = await import('../ai/narrator');
     const n = await narrarComIA(motor, r.pergunta, r.texto.titulo, r.fatos, aoParcial);
     if (n.ok && n.texto) return { ...r, texto: n.texto, narracao: { origem: 'ia', modelo: motor.id, versaoPrompt: n.versaoPrompt, ms: n.ms, bruto: n.bruto } };
     return { ...r, narracao: { origem: 'template', modelo: motor.id, versaoPrompt: n.versaoPrompt, ms: n.ms, rejeitada: n.erros, bruto: n.bruto } };

@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 
+import type { ControleIA } from '../../modo-ia/useIALocal';
 import type { EstadoModoIA } from '../../modo-ia/useModoIA';
 import { CartaoResposta } from './CartaoResposta';
+import { StatusIA } from './StatusIA';
 
 const SUGESTOES = [
   'Top 5 categorias em 2018',
@@ -12,15 +14,14 @@ const SUGESTOES = [
   'Qual o lucro por categoria?',
 ];
 
-const temWebGpu = typeof navigator !== 'undefined' && 'gpu' in navigator;
-
 interface Props {
   estado: EstadoModoIA;
+  ia: ControleIA;
   aoFechar: () => void;
   campo: React.RefObject<HTMLInputElement | null>;
 }
 
-export function PainelIA({ estado, aoFechar, campo }: Props) {
+export function PainelIA({ estado, ia, aoFechar, campo }: Props) {
   const [texto, setTexto] = useState('');
   const corpo = useRef<HTMLDivElement>(null);
 
@@ -51,12 +52,7 @@ export function PainelIA({ estado, aoFechar, campo }: Props) {
       <header className="painel-ia-topo">
         <div>
           <h2>✨ Modo IA</h2>
-          <p className="status-ia" data-status="rapido">
-            <span className="ponto" aria-hidden="true" /> Modo Rápido · sem modelo, 100% local
-          </p>
-          <p className="status-detalhe">
-            IA local (WebGPU) chega na Fase 4 · este navegador {temWebGpu ? 'tem' : 'não tem'} WebGPU.
-          </p>
+          <StatusIA ia={ia} />
         </div>
         <button type="button" className="fechar" onClick={aoFechar} aria-label="Fechar o Modo IA">
           ✕
@@ -75,10 +71,10 @@ export function PainelIA({ estado, aoFechar, campo }: Props) {
           </section>
         )}
 
-        {estado.historico.map(({ resposta, msTela }) => (
-          <CartaoResposta key={resposta.id} resposta={resposta} msTela={msTela} aoEscolher={enviar} />
+        {estado.historico.map(({ resposta, msTela, narrando }) => (
+          <CartaoResposta key={resposta.id} resposta={resposta} msTela={msTela} narrando={narrando} aoEscolher={enviar} />
         ))}
-        {estado.pensando && <p className="nota">Calculando…</p>}
+        {estado.pensando && <p className="nota">{ia.motor ? 'Calculando (a IA local pode entrar se a pergunta for difícil)…' : 'Calculando…'}</p>}
       </div>
 
       <footer className="painel-ia-rodape">

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { useIALocal } from '../modo-ia/useIALocal';
 import { useModoIA } from '../modo-ia/useModoIA';
 import { Fixados } from './modo-ia/Fixados';
 import { PainelIA } from './modo-ia/PainelIA';
@@ -51,7 +52,8 @@ function Painel({ dados }: { dados: ContextoDados }) {
   const renderizados = useRef(new Set<string>());
   const [iaAberto, setIaAberto] = useState(false);
   const campo = useRef<HTMLInputElement>(null);
-  const modoIA = useModoIA(dados.motor, dados.meta.ancora, dados.meta.mesesParciais, iaAberto);
+  const ia = useIALocal(iaAberto);
+  const modoIA = useModoIA(dados.motor, dados.meta.ancora, dados.meta.mesesParciais, iaAberto, ia.motor);
 
   // Atalho "/" abre o Modo IA e foca a pergunta; Esc fecha.
   useEffect(() => {
@@ -123,7 +125,7 @@ function Painel({ dados }: { dados: ContextoDados }) {
           {pagina.id === 'visao-geral' && <Fixados />}
           <Rodape />
         </main>
-        {iaAberto && <PainelIA estado={modoIA} aoFechar={() => setIaAberto(false)} campo={campo} />}
+        {iaAberto && <PainelIA estado={modoIA} ia={ia} aoFechar={() => setIaAberto(false)} campo={campo} />}
       </div>
     </Dados.Provider>
   );

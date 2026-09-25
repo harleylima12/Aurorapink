@@ -131,7 +131,9 @@ export function opcoesBarras(entrada: EntradaBarras): EChartsCoreOption {
   };
   const eixoValor = {
     type: 'value',
-    axisLabel: { ...TEXTO_EIXO, formatter: (v: number) => formatar(v, entrada.formato, { compacto: true }) },
+    // Em painel estreito (Modo IA), os rótulos do eixo de valor se atropelavam: menos marcas e sem sobreposição.
+    splitNumber: entrada.horizontal ? 3 : 5,
+    axisLabel: { ...TEXTO_EIXO, hideOverlap: true, formatter: (v: number) => formatar(v, entrada.formato, { compacto: true }) },
   };
   const gradiente = entrada.horizontal ? GRADIENTE_HORIZONTAL : GRADIENTE_VERTICAL;
   return {
