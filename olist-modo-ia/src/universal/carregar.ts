@@ -98,6 +98,7 @@ async function perfilar(banco: BancoUniversal, tabela: string, colunas: ColunaBr
 }
 
 let sequencia = 0;
+let versaoTipada = 0;
 
 export async function lerPlanilha(arquivo: ArquivoPlanilha, banco: BancoUniversal): Promise<LeituraPlanilha> {
   const t0 = performance.now();
@@ -192,22 +193,24 @@ export interface PlanilhaPronta {
 /** Depois da revisão: cria a tabela tipada e a semântica. */
 export async function aplicarConfig(leitura: LeituraPlanilha, config: ColunaConfig[], banco: BancoUniversal): Promise<PlanilhaPronta> {
   const t0 = performance.now();
-  await banco.executar(sqlTabelaTipada(leitura.tabelaCrua, leitura.prefixo, config));
+  // Nome novo a cada aplicação: o cache de consultas do motor (por texto do SQL) nunca devolve número velho.
+  const tabela = `${leitura.prefixo}_t${(versaoTipada++).toString(36)}`;
+  await banco.executar(sqlTabelaTipada(leitura.tabelaCrua, tabela, config));
   const tempo = config.find((c) => c.papel === 'tempo');
   let periodo: { de: string; ate: string } | undefined;
   if (tempo) {
     const [p] = await banco.executar(
-      `SELECT strftime(MIN(${ident(tempo.id)}), '%Y-%m-%d') AS de, strftime(MAX(${ident(tempo.id)}), '%Y-%m-%d') AS ate FROM ${ident(leitura.prefixo)}`,
+      `SELECT strftime(MIN(${ident(tempo.id)}), '%Y-%m-%d') AS de, strftime(MAX(${ident(tempo.id)}), '%Y-%m-%d') AS ate FROM ${ident(tabela)}`,
     );
     if (p?.de && p.ate) periodo = { de: String(p.de), ate: String(p.ate) };
   }
   const semantica = montarSemantica(tempo && !periodo ? config.map((c) => (c === tempo ? { ...c, papel: 'ignorar' as const } : c)) : config, {
     nome: leitura.nome,
-    tabela: leitura.prefixo,
+    tabela,
     linhas: leitura.linhas,
     periodo,
   });
-  return { semantica, config, tabela: leitura.prefixo, linhas: leitura.linhas, periodo, ms: performance.now() - t0 };
+  return { semantica, config, tabela, linhas: leitura.linhas, periodo, ms: performance.now() - t0 };
 }
 
 export { configPadrao };

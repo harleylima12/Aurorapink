@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 
 import { useIALocal } from '../modo-ia/useIALocal';
 import { useModoIA } from '../modo-ia/useModoIA';
@@ -46,7 +46,7 @@ async function carregarMetadados(motor: Motor): Promise<Metadados> {
 
 type Carga = { status: 'carregando' } | { status: 'pronto'; dados: ContextoDados } | { status: 'erro'; mensagem: string };
 
-function Painel({ dados }: { dados: ContextoDados }) {
+function Painel({ dados, irPlanilha }: { dados: ContextoDados; irPlanilha: () => void }) {
   const [local, navegar] = useLocal();
   const pagina = PAGINAS.find((p) => p.id === local.pagina) ?? PAGINAS[0];
   const renderizados = useRef(new Set<string>());
@@ -90,7 +90,7 @@ function Painel({ dados }: { dados: ContextoDados }) {
   return (
     <Dados.Provider value={dados}>
       <div className={`app${iaAberto ? ' com-ia' : ''}`}>
-        <BarraLateral local={local} navegar={navegar} />
+        <BarraLateral local={local} navegar={navegar} irPlanilha={irPlanilha} />
         <main className="conteudo" id="conteudo">
           <header className="topo">
             <div>
@@ -131,8 +131,26 @@ function Painel({ dados }: { dados: ContextoDados }) {
   );
 }
 
+// Modo Universal sob demanda: quem só vê a demo da Olist não baixa o código das planilhas.
+const PaginaPlanilha = lazy(() => import('./universal/PaginaPlanilha').then((m) => ({ default: m.PaginaPlanilha })));
+
+const rotaAtual = () => (window.location.pathname.replace(/\/+$/, '') === '/planilha' ? 'planilha' : 'olist');
+
 export function App() {
   const [carga, setCarga] = useState<Carga>({ status: 'carregando' });
+  const [rota, setRota] = useState(rotaAtual);
+
+  useEffect(() => {
+    const aoVoltar = () => setRota(rotaAtual());
+    window.addEventListener('popstate', aoVoltar);
+    return () => window.removeEventListener('popstate', aoVoltar);
+  }, []);
+
+  const ir = useCallback((caminho: string) => {
+    window.history.pushState(null, '', caminho);
+    setRota(rotaAtual());
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     let ativo = true;
@@ -140,7 +158,7 @@ export function App() {
       .then(async (motor) => {
         const meta = await carregarMetadados(motor);
         performance.mark('motor-pronto');
-        if (ativo) setCarga({ status: 'pronto', dados: { motor, meta } });
+        if (ativo) setCarga({ status: 'pronto', dados: { motor, meta, semantica: semanticaOlist } });
       })
       .catch((erro: unknown) => {
         if (ativo) setCarga({ status: 'erro', mensagem: erro instanceof Error ? erro.message : String(erro) });
@@ -150,7 +168,16 @@ export function App() {
     };
   }, []);
 
-  if (carga.status === 'pronto') return <Painel dados={carga.dados} />;
+  if (carga.status === 'pronto') {
+    if (rota === 'planilha') {
+      return (
+        <Suspense fallback={<div className="carregando-app" role="status">Abrindo o Modo Universal…</div>}>
+          <PaginaPlanilha motor={carga.dados.motor} aoVerDemo={() => ir('/')} />
+        </Suspense>
+      );
+    }
+    return <Painel dados={carga.dados} irPlanilha={() => ir('/planilha')} />;
+  }
   return (
     <div className="carregando-app" role="status" aria-live="polite">
       <img src="/icone.svg" alt="" width={56} height={56} />

@@ -7,6 +7,7 @@ import { useDados } from './contexto';
 interface Props {
   local: Local;
   navegar: (novo: Local, opcoes?: { substituir?: boolean }) => void;
+  irPlanilha?: () => void;
 }
 
 function Navegacao({ local, navegar }: Props) {
@@ -85,6 +86,18 @@ export function BarraLateral(props: Props) {
       </div>
       <Navegacao {...props} />
       <PainelFiltros {...props} />
+      <a
+        className="link-planilha"
+        href="/planilha"
+        onClick={(e) => {
+          if (!props.irPlanilha || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+          e.preventDefault();
+          props.irPlanilha();
+        }}
+      >
+        <span>📂 Sua planilha</span>
+        <small>Modo Universal: CSV ou Excel</small>
+      </a>
     </aside>
   );
 }

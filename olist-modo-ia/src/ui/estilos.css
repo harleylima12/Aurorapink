@@ -973,3 +973,367 @@ select {
   padding: 0;
   font-size: 12.5px;
 }
+
+/* ---------- Modo Universal (Fase 5) ---------- */
+
+.botao-primario {
+  background: var(--gradiente);
+  color: #0b1120;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 16px;
+  cursor: pointer;
+}
+
+.botao-primario:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.botao-primario:focus-visible,
+.botao-secundario:focus-visible {
+  outline: 2px solid var(--destaque);
+  outline-offset: 2px;
+}
+
+button.link {
+  background: none;
+  border: none;
+  color: var(--destaque);
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.link-planilha {
+  display: block;
+  margin-top: 20px;
+  padding: 10px 12px;
+  border: 1px dashed var(--borda);
+  border-radius: 10px;
+  color: var(--texto);
+  text-decoration: none;
+}
+
+.link-planilha span {
+  display: block;
+  font-weight: 600;
+}
+
+.link-planilha small {
+  color: var(--texto-2);
+}
+
+.link-planilha:hover {
+  border-color: var(--destaque);
+}
+
+.pagina-planilha {
+  min-height: 100vh;
+  background: var(--fundo);
+}
+
+.pagina-planilha > .entendi-assim,
+.pagina-planilha > .relacoes,
+.pagina-planilha > .universal-entrada {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 28px 40px;
+}
+
+.universal-entrada {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 20px;
+  align-items: start;
+}
+
+.zona-arquivos {
+  border: 2px dashed var(--borda);
+  border-radius: var(--raio);
+  background: var(--painel);
+  padding: 56px 32px;
+  text-align: center;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.zona-arquivos.arrastando {
+  border-color: var(--destaque);
+  background: color-mix(in srgb, var(--destaque) 8%, var(--painel));
+}
+
+.zona-icone {
+  font-size: 44px;
+  margin: 0;
+}
+
+.zona-arquivos h2 {
+  font-size: 22px;
+  margin: 8px 0;
+}
+
+.zona-arquivos p {
+  color: var(--texto-2);
+  max-width: 560px;
+  margin: 0 auto 16px;
+}
+
+.zona-botoes {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.topo .zona-botoes {
+  justify-content: flex-end;
+}
+
+.erro-planilha {
+  margin: 20px auto 0;
+  max-width: 560px;
+  border: 1px solid var(--alerta);
+  border-radius: 10px;
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.erro-planilha p {
+  color: var(--alerta);
+  margin: 0;
+}
+
+.erro-planilha .dica {
+  color: var(--texto);
+  margin-top: 6px;
+}
+
+.universal-lateral {
+  display: grid;
+  gap: 16px;
+}
+
+.universal-lateral .painel h2 {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.lista-modelos {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.lista-modelos li {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.lista-modelos li div {
+  flex: 1;
+  min-width: 0;
+}
+
+.lista-modelos small {
+  display: block;
+  color: var(--texto-2);
+}
+
+.lista-modelos button {
+  background: transparent;
+  color: var(--texto-2);
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.alternar {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  color: var(--texto);
+  font-size: 13px;
+}
+
+.previa-kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.kpi-previa .kpi-valor {
+  font-size: 22px;
+}
+
+.parte {
+  margin-bottom: 16px;
+}
+
+.parte-cabecalho h2 {
+  font-size: 17px;
+}
+
+.parte-cabecalho h2 small {
+  color: var(--texto-2);
+  font-weight: 400;
+}
+
+.relatorio-limpeza {
+  margin: 6px 0 12px;
+  padding-left: 18px;
+  color: var(--texto-2);
+  font-size: 13px;
+}
+
+.aviso-planilha {
+  color: #fbbf24;
+  font-size: 13px;
+  margin: 6px 0;
+}
+
+.tabela-colunas {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.tabela-colunas th,
+.tabela-colunas td {
+  border-top: 1px solid var(--borda);
+  padding: 8px 6px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tabela-colunas thead th {
+  color: var(--texto-2);
+  font-weight: 500;
+  border-top: none;
+}
+
+.tabela-colunas tbody th {
+  font-weight: 400;
+  min-width: 220px;
+}
+
+.coluna-nome {
+  font-weight: 600;
+  display: block;
+}
+
+.tabela-colunas small {
+  display: block;
+  color: var(--texto-2);
+  max-width: 340px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tabela-colunas small.motivo {
+  font-style: italic;
+}
+
+.tabela-colunas select,
+.tabela-colunas input {
+  background: var(--fundo);
+  color: var(--texto);
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  padding: 5px 6px;
+  font: inherit;
+  max-width: 170px;
+}
+
+.tabela-colunas select:disabled {
+  opacity: 0.4;
+}
+
+.tabela-colunas tr[data-papel='ignorar'] .coluna-nome {
+  color: var(--texto-2);
+}
+
+.entendi-rodape {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--lateral);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+}
+
+.lista-planilhas,
+.lista-ligacoes {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.lista-ligacoes label,
+.lista-planilhas label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.app-planilha {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.app-planilha.com-ia {
+  grid-template-columns: minmax(0, 1fr) 460px;
+}
+
+.reconhecido {
+  color: #34d399 !important;
+}
+
+.detalhe-rolagem {
+  max-height: 420px;
+  overflow: auto;
+}
+
+.relatorio-final summary {
+  cursor: pointer;
+  color: var(--texto-2);
+}
+
+@media (max-width: 960px) {
+  .universal-entrada {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .app-planilha.com-ia {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .entendi-rodape {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.parte .tabela-rolagem {
+  max-height: none;
+  overflow: visible;
+}
+
+.app-planilha.com-ia .kpi-valor {
+  font-size: 22px;
+}
+
+.app-planilha.com-ia .kpi-sparkline {
+  display: none;
+}

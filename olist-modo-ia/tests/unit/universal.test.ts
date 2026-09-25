@@ -323,3 +323,34 @@ describe('vários arquivos (relações)', () => {
     expect(() => montarJuncao({ tabela: 'a', config: [] }, { tabela: 'b', config: [], nome: 'b' }, { ...melhor, paraUnico: false }, 'v')).toThrow(/duplicaria/);
   });
 });
+
+describe('dashboard automático e Modo IA da planilha', () => {
+  it('4 KPIs, tempo e 2 rankings; exemplos do planejador válidos; sugestões respondíveis pela Camada 0', async () => {
+    const { montarPainel, exemplosDaPlanilha, sugestoesDaPlanilha } = await import('../../src/universal/painelAuto');
+    const { criarSchemaQuerySpec } = await import('../../src/query/spec');
+    const l = leituras.get('vendas_br.csv');
+    if (!l) throw new Error('vendas');
+    const pronta = await aplicarConfig(l, configPadrao(l.perfis), banco);
+    const distintos = Object.fromEntries(l.perfis.map((p) => [p.id, p.distintos]));
+    const painel = montarPainel(pronta.semantica, pronta.config, distintos);
+    expect(painel.kpis.map((k) => k.metrica)).toEqual(['soma_valor_total', 'registros', 'distintos_cliente_id', 'media_valor_total']);
+    expect(painel.visuais.map((v) => v.id)).toEqual(['auto-tempo', 'auto-categoria', 'auto-uf']);
+    for (const v of painel.visuais) expect((await banco.executar(compilar(v.spec, pronta.semantica).sql)).length).toBeGreaterThan(0);
+
+    const schema = criarSchemaQuerySpec(pronta.semantica);
+    const exemplos = exemplosDaPlanilha(pronta.semantica);
+    expect(new Set(exemplos.map((e) => e.spec.intent))).toEqual(new Set(['kpi', 'tendencia', 'explicar_variacao', 'ranking', 'comparacao', 'fora_de_escopo', 'esclarecer']));
+    for (const e of exemplos) expect(schema.safeParse(e.spec).success, e.pergunta).toBe(true);
+
+    const valores: Record<string, string[]> = {};
+    for (const [id, d] of Object.entries(pronta.semantica.dimensions)) {
+      if (d.type === 'categoria') valores[id] = (await banco.executar(`SELECT DISTINCT CAST("${d.column}" AS VARCHAR) AS v FROM "${pronta.tabela}"`)).map((x) => String(x.v));
+    }
+    const roteador = criarRoteador(pronta.semantica, valores, pronta.periodo?.ate ?? '2024-12-31');
+    for (const s of sugestoesDaPlanilha(pronta.semantica, painel)) {
+      const r = roteador.rotear(s, null);
+      expect(r.spec.intent, s).not.toBe('esclarecer');
+      expect(r.spec.intent, s).not.toBe('fora_de_escopo');
+    }
+  });
+});
