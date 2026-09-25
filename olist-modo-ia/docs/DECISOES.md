@@ -272,3 +272,102 @@ Formato: **contexto → decisão → alternativa descartada**. As decisões da F
 
 - A pergunta é autossuficiente ("em 2018", "em SP"); misturar com filtros escondidos tornaria a resposta difícil de
   explicar. O painel avisa isso no rodapé. Fixados e 👍/👎 ficam no `localStorage` (a Fase 6 traz o "Apagar dados locais").
+
+## Fase 4: IA local (escrita na nuvem, sem GPU)
+
+### D28. Quando a pergunta vai para a IA (Camada 1)
+
+- **Contexto:** a especificação manda para a Camada 1 o que fica abaixo do limiar de confiança. Testando, a Camada 0
+  também erra com confiança quando a correção de digitação "acha" um valor da base que não tem nada a ver
+  ("retrasado" → status Atrasado, "turma" → cidade Turmalina, "carioca" → cidade Acaiaca).
+- **Decisão:** a Camada 0 marca `paraCamada1` (com o motivo, que aparece em "Como calculei") quando: a confiança fica
+  abaixo de 0,45; nada foi reconhecido; só há palavras desconhecidas; um follow-up não muda nada; ou um **valor** da
+  base foi achado por correção de digitação. Com a IA pronta, essas perguntas vão para o planejador; sem ela, vale a
+  resposta da Camada 0 (P4). Medido na suíte (76 perguntas, follow-ups com o spec anterior): **2/76 vão para a IA**;
+  a Camada 0 resolve 97% sozinha.
+- **Descartado:** mandar para a IA toda pergunta com qualquer correção de digitação ou palavra desconhecida: 11/76
+  iriam para o modelo, inclusive "faturamnto por categoria" e "nota de quem recebeu atrasado vs no prazo", que a
+  Camada 0 já acerta em < 100 ms (a IA levaria segundos).
+
+### D29. Hugging Face bloqueado na nuvem: o que ficou sem teste
+
+- **Contexto:** a rede da nuvem onde a Fase 4 foi escrita bloqueia `huggingface.co` (proxy recusa a conexão).
+  `raw.githubusercontent.com` funciona.
+- **Decisão:** não contornar (nada de espelho). O que depende do Hugging Face foi escrito contra a API conferida em
+  `node_modules` e testado com um **servidor falso** (`tests/unit/baixar-modelo.test.ts`): download dos pesos,
+  hashes, revisão fixada, pasta `resolve/main/`. Os domínios de CDN do modo demo em `csp.config.ts`
+  (`DOMINIOS_PESOS_DEMO`) são **candidatos, não medidos**; o roteiro do PC (CLAUDE.md) diz como confirmar e podar.
+- **Teste de fumaça do caminho REAL (sem GPU física):** Chromium com WebGPU por software (SwiftShader,
+  `--enable-unsafe-webgpu --use-webgpu-adapter=swiftshader`), build de produção no modo demo. Funcionou: import
+  dinâmico do WebLLM, worker sob a CSP, escolha do modelo (SwiftShader não tem `shader-f16` → Qwen2.5-1.5B q4f32),
+  `model_lib` pedida ao próprio site. Parou onde devia: o pedido a `huggingface.co/.../mlc-chat-config.json` foi
+  recusado pelo proxy; a tela mostra "não consegui baixar os pesos do modelo de huggingface.co…", zero violações
+  de CSP, e o Modo Rápido continua respondendo (print `docs/prints/fase4/6-caminho-real-hf-bloqueado.png`). Não virou
+  teste automático: no PC ele baixaria centenas de MB de verdade.
+- **Sem número inventado:** tamanho do download dos pesos, tempo de carga, tempo do 1º token e latência do
+  planejador ficam como "medir no PC" no BENCHMARK. O `vram_required_MB` da `prebuiltAppConfig` é VRAM, não download.
+
+### D30. `model_lib` servida pelo próprio site, com SHA-256 fixado
+
+- **Contexto:** P3 (nada de CDN em runtime). A `prebuiltAppConfig` do WebLLM 0.2.85 aponta as libs para o branch
+  `main` do GitHub (mutável) e não traz `integrity` em nenhum dos 163 modelos.
+- **Decisão:** `npm run baixar-modelo -- --so-libs` baixa as 6 libs dos candidatos (3 modelos × q4f16/q4f32,
+  **31,6 MB** no total, 4,9 a 5,9 MB cada) para `public/models/libs/` e registra o SHA-256 em
+  `scripts/modelos.lock.json` (commitado). Daí em diante, arquivo diferente é recusado (testado). O app entrega ao
+  WebLLM `model_lib = <origem>/models/libs/<arquivo>`. Os pesos no modo local ficam em
+  `public/models/<id>/resolve/main/`, com o SHA-256 que o próprio Hugging Face publica e a revisão (commit) fixada.
+- **Em aberto (Fase 6/8):** `public/models/` está no `.gitignore`. Para o deploy, ou as libs entram no repositório
+  (31,6 MB) ou o build roda `npm run baixar-modelo -- --so-libs`. Decisão do Harley.
+- **Descartado:** fixar um commit do repositório das libs pela API do GitHub (bloqueada nesta sessão); o SHA-256 no
+  lock cumpre o mesmo papel (se o arquivo mudar no GitHub, o script recusa).
+
+### D31. Escolha do modelo pelo dispositivo
+
+- **Decisão:** `src/ai/modelos.ts` lê a `prebuiltAppConfig.model_list` **da versão instalada** (o teste usa a lista
+  real): Qwen2.5-1.5B-Instruct → Qwen3.5-0.8B → Llama-3.2-1B-Instruct; q4f16 se o adaptador tem `shader-f16`, senão
+  q4f32; "máquina fraca" (`maxBufferSize` < 1 GB ou `deviceMemory` < 8 GB) pega o de menor `vram_required_MB`
+  (Llama-3.2-1B, 879 MB em q4f16). **Esses limites são heurísticos e precisam ser calibrados no PC.** `VITE_MODELO`
+  força um modelo. Qwen3.x recebe `enable_thinking: false` (senão "pensa" antes do JSON e gasta segundos).
+- **Descartado:** Phi-3.5-mini (3,8B) como padrão: grande demais para GPU integrada; continua na lista do WebLLM
+  se o Harley quiser testar com `VITE_MODELO`.
+
+### D32. JSON Schema para o XGrammar e validação depois
+
+- **Contexto:** o XGrammar (dentro do WebLLM) é o risco nº 2 da Fase 0; o `z.toJSONSchema` do Zod 4 gera uma regex
+  de data enorme e `format: date`.
+- **Decisão:** o schema do modelo nasce do MESMO schema Zod do QuerySpec, mas simplificado (`schemaModelo.ts`): só
+  `type/enum/properties/required/items/anyOf/limites/pattern` (um teste garante), data como `^\d{4}-\d{2}-\d{2}$`,
+  2.337 caracteres. Depois do modelo, o Zod completo valida (período invertido etc.) e os valores de filtro são
+  conferidos contra a base (`valueResolver.ts`: "são paulo" → SP, "beleza e saude" → Beleza e Saúde). Valor que não
+  existe, JSON quebrado ou métrica inventada viram **pergunta de volta**, nunca SQL (testado).
+- **Prompt:** `planejador-v1`, com as métricas/dimensões candidatas (top-k pelo fuse.js), valores reais parecidos
+  com a pergunta e 8 few-shots (2 fixos: fora de escopo e esclarecimento). Tamanho medido nas 76 perguntas:
+  **3.572 a 4.252 caracteres** (p50 3.912). Quanto isso custa em tempo de prefill: medir no PC.
+
+### D33. Narrador da IA: placeholders, validador e sem streaming visível
+
+- **Decisão:** o modelo recebe só `id/tipo/sobre/sentido/importância` de cada fato (sem valores; dígitos do rótulo
+  viram `#`) e devolve `{titulo, bullets:[{texto, fatos}], hipotese?}` com `{{id}}`. O app troca os placeholders
+  pelo `valor_formatado`. Rejeita: dígito fora de placeholder, número por extenso, nome de mês, placeholder
+  inexistente ou malformado, causa afirmada fora de `hipotese` (que precisa começar com "Hipótese:"); por fim o
+  validador numérico da Fase 3 roda de novo no texto final. Rejeitou → fica o template, o motivo aparece em "Como
+  calculei" e vai para `localStorage` (`olist-modo-ia:falhas-narrador`, para a Fase 7).
+- **Diferença da especificação:** a seção 13 pede o texto da IA "em streaming". Mostrar o texto enquanto chega
+  exibiria texto **ainda não validado** (e JSON cru). O worker faz streaming (`aoParcial`), mas a tela mostra o
+  template + "IA local revisando o texto…" e troca tudo de uma vez quando passa no validador.
+
+### D34. Motor falso e build de teste
+
+- **Decisão:** `src/ai/motorFalso.ts` segue o contrato `MotorLLM` e responde de forma determinística (planejador e
+  narrador), com modos adversários (JSON quebrado, métrica inventada, número no texto, causa, placeholder
+  inexistente, erro). No navegador, `?motor=falso` só funciona num build com `VITE_PERMITIR_MOTOR_FALSO=1` (o do
+  Playwright); no build normal o código nem entra no pacote (conferido: nenhum chunk `motorFalso` no `dist`).
+- **Limite honesto:** o motor falso testa o **encanamento** (roteamento, validação, UI, CSP, rede), não a qualidade
+  nem a velocidade do modelo.
+
+### D35. Custo do WebLLM no pacote
+
+- **Medido:** o pacote principal cresceu 12,7 kB (1.160,7 → 1.173,4 kB; +4,4 kB gzip) em relação à Fase 3. O WebLLM
+  só é baixado ao clicar em "Ativar IA local": 6,0 MB (2,15 MB gzip) na thread principal + 6,0 MB (2,15 MB gzip) no
+  worker. A thread principal só precisa da `prebuiltAppConfig` e do cliente do worker; mover a escolha do modelo
+  para dentro do worker cortaria ~2 MB gzip (Fase 7). Os pesos (centenas de MB) ficam no cache do navegador.

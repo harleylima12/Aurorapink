@@ -15,7 +15,8 @@ Dashboard da base pública da Olist com **Modo IA 100% local** (WebLLM + DuckDB-
 | 1. Dados | ✅ Parquet gerado e conferido com o Power BI: [`dados/validacao.md`](dados/validacao.md) |
 | 2. Base | ✅ dashboard de 3 páginas, compilador spec→SQL, CSP; prints em [`docs/prints/fase2`](docs/prints/fase2) |
 | 3. Modo Rápido | ✅ perguntas em PT-BR respondidas sem IA em < 100 ms (p95); prints em [`docs/prints/fase3`](docs/prints/fase3) |
-| 4 a 8 | a fazer |
+| 4. IA local | ✅ na nuvem (sem GPU): planejador + narrador validados com motor falso; **modelo real a validar no PC**; prints em [`docs/prints/fase4`](docs/prints/fase4) |
+| 5 a 8 | a fazer |
 
 ## Fase 1: preparar os dados
 
@@ -47,6 +48,22 @@ npx playwright install chromium && npx playwright test   # e2e no build de produ
 
 Sem `npm run baixar-extensoes`, o app usa um arquivo `.duckdb` provisório com os mesmos dados
 (`python scripts/gerar_duckdb_provisorio.py`) e avisa no rodapé. Ver `docs/DECISOES.md` (D15 e D17).
+
+## Fase 4: IA local (WebLLM)
+
+A IA só é baixada quando você clica em **Ativar IA local** no painel ✨ Modo IA (precisa de WebGPU: Chrome/Edge
+recentes). Ela só entra quando o Modo Rápido não entende a pergunta; o modelo devolve um QuerySpec (nunca SQL nem
+números), e o texto que ele escreve só aparece se passar no validador.
+
+```bash
+npm run baixar-modelo -- --so-libs    # model_lib (.wasm) servida pelo próprio site: obrigatório nos dois modos
+npm run dev                           # modo demo: pesos do Hugging Face (único domínio externo, explícito na CSP)
+
+npm run baixar-modelo -- --modelo Qwen2.5-1.5B-Instruct-q4f16_1-MLC   # modo local: pesos em public/models
+VITE_MODEL_SOURCE=local npm run dev   # nenhum domínio externo (PowerShell: $env:VITE_MODEL_SOURCE="local"; npm run dev)
+```
+
+`VITE_MODELO=<model_id>` força um modelo. Detalhes e números: `docs/DECISOES.md` (D28 a D35) e `docs/BENCHMARK.md`.
 
 ## Dados e licença
 

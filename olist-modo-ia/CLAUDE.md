@@ -41,13 +41,44 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
 - **Fase 0 (plano):** concluída.
 - **Fase 1 (dados):** aprovada. Parquet batendo com o Power BI no centavo (`dados/validacao.md`).
 - **Fase 2 (base):** aprovada. Dashboard de 3 páginas, compilador spec→SQL, CSP.
-- **Fase 3 (Modo Rápido):** concluída na nuvem, aguardando o OK do Harley. Parser de tempo (`src/query/timeParser.ts`), Camada 0 (`src/router/layer0.ts`), motor de insights e decomposição (`src/insights/`), seletor de gráfico (`src/charts/selector.ts`), narrador por template + validador numérico (`src/narrator/`), pipeline (`src/modo-ia/responder.ts`) e painel "✨ Modo IA" (`src/ui/modo-ia/`). Suíte `evals/perguntas.json` (76; 80% nas 20 cegas na 1ª rodada, 76/76 depois). Latência p95 96 ms. Testes: `npm test` (102), `npx playwright test` (15 + prints com `PRINTS=1`), `python -m pytest tests/dados` (57). Prints em `docs/prints/fase3/`.
+- **Fase 3 (Modo Rápido):** aprovada. Parser de tempo, Camada 0 (`src/router/layer0.ts`), insights e decomposição (`src/insights/`), seletor de gráfico, narrador por template + validador, painel "✨ Modo IA". Suíte `evals/perguntas.json` (76). Prints em `docs/prints/fase3/`.
+- **Fase 4 (IA local):** escrita na nuvem (sem GPU, Hugging Face bloqueado), aguardando o OK do Harley **e a validação no PC** (roteiro abaixo). Worker do WebLLM com import dinâmico (`src/ai/motorWebLLM.ts`, `engine.worker.ts`), escolha do modelo pela `prebuiltAppConfig` instalada (`modelos.ts`), planejador com JSON Schema (`planner.ts`, `prompts/planner.ts`), valores conferidos na base (`src/query/valueResolver.ts`), narrador com placeholders + validador (`narrator.ts`), motor falso (`motorFalso.ts`), `npm run baixar-modelo`. Decisões D28–D35. Testes: `npm test` (149), `npx playwright test` (22, com `PRINTS=1` grava prints), `python -m pytest tests/dados` (57). Prints em `docs/prints/fase4/`.
 - **Caminho de dados:** o app usa o `.duckdb` PROVISÓRIO até alguém rodar `npm run baixar-extensoes` (D17). O rodapé mostra qual caminho está ativo.
-- **Validar no PC do Harley (continua pendente):**
+- **Validar no PC do Harley (dados, continua pendente):**
   1. `npm ci`, `npx playwright install chromium`, `npm run baixar-extensoes` (primeiro download: registra o SHA-256 no lock; commitar lock, manifesto e `public/duckdb-extensions/`).
   2. `npx playwright test`: o teste do rodapé passa a exigir "Parquet (caminho final)"; conferir zero violações de CSP e a auditoria de rede.
   3. `RODADAS=5 npx playwright test medicoes` e anotar no BENCHMARK.md (tamanho real da extensão incluso).
   4. `python scripts/preparar_dados.py` no Windows (caminho com acento e espaço).
   5. Conferir o frete total no card do Power BI (D16).
   6. Decidir se o `.duckdb` provisório fica como plano B ou sai (Fase 6).
-- **Próximo passo:** Fase 4 (IA local com WebLLM), depois do OK do Harley. Precisa do PC (WebGPU) para testar o modelo de verdade; na nuvem dá para escrever o worker, o planejador com JSON Schema e os testes sem GPU.
+- **Próximo passo:** validar a IA no PC (roteiro abaixo); depois, Fase 5 com o OK do Harley.
+
+## Roteiro: validar a IA de verdade no PC (Fase 4)
+
+Chrome ou Edge atualizados, com WebGPU (conferir em `chrome://gpu`: "WebGPU: Hardware accelerated"). No PowerShell,
+variável de ambiente é `$env:VITE_MODEL_SOURCE="local"; npm run dev` (no bash: `VITE_MODEL_SOURCE=local npm run dev`).
+
+1. **Libs do modelo** (obrigatório nos dois modos): `npm run baixar-modelo -- --so-libs`. Deve dizer "ok" nas 6
+   (o SHA-256 já está no `scripts/modelos.lock.json`); se disser "SHA-256 diferente", PARE e me avise.
+2. **Modo demo** (pesos do Hugging Face): `npm run dev`, abrir o ✨ Modo IA, clicar **Ativar IA local**.
+   Observar: barra com %, MB e tempo restante; status "IA pronta · 100% local"; qual modelo foi escolhido.
+   - DevTools → Rede → coluna "Domínio": anotar TODOS os domínios externos. Console: anotar violações de CSP.
+     Depois, deixar em `DOMINIOS_PESOS_DEMO` (`csp.config.ts`) só os que apareceram (D29).
+   - Anotar: tempo de carga da 1ª vez (status mostra "carregou em X s") e depois de recarregar a página (com cache).
+3. **Modo local** (nenhum domínio externo): `npm run baixar-modelo -- --modelo <o id que o passo 2 escolheu>`
+   (anotar o tamanho total que o script imprime; fica em `public/models/<id>/manifesto.json`), depois
+   `VITE_MODEL_SOURCE=local npm run dev`. DevTools → Rede: **zero** domínios externos.
+4. **Perguntas** (anotar em cada uma o ms do planejador em "Como calculei" e as métricas do WebLLM logo abaixo):
+   - `quais produtos de casa deram mais dinheiro no ano retrasado?` (selo "IA"; ranking de categorias em 2017)
+   - `a turma paulista tá comprando muito?` e depois `e a galera carioca?` (filtro SP, depois RJ)
+   - `quanto sobra pra gente depois de pagar tudo?` (fora de escopo: não há custos)
+   - `me fala algo sobre isso aí` (pergunta de volta com 3 chips)
+   - `top 5 categorias em 2018` (Modo Rápido, SEM chamar o modelo; o texto pode virar "texto: IA")
+   - Em cada resposta de dados: o texto da IA não pode ter número que não esteja nos "Fatos usados no texto".
+5. **Metas:** planejamento < 3 s com GPU dedicada, < 6 s com integrada (modelo já em cache); zero violações de CSP;
+   zero requisições externas no modo local. Se não bater: testar `VITE_MODELO=Llama-3.2-1B-Instruct-q4f16_1-MLC`
+   e `VITE_MODELO=Qwen3.5-0.8B-q4f16_1-MLC` e anotar os três.
+6. **Anotar** tudo na tabela "Medir no PC" do `docs/BENCHMARK.md`, junto com a GPU (`chrome://gpu`). No console,
+   `JSON.parse(localStorage['olist-modo-ia:falhas-narrador'] ?? '[]')` mostra os textos da IA que o validador recusou.
+7. Calibrar `LIMITE_FRACA` em `src/ai/modelos.ts` se a escolha automática não fizer sentido na máquina.
+

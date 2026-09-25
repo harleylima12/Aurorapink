@@ -71,3 +71,37 @@ p95 14 ms (`evals/resultados/avaliacao-camada0.json`). As perguntas mais lentas 
 
 **Acerto da Camada 0** (`npm test`, `evals/perguntas.json`): 76/76 na suíte atual; **80% (16/20) nas 20 perguntas
 escritas às cegas, na primeira rodada** (ver D24). Meta da Fase 3 (≥ 60%): cumprida.
+
+## Fase 4: IA local (WebLLM)
+
+A Fase 4 foi escrita numa nuvem **sem GPU** e com o Hugging Face bloqueado (D29). Tudo que depende do modelo de
+verdade está marcado **medir no PC**; roteiro no `CLAUDE.md`. Nada abaixo foi estimado.
+
+### Medido na nuvem
+
+| Item | Valor | Como |
+|---|---:|---|
+| `model_lib` dos 6 candidatos (3 modelos × q4f16/q4f32) | 31,6 MB (4,9 a 5,9 MB cada) | `npm run baixar-modelo -- --so-libs` |
+| WebLLM na thread principal (só depois do clique) | 6,0 MB · 2,15 MB gzip | `npm run build` + `gzip -9` |
+| WebLLM no worker (só depois do clique) | 6,0 MB · 2,15 MB gzip | idem |
+| Pacote principal vs Fase 3 | +12,7 kB (+4,4 kB gzip) | idem |
+| Prompt do planejador (76 perguntas da suíte) | 3.572 a 4.252 caracteres (p50 3.912) | `montarMensagensPlanejador` |
+| JSON Schema do QuerySpec enviado ao XGrammar | 2.337 caracteres | `schemaQuerySpecParaModelo` |
+| Perguntas da suíte que vão para a IA | 2/76 (a Camada 0 resolve 97%) | D28 |
+| Modo Rápido com o código da Fase 4 (p50 / p95) | 32 / 100 ms | `npx playwright test modo-ia` |
+
+### Medir no PC
+
+| Item | Meta | Resultado |
+|---|---|---|
+| Modelo escolhido na GPU do Harley (e por quê) | — | medir no PC |
+| Download dos pesos na 1ª ativação (MB reais, `manifesto.json` no modo local) | — | medir no PC |
+| Tempo de carga: 1ª vez (download) e com cache | "depois abre em segundos" | medir no PC |
+| Aquecimento (1ª geração, compila shaders) | — | medir no PC |
+| Planejamento com IA, modelo em cache (p50 / p95) | < 3 s GPU dedicada · < 6 s integrada | medir no PC |
+| Narração com IA (p50) | — | medir no PC |
+| Tokens/s de prefill e de decode, tempo da gramática (`metricas` do WebLLM) | — | medir no PC |
+| Specs válidos do planejador na suíte (sem ajuda da Camada 0) | — | medir no PC (Fase 7) |
+| Textos do narrador aprovados pelo validador | — | medir no PC |
+| Domínios contatados no modo demo | só os de `DOMINIOS_PESOS_DEMO` | medir no PC |
+| Requisições externas no modo local | 0 | medir no PC |
