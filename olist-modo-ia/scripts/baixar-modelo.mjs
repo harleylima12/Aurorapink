@@ -4,6 +4,7 @@
 //   npm run baixar-modelo -- --so-libs                                 # só as model_lib (.wasm, ~5 MB cada)
 //   npm run baixar-modelo -- --modelo Qwen2.5-1.5B-Instruct-q4f16_1-MLC # libs + pesos desse modelo
 //   npm run baixar-modelo -- --verificar                               # confere o que já está em public/models
+//   (o `npm run build` roda --so-libs antes: baixa só o que falta e confere o SHA-256 do lock)
 //
 // O que vai para onde (public/models/ fica fora do git: é grande demais):
 //   public/models/libs/<arquivo>.wasm                    <- raw.githubusercontent.com (binary-mlc-llm-libs)
@@ -80,9 +81,14 @@ async function baixarLibs(ids, lock, verificar) {
     const arquivo = rel.split('/').pop();
     const destino = path.join(PASTA, 'libs', arquivo);
     let dados;
+    const esperadoLock = lock.libs[rel]?.sha256;
+    const local = existsSync(destino) ? await readFile(destino) : null;
     if (verificar) {
-      if (!existsSync(destino)) throw new Error(`falta ${destino}`);
-      dados = await readFile(destino);
+      if (!local) throw new Error(`falta ${destino}`);
+      dados = local;
+    } else if (local && esperadoLock && sha256(local) === esperadoLock) {
+      // Já baixada e conferida: o build não baixa de novo.
+      dados = local;
     } else {
       dados = await buscar(URL_LIBS + rel);
     }

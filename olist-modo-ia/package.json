@@ -10,14 +10,15 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "node scripts/baixar-modelo.mjs --so-libs && tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:e2e": "playwright test",
     "baixar-extensoes": "node scripts/baixar-extensoes.mjs",
     "baixar-extensoes:verificar": "node scripts/baixar-extensoes.mjs --verificar",
-    "baixar-modelo": "node scripts/baixar-modelo.mjs"
+    "baixar-modelo": "node scripts/baixar-modelo.mjs",
+    "gerar-planilhas-teste": "python scripts/gerar_planilhas_teste.py"
   },
   "dependencies": {
     "@duckdb/duckdb-wasm": "1.32.0",
