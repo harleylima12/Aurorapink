@@ -1,0 +1,307 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`snapshots do SQL > 1 KPI sem filtro 1`] = `
+{
+  "colunas": [
+    {
+      "formato": "brl",
+      "id": "faturamento",
+      "label": "Faturamento",
+      "papel": "metrica",
+    },
+  ],
+  "params": [],
+  "sql": "WITH base AS (
+  SELECT *
+  FROM "fato_itens"
+),
+por_item AS (
+  SELECT CAST((SUM(price)) AS DOUBLE) AS "faturamento"
+  FROM base
+)
+SELECT i."faturamento"
+FROM por_item AS i",
+}
+`;
+
+exports[`snapshots do SQL > KPIs do dashboard com ano e estado 1`] = `
+{
+  "colunas": [
+    {
+      "formato": "brl",
+      "id": "faturamento",
+      "label": "Faturamento",
+      "papel": "metrica",
+    },
+    {
+      "formato": "int",
+      "id": "pedidos",
+      "label": "Pedidos",
+      "papel": "metrica",
+    },
+    {
+      "formato": "brl",
+      "id": "ticket_medio",
+      "label": "Ticket médio",
+      "papel": "metrica",
+    },
+    {
+      "formato": "int",
+      "id": "clientes",
+      "label": "Clientes",
+      "papel": "metrica",
+    },
+  ],
+  "params": [
+    "2018-01-01",
+    "2018-12-31",
+    "SP",
+  ],
+  "sql": "WITH base AS (
+  SELECT *
+  FROM "fato_itens"
+  WHERE "data_compra" >= CAST(? AS DATE)
+    AND "data_compra" <= CAST(? AS DATE)
+    AND "estado_cliente" IN (?)
+),
+por_item AS (
+  SELECT CAST((SUM(price)) AS DOUBLE) AS "faturamento",
+         CAST((COUNT(DISTINCT pedido_sk)) AS DOUBLE) AS "pedidos",
+         CAST((SUM(price) / COUNT(DISTINCT pedido_sk)) AS DOUBLE) AS "ticket_medio",
+         CAST((COUNT(DISTINCT cliente_sk)) AS DOUBLE) AS "clientes"
+  FROM base
+)
+SELECT i."faturamento",
+       i."pedidos",
+       i."ticket_medio",
+       i."clientes"
+FROM por_item AS i",
+}
+`;
+
+exports[`snapshots do SQL > faixa de preço 1`] = `
+{
+  "colunas": [
+    {
+      "id": "faixa_de_preco",
+      "label": "Faixa de preço",
+      "papel": "dimensao",
+      "tipoDimensao": "faixa",
+    },
+    {
+      "formato": "int",
+      "id": "itens",
+      "label": "Itens vendidos",
+      "papel": "metrica",
+    },
+  ],
+  "params": [],
+  "sql": "WITH base AS (
+  SELECT *,
+         CASE WHEN "price" < 50 THEN '< R$ 50' WHEN "price" < 100 THEN 'R$ 50–100' WHEN "price" < 200 THEN 'R$ 100–200' WHEN "price" < 500 THEN 'R$ 200–500' WHEN "price" < 1000 THEN 'R$ 500–1.000' ELSE '≥ R$ 1.000' END AS d0
+  FROM "fato_itens"
+),
+por_item AS (
+  SELECT d0,
+         CAST((COUNT(*)) AS DOUBLE) AS "itens"
+  FROM base
+  GROUP BY d0
+)
+SELECT i.d0 AS "faixa_de_preco",
+       i."itens"
+FROM por_item AS i
+ORDER BY CASE "faixa_de_preco" WHEN '< R$ 50' THEN 0 WHEN 'R$ 50–100' THEN 1 WHEN 'R$ 100–200' THEN 2 WHEN 'R$ 200–500' THEN 3 WHEN 'R$ 500–1.000' THEN 4 WHEN '≥ R$ 1.000' THEN 5 ELSE 6 END, "faixa_de_preco" ASC",
+}
+`;
+
+exports[`snapshots do SQL > filtro not_in e tempo between 1`] = `
+{
+  "colunas": [
+    {
+      "formato": "pct",
+      "id": "pct_atraso",
+      "label": "% de atraso",
+      "papel": "metrica",
+    },
+  ],
+  "params": [
+    "Boleto",
+    "Voucher",
+    "2017-11-01",
+    "2017-11-30",
+  ],
+  "sql": "WITH base AS (
+  SELECT *
+  FROM "fato_itens"
+  WHERE "forma_pagamento" NOT IN (?, ?)
+    AND "data_compra" BETWEEN CAST(? AS DATE) AND CAST(? AS DATE)
+),
+por_pedido AS (
+  SELECT CAST((COUNT(*) FILTER (WHERE status_entrega = 'Atrasado') / NULLIF(COUNT(*) FILTER (WHERE status_entrega <> 'Não Entregue'), 0)) AS DOUBLE) AS "pct_atraso"
+  FROM (SELECT DISTINCT "pedido_sk", "order_status", "data_compra", "data_entrega", "data_estimada", "dias_entrega", "status_entrega", "nota", "forma_pagamento", "parcelas", "cliente_sk", "cidade_cliente", "estado_cliente" FROM base) AS pedidos
+)
+SELECT p."pct_atraso"
+FROM por_pedido AS p",
+}
+`;
+
+exports[`snapshots do SQL > item + pedido por categoria (join) 1`] = `
+{
+  "colunas": [
+    {
+      "id": "categoria",
+      "label": "Categoria",
+      "papel": "dimensao",
+      "tipoDimensao": "categoria",
+    },
+    {
+      "formato": "brl",
+      "id": "faturamento",
+      "label": "Faturamento",
+      "papel": "metrica",
+    },
+    {
+      "formato": "dec2",
+      "id": "nota_media",
+      "label": "Nota média",
+      "papel": "metrica",
+    },
+  ],
+  "params": [],
+  "sql": "WITH base AS (
+  SELECT *,
+         "categoria" AS d0
+  FROM "fato_itens"
+),
+por_item AS (
+  SELECT d0,
+         CAST((SUM(price)) AS DOUBLE) AS "faturamento"
+  FROM base
+  GROUP BY d0
+),
+por_pedido AS (
+  SELECT d0,
+         CAST((AVG(nota)) AS DOUBLE) AS "nota_media"
+  FROM (SELECT DISTINCT "pedido_sk", "order_status", "data_compra", "data_entrega", "data_estimada", "dias_entrega", "status_entrega", "nota", "forma_pagamento", "parcelas", "cliente_sk", "cidade_cliente", "estado_cliente", d0 FROM base) AS pedidos
+  GROUP BY d0
+)
+SELECT i.d0 AS "categoria",
+       i."faturamento",
+       p."nota_media"
+FROM por_item AS i
+LEFT JOIN por_pedido AS p ON i.d0 IS NOT DISTINCT FROM p.d0
+ORDER BY "nota_media" ASC NULLS LAST, "categoria" ASC
+LIMIT 3",
+}
+`;
+
+exports[`snapshots do SQL > nota: atrasado vs no prazo (métrica de pedido) 1`] = `
+{
+  "colunas": [
+    {
+      "id": "status_entrega",
+      "label": "Status de entrega",
+      "papel": "dimensao",
+      "tipoDimensao": "categoria",
+    },
+    {
+      "formato": "dec2",
+      "id": "nota_media",
+      "label": "Nota média",
+      "papel": "metrica",
+    },
+  ],
+  "params": [],
+  "sql": "WITH base AS (
+  SELECT *,
+         "status_entrega" AS d0
+  FROM "fato_itens"
+),
+por_pedido AS (
+  SELECT d0,
+         CAST((AVG(nota)) AS DOUBLE) AS "nota_media"
+  FROM (SELECT DISTINCT "pedido_sk", "order_status", "data_compra", "data_entrega", "data_estimada", "dias_entrega", "status_entrega", "nota", "forma_pagamento", "parcelas", "cliente_sk", "cidade_cliente", "estado_cliente", d0 FROM base) AS pedidos
+  GROUP BY d0
+)
+SELECT p.d0 AS "status_entrega",
+       p."nota_media"
+FROM por_pedido AS p
+ORDER BY CASE "status_entrega" WHEN 'No Prazo' THEN 0 WHEN 'Atrasado' THEN 1 WHEN 'Não Entregue' THEN 2 ELSE 3 END, "status_entrega" ASC",
+}
+`;
+
+exports[`snapshots do SQL > pedidos mês a mês 1`] = `
+{
+  "colunas": [
+    {
+      "id": "tempo",
+      "label": "Período",
+      "papel": "dimensao",
+      "tipoDimensao": "tempo",
+    },
+    {
+      "formato": "int",
+      "id": "pedidos",
+      "label": "Pedidos",
+      "papel": "metrica",
+    },
+  ],
+  "params": [],
+  "sql": "WITH base AS (
+  SELECT *,
+         strftime(date_trunc('month', "data_compra"), '%Y-%m-%d') AS d0
+  FROM "fato_itens"
+),
+por_item AS (
+  SELECT d0,
+         CAST((COUNT(DISTINCT pedido_sk)) AS DOUBLE) AS "pedidos"
+  FROM base
+  GROUP BY d0
+)
+SELECT i.d0 AS "tempo",
+       i."pedidos"
+FROM por_item AS i
+ORDER BY "tempo" ASC, "tempo" ASC",
+}
+`;
+
+exports[`snapshots do SQL > top 5 categorias em 2018 1`] = `
+{
+  "colunas": [
+    {
+      "id": "categoria",
+      "label": "Categoria",
+      "papel": "dimensao",
+      "tipoDimensao": "categoria",
+    },
+    {
+      "formato": "brl",
+      "id": "faturamento",
+      "label": "Faturamento",
+      "papel": "metrica",
+    },
+  ],
+  "params": [
+    "2018-01-01",
+    "2018-12-31",
+  ],
+  "sql": "WITH base AS (
+  SELECT *,
+         "categoria" AS d0
+  FROM "fato_itens"
+  WHERE "data_compra" >= CAST(? AS DATE)
+    AND "data_compra" <= CAST(? AS DATE)
+),
+por_item AS (
+  SELECT d0,
+         CAST((SUM(price)) AS DOUBLE) AS "faturamento"
+  FROM base
+  GROUP BY d0
+)
+SELECT i.d0 AS "categoria",
+       i."faturamento"
+FROM por_item AS i
+ORDER BY "faturamento" DESC NULLS LAST, "categoria" ASC
+LIMIT 5",
+}
+`;
