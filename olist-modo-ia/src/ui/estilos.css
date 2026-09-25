@@ -249,7 +249,7 @@ select {
 
 .kpi-valor {
   margin: 4px 0 2px;
-  font-size: 28px;
+  font-size: clamp(20px, 1.9vw, 28px);
   white-space: nowrap;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -567,4 +567,324 @@ select {
   .kpi-descricao {
     max-width: 100%;
   }
+}
+
+/* ---------- Modo IA ---------- */
+
+.app.com-ia {
+  grid-template-columns: 250px minmax(0, 1fr) 460px;
+}
+
+.painel-ia {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--lateral);
+  border-left: 1px solid var(--borda);
+  min-width: 0;
+}
+
+.painel-ia-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--borda);
+}
+
+.painel-ia-topo h2 {
+  font-size: 18px;
+}
+
+.status-ia {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--texto);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-ia .ponto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--destaque);
+  box-shadow: 0 0 8px var(--destaque);
+}
+
+.status-detalhe {
+  margin: 2px 0 0;
+  font-size: 11.5px;
+  color: var(--texto-2);
+}
+
+.fechar {
+  background: transparent;
+  border: 1px solid var(--borda);
+  color: var(--texto-2);
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.painel-ia-corpo {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.insights-automaticos {
+  display: grid;
+  gap: 12px;
+}
+
+.painel-ia-rodape {
+  border-top: 1px solid var(--borda);
+  padding: 10px 16px 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.painel-ia-rodape .nota {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--texto-2);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  background: var(--painel);
+  color: var(--texto);
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.chip:hover:not(:disabled) {
+  border-color: var(--destaque);
+}
+
+.pergunta {
+  display: flex;
+  gap: 8px;
+}
+
+.pergunta input {
+  flex: 1;
+  min-width: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.pergunta button {
+  background: var(--gradiente);
+  border: 0;
+  border-radius: 10px;
+  color: #0b1120;
+  font-weight: 700;
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+.pergunta button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.resposta {
+  background: var(--painel);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 12px 14px;
+  min-width: 0;
+}
+
+.fixados .resposta {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.resposta-fora_de_escopo,
+.resposta-esclarecer {
+  border-style: dashed;
+}
+
+.resposta-pergunta,
+.resposta-selo-topo {
+  margin: 0 0 4px;
+  font-size: 12px;
+  color: var(--texto-2);
+}
+
+.resposta-selo-topo {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  background: var(--gradiente);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  width: fit-content;
+}
+
+.resposta-titulo {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.resposta-kpi {
+  margin: 4px 0;
+  font-size: 30px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.resposta-kpi span {
+  font-size: 15px;
+  margin-left: 6px;
+}
+
+.resposta-kpi .positivo {
+  color: var(--destaque);
+}
+
+.resposta-kpi .negativo {
+  color: var(--alerta);
+}
+
+.resposta-bullets {
+  margin: 8px 0 4px;
+  padding-left: 18px;
+  font-size: 13.5px;
+  display: grid;
+  gap: 4px;
+}
+
+.resposta-selo {
+  margin: 8px 0 0;
+  font-size: 11.5px;
+  color: var(--texto-2);
+}
+
+.resposta-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+  align-items: center;
+}
+
+.resposta-acoes button {
+  background: transparent;
+  border: 1px solid var(--borda);
+  color: var(--texto-2);
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.resposta-acoes button[aria-pressed='true'] {
+  border-color: var(--destaque);
+  color: var(--texto);
+}
+
+.resposta-acoes .aviso {
+  font-size: 12px;
+  color: var(--destaque);
+}
+
+.tabela-resposta {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.tabela-resposta th,
+.tabela-resposta td {
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--borda);
+  text-align: left;
+}
+
+.tabela-resposta td.num {
+  text-align: right;
+}
+
+.fixados {
+  margin-top: 24px;
+}
+
+.fixados h2 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 1280px) {
+  .app.com-ia {
+    grid-template-columns: 250px minmax(0, 1fr);
+  }
+  .painel-ia {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: min(460px, 100vw);
+    z-index: 20;
+    box-shadow: -12px 0 32px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (max-width: 860px) {
+  .app.com-ia {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.chips-rolagem {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+}
+
+.chips-rolagem .chip {
+  white-space: nowrap;
+}
+
+/* Com o painel do Modo IA aberto, a área dos KPIs fica mais estreita. */
+.app.com-ia .kpi-valor {
+  font-size: clamp(18px, 1.45vw, 24px);
+}
+
+.app.com-ia .kpi-sparkline {
+  flex-basis: 64px;
+  width: 64px;
 }

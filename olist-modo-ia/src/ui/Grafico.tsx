@@ -10,9 +10,11 @@ interface Props {
   rotulo: string;
   altura: number;
   aoRenderizar?: () => void;
+  /** Recebe a instância do ECharts (para exportar PNG). */
+  aoIniciar?: (instancia: EChartsType | null) => void;
 }
 
-export function Grafico({ opcoes, rotulo, altura, aoRenderizar }: Props) {
+export function Grafico({ opcoes, rotulo, altura, aoRenderizar, aoIniciar }: Props) {
   const elemento = useRef<HTMLDivElement>(null);
   const grafico = useRef<EChartsType | null>(null);
   // Guardado em ref: um callback novo a cada render não deve redesenhar o gráfico.
@@ -26,13 +28,16 @@ export function Grafico({ opcoes, rotulo, altura, aoRenderizar }: Props) {
     if (!el) return;
     const instancia = echarts.init(el, NOME_TEMA, { renderer: 'canvas' });
     grafico.current = instancia;
+    aoIniciar?.(instancia);
     const observador = new ResizeObserver(() => instancia.resize());
     observador.observe(el);
     return () => {
       observador.disconnect();
       instancia.dispose();
       grafico.current = null;
+      aoIniciar?.(null);
     };
+    // A instância nasce uma vez; aoIniciar é só um aviso.
   }, []);
 
   useEffect(() => {

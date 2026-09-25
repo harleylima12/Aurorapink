@@ -1,5 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { useModoIA } from '../modo-ia/useModoIA';
+import { Fixados } from './modo-ia/Fixados';
+import { PainelIA } from './modo-ia/PainelIA';
+
 import { completarMeses } from '../charts/series';
 import { PAGINAS } from '../dashboard/paginas';
 import type { Motor } from '../data/duckdb';
@@ -45,6 +49,24 @@ function Painel({ dados }: { dados: ContextoDados }) {
   const [local, navegar] = useLocal();
   const pagina = PAGINAS.find((p) => p.id === local.pagina) ?? PAGINAS[0];
   const renderizados = useRef(new Set<string>());
+  const [iaAberto, setIaAberto] = useState(false);
+  const campo = useRef<HTMLInputElement>(null);
+  const modoIA = useModoIA(dados.motor, dados.meta.ancora, dados.meta.mesesParciais, iaAberto);
+
+  // Atalho "/" abre o Modo IA e foca a pergunta; Esc fecha.
+  useEffect(() => {
+    const tecla = (e: KeyboardEvent) => {
+      const alvo = e.target as HTMLElement | null;
+      const digitando = alvo && (alvo.tagName === 'INPUT' || alvo.tagName === 'TEXTAREA' || alvo.tagName === 'SELECT');
+      if (e.key === '/' && !digitando) {
+        e.preventDefault();
+        setIaAberto(true);
+        window.setTimeout(() => campo.current?.focus(), 0);
+      } else if (e.key === 'Escape') setIaAberto(false);
+    };
+    window.addEventListener('keydown', tecla);
+    return () => window.removeEventListener('keydown', tecla);
+  }, []);
 
   useEffect(() => {
     if (pagina) document.title = `${pagina.titulo} · Olist · Modo IA local`;
@@ -65,7 +87,7 @@ function Painel({ dados }: { dados: ContextoDados }) {
 
   return (
     <Dados.Provider value={dados}>
-      <div className="app">
+      <div className={`app${iaAberto ? ' com-ia' : ''}`}>
         <BarraLateral local={local} navegar={navegar} />
         <main className="conteudo" id="conteudo">
           <header className="topo">
@@ -76,8 +98,16 @@ function Painel({ dados }: { dados: ContextoDados }) {
                 {filtrosAtivos.length ? ` · ${filtrosAtivos.join(' · ')}` : ' · base inteira (set/2016 a set/2018)'}
               </p>
             </div>
-            <button type="button" className="botao-ia" disabled title="O Modo IA chega na Fase 3 (Modo Rápido) e na Fase 4 (IA local)">
-              ✨ Modo IA <small>em breve</small>
+            <button
+              type="button"
+              className="botao-ia"
+              aria-expanded={iaAberto}
+              onClick={() => {
+                setIaAberto((a) => !a);
+                window.setTimeout(() => campo.current?.focus(), 0);
+              }}
+            >
+              ✨ Modo IA <small>atalho /</small>
             </button>
           </header>
           <section className="kpis" aria-label="Indicadores" aria-live="polite">
@@ -90,8 +120,10 @@ function Painel({ dados }: { dados: ContextoDados }) {
               <Visual key={v.id} definicao={v} filtros={filtros} aoRenderizar={() => aoRenderizar(v.id)} />
             ))}
           </div>
+          {pagina.id === 'visao-geral' && <Fixados />}
           <Rodape />
         </main>
+        {iaAberto && <PainelIA estado={modoIA} aoFechar={() => setIaAberto(false)} campo={campo} />}
       </div>
     </Dados.Provider>
   );

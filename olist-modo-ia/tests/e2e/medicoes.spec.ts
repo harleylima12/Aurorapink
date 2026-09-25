@@ -1,5 +1,5 @@
 /**
- * Medições de desempenho (docs/BENCHMARK.md). Grava test-results/medicoes.json.
+ * Medições de desempenho (docs/BENCHMARK.md). Grava evals/resultados/medicoes.json.
  * Mede no localhost: não inclui o tempo de download pela internet (ver BENCHMARK.md).
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -84,7 +84,7 @@ test('carga fria, carga com cache e troca de filtro', async ({ browser }) => {
     trocaDeFiltroMs: { mediana: mediana(filtros), max: Math.max(...filtros) },
     brutos: { frias, quentes, filtros },
   };
-  const pasta = path.join(RAIZ, 'test-results');
+  const pasta = path.join(RAIZ, 'evals', 'resultados');
   mkdirSync(pasta, { recursive: true });
   writeFileSync(path.join(pasta, 'medicoes.json'), `${JSON.stringify(resumo, null, 2)}\n`);
   console.log(JSON.stringify({ fria: resumo.fria, quente: resumo.quente, filtro: resumo.trocaDeFiltroMs }));
