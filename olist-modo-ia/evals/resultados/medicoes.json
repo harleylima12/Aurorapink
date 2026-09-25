@@ -1,0 +1,80 @@
+{
+  "rodadas": 5,
+  "fria": {
+    "fcp": 224,
+    "motorPronto": 1418,
+    "graficosProntos": 1677
+  },
+  "quente": {
+    "fcp": 120,
+    "motorPronto": 1274,
+    "graficosProntos": 1456
+  },
+  "trocaDeFiltroMs": {
+    "mediana": 122,
+    "max": 144
+  },
+  "brutos": {
+    "frias": [
+      {
+        "fcp": 232,
+        "motorPronto": 1420,
+        "graficosProntos": 1719
+      },
+      {
+        "fcp": 224,
+        "motorPronto": 1413,
+        "graficosProntos": 1677
+      },
+      {
+        "fcp": 220,
+        "motorPronto": 1416,
+        "graficosProntos": 1686
+      },
+      {
+        "fcp": 248,
+        "motorPronto": 1418,
+        "graficosProntos": 1656
+      },
+      {
+        "fcp": 212,
+        "motorPronto": 1434,
+        "graficosProntos": 1659
+      }
+    ],
+    "quentes": [
+      {
+        "fcp": 112,
+        "motorPronto": 1323,
+        "graficosProntos": 1562
+      },
+      {
+        "fcp": 120,
+        "motorPronto": 1326,
+        "graficosProntos": 1531
+      },
+      {
+        "fcp": 120,
+        "motorPronto": 1274,
+        "graficosProntos": 1454
+      },
+      {
+        "fcp": 128,
+        "motorPronto": 1269,
+        "graficosProntos": 1456
+      },
+      {
+        "fcp": 104,
+        "motorPronto": 1245,
+        "graficosProntos": 1424
+      }
+    ],
+    "filtros": [
+      144,
+      112,
+      122,
+      116,
+      124
+    ]
+  }
+}

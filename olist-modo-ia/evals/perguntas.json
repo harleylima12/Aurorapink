@@ -1,0 +1,1162 @@
+{
+  "versao": 1,
+  "descricao": "Suíte parcial da Fase 3 (a Fase 7 amplia para 80+). 'esperado' traz só os campos essenciais do QuerySpec; campos ausentes não são conferidos.",
+  "ancora": "2018-08-31",
+  "perguntas": [
+    {
+      "id": "f01",
+      "categoria": "facil",
+      "pergunta": "quanto faturamos no total?",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": []
+      }
+    },
+    {
+      "id": "f02",
+      "categoria": "facil",
+      "pergunta": "qual o faturamento de 2017?",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "time": {
+          "from": "2017-01-01",
+          "to": "2017-12-31"
+        }
+      }
+    },
+    {
+      "id": "f03",
+      "categoria": "facil",
+      "pergunta": "quantos pedidos tivemos?",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "pedidos"
+        ],
+        "dimensions": []
+      }
+    },
+    {
+      "id": "f04",
+      "categoria": "facil",
+      "pergunta": "qual o ticket médio?",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "ticket_medio"
+        ]
+      }
+    },
+    {
+      "id": "f05",
+      "categoria": "facil",
+      "pergunta": "quantos clientes únicos temos?",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "clientes"
+        ]
+      }
+    },
+    {
+      "id": "f06",
+      "categoria": "facil",
+      "pergunta": "nota média dos clientes",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "nota_media"
+        ]
+      }
+    },
+    {
+      "id": "f07",
+      "categoria": "facil",
+      "pergunta": "pedidos mês a mês",
+      "esperado": {
+        "intent": "tendencia",
+        "metrics": [
+          "pedidos"
+        ],
+        "dimensions": [
+          "tempo"
+        ],
+        "time": {
+          "grain": "mes"
+        }
+      }
+    },
+    {
+      "id": "f08",
+      "categoria": "facil",
+      "pergunta": "faturamento por estado",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "estado_cliente"
+        ]
+      }
+    },
+    {
+      "id": "f09",
+      "categoria": "facil",
+      "pergunta": "top 5 categorias em 2018",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "categoria"
+        ],
+        "limit": 5,
+        "time": {
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        }
+      }
+    },
+    {
+      "id": "f10",
+      "categoria": "facil",
+      "pergunta": "prazo médio de entrega",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "prazo_medio_entrega"
+        ]
+      }
+    },
+    {
+      "id": "f11",
+      "categoria": "facil",
+      "pergunta": "qual o percentual de atraso?",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "pct_atraso"
+        ]
+      }
+    },
+    {
+      "id": "f12",
+      "categoria": "facil",
+      "pergunta": "frete total em 2018",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "frete_total"
+        ],
+        "time": {
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        }
+      }
+    },
+    {
+      "id": "m01",
+      "categoria": "media",
+      "pergunta": "onde o frete é mais caro?",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "frete_medio"
+        ],
+        "dimensions": [
+          "estado_cliente"
+        ],
+        "sort": {
+          "dir": "desc"
+        }
+      }
+    },
+    {
+      "id": "m02",
+      "categoria": "media",
+      "pergunta": "nota de quem recebeu atrasado vs no prazo",
+      "esperado": {
+        "intent": "comparacao",
+        "metrics": [
+          "nota_media"
+        ],
+        "dimensions": [
+          "status_entrega"
+        ]
+      }
+    },
+    {
+      "id": "m03",
+      "categoria": "media",
+      "pergunta": "ticket médio por forma de pagamento",
+      "esperado": {
+        "intent": "comparacao",
+        "metrics": [
+          "ticket_medio"
+        ],
+        "dimensions": [
+          "forma_pagamento"
+        ]
+      }
+    },
+    {
+      "id": "m04",
+      "categoria": "media",
+      "pergunta": "evolução do faturamento em 2017",
+      "esperado": {
+        "intent": "tendencia",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "tempo"
+        ],
+        "time": {
+          "from": "2017-01-01",
+          "to": "2017-12-31"
+        }
+      }
+    },
+    {
+      "id": "m05",
+      "categoria": "media",
+      "pergunta": "quanto vendemos em SP?",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "filters": [
+          {
+            "dimension": "estado_cliente",
+            "values": [
+              "SP"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "m06",
+      "categoria": "media",
+      "pergunta": "faturamento de beleza e saúde em 2018",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "filters": [
+          {
+            "dimension": "categoria",
+            "values": [
+              "Beleza e Saúde"
+            ]
+          }
+        ],
+        "time": {
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        }
+      }
+    },
+    {
+      "id": "m07",
+      "categoria": "media",
+      "pergunta": "quais estados têm a pior nota?",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "nota_media"
+        ],
+        "dimensions": [
+          "estado_cliente"
+        ],
+        "sort": {
+          "dir": "asc"
+        }
+      }
+    },
+    {
+      "id": "m08",
+      "categoria": "media",
+      "pergunta": "itens vendidos por faixa de preço",
+      "esperado": {
+        "intent": "distribuicao",
+        "metrics": [
+          "itens"
+        ],
+        "dimensions": [
+          "faixa_de_preco"
+        ]
+      }
+    },
+    {
+      "id": "m09",
+      "categoria": "media",
+      "pergunta": "pedidos por status de entrega",
+      "esperado": {
+        "intent": "comparacao",
+        "metrics": [
+          "pedidos"
+        ],
+        "dimensions": [
+          "status_entrega"
+        ]
+      }
+    },
+    {
+      "id": "m10",
+      "categoria": "media",
+      "pergunta": "faturamento no último trimestre",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "time": {
+          "from": "2018-04-01",
+          "to": "2018-06-30"
+        }
+      }
+    },
+    {
+      "id": "m11",
+      "categoria": "media",
+      "pergunta": "vendas na black friday",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "time": {
+          "from": "2017-11-24",
+          "to": "2017-11-24"
+        }
+      }
+    },
+    {
+      "id": "m12",
+      "categoria": "media",
+      "pergunta": "quanto faturamos em dezembro de 2017?",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "time": {
+          "from": "2017-12-01",
+          "to": "2017-12-31"
+        }
+      }
+    },
+    {
+      "id": "m13",
+      "categoria": "media",
+      "pergunta": "faturamento do 1º semestre de 2018",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "time": {
+          "from": "2018-01-01",
+          "to": "2018-06-30"
+        }
+      }
+    },
+    {
+      "id": "m14",
+      "categoria": "media",
+      "pergunta": "top 10 cidades em pedidos",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "pedidos"
+        ],
+        "dimensions": [
+          "cidade_cliente"
+        ],
+        "limit": 10
+      }
+    },
+    {
+      "id": "m15",
+      "categoria": "media",
+      "pergunta": "% de atraso por estado do vendedor",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "pct_atraso"
+        ],
+        "dimensions": [
+          "estado_vendedor"
+        ]
+      }
+    },
+    {
+      "id": "m16",
+      "categoria": "media",
+      "pergunta": "faturamento SP vs RJ",
+      "esperado": {
+        "intent": "comparacao",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "estado_cliente"
+        ],
+        "filters": [
+          {
+            "dimension": "estado_cliente",
+            "values": [
+              "SP",
+              "RJ"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "m17",
+      "categoria": "media",
+      "pergunta": "compare 2017 e 2018 em faturamento",
+      "esperado": {
+        "intent": "comparacao",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "tempo"
+        ],
+        "time": {
+          "grain": "ano",
+          "from": "2017-01-01",
+          "to": "2018-12-31"
+        }
+      }
+    },
+    {
+      "id": "m18",
+      "categoria": "media",
+      "pergunta": "faturamento nos últimos 3 meses",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "time": {
+          "from": "2018-06-01",
+          "to": "2018-08-31"
+        }
+      }
+    },
+    {
+      "id": "d01",
+      "categoria": "dificil",
+      "pergunta": "por que o faturamento caiu em dezembro de 2017?",
+      "esperado": {
+        "intent": "explicar_variacao",
+        "metrics": [
+          "faturamento"
+        ],
+        "time": {
+          "from": "2017-12-01",
+          "to": "2017-12-31"
+        }
+      }
+    },
+    {
+      "id": "d02",
+      "categoria": "dificil",
+      "pergunta": "o que explica a queda de pedidos em dezembro?",
+      "esperado": {
+        "intent": "explicar_variacao",
+        "metrics": [
+          "pedidos"
+        ],
+        "time": {
+          "from": "2017-12-01",
+          "to": "2017-12-31"
+        }
+      }
+    },
+    {
+      "id": "d03",
+      "categoria": "dificil",
+      "pergunta": "faturamento de 2018 vs ano anterior",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "time": {
+          "from": "2018-01-01",
+          "to": "2018-12-31",
+          "compare": "mesmo_periodo_ano_anterior"
+        }
+      }
+    },
+    {
+      "id": "d04",
+      "categoria": "dificil",
+      "pergunta": "nota média por categoria, das piores",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "nota_media"
+        ],
+        "dimensions": [
+          "categoria"
+        ],
+        "sort": {
+          "dir": "asc"
+        }
+      }
+    },
+    {
+      "id": "d05",
+      "categoria": "dificil",
+      "pergunta": "prazo médio de entrega mês a mês em 2018",
+      "esperado": {
+        "intent": "tendencia",
+        "metrics": [
+          "prazo_medio_entrega"
+        ],
+        "dimensions": [
+          "tempo"
+        ],
+        "time": {
+          "grain": "mes",
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        }
+      }
+    },
+    {
+      "id": "d06",
+      "categoria": "dificil",
+      "pergunta": "quais as 3 categorias que mais faturaram no rio de janeiro?",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "categoria"
+        ],
+        "limit": 3,
+        "filters": [
+          {
+            "dimension": "estado_cliente",
+            "values": [
+              "RJ"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "d07",
+      "categoria": "dificil",
+      "pergunta": "quantos pedidos foram pagos com boleto em 2017?",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "pedidos"
+        ],
+        "filters": [
+          {
+            "dimension": "forma_pagamento",
+            "values": [
+              "Boleto"
+            ]
+          }
+        ],
+        "time": {
+          "from": "2017-01-01",
+          "to": "2017-12-31"
+        }
+      }
+    },
+    {
+      "id": "d08",
+      "categoria": "dificil",
+      "pergunta": "frete médio por pedido mês a mês",
+      "esperado": {
+        "intent": "tendencia",
+        "metrics": [
+          "frete_medio"
+        ],
+        "dimensions": [
+          "tempo"
+        ]
+      }
+    },
+    {
+      "id": "s01",
+      "categoria": "followup",
+      "anterior": "f09",
+      "pergunta": "e só em SP?",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "categoria"
+        ],
+        "limit": 5,
+        "time": {
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        },
+        "filters": [
+          {
+            "dimension": "estado_cliente",
+            "values": [
+              "SP"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "categoria": "followup",
+      "anterior": "f08",
+      "pergunta": "e em 2017?",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "estado_cliente"
+        ],
+        "time": {
+          "from": "2017-01-01",
+          "to": "2017-12-31"
+        }
+      }
+    },
+    {
+      "id": "s03",
+      "categoria": "followup",
+      "anterior": "f06",
+      "pergunta": "e por forma de pagamento?",
+      "esperado": {
+        "intent": "comparacao",
+        "metrics": [
+          "nota_media"
+        ],
+        "dimensions": [
+          "forma_pagamento"
+        ]
+      }
+    },
+    {
+      "id": "a01",
+      "categoria": "ambigua",
+      "pergunta": "como estamos?",
+      "esperado": {
+        "intent": "esclarecer"
+      }
+    },
+    {
+      "id": "a02",
+      "categoria": "ambigua",
+      "pergunta": "me mostra um resumo",
+      "esperado": {
+        "intent": "esclarecer"
+      }
+    },
+    {
+      "id": "a03",
+      "categoria": "ambigua",
+      "pergunta": "e aí, tudo bem?",
+      "esperado": {
+        "intent": "esclarecer"
+      }
+    },
+    {
+      "id": "o01",
+      "categoria": "fora",
+      "pergunta": "qual o lucro por categoria?",
+      "esperado": {
+        "intent": "fora_de_escopo"
+      }
+    },
+    {
+      "id": "o02",
+      "categoria": "fora",
+      "pergunta": "quanto temos em estoque?",
+      "esperado": {
+        "intent": "fora_de_escopo"
+      }
+    },
+    {
+      "id": "o03",
+      "categoria": "fora",
+      "pergunta": "qual a margem dos produtos?",
+      "esperado": {
+        "intent": "fora_de_escopo"
+      }
+    },
+    {
+      "id": "o04",
+      "categoria": "fora",
+      "pergunta": "previsão de vendas para 2019",
+      "esperado": {
+        "intent": "fora_de_escopo"
+      }
+    },
+    {
+      "id": "o05",
+      "categoria": "fora",
+      "pergunta": "quantos funcionários a empresa tem?",
+      "esperado": {
+        "intent": "fora_de_escopo"
+      }
+    },
+    {
+      "id": "o06",
+      "categoria": "fora",
+      "pergunta": "qual a idade média dos clientes?",
+      "esperado": {
+        "intent": "fora_de_escopo"
+      }
+    },
+    {
+      "id": "t01",
+      "categoria": "digitacao",
+      "pergunta": "faturamnto por categoria",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "categoria"
+        ]
+      }
+    },
+    {
+      "id": "t02",
+      "categoria": "digitacao",
+      "pergunta": "qnts pedidos em 2018",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "pedidos"
+        ],
+        "time": {
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        }
+      }
+    },
+    {
+      "id": "t03",
+      "categoria": "digitacao",
+      "pergunta": "qual a grana que entrou em 2017",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "time": {
+          "from": "2017-01-01",
+          "to": "2017-12-31"
+        }
+      }
+    },
+    {
+      "id": "t04",
+      "categoria": "digitacao",
+      "pergunta": "ticket medio sampa",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "ticket_medio"
+        ],
+        "filters": [
+          {
+            "dimension": "estado_cliente",
+            "values": [
+              "SP"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "t05",
+      "categoria": "digitacao",
+      "pergunta": "avaliacao dos clientes por estado",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "nota_media"
+        ],
+        "dimensions": [
+          "estado_cliente"
+        ]
+      }
+    },
+    {
+      "id": "t06",
+      "categoria": "digitacao",
+      "pergunta": "nota media por meio de pagamento",
+      "esperado": {
+        "intent": "comparacao",
+        "metrics": [
+          "nota_media"
+        ],
+        "dimensions": [
+          "forma_pagamento"
+        ]
+      }
+    },
+    {
+      "id": "c01",
+      "categoria": "facil",
+      "pergunta": "qual foi o faturamento total da olist?",
+      "cega": true,
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ]
+      }
+    },
+    {
+      "id": "c02",
+      "categoria": "facil",
+      "pergunta": "quantos itens foram vendidos em 2018?",
+      "cega": true,
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "itens"
+        ],
+        "time": {
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        }
+      }
+    },
+    {
+      "id": "c03",
+      "categoria": "facil",
+      "pergunta": "faturamento por categoria",
+      "cega": true,
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "categoria"
+        ]
+      }
+    },
+    {
+      "id": "c04",
+      "categoria": "facil",
+      "pergunta": "clientes por estado",
+      "cega": true,
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "clientes"
+        ],
+        "dimensions": [
+          "estado_cliente"
+        ]
+      }
+    },
+    {
+      "id": "c05",
+      "categoria": "media",
+      "pergunta": "qual categoria teve a maior nota média?",
+      "cega": true,
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "nota_media"
+        ],
+        "dimensions": [
+          "categoria"
+        ],
+        "sort": {
+          "dir": "desc"
+        }
+      }
+    },
+    {
+      "id": "c06",
+      "categoria": "media",
+      "pergunta": "ticket médio em minas gerais",
+      "cega": true,
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "ticket_medio"
+        ],
+        "filters": [
+          {
+            "dimension": "estado_cliente",
+            "values": [
+              "MG"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "c07",
+      "categoria": "media",
+      "pergunta": "pedidos pagos com voucher por mês",
+      "cega": true,
+      "esperado": {
+        "intent": "tendencia",
+        "metrics": [
+          "pedidos"
+        ],
+        "dimensions": [
+          "tempo"
+        ],
+        "filters": [
+          {
+            "dimension": "forma_pagamento",
+            "values": [
+              "Voucher"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "c08",
+      "categoria": "media",
+      "pergunta": "quais os 5 estados com mais atraso?",
+      "cega": true,
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "pct_atraso"
+        ],
+        "dimensions": [
+          "estado_cliente"
+        ],
+        "limit": 5,
+        "sort": {
+          "dir": "desc"
+        }
+      }
+    },
+    {
+      "id": "c09",
+      "categoria": "media",
+      "pergunta": "preço médio dos itens por categoria",
+      "cega": true,
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "preco_medio"
+        ],
+        "dimensions": [
+          "categoria"
+        ]
+      }
+    },
+    {
+      "id": "c10",
+      "categoria": "media",
+      "pergunta": "faturamento em novembro de 2017",
+      "cega": true,
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "time": {
+          "from": "2017-11-01",
+          "to": "2017-11-30"
+        }
+      }
+    },
+    {
+      "id": "c11",
+      "categoria": "media",
+      "pergunta": "quantos pedidos atrasaram em 2017?",
+      "cega": true,
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "pedidos"
+        ],
+        "filters": [
+          {
+            "dimension": "status_entrega",
+            "values": [
+              "Atrasado"
+            ]
+          }
+        ],
+        "time": {
+          "from": "2017-01-01",
+          "to": "2017-12-31"
+        }
+      }
+    },
+    {
+      "id": "c12",
+      "categoria": "media",
+      "pergunta": "frete médio em SP vs RJ vs MG",
+      "cega": true,
+      "esperado": {
+        "intent": "comparacao",
+        "metrics": [
+          "frete_medio"
+        ],
+        "dimensions": [
+          "estado_cliente"
+        ],
+        "filters": [
+          {
+            "dimension": "estado_cliente",
+            "values": [
+              "SP",
+              "RJ",
+              "MG"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "c13",
+      "categoria": "dificil",
+      "pergunta": "por que as vendas caíram em setembro de 2018?",
+      "cega": true,
+      "esperado": {
+        "intent": "explicar_variacao",
+        "metrics": [
+          "faturamento"
+        ],
+        "time": {
+          "from": "2018-09-01",
+          "to": "2018-09-30"
+        }
+      }
+    },
+    {
+      "id": "c14",
+      "categoria": "dificil",
+      "pergunta": "evolução da nota média por trimestre",
+      "cega": true,
+      "esperado": {
+        "intent": "tendencia",
+        "metrics": [
+          "nota_media"
+        ],
+        "dimensions": [
+          "tempo"
+        ],
+        "time": {
+          "grain": "trimestre"
+        }
+      }
+    },
+    {
+      "id": "c15",
+      "categoria": "dificil",
+      "pergunta": "qual cidade mais comprou cama mesa e banho?",
+      "cega": true,
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "cidade_cliente"
+        ],
+        "filters": [
+          {
+            "dimension": "categoria",
+            "values": [
+              "Cama, Mesa e Banho"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "c16",
+      "categoria": "ambigua",
+      "pergunta": "o que você pode me dizer?",
+      "cega": true,
+      "esperado": {
+        "intent": "esclarecer"
+      }
+    },
+    {
+      "id": "c17",
+      "categoria": "fora",
+      "pergunta": "qual o custo do frete para a olist?",
+      "cega": true,
+      "esperado": {
+        "intent": "fora_de_escopo"
+      }
+    },
+    {
+      "id": "c18",
+      "categoria": "fora",
+      "pergunta": "quantas devoluções tivemos?",
+      "cega": true,
+      "esperado": {
+        "intent": "fora_de_escopo"
+      }
+    },
+    {
+      "id": "c19",
+      "categoria": "digitacao",
+      "pergunta": "faturamento por estadu",
+      "cega": true,
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "estado_cliente"
+        ]
+      }
+    },
+    {
+      "id": "c20",
+      "categoria": "digitacao",
+      "pergunta": "qto a gente vendeu no natal de 2017",
+      "cega": true,
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "time": {
+          "from": "2017-12-01",
+          "to": "2017-12-31"
+        }
+      }
+    }
+  ]
+}

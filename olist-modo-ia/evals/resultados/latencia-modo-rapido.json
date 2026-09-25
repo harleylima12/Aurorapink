@@ -1,0 +1,67 @@
+{
+  "p50": 27.300000000046566,
+  "p95": 95.69999999995343,
+  "max": 95.69999999995343,
+  "porPergunta": [
+    {
+      "pergunta": "quanto faturamos no total?",
+      "ms": 19,
+      "tipo": "dados"
+    },
+    {
+      "pergunta": "top 5 categorias em 2018",
+      "ms": 34,
+      "tipo": "dados"
+    },
+    {
+      "pergunta": "e só em SP?",
+      "ms": 50,
+      "tipo": "dados"
+    },
+    {
+      "pergunta": "faturamento mês a mês",
+      "ms": 17,
+      "tipo": "dados"
+    },
+    {
+      "pergunta": "nota de quem recebeu atrasado vs no prazo",
+      "ms": 94,
+      "tipo": "dados"
+    },
+    {
+      "pergunta": "onde o frete é mais caro?",
+      "ms": 27,
+      "tipo": "dados"
+    },
+    {
+      "pergunta": "por que o faturamento caiu em dezembro de 2017?",
+      "ms": 26,
+      "tipo": "dados"
+    },
+    {
+      "pergunta": "faturamento de 2018 vs ano anterior",
+      "ms": 8,
+      "tipo": "dados"
+    },
+    {
+      "pergunta": "itens vendidos por faixa de preço",
+      "ms": 43,
+      "tipo": "dados"
+    },
+    {
+      "pergunta": "faturamento × nota média por categoria",
+      "ms": 96,
+      "tipo": "dados"
+    },
+    {
+      "pergunta": "qual o lucro por categoria?",
+      "ms": 11,
+      "tipo": "fora_de_escopo"
+    },
+    {
+      "pergunta": "como estamos?",
+      "ms": 8,
+      "tipo": "esclarecer"
+    }
+  ]
+}
