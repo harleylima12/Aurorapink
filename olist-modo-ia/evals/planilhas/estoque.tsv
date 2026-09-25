@@ -1,0 +1,145 @@
+SKU	Descrição	Categoria	Fornecedor	Quantidade em Estoque	Estoque Mínimo	Custo Unitário	Última Entrada	Armazém	Ativo
+SKU-ELE-0001	Fone Bluetooth P	Eletrônicos	Beta Importação	451	10	94.11	2024-05-16	Extrema	true
+SKU-ELE-0002	Fone Bluetooth M	Eletrônicos	Delta Atacado	444	20	173.77	2024-02-19	Guarulhos	false
+SKU-ELE-0003	Fone Bluetooth G	Eletrônicos	Delta Atacado	442	10	128.63	2024-03-11	Cajamar	false
+SKU-ELE-0004	Fone Bluetooth Azul	Eletrônicos	Alfa Distribuidora	236	10	394.89	2024-02-06	Guarulhos	false
+SKU-ELE-0005	Fone Bluetooth Preto	Eletrônicos	Delta Atacado	408	5	181.88	2024-04-08	Guarulhos	false
+SKU-ELE-0006	Fone Bluetooth Branco	Eletrônicos	Gama Indústria	169	50	109.07	2024-01-10	Guarulhos	false
+SKU-ELE-0007	Fone Bluetooth Kit 2	Eletrônicos	Delta Atacado	87	10	139.60	2024-02-18	Extrema	false
+SKU-ELE-0008	Fone Bluetooth Kit 3	Eletrônicos	Gama Indústria	172	20	157.59	2024-04-05	Extrema	true
+SKU-ELE-0009	Carregador USB-C P	Eletrônicos	Delta Atacado	431	5	136.29	2024-03-20	Cajamar	true
+SKU-ELE-0010	Carregador USB-C M	Eletrônicos	Beta Importação	247	50	95.88	2024-01-31	Extrema	true
+SKU-ELE-0011	Carregador USB-C G	Eletrônicos	Delta Atacado	209	5	379.43	2024-03-29	Extrema	true
+SKU-ELE-0012	Carregador USB-C Azul	Eletrônicos	Gama Indústria	467	20	53.46	2024-06-14	Extrema	false
+SKU-ELE-0013	Carregador USB-C Preto	Eletrônicos	Delta Atacado	69	20	135.69	2024-07-02	Guarulhos	false
+SKU-ELE-0014	Carregador USB-C Branco	Eletrônicos	Gama Indústria	268	5	206.24	2024-04-22	Extrema	false
+SKU-ELE-0015	Carregador USB-C Kit 2	Eletrônicos	Gama Indústria	169	10	176.49	2024-07-04	Extrema	false
+SKU-ELE-0016	Carregador USB-C Kit 3	Eletrônicos	Gama Indústria	170	10	148.22	2024-01-02	Guarulhos	false
+SKU-ELE-0017	Caixa de Som P	Eletrônicos	Delta Atacado	232	10	382.77	2024-05-17	Guarulhos	false
+SKU-ELE-0018	Caixa de Som M	Eletrônicos	Alfa Distribuidora	106	10	178.04	2024-07-13	Guarulhos	true
+SKU-ELE-0019	Caixa de Som G	Eletrônicos	Beta Importação	199	50	252.37	2024-06-20	Guarulhos	true
+SKU-ELE-0020	Caixa de Som Azul	Eletrônicos	Alfa Distribuidora	332	50	127.91	2024-07-14	Extrema	false
+SKU-ELE-0021	Caixa de Som Preto	Eletrônicos	Gama Indústria	3	50	154.88	2024-04-15	Extrema	false
+SKU-ELE-0022	Caixa de Som Branco	Eletrônicos	Beta Importação	404	50	338.12	2024-02-24	Extrema	false
+SKU-ELE-0023	Caixa de Som Kit 2	Eletrônicos	Alfa Distribuidora	438	50	134.58	2024-05-30	Extrema	false
+SKU-ELE-0024	Caixa de Som Kit 3	Eletrônicos	Alfa Distribuidora	155	10	47.31	2024-02-23	Guarulhos	true
+SKU-ELE-0025	Smartwatch P	Eletrônicos	Beta Importação	457	20	333.22	2024-04-11	Guarulhos	true
+SKU-ELE-0026	Smartwatch M	Eletrônicos	Gama Indústria	170	20	233.73	2024-01-27	Extrema	true
+SKU-ELE-0027	Smartwatch G	Eletrônicos	Beta Importação	24	20	90.11	2024-06-11	Guarulhos	true
+SKU-ELE-0028	Smartwatch Azul	Eletrônicos	Beta Importação	87	10	298.54	2024-02-18	Extrema	false
+SKU-ELE-0029	Smartwatch Preto	Eletrônicos	Beta Importação	285	20	53.22	2024-03-27	Extrema	true
+SKU-ELE-0030	Smartwatch Branco	Eletrônicos	Alfa Distribuidora	427	20	312.70	2024-03-31	Cajamar	false
+SKU-ELE-0031	Smartwatch Kit 2	Eletrônicos	Alfa Distribuidora	365	50	97.03	2024-06-21	Cajamar	true
+SKU-ELE-0032	Smartwatch Kit 3	Eletrônicos	Alfa Distribuidora	218	5	395.59	2024-07-14	Extrema	true
+SKU-CAS-0033	Luminária P	Casa	Delta Atacado	208	50	50.61	2024-02-15	Guarulhos	true
+SKU-CAS-0034	Luminária M	Casa	Delta Atacado	157	10	16.28	2024-03-02	Extrema	false
+SKU-CAS-0035	Luminária G	Casa	Beta Importação	461	50	97.32	2024-04-24	Cajamar	true
+SKU-CAS-0036	Luminária Azul	Casa	Gama Indústria	55	50	97.43	2024-03-07	Extrema	true
+SKU-CAS-0037	Luminária Preto	Casa	Delta Atacado	351	10	43.17	2024-07-07	Guarulhos	false
+SKU-CAS-0038	Luminária Branco	Casa	Alfa Distribuidora	326	50	86.58	2024-05-20	Cajamar	true
+SKU-CAS-0039	Luminária Kit 2	Casa	Beta Importação	200	5	88.21	2024-02-07	Cajamar	true
+SKU-CAS-0040	Luminária Kit 3	Casa	Gama Indústria	368	20	18.30	2024-01-07	Cajamar	true
+SKU-CAS-0041	Jogo de Toalhas P	Casa	Beta Importação	412	10	57.09	2024-02-17	Guarulhos	false
+SKU-CAS-0042	Jogo de Toalhas M	Casa	Gama Indústria	111	5	54.30	2024-03-02	Extrema	false
+SKU-CAS-0043	Jogo de Toalhas G	Casa	Gama Indústria	323	50	102.50	2024-03-19	Guarulhos	true
+SKU-CAS-0044	Jogo de Toalhas Azul	Casa	Delta Atacado	102	5	53.22	2024-04-21	Cajamar	true
+SKU-CAS-0045	Jogo de Toalhas Preto	Casa	Delta Atacado	221	20	80.38	2024-06-27	Extrema	true
+SKU-CAS-0046	Jogo de Toalhas Branco	Casa	Beta Importação	108	5	56.01	2024-03-08	Cajamar	true
+SKU-CAS-0047	Jogo de Toalhas Kit 2	Casa	Alfa Distribuidora	352	5	107.71	2024-05-29	Guarulhos	true
+SKU-CAS-0048	Jogo de Toalhas Kit 3	Casa	Beta Importação	129	50	90.26	2024-05-29	Guarulhos	false
+SKU-CAS-0049	Panela Antiaderente P	Casa	Delta Atacado	68	20	14.56	2024-03-28	Guarulhos	false
+SKU-CAS-0050	Panela Antiaderente M	Casa	Alfa Distribuidora	135	10	46.26	2024-01-25	Cajamar	true
+SKU-CAS-0051	Panela Antiaderente G	Casa	Alfa Distribuidora	434	20	89.21	2024-05-23	Guarulhos	true
+SKU-CAS-0052	Panela Antiaderente Azul	Casa	Gama Indústria	453	50	25.20	2024-06-16	Guarulhos	true
+SKU-CAS-0053	Panela Antiaderente Preto	Casa	Alfa Distribuidora	59	5	59.37	2024-07-18	Guarulhos	true
+SKU-CAS-0054	Panela Antiaderente Branco	Casa	Gama Indústria	243	10	66.56	2024-06-22	Extrema	true
+SKU-CAS-0055	Panela Antiaderente Kit 2	Casa	Gama Indústria	78	10	59.19	2024-05-11	Guarulhos	false
+SKU-CAS-0056	Panela Antiaderente Kit 3	Casa	Alfa Distribuidora	31	5	53.21	2024-07-14	Cajamar	false
+SKU-CAS-0057	Organizador P	Casa	Delta Atacado	366	50	102.95	2024-06-17	Extrema	true
+SKU-CAS-0058	Organizador M	Casa	Delta Atacado	107	20	44.86	2024-05-21	Extrema	true
+SKU-CAS-0059	Organizador G	Casa	Beta Importação	84	5	65.38	2024-07-14	Cajamar	true
+SKU-CAS-0060	Organizador Azul	Casa	Beta Importação	376	10	14.63	2024-01-24	Guarulhos	true
+SKU-CAS-0061	Organizador Preto	Casa	Beta Importação	462	20	14.40	2024-03-01	Cajamar	true
+SKU-CAS-0062	Organizador Branco	Casa	Delta Atacado	276	5	83.91	2024-02-28	Extrema	true
+SKU-CAS-0063	Organizador Kit 2	Casa	Alfa Distribuidora	263	10	88.95	2024-03-14	Cajamar	true
+SKU-CAS-0064	Organizador Kit 3	Casa	Beta Importação	256	5	105.05	2024-05-12	Cajamar	false
+SKU-MOD-0065	Camiseta Básica P	Moda	Gama Indústria	181	50	19.28	2024-04-18	Guarulhos	true
+SKU-MOD-0066	Camiseta Básica M	Moda	Beta Importação	222	20	110.58	2024-04-23	Cajamar	true
+SKU-MOD-0067	Camiseta Básica G	Moda	Delta Atacado	172	20	142.62	2024-02-08	Cajamar	true
+SKU-MOD-0068	Camiseta Básica Azul	Moda	Gama Indústria	393	10	148.33	2024-01-02	Cajamar	true
+SKU-MOD-0069	Camiseta Básica Preto	Moda	Gama Indústria	129	20	66.30	2024-02-19	Cajamar	false
+SKU-MOD-0070	Camiseta Básica Branco	Moda	Alfa Distribuidora	463	5	53.53	2024-03-12	Guarulhos	false
+SKU-MOD-0071	Camiseta Básica Kit 2	Moda	Gama Indústria	349	20	138.58	2024-05-03	Guarulhos	true
+SKU-MOD-0072	Camiseta Básica Kit 3	Moda	Delta Atacado	329	5	29.00	2024-05-30	Extrema	false
+SKU-MOD-0073	Tênis Casual P	Moda	Delta Atacado	307	20	42.66	2024-03-02	Extrema	true
+SKU-MOD-0074	Tênis Casual M	Moda	Beta Importação	491	5	71.18	2024-01-11	Cajamar	false
+SKU-MOD-0075	Tênis Casual G	Moda	Gama Indústria	380	5	152.69	2024-01-29	Cajamar	true
+SKU-MOD-0076	Tênis Casual Azul	Moda	Delta Atacado	107	50	143.89	2024-04-03	Guarulhos	true
+SKU-MOD-0077	Tênis Casual Preto	Moda	Delta Atacado	485	20	105.66	2024-03-29	Guarulhos	false
+SKU-MOD-0078	Tênis Casual Branco	Moda	Beta Importação	342	50	15.80	2024-04-23	Guarulhos	true
+SKU-MOD-0079	Tênis Casual Kit 2	Moda	Alfa Distribuidora	273	50	17.61	2024-05-19	Extrema	false
+SKU-MOD-0080	Tênis Casual Kit 3	Moda	Beta Importação	409	5	124.28	2024-05-07	Cajamar	false
+SKU-MOD-0081	Mochila P	Moda	Alfa Distribuidora	94	50	73.43	2024-06-27	Extrema	false
+SKU-MOD-0082	Mochila M	Moda	Gama Indústria	480	50	151.93	2024-06-26	Extrema	true
+SKU-MOD-0083	Mochila G	Moda	Beta Importação	109	5	28.41	2024-01-13	Guarulhos	false
+SKU-MOD-0084	Mochila Azul	Moda	Delta Atacado	127	10	146.08	2024-05-20	Cajamar	true
+SKU-MOD-0085	Mochila Preto	Moda	Beta Importação	401	5	28.61	2024-05-09	Extrema	false
+SKU-MOD-0086	Mochila Branco	Moda	Delta Atacado	447	10	127.53	2024-05-05	Cajamar	false
+SKU-MOD-0087	Mochila Kit 2	Moda	Beta Importação	173	10	84.05	2024-02-09	Guarulhos	false
+SKU-MOD-0088	Mochila Kit 3	Moda	Alfa Distribuidora	121	20	21.23	2024-05-14	Guarulhos	true
+SKU-MOD-0089	Boné P	Moda	Alfa Distribuidora	223	10	26.09	2024-05-03	Extrema	false
+SKU-MOD-0090	Boné M	Moda	Alfa Distribuidora	79	50	39.54	2024-01-14	Cajamar	false
+SKU-MOD-0091	Boné G	Moda	Gama Indústria	7	50	112.70	2024-06-08	Extrema	true
+SKU-MOD-0092	Boné Azul	Moda	Alfa Distribuidora	72	50	114.05	2024-04-04	Extrema	false
+SKU-MOD-0093	Boné Preto	Moda	Alfa Distribuidora	284	20	124.75	2024-02-13	Guarulhos	true
+SKU-MOD-0094	Boné Branco	Moda	Alfa Distribuidora	75	5	29.00	2024-07-11	Guarulhos	true
+SKU-MOD-0095	Boné Kit 2	Moda	Beta Importação	13	50	124.82	2024-06-10	Extrema	true
+SKU-MOD-0096	Boné Kit 3	Moda	Beta Importação	113	10	137.49	2024-07-13	Extrema	false
+SKU-BEL-0097	Protetor Solar P	Beleza	Gama Indústria	459	20	86.32	2024-04-07	Extrema	true
+SKU-BEL-0098	Protetor Solar M	Beleza	Delta Atacado	383	50	71.13	2024-01-30	Guarulhos	true
+SKU-BEL-0099	Protetor Solar G	Beleza	Delta Atacado	182	5	83.43	2024-05-07	Guarulhos	true
+SKU-BEL-0100	Protetor Solar Azul	Beleza	Delta Atacado	400	10	66.29	2024-07-07	Guarulhos	true
+SKU-BEL-0101	Protetor Solar Preto	Beleza	Alfa Distribuidora	53	5	59.88	2024-04-19	Guarulhos	true
+SKU-BEL-0102	Protetor Solar Branco	Beleza	Delta Atacado	209	5	94.18	2024-04-20	Extrema	true
+SKU-BEL-0103	Protetor Solar Kit 2	Beleza	Beta Importação	379	5	30.59	2024-03-21	Guarulhos	true
+SKU-BEL-0104	Protetor Solar Kit 3	Beleza	Alfa Distribuidora	448	50	98.29	2024-07-07	Guarulhos	true
+SKU-BEL-0105	Hidratante P	Beleza	Beta Importação	22	10	51.31	2024-03-15	Extrema	true
+SKU-BEL-0106	Hidratante M	Beleza	Gama Indústria	399	20	13.43	2024-04-29	Cajamar	true
+SKU-BEL-0107	Hidratante G	Beleza	Beta Importação	235	10	87.29	2024-06-22	Extrema	true
+SKU-BEL-0108	Hidratante Azul	Beleza	Alfa Distribuidora	362	20	48.98	2024-01-24	Guarulhos	false
+SKU-BEL-0109	Hidratante Preto	Beleza	Delta Atacado	164	20	17.47	2024-03-26	Extrema	true
+SKU-BEL-0110	Hidratante Branco	Beleza	Delta Atacado	0	5	54.54	2024-04-27	Cajamar	true
+SKU-BEL-0111	Hidratante Kit 2	Beleza	Alfa Distribuidora	194	5	67.85	2024-02-18	Extrema	true
+SKU-BEL-0112	Hidratante Kit 3	Beleza	Gama Indústria	139	20	68.59	2024-03-01	Cajamar	true
+SKU-BEL-0113	Perfume 50 ml P	Beleza	Delta Atacado	255	50	88.08	2024-04-25	Guarulhos	true
+SKU-BEL-0114	Perfume 50 ml M	Beleza	Alfa Distribuidora	182	5	43.14	2024-01-22	Extrema	false
+SKU-BEL-0115	Perfume 50 ml G	Beleza	Delta Atacado	377	20	28.11	2024-01-28	Guarulhos	true
+SKU-BEL-0116	Perfume 50 ml Azul	Beleza	Delta Atacado	344	10	27.46	2024-02-20	Extrema	false
+SKU-BEL-0117	Perfume 50 ml Preto	Beleza	Alfa Distribuidora	331	20	20.32	2024-05-15	Extrema	true
+SKU-BEL-0118	Perfume 50 ml Branco	Beleza	Delta Atacado	132	5	35.41	2024-06-24	Extrema	true
+SKU-BEL-0119	Perfume 50 ml Kit 2	Beleza	Beta Importação	161	50	81.32	2024-06-11	Extrema	false
+SKU-BEL-0120	Perfume 50 ml Kit 3	Beleza	Alfa Distribuidora	484	5	93.05	2024-06-18	Guarulhos	true
+SKU-ESP-0121	Garrafa Térmica P	Esporte	Delta Atacado	481	20	41.73	2024-02-20	Extrema	true
+SKU-ESP-0122	Garrafa Térmica M	Esporte	Alfa Distribuidora	456	20	24.27	2024-01-07	Guarulhos	true
+SKU-ESP-0123	Garrafa Térmica G	Esporte	Delta Atacado	372	10	46.76	2024-06-15	Extrema	true
+SKU-ESP-0124	Garrafa Térmica Azul	Esporte	Delta Atacado	373	20	34.25	2024-03-27	Cajamar	true
+SKU-ESP-0125	Garrafa Térmica Preto	Esporte	Delta Atacado	441	20	31.73	2024-04-01	Guarulhos	false
+SKU-ESP-0126	Garrafa Térmica Branco	Esporte	Beta Importação	430	10	48.98	2024-06-05	Guarulhos	true
+SKU-ESP-0127	Garrafa Térmica Kit 2	Esporte	Alfa Distribuidora	5	10	69.68	2024-01-20	Extrema	false
+SKU-ESP-0128	Garrafa Térmica Kit 3	Esporte	Beta Importação	353	20	61.05	2024-04-29	Cajamar	true
+SKU-ESP-0129	Tapete de Yoga P	Esporte	Gama Indústria	283	20	14.67	2024-05-15	Guarulhos	true
+SKU-ESP-0130	Tapete de Yoga M	Esporte	Gama Indústria	476	50	23.76	2024-07-16	Cajamar	false
+SKU-ESP-0131	Tapete de Yoga G	Esporte	Beta Importação	399	50	50.40	2024-04-22	Extrema	true
+SKU-ESP-0132	Tapete de Yoga Azul	Esporte	Beta Importação	373	5	72.98	2024-01-05	Guarulhos	false
+SKU-ESP-0133	Tapete de Yoga Preto	Esporte	Alfa Distribuidora	304	5	65.01	2024-03-30	Extrema	false
+SKU-ESP-0134	Tapete de Yoga Branco	Esporte	Delta Atacado	202	5	74.27	2024-03-23	Extrema	false
+SKU-ESP-0135	Tapete de Yoga Kit 2	Esporte	Beta Importação	274	20	12.27	2024-06-14	Cajamar	true
+SKU-ESP-0136	Tapete de Yoga Kit 3	Esporte	Alfa Distribuidora	30	50	12.87	2024-04-26	Guarulhos	true
+SKU-ESP-0137	Corda de Pular P	Esporte	Beta Importação	164	5	22.08	2024-04-16	Guarulhos	false
+SKU-ESP-0138	Corda de Pular M	Esporte	Delta Atacado	353	20	73.78	2024-01-27	Extrema	true
+SKU-ESP-0139	Corda de Pular G	Esporte	Alfa Distribuidora	384	10	25.96	2024-05-29	Cajamar	true
+SKU-ESP-0140	Corda de Pular Azul	Esporte	Alfa Distribuidora	258	10	50.38	2024-06-15	Extrema	true
+SKU-ESP-0141	Corda de Pular Preto	Esporte	Gama Indústria	317	5	73.60	2024-06-17	Extrema	true
+SKU-ESP-0142	Corda de Pular Branco	Esporte	Gama Indústria	262	10	54.43	2024-07-07	Extrema	true
+SKU-ESP-0143	Corda de Pular Kit 2	Esporte	Beta Importação	355	5	56.29	2024-01-17	Guarulhos	false
+SKU-ESP-0144	Corda de Pular Kit 3	Esporte	Alfa Distribuidora	427	5	28.36	2024-07-09	Cajamar	false

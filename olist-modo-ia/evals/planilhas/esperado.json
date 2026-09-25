@@ -1,0 +1,214 @@
+{
+  "vendas_br.csv": {
+    "leitura": {
+      "separador": ";",
+      "codificacao": "latin-1",
+      "linha_cabecalho": 0
+    },
+    "colunas": {
+      "Data da Venda": "data",
+      "Nº Pedido": "id",
+      "Cliente ID": "id",
+      "Produto": "categoria",
+      "Categoria": "categoria",
+      "UF": "uf",
+      "Cidade": "cidade",
+      "Quantidade": "numero",
+      "Preço Unitário": "dinheiro",
+      "Valor Total": "dinheiro",
+      "Desconto (%)": "porcentagem",
+      "Vendedor": "categoria",
+      "Pago?": "booleano"
+    },
+    "totais": {
+      "Valor Total": 621505.67,
+      "linhas": 1500
+    }
+  },
+  "clientes.csv": {
+    "leitura": {
+      "separador": ",",
+      "codificacao": "utf-8",
+      "linha_cabecalho": 0
+    },
+    "colunas": {
+      "Cliente ID": "id",
+      "Nome": "pessoal",
+      "E-mail": "pessoal",
+      "Telefone": "pessoal",
+      "CPF": "pessoal",
+      "UF": "uf",
+      "Segmento": "categoria",
+      "Data de Cadastro": "data"
+    }
+  },
+  "financeiro_titulo_total.csv": {
+    "leitura": {
+      "separador": ",",
+      "codificacao": "utf-8",
+      "linha_cabecalho": 3,
+      "linhas_total_removidas": 1
+    },
+    "colunas": {
+      "Mês": "data",
+      "Centro de Custo": "categoria",
+      "Receita": "dinheiro",
+      "Despesa": "dinheiro",
+      "Margem %": "porcentagem",
+      "Observação": "texto"
+    },
+    "totais": {
+      "Receita": 1407702.75,
+      "linhas": 60
+    }
+  },
+  "rh_ficticio.csv": {
+    "leitura": {
+      "separador": ",",
+      "codificacao": "utf-8",
+      "linha_cabecalho": 0
+    },
+    "colunas": {
+      "Matrícula": "id",
+      "Nome do Colaborador": "pessoal",
+      "CPF": "pessoal",
+      "E-mail corporativo": "pessoal",
+      "Departamento": "categoria",
+      "Cargo": "categoria",
+      "Data de Admissão": "data",
+      "Salário": "dinheiro",
+      "Ativo": "booleano",
+      "Avaliação": "numero",
+      "Horas Extras": "numero",
+      "Comentário do gestor": "texto"
+    },
+    "totais": {
+      "Salário": 2422576.35,
+      "linhas": 240
+    }
+  },
+  "estoque.tsv": {
+    "leitura": {
+      "separador": "\t",
+      "codificacao": "utf-8",
+      "linha_cabecalho": 0
+    },
+    "colunas": {
+      "SKU": "id",
+      "Descrição": "texto",
+      "Categoria": "categoria",
+      "Fornecedor": "categoria",
+      "Quantidade em Estoque": "numero",
+      "Estoque Mínimo": "numero",
+      "Custo Unitário": "dinheiro",
+      "Última Entrada": "data",
+      "Armazém": "categoria",
+      "Ativo": "booleano"
+    },
+    "totais": {
+      "Custo Unitário": 13412.14,
+      "linhas": 144
+    }
+  },
+  "baguncada.csv": {
+    "leitura": {
+      "separador": ",",
+      "codificacao": "utf-8",
+      "linha_cabecalho": 3,
+      "linhas_total_removidas": 3
+    },
+    "colunas": {
+      "dt": "data",
+      "cliente": "pessoal",
+      "produto": "categoria",
+      "Qtd.": "numero",
+      "VALOR (R$)": "dinheiro",
+      "desc %": "porcentagem",
+      "entregue?": "booleano",
+      "estado": "uf",
+      "obs": "texto"
+    },
+    "totais": {
+      "VALOR (R$)": 12341.71,
+      "linhas": 120
+    }
+  },
+  "desenhada.csv": {
+    "leitura": {
+      "separador": ",",
+      "codificacao": "utf-8",
+      "aviso": "varias_tabelas"
+    },
+    "colunas": {}
+  },
+  "financeiro_titulo_total.xlsx": {
+    "leitura": {
+      "aba": "Dados",
+      "linha_cabecalho": 2,
+      "linhas_total_removidas": 1
+    },
+    "colunas": {
+      "Mês": "data",
+      "Centro de Custo": "categoria",
+      "Receita": "dinheiro",
+      "Despesa": "dinheiro",
+      "Margem %": "porcentagem",
+      "Observação": "texto"
+    },
+    "observacao": "Excel: depende do SheetJS (D39). Enquanto ele não estiver instalado, o teste é pulado."
+  },
+  "cega_escola.csv": {
+    "leitura": {
+      "separador": ";",
+      "codificacao": "utf-8",
+      "linha_cabecalho": 0
+    },
+    "colunas": {
+      "Aluno": "pessoal",
+      "Turma": "categoria",
+      "Nota Final": "numero",
+      "Frequência": "porcentagem",
+      "Data da Prova": "data",
+      "Aprovado": "booleano",
+      "E-mail do Responsável": "pessoal",
+      "Parecer": "texto"
+    },
+    "cega": true
+  },
+  "cega_chamados.csv": {
+    "leitura": {
+      "separador": ",",
+      "codificacao": "utf-8",
+      "linha_cabecalho": 0
+    },
+    "colunas": {
+      "Protocolo": "id",
+      "Aberto em": "data",
+      "Prioridade": "categoria",
+      "Tempo de Resposta (h)": "numero",
+      "Atendente": "categoria",
+      "CNPJ do Cliente": "pessoal",
+      "Resolvido": "booleano",
+      "Descrição do problema": "texto",
+      "Custo do Atendimento": "dinheiro"
+    },
+    "cega": true
+  },
+  "cega_vendas_en.csv": {
+    "leitura": {
+      "separador": ",",
+      "codificacao": "utf-8",
+      "linha_cabecalho": 0
+    },
+    "colunas": {
+      "Order Date": "data",
+      "Region": "categoria",
+      "Revenue": "dinheiro",
+      "Units": "numero",
+      "Customer Email": "pessoal",
+      "Discount Rate": "porcentagem",
+      "Product Line": "categoria"
+    },
+    "cega": true
+  }
+}

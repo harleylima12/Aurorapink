@@ -1,0 +1,301 @@
+Cliente ID,Nome,E-mail,Telefone,CPF,UF,Segmento,Data de Cadastro
+C2000,Bruno Lima,bruno.lima@exemplo.com.br,(73) 92953-9222,712.363.927-87,CE,Atacado,2021-09-04
+C2001,Gabriela Araújo,gabriela.araujo@exemplo.com.br,(82) 92024-6441,391.926.804-02,GO,Atacado,2021-02-16
+C2002,Lucas Martins,lucas.martins@exemplo.com.br,(63) 93533-5947,400.867.796-80,ES,Governo,2021-08-06
+C2003,Íris Nascimento,iris.nascimento@exemplo.com.br,(86) 99528-5797,426.487.090-96,GO,Varejo,2021-01-20
+C2004,Nicolas Costa,nicolas.costa@exemplo.com.br,(31) 91285-8985,469.077.332-77,RS,Atacado,2021-12-15
+C2005,Yasmin Pereira,yasmin.pereira@exemplo.com.br,(91) 93134-4370,199.290.677-79,RS,Governo,2022-09-02
+C2006,Nicolas Pereira,nicolas.pereira@exemplo.com.br,(90) 96921-8658,013.859.121-03,ES,Atacado,2022-09-10
+C2007,Tiago Santos,tiago.santos@exemplo.com.br,(38) 95956-4226,545.239.051-00,MG,Governo,2022-08-26
+C2008,Lucas Costa,lucas.costa@exemplo.com.br,(73) 95573-2585,655.165.445-21,PR,Pessoa Física,2022-08-03
+C2009,Heitor Araújo,heitor.araujo@exemplo.com.br,(82) 92236-2624,530.611.225-08,RS,Atacado,2022-10-13
+C2010,Olívia Pereira,olivia.pereira@exemplo.com.br,(85) 99150-3411,957.117.918-34,PR,Atacado,2021-01-22
+C2011,Lucas Carvalho,lucas.carvalho@exemplo.com.br,(85) 96807-2546,534.651.956-47,BA,Pessoa Física,2021-04-16
+C2012,Vitor Souza,vitor.souza@exemplo.com.br,(57) 96429-5483,828.022.671-08,SC,Pessoa Física,2022-07-02
+C2013,Elisa Pereira,elisa.pereira@exemplo.com.br,(92) 99992-9111,262.919.180-05,PE,Governo,2023-05-27
+C2014,Heitor Gomes,heitor.gomes@exemplo.com.br,(46) 98412-9977,818.715.975-87,GO,Varejo,2021-01-09
+C2015,Olívia Ferreira,olivia.ferreira@exemplo.com.br,(82) 97049-1458,187.820.966-35,PE,Governo,2021-01-13
+C2016,Fábio Almeida,fabio.almeida@exemplo.com.br,(91) 91778-1656,740.942.463-04,SP,Pessoa Física,2021-10-12
+C2017,Heitor Santos,heitor.santos@exemplo.com.br,(63) 99285-7735,695.003.553-53,SC,Governo,2022-01-22
+C2018,Wanda Silva,wanda.silva@exemplo.com.br,(41) 99435-1014,979.029.471-99,ES,Pessoa Física,2022-04-30
+C2019,Elisa Pereira,elisa.pereira@exemplo.com.br,(61) 94605-4805,362.695.356-46,PE,Pessoa Física,2021-11-08
+C2020,Ana Ferreira,ana.ferreira@exemplo.com.br,(46) 97952-5771,426.968.682-04,GO,Varejo,2023-03-26
+C2021,Gabriela Lima,gabriela.lima@exemplo.com.br,(79) 93641-8956,723.763.809-28,RJ,Varejo,2022-05-21
+C2022,Lucas Almeida,lucas.almeida@exemplo.com.br,(90) 97192-8300,325.921.050-42,CE,Governo,2021-01-22
+C2023,Marina Ferreira,marina.ferreira@exemplo.com.br,(65) 92637-3008,074.848.341-14,MG,Pessoa Física,2021-05-27
+C2024,Marina Gomes,marina.gomes@exemplo.com.br,(90) 96953-9744,388.576.201-31,BA,Varejo,2022-02-15
+C2025,Bruno Rodrigues,bruno.rodrigues@exemplo.com.br,(51) 94027-7095,443.472.405-38,DF,Atacado,2021-10-07
+C2026,Queila Araújo,queila.araujo@exemplo.com.br,(54) 99177-7784,797.593.345-77,PE,Atacado,2021-05-07
+C2027,Nicolas Souza,nicolas.souza@exemplo.com.br,(36) 99641-5797,614.056.006-32,MG,Varejo,2021-09-24
+C2028,Úrsula Carvalho,ursula.carvalho@exemplo.com.br,(27) 91156-5397,371.979.949-26,SC,Atacado,2022-09-18
+C2029,Carla Lima,carla.lima@exemplo.com.br,(36) 97988-7656,799.079.981-25,GO,Atacado,2021-03-24
+C2030,Elisa Carvalho,elisa.carvalho@exemplo.com.br,(21) 95585-4696,619.105.196-42,BA,Governo,2021-11-20
+C2031,Olívia Oliveira,olivia.oliveira@exemplo.com.br,(38) 92852-4867,272.554.844-68,CE,Varejo,2022-05-19
+C2032,Nicolas Carvalho,nicolas.carvalho@exemplo.com.br,(19) 92639-4615,671.456.605-04,RJ,Atacado,2021-03-24
+C2033,Carla Gomes,carla.gomes@exemplo.com.br,(32) 93170-2805,393.789.888-30,SP,Atacado,2022-03-27
+C2034,Rafael Rodrigues,rafael.rodrigues@exemplo.com.br,(92) 91751-6705,195.840.670-87,BA,Governo,2021-09-17
+C2035,Vitor Ferreira,vitor.ferreira@exemplo.com.br,(97) 95049-7915,087.711.719-59,RS,Varejo,2022-07-09
+C2036,Marina Santos,marina.santos@exemplo.com.br,(18) 96165-1099,175.114.681-28,DF,Atacado,2021-06-17
+C2037,Lucas Oliveira,lucas.oliveira@exemplo.com.br,(93) 92795-5661,687.286.553-97,DF,Varejo,2022-05-25
+C2038,Karina Pereira,karina.pereira@exemplo.com.br,(96) 99627-5236,432.727.046-63,PE,Governo,2021-04-11
+C2039,Gabriela Martins,gabriela.martins@exemplo.com.br,(95) 92552-5663,776.798.357-99,CE,Atacado,2023-05-03
+C2040,Elisa Araújo,elisa.araujo@exemplo.com.br,(42) 96328-3635,297.420.511-94,PE,Varejo,2021-03-17
+C2041,Gabriela Ferreira,gabriela.ferreira@exemplo.com.br,(74) 94982-1555,256.359.590-83,MG,Pessoa Física,2022-03-22
+C2042,Heitor Martins,heitor.martins@exemplo.com.br,(99) 96744-9136,146.255.864-02,RS,Governo,2022-06-03
+C2043,João Silva,joao.silva@exemplo.com.br,(98) 91745-1469,759.362.717-90,BA,Varejo,2021-01-05
+C2044,Sofia Ferreira,sofia.ferreira@exemplo.com.br,(93) 96352-5055,695.546.331-49,RJ,Governo,2023-01-03
+C2045,Carla Nascimento,carla.nascimento@exemplo.com.br,(57) 94512-8231,593.485.409-71,GO,Varejo,2023-02-01
+C2046,Íris Nascimento,iris.nascimento@exemplo.com.br,(12) 91306-1450,010.405.411-51,PE,Pessoa Física,2021-03-25
+C2047,Yasmin Martins,yasmin.martins@exemplo.com.br,(23) 95780-9994,533.968.524-19,SP,Atacado,2022-10-11
+C2048,Yasmin Pereira,yasmin.pereira@exemplo.com.br,(96) 96474-1282,762.155.888-14,BA,Varejo,2021-08-07
+C2049,Nicolas Carvalho,nicolas.carvalho@exemplo.com.br,(47) 92572-4414,563.423.728-96,MG,Varejo,2021-09-29
+C2050,Diego Almeida,diego.almeida@exemplo.com.br,(66) 92307-5397,510.701.930-70,PR,Governo,2021-03-14
+C2051,Íris Santos,iris.santos@exemplo.com.br,(55) 97727-1775,338.848.291-81,DF,Governo,2021-11-01
+C2052,Bruno Araújo,bruno.araujo@exemplo.com.br,(56) 99778-1392,429.790.710-05,RJ,Varejo,2023-03-15
+C2053,Rafael Oliveira,rafael.oliveira@exemplo.com.br,(88) 97238-9785,354.298.958-49,RJ,Pessoa Física,2023-01-18
+C2054,Sofia Lima,sofia.lima@exemplo.com.br,(25) 93384-4971,283.342.781-60,SC,Varejo,2021-06-25
+C2055,Elisa Santos,elisa.santos@exemplo.com.br,(23) 96675-7383,035.393.522-01,ES,Varejo,2022-03-11
+C2056,Rafael Ferreira,rafael.ferreira@exemplo.com.br,(17) 91116-1488,069.621.188-21,CE,Atacado,2022-02-02
+C2057,Heitor Lima,heitor.lima@exemplo.com.br,(20) 99740-6383,257.046.738-30,PE,Pessoa Física,2021-12-25
+C2058,Queila Santos,queila.santos@exemplo.com.br,(77) 96544-8857,725.430.568-31,GO,Varejo,2023-03-24
+C2059,Íris Carvalho,iris.carvalho@exemplo.com.br,(93) 97314-6449,915.640.485-94,SP,Varejo,2023-06-13
+C2060,Íris Almeida,iris.almeida@exemplo.com.br,(54) 96315-4408,851.305.605-74,CE,Atacado,2021-10-10
+C2061,João Araújo,joao.araujo@exemplo.com.br,(60) 98785-5742,094.333.059-90,BA,Pessoa Física,2021-09-13
+C2062,Gabriela Ferreira,gabriela.ferreira@exemplo.com.br,(54) 97974-1827,582.975.236-08,RJ,Varejo,2021-09-04
+C2063,Bruno Martins,bruno.martins@exemplo.com.br,(63) 95904-4324,746.438.932-81,MG,Varejo,2022-06-15
+C2064,Nicolas Martins,nicolas.martins@exemplo.com.br,(66) 93632-5392,636.135.431-84,GO,Atacado,2022-11-02
+C2065,Olívia Araújo,olivia.araujo@exemplo.com.br,(34) 94685-8426,722.122.522-26,ES,Atacado,2021-02-18
+C2066,Queila Almeida,queila.almeida@exemplo.com.br,(51) 94646-2186,151.702.541-99,ES,Varejo,2021-07-30
+C2067,Marina Pereira,marina.pereira@exemplo.com.br,(58) 91946-4602,647.595.982-00,MG,Governo,2022-02-28
+C2068,Elisa Santos,elisa.santos@exemplo.com.br,(37) 91574-9318,988.326.168-31,ES,Varejo,2022-01-18
+C2069,Carla Lima,carla.lima@exemplo.com.br,(83) 95081-1297,330.909.949-09,RS,Pessoa Física,2023-03-11
+C2070,Paulo Santos,paulo.santos@exemplo.com.br,(41) 97112-3811,383.521.935-97,CE,Pessoa Física,2022-11-17
+C2071,Karina Santos,karina.santos@exemplo.com.br,(81) 94046-8100,722.686.324-31,CE,Atacado,2021-11-30
+C2072,Sofia Ferreira,sofia.ferreira@exemplo.com.br,(14) 95799-3876,522.336.496-13,RS,Atacado,2021-03-15
+C2073,João Carvalho,joao.carvalho@exemplo.com.br,(56) 96399-5854,619.067.176-48,RJ,Atacado,2023-02-09
+C2074,Carla Lima,carla.lima@exemplo.com.br,(20) 98892-2621,339.586.403-03,GO,Governo,2023-04-29
+C2075,Vitor Ribeiro,vitor.ribeiro@exemplo.com.br,(65) 96414-7215,811.657.856-17,DF,Governo,2021-12-13
+C2076,Íris Silva,iris.silva@exemplo.com.br,(83) 96296-4392,605.292.137-45,CE,Pessoa Física,2022-09-08
+C2077,Nicolas Nascimento,nicolas.nascimento@exemplo.com.br,(41) 94956-7142,841.979.057-50,RS,Atacado,2022-04-09
+C2078,Carla Oliveira,carla.oliveira@exemplo.com.br,(15) 95157-8436,563.569.994-46,GO,Pessoa Física,2022-09-09
+C2079,Karina Rodrigues,karina.rodrigues@exemplo.com.br,(48) 91846-2076,481.887.546-50,RJ,Varejo,2022-09-27
+C2080,Marina Carvalho,marina.carvalho@exemplo.com.br,(80) 93199-8434,007.561.296-80,PE,Varejo,2021-08-02
+C2081,Nicolas Ferreira,nicolas.ferreira@exemplo.com.br,(22) 91607-5990,329.333.727-97,SP,Varejo,2022-01-26
+C2082,Yasmin Pereira,yasmin.pereira@exemplo.com.br,(45) 93284-1479,024.905.360-87,SP,Varejo,2021-05-20
+C2083,Bruno Lima,bruno.lima@exemplo.com.br,(33) 98419-4723,726.903.016-28,GO,Pessoa Física,2021-07-28
+C2084,Elisa Santos,elisa.santos@exemplo.com.br,(82) 97027-1370,506.816.799-13,GO,Governo,2022-02-19
+C2085,Yasmin Ribeiro,yasmin.ribeiro@exemplo.com.br,(56) 96848-4549,792.765.405-55,PE,Atacado,2021-01-02
+C2086,Gabriela Pereira,gabriela.pereira@exemplo.com.br,(12) 99320-7290,884.209.287-80,DF,Varejo,2021-10-31
+C2087,Yasmin Rodrigues,yasmin.rodrigues@exemplo.com.br,(95) 94535-1009,244.843.687-81,BA,Atacado,2022-12-30
+C2088,Tiago Martins,tiago.martins@exemplo.com.br,(26) 98552-6364,388.060.696-08,SP,Governo,2021-09-25
+C2089,Lucas Souza,lucas.souza@exemplo.com.br,(92) 97086-2879,494.469.641-80,BA,Varejo,2021-11-21
+C2090,Marina Araújo,marina.araujo@exemplo.com.br,(97) 95624-7449,333.125.942-00,BA,Governo,2021-11-24
+C2091,Bruno Ferreira,bruno.ferreira@exemplo.com.br,(82) 95446-8101,913.430.435-57,BA,Pessoa Física,2021-06-23
+C2092,Lucas Oliveira,lucas.oliveira@exemplo.com.br,(41) 97947-1061,328.650.474-23,GO,Pessoa Física,2021-07-24
+C2093,Sofia Souza,sofia.souza@exemplo.com.br,(82) 99345-3448,418.867.984-00,BA,Governo,2021-10-24
+C2094,Ana Costa,ana.costa@exemplo.com.br,(21) 99646-3439,212.308.705-04,ES,Atacado,2022-11-03
+C2095,Karina Oliveira,karina.oliveira@exemplo.com.br,(19) 98138-3716,560.472.872-12,SP,Governo,2023-03-06
+C2096,Gabriela Rodrigues,gabriela.rodrigues@exemplo.com.br,(29) 93146-4658,704.213.641-14,PR,Pessoa Física,2021-06-04
+C2097,Tiago Araújo,tiago.araujo@exemplo.com.br,(34) 94176-2767,836.456.105-70,PR,Atacado,2022-07-22
+C2098,Queila Ferreira,queila.ferreira@exemplo.com.br,(86) 97622-3976,915.113.943-07,DF,Pessoa Física,2022-05-08
+C2099,Rafael Santos,rafael.santos@exemplo.com.br,(59) 95864-8650,311.360.302-12,DF,Atacado,2022-05-25
+C2100,Queila Pereira,queila.pereira@exemplo.com.br,(13) 98744-7224,897.062.829-04,BA,Pessoa Física,2021-04-08
+C2101,Yasmin Nascimento,yasmin.nascimento@exemplo.com.br,(18) 91416-7586,447.330.228-83,RJ,Pessoa Física,2023-05-28
+C2102,Elisa Gomes,elisa.gomes@exemplo.com.br,(29) 97391-5126,549.098.280-28,RJ,Atacado,2022-03-15
+C2103,Úrsula Martins,ursula.martins@exemplo.com.br,(98) 93641-6424,743.965.940-62,MG,Varejo,2023-01-27
+C2104,Sofia Ferreira,sofia.ferreira@exemplo.com.br,(59) 95459-9160,203.416.469-54,DF,Pessoa Física,2021-02-10
+C2105,Lucas Oliveira,lucas.oliveira@exemplo.com.br,(73) 98367-1981,147.749.659-95,ES,Atacado,2021-02-09
+C2106,Carla Araújo,carla.araujo@exemplo.com.br,(45) 99439-8757,954.876.272-23,RS,Governo,2022-12-17
+C2107,Úrsula Nascimento,ursula.nascimento@exemplo.com.br,(13) 94408-7232,181.916.203-67,RJ,Varejo,2023-05-13
+C2108,Nicolas Rodrigues,nicolas.rodrigues@exemplo.com.br,(93) 96632-2969,999.769.514-34,RJ,Atacado,2022-08-19
+C2109,Rafael Ferreira,rafael.ferreira@exemplo.com.br,(29) 96106-1810,077.727.457-45,SP,Varejo,2022-04-06
+C2110,Marina Almeida,marina.almeida@exemplo.com.br,(28) 95313-6234,034.789.757-60,SC,Governo,2021-03-18
+C2111,Marina Souza,marina.souza@exemplo.com.br,(88) 98739-9224,892.292.241-97,GO,Governo,2022-05-22
+C2112,Wanda Ferreira,wanda.ferreira@exemplo.com.br,(19) 98844-4145,309.585.261-41,RJ,Varejo,2021-07-21
+C2113,Vitor Martins,vitor.martins@exemplo.com.br,(28) 91947-7224,096.369.719-60,RJ,Pessoa Física,2022-12-06
+C2114,Gabriela Carvalho,gabriela.carvalho@exemplo.com.br,(75) 91166-5704,377.705.173-03,DF,Pessoa Física,2021-12-26
+C2115,Rafael Ribeiro,rafael.ribeiro@exemplo.com.br,(43) 95665-3150,541.220.664-68,RJ,Atacado,2021-08-03
+C2116,Olívia Pereira,olivia.pereira@exemplo.com.br,(56) 94633-7959,940.214.112-08,RS,Governo,2023-05-25
+C2117,Íris Araújo,iris.araujo@exemplo.com.br,(66) 93607-9149,954.304.352-36,RJ,Varejo,2022-03-20
+C2118,Queila Nascimento,queila.nascimento@exemplo.com.br,(86) 95719-7080,880.478.187-40,MG,Governo,2021-09-08
+C2119,Yasmin Costa,yasmin.costa@exemplo.com.br,(60) 95037-8464,322.658.844-30,PR,Governo,2023-04-07
+C2120,Heitor Costa,heitor.costa@exemplo.com.br,(83) 95602-9266,720.602.238-30,RJ,Pessoa Física,2023-03-06
+C2121,Fábio Ferreira,fabio.ferreira@exemplo.com.br,(95) 96920-1167,980.035.285-69,CE,Pessoa Física,2022-01-29
+C2122,Íris Almeida,iris.almeida@exemplo.com.br,(63) 91657-6880,017.670.169-99,DF,Varejo,2021-04-15
+C2123,Vitor Rodrigues,vitor.rodrigues@exemplo.com.br,(97) 91509-7718,142.464.427-55,RS,Governo,2022-05-02
+C2124,Heitor Ferreira,heitor.ferreira@exemplo.com.br,(40) 94486-1836,647.534.089-81,PE,Governo,2022-03-15
+C2125,Fábio Santos,fabio.santos@exemplo.com.br,(88) 91367-4003,971.007.785-65,RJ,Atacado,2023-04-02
+C2126,João Oliveira,joao.oliveira@exemplo.com.br,(73) 95544-4647,743.812.315-46,SP,Atacado,2022-03-22
+C2127,Paulo Souza,paulo.souza@exemplo.com.br,(40) 93776-1305,907.522.205-00,RS,Varejo,2021-08-24
+C2128,Bruno Gomes,bruno.gomes@exemplo.com.br,(79) 92662-5164,092.277.694-63,RS,Pessoa Física,2022-07-21
+C2129,Rafael Pereira,rafael.pereira@exemplo.com.br,(40) 99249-3557,102.038.577-47,DF,Pessoa Física,2022-06-15
+C2130,Tiago Pereira,tiago.pereira@exemplo.com.br,(76) 96144-3316,087.165.779-14,SP,Governo,2021-08-15
+C2131,Marina Araújo,marina.araujo@exemplo.com.br,(79) 91955-7164,373.319.093-98,DF,Varejo,2021-06-14
+C2132,Sofia Rodrigues,sofia.rodrigues@exemplo.com.br,(80) 94889-8795,567.790.350-76,DF,Atacado,2021-02-06
+C2133,Ana Rodrigues,ana.rodrigues@exemplo.com.br,(25) 99424-1089,957.038.492-17,PR,Atacado,2022-04-10
+C2134,Olívia Ferreira,olivia.ferreira@exemplo.com.br,(72) 91715-3478,689.651.761-15,RS,Varejo,2021-06-10
+C2135,Tiago Almeida,tiago.almeida@exemplo.com.br,(24) 98818-2335,892.025.810-45,CE,Varejo,2021-03-25
+C2136,Íris Gomes,iris.gomes@exemplo.com.br,(35) 91142-8150,194.973.730-66,SC,Atacado,2023-04-02
+C2137,Úrsula Nascimento,ursula.nascimento@exemplo.com.br,(66) 99814-1993,993.305.342-60,PE,Atacado,2021-02-23
+C2138,Carla Lima,carla.lima@exemplo.com.br,(64) 97008-6657,135.068.752-99,CE,Governo,2021-06-24
+C2139,Diego Pereira,diego.pereira@exemplo.com.br,(40) 98578-2496,499.140.228-04,PR,Governo,2022-04-27
+C2140,Íris Costa,iris.costa@exemplo.com.br,(81) 93307-4804,792.239.917-06,MG,Governo,2022-07-10
+C2141,Carla Silva,carla.silva@exemplo.com.br,(31) 97479-2966,206.882.443-43,ES,Atacado,2021-11-07
+C2142,Heitor Araújo,heitor.araujo@exemplo.com.br,(66) 97507-4656,586.282.693-98,PR,Pessoa Física,2021-12-24
+C2143,Gabriela Lima,gabriela.lima@exemplo.com.br,(78) 97434-1891,520.049.135-50,RS,Varejo,2023-01-18
+C2144,Carla Santos,carla.santos@exemplo.com.br,(88) 96415-8172,298.577.510-83,CE,Governo,2023-06-14
+C2145,Wanda Martins,wanda.martins@exemplo.com.br,(86) 93487-6799,270.621.275-66,CE,Pessoa Física,2023-03-28
+C2146,Nicolas Oliveira,nicolas.oliveira@exemplo.com.br,(27) 94362-4942,241.672.286-70,MG,Varejo,2023-01-19
+C2147,Karina Lima,karina.lima@exemplo.com.br,(87) 96713-5046,314.232.243-45,RJ,Governo,2021-06-23
+C2148,Paulo Gomes,paulo.gomes@exemplo.com.br,(53) 95531-6465,438.224.286-04,SC,Atacado,2023-06-20
+C2149,Diego Pereira,diego.pereira@exemplo.com.br,(75) 96362-3212,465.782.721-94,RJ,Varejo,2022-04-27
+C2150,João Rodrigues,joao.rodrigues@exemplo.com.br,(13) 95712-8141,234.539.445-50,BA,Governo,2021-01-31
+C2151,Karina Araújo,karina.araujo@exemplo.com.br,(45) 92834-4432,445.927.714-00,CE,Pessoa Física,2023-02-07
+C2152,Bruno Oliveira,bruno.oliveira@exemplo.com.br,(19) 95332-3732,967.088.924-30,RJ,Pessoa Física,2021-11-10
+C2153,Heitor Ferreira,heitor.ferreira@exemplo.com.br,(25) 99737-8532,669.926.889-95,BA,Pessoa Física,2023-02-08
+C2154,Heitor Araújo,heitor.araujo@exemplo.com.br,(69) 99550-1802,898.910.721-00,DF,Varejo,2022-06-21
+C2155,Úrsula Nascimento,ursula.nascimento@exemplo.com.br,(92) 97586-7576,152.859.845-80,RJ,Pessoa Física,2021-01-30
+C2156,Rafael Martins,rafael.martins@exemplo.com.br,(42) 91299-9603,226.380.097-25,DF,Atacado,2022-11-01
+C2157,Rafael Souza,rafael.souza@exemplo.com.br,(58) 98462-9279,866.743.025-03,MG,Governo,2021-07-03
+C2158,Paulo Costa,paulo.costa@exemplo.com.br,(92) 94643-7558,055.154.973-41,PE,Pessoa Física,2022-09-04
+C2159,Íris Lima,iris.lima@exemplo.com.br,(14) 94334-5780,582.768.510-02,SC,Atacado,2021-12-19
+C2160,Bruno Araújo,bruno.araujo@exemplo.com.br,(13) 93953-4640,653.120.391-95,SP,Varejo,2023-02-05
+C2161,Carla Ferreira,carla.ferreira@exemplo.com.br,(33) 97201-6796,555.325.239-32,PR,Pessoa Física,2021-07-25
+C2162,Queila Martins,queila.martins@exemplo.com.br,(26) 92607-7038,875.681.425-90,ES,Varejo,2022-03-24
+C2163,Karina Ferreira,karina.ferreira@exemplo.com.br,(89) 92377-6319,391.086.545-30,RJ,Atacado,2022-05-07
+C2164,João Silva,joao.silva@exemplo.com.br,(63) 94269-1375,338.124.603-86,SC,Atacado,2021-01-29
+C2165,Vitor Martins,vitor.martins@exemplo.com.br,(83) 94728-9624,730.059.146-90,ES,Atacado,2021-02-15
+C2166,Fábio Gomes,fabio.gomes@exemplo.com.br,(93) 98414-7418,465.170.607-07,RJ,Pessoa Física,2021-06-10
+C2167,Heitor Nascimento,heitor.nascimento@exemplo.com.br,(33) 97814-7284,210.710.974-58,SC,Atacado,2021-09-29
+C2168,Marina Nascimento,marina.nascimento@exemplo.com.br,(52) 99686-8678,973.430.972-29,BA,Pessoa Física,2022-05-18
+C2169,Úrsula Martins,ursula.martins@exemplo.com.br,(94) 97938-4144,456.805.006-55,GO,Varejo,2023-06-13
+C2170,Carla Carvalho,carla.carvalho@exemplo.com.br,(17) 98740-7761,186.700.613-84,SP,Pessoa Física,2022-11-10
+C2171,Rafael Araújo,rafael.araujo@exemplo.com.br,(69) 94534-6976,343.012.792-02,ES,Atacado,2022-05-29
+C2172,Carla Oliveira,carla.oliveira@exemplo.com.br,(84) 99148-6114,562.576.987-74,MG,Varejo,2023-04-08
+C2173,Karina Ribeiro,karina.ribeiro@exemplo.com.br,(36) 95316-8095,714.271.465-43,ES,Governo,2022-11-05
+C2174,Ana Santos,ana.santos@exemplo.com.br,(72) 92659-8607,511.433.821-88,MG,Varejo,2022-10-17
+C2175,João Oliveira,joao.oliveira@exemplo.com.br,(77) 99461-2502,798.117.502-03,DF,Atacado,2022-04-15
+C2176,Úrsula Pereira,ursula.pereira@exemplo.com.br,(81) 97889-8352,348.520.848-58,GO,Varejo,2022-06-09
+C2177,Diego Rodrigues,diego.rodrigues@exemplo.com.br,(34) 92195-3075,259.416.650-24,GO,Pessoa Física,2022-05-22
+C2178,Nicolas Gomes,nicolas.gomes@exemplo.com.br,(80) 95608-1630,929.826.446-14,RJ,Governo,2021-04-07
+C2179,Rafael Lima,rafael.lima@exemplo.com.br,(92) 91577-6958,503.704.738-25,SC,Governo,2022-03-06
+C2180,Heitor Oliveira,heitor.oliveira@exemplo.com.br,(41) 94866-7229,437.398.552-90,PE,Atacado,2022-02-12
+C2181,Heitor Almeida,heitor.almeida@exemplo.com.br,(21) 95469-7365,024.346.071-60,RJ,Pessoa Física,2023-03-13
+C2182,Fábio Carvalho,fabio.carvalho@exemplo.com.br,(62) 96222-5528,550.477.636-84,SC,Varejo,2021-10-09
+C2183,Olívia Araújo,olivia.araujo@exemplo.com.br,(96) 96160-7726,267.803.643-04,RS,Pessoa Física,2021-01-14
+C2184,Wanda Santos,wanda.santos@exemplo.com.br,(68) 91843-5534,461.604.336-10,BA,Pessoa Física,2022-02-27
+C2185,João Rodrigues,joao.rodrigues@exemplo.com.br,(21) 98061-7715,826.067.180-89,PR,Governo,2021-06-26
+C2186,Carla Rodrigues,carla.rodrigues@exemplo.com.br,(89) 94166-2805,650.522.749-04,GO,Pessoa Física,2021-06-19
+C2187,Bruno Nascimento,bruno.nascimento@exemplo.com.br,(23) 97502-9904,024.022.812-00,BA,Pessoa Física,2023-01-14
+C2188,Sofia Almeida,sofia.almeida@exemplo.com.br,(88) 92362-2439,023.765.541-10,RJ,Varejo,2021-09-24
+C2189,Lucas Gomes,lucas.gomes@exemplo.com.br,(76) 91928-5202,917.074.413-08,DF,Pessoa Física,2023-05-31
+C2190,Sofia Almeida,sofia.almeida@exemplo.com.br,(86) 92185-4034,522.690.802-46,ES,Governo,2022-10-20
+C2191,Marina Oliveira,marina.oliveira@exemplo.com.br,(98) 91773-3908,273.685.651-10,SC,Atacado,2021-03-02
+C2192,João Oliveira,joao.oliveira@exemplo.com.br,(87) 99106-2544,745.592.573-53,CE,Atacado,2022-05-27
+C2193,Íris Silva,iris.silva@exemplo.com.br,(73) 91740-9000,078.691.205-70,CE,Varejo,2022-02-19
+C2194,Marina Oliveira,marina.oliveira@exemplo.com.br,(72) 99407-6678,161.283.813-83,CE,Governo,2023-03-20
+C2195,Gabriela Ferreira,gabriela.ferreira@exemplo.com.br,(64) 93245-7539,188.335.639-36,PE,Varejo,2022-02-17
+C2196,Queila Martins,queila.martins@exemplo.com.br,(36) 92538-4196,736.019.196-30,RS,Pessoa Física,2021-05-15
+C2197,Íris Ribeiro,iris.ribeiro@exemplo.com.br,(26) 92948-4874,611.942.018-57,DF,Varejo,2022-03-17
+C2198,Úrsula Nascimento,ursula.nascimento@exemplo.com.br,(98) 95864-3734,644.111.661-86,MG,Pessoa Física,2021-06-16
+C2199,Íris Ribeiro,iris.ribeiro@exemplo.com.br,(76) 97032-6543,962.415.481-31,SC,Governo,2023-01-26
+C2200,Tiago Araújo,tiago.araujo@exemplo.com.br,(63) 97625-3801,622.296.464-86,PE,Governo,2021-02-23
+C2201,Íris Santos,iris.santos@exemplo.com.br,(77) 91344-6904,687.509.371-54,RJ,Pessoa Física,2022-03-30
+C2202,Vitor Araújo,vitor.araujo@exemplo.com.br,(95) 95173-7502,239.547.647-17,PE,Governo,2021-11-03
+C2203,Íris Rodrigues,iris.rodrigues@exemplo.com.br,(84) 96969-6628,064.776.094-01,RS,Pessoa Física,2022-03-09
+C2204,Íris Souza,iris.souza@exemplo.com.br,(94) 99580-7834,954.672.230-89,CE,Pessoa Física,2023-05-28
+C2205,Sofia Lima,sofia.lima@exemplo.com.br,(81) 91116-6628,731.524.254-65,MG,Governo,2021-10-07
+C2206,Lucas Ferreira,lucas.ferreira@exemplo.com.br,(83) 97690-5593,717.301.488-32,RS,Atacado,2022-12-02
+C2207,Paulo Martins,paulo.martins@exemplo.com.br,(33) 95881-8298,065.201.060-11,MG,Governo,2021-03-25
+C2208,Vitor Oliveira,vitor.oliveira@exemplo.com.br,(86) 92675-7876,757.899.147-72,GO,Pessoa Física,2023-04-27
+C2209,Rafael Ribeiro,rafael.ribeiro@exemplo.com.br,(29) 92177-1824,394.329.701-24,BA,Governo,2021-01-15
+C2210,Elisa Ferreira,elisa.ferreira@exemplo.com.br,(31) 91329-5275,770.447.041-82,BA,Varejo,2022-05-24
+C2211,Wanda Santos,wanda.santos@exemplo.com.br,(85) 91269-3451,381.349.171-43,PE,Varejo,2021-04-26
+C2212,Vitor Santos,vitor.santos@exemplo.com.br,(19) 94991-1603,504.198.684-37,RS,Governo,2021-02-15
+C2213,Marina Martins,marina.martins@exemplo.com.br,(84) 91514-4951,113.832.857-05,DF,Governo,2022-06-05
+C2214,João Carvalho,joao.carvalho@exemplo.com.br,(40) 99747-7196,777.405.177-55,PE,Varejo,2021-07-21
+C2215,Karina Ribeiro,karina.ribeiro@exemplo.com.br,(29) 98906-1618,404.556.465-97,SC,Atacado,2021-03-18
+C2216,Sofia Lima,sofia.lima@exemplo.com.br,(61) 97763-8846,164.030.988-88,RS,Atacado,2021-07-16
+C2217,Paulo Almeida,paulo.almeida@exemplo.com.br,(82) 96136-1298,597.311.575-57,RJ,Atacado,2022-09-28
+C2218,Íris Rodrigues,iris.rodrigues@exemplo.com.br,(31) 94794-1051,091.041.916-76,SP,Atacado,2022-11-26
+C2219,Vitor Santos,vitor.santos@exemplo.com.br,(54) 94786-1128,735.647.828-50,PR,Governo,2023-03-31
+C2220,Vitor Oliveira,vitor.oliveira@exemplo.com.br,(64) 93597-1362,134.537.367-88,GO,Governo,2023-02-05
+C2221,Carla Silva,carla.silva@exemplo.com.br,(60) 91592-2184,944.152.100-07,ES,Varejo,2022-06-11
+C2222,Lucas Souza,lucas.souza@exemplo.com.br,(85) 98592-6082,213.632.774-72,SC,Varejo,2022-08-06
+C2223,Bruno Araújo,bruno.araujo@exemplo.com.br,(42) 94432-8163,228.301.647-92,PE,Varejo,2022-05-24
+C2224,Queila Santos,queila.santos@exemplo.com.br,(57) 91994-2126,406.176.829-84,MG,Pessoa Física,2021-10-24
+C2225,Fábio Almeida,fabio.almeida@exemplo.com.br,(76) 92752-7970,237.443.976-37,SC,Varejo,2021-02-10
+C2226,Gabriela Lima,gabriela.lima@exemplo.com.br,(94) 99300-5336,084.164.194-34,PE,Atacado,2022-01-06
+C2227,Wanda Souza,wanda.souza@exemplo.com.br,(93) 93114-6432,935.360.054-54,PE,Varejo,2022-07-20
+C2228,Fábio Lima,fabio.lima@exemplo.com.br,(87) 92399-4333,120.384.921-40,DF,Varejo,2023-02-21
+C2229,João Rodrigues,joao.rodrigues@exemplo.com.br,(75) 98835-1091,901.767.850-00,MG,Atacado,2021-05-05
+C2230,Olívia Martins,olivia.martins@exemplo.com.br,(61) 91171-1872,404.543.857-22,PR,Pessoa Física,2021-07-15
+C2231,Elisa Araújo,elisa.araujo@exemplo.com.br,(40) 94942-1846,616.984.938-00,ES,Governo,2023-03-21
+C2232,Rafael Souza,rafael.souza@exemplo.com.br,(91) 94004-8044,272.799.604-72,RS,Pessoa Física,2021-11-16
+C2233,Yasmin Rodrigues,yasmin.rodrigues@exemplo.com.br,(94) 94667-6808,561.079.085-95,DF,Pessoa Física,2021-02-20
+C2234,Tiago Souza,tiago.souza@exemplo.com.br,(23) 91656-8986,655.250.637-60,PR,Varejo,2021-12-06
+C2235,Ana Lima,ana.lima@exemplo.com.br,(43) 97340-5677,124.330.515-09,SC,Atacado,2021-05-18
+C2236,Marina Ribeiro,marina.ribeiro@exemplo.com.br,(36) 93785-3794,859.877.065-56,DF,Governo,2021-11-07
+C2237,Karina Costa,karina.costa@exemplo.com.br,(50) 96853-8781,661.185.173-98,PE,Pessoa Física,2022-03-20
+C2238,Yasmin Araújo,yasmin.araujo@exemplo.com.br,(82) 98339-5551,188.006.588-65,PR,Pessoa Física,2021-08-09
+C2239,Vitor Pereira,vitor.pereira@exemplo.com.br,(62) 97620-4639,684.259.585-12,PR,Pessoa Física,2021-11-03
+C2240,Diego Carvalho,diego.carvalho@exemplo.com.br,(16) 95518-4666,087.333.417-53,DF,Atacado,2021-04-05
+C2241,Fábio Araújo,fabio.araujo@exemplo.com.br,(73) 96538-6361,400.708.209-02,SC,Pessoa Física,2021-01-17
+C2242,Yasmin Ferreira,yasmin.ferreira@exemplo.com.br,(88) 98774-6902,657.507.797-85,DF,Governo,2021-06-07
+C2243,Queila Pereira,queila.pereira@exemplo.com.br,(21) 92295-6523,968.098.303-08,RJ,Varejo,2023-04-10
+C2244,Diego Lima,diego.lima@exemplo.com.br,(39) 96471-3240,431.349.776-56,BA,Atacado,2021-07-29
+C2245,Carla Costa,carla.costa@exemplo.com.br,(90) 93186-4920,206.869.251-14,GO,Varejo,2021-08-12
+C2246,Paulo Araújo,paulo.araujo@exemplo.com.br,(80) 94545-6124,483.769.735-68,GO,Pessoa Física,2023-06-04
+C2247,Elisa Pereira,elisa.pereira@exemplo.com.br,(23) 98972-4728,625.387.006-80,RJ,Varejo,2022-07-14
+C2248,Tiago Carvalho,tiago.carvalho@exemplo.com.br,(83) 94480-2319,223.912.630-23,RS,Governo,2021-07-03
+C2249,Rafael Santos,rafael.santos@exemplo.com.br,(43) 92229-7522,872.595.291-99,RS,Varejo,2022-10-04
+C2250,Yasmin Silva,yasmin.silva@exemplo.com.br,(63) 98912-3452,094.317.543-71,MG,Varejo,2022-02-26
+C2251,Úrsula Costa,ursula.costa@exemplo.com.br,(71) 91964-3635,146.806.572-60,CE,Atacado,2022-08-07
+C2252,Yasmin Martins,yasmin.martins@exemplo.com.br,(21) 97031-2591,301.609.556-45,SP,Varejo,2022-02-26
+C2253,Fábio Martins,fabio.martins@exemplo.com.br,(46) 91583-7646,357.447.379-60,ES,Atacado,2023-01-09
+C2254,Carla Nascimento,carla.nascimento@exemplo.com.br,(76) 99816-7109,329.797.206-82,PE,Atacado,2021-10-10
+C2255,Fábio Gomes,fabio.gomes@exemplo.com.br,(91) 99955-1756,640.249.113-68,SC,Varejo,2021-10-09
+C2256,Yasmin Silva,yasmin.silva@exemplo.com.br,(14) 99724-6121,878.251.336-84,BA,Pessoa Física,2022-07-15
+C2257,Carla Silva,carla.silva@exemplo.com.br,(95) 95910-5633,813.449.006-90,GO,Pessoa Física,2023-03-02
+C2258,João Oliveira,joao.oliveira@exemplo.com.br,(99) 96029-1770,571.047.025-20,GO,Governo,2022-01-16
+C2259,Elisa Costa,elisa.costa@exemplo.com.br,(66) 97718-9249,143.832.685-87,PE,Varejo,2022-09-02
+C2260,Vitor Oliveira,vitor.oliveira@exemplo.com.br,(82) 95715-4794,384.679.463-50,ES,Varejo,2021-01-01
+C2261,Diego Martins,diego.martins@exemplo.com.br,(34) 96684-9802,367.324.002-15,GO,Pessoa Física,2022-12-07
+C2262,Karina Rodrigues,karina.rodrigues@exemplo.com.br,(73) 98935-2614,129.993.042-50,SC,Varejo,2022-02-21
+C2263,Queila Ribeiro,queila.ribeiro@exemplo.com.br,(78) 98058-8075,965.461.547-90,RS,Atacado,2022-05-02
+C2264,Lucas Araújo,lucas.araujo@exemplo.com.br,(63) 91034-3399,015.177.529-06,PE,Atacado,2021-11-29
+C2265,Paulo Costa,paulo.costa@exemplo.com.br,(26) 91450-6729,570.759.332-21,CE,Varejo,2021-03-24
+C2266,Marina Araújo,marina.araujo@exemplo.com.br,(40) 94608-5929,383.946.538-98,RJ,Atacado,2021-03-28
+C2267,Karina Araújo,karina.araujo@exemplo.com.br,(40) 94001-4802,761.138.274-88,MG,Pessoa Física,2022-11-11
+C2268,Úrsula Ferreira,ursula.ferreira@exemplo.com.br,(18) 93073-3890,323.351.946-07,SP,Governo,2021-07-16
+C2269,Queila Ribeiro,queila.ribeiro@exemplo.com.br,(95) 94880-2668,885.576.026-26,ES,Governo,2021-04-20
+C2270,Bruno Pereira,bruno.pereira@exemplo.com.br,(60) 98882-1155,438.123.388-31,PE,Varejo,2023-02-24
+C2271,Olívia Oliveira,olivia.oliveira@exemplo.com.br,(64) 93141-8375,018.420.672-30,MG,Governo,2021-09-22
+C2272,João Lima,joao.lima@exemplo.com.br,(76) 91348-3772,880.430.265-80,SP,Governo,2022-07-31
+C2273,Ana Silva,ana.silva@exemplo.com.br,(31) 97060-4052,225.817.977-70,RS,Varejo,2022-08-05
+C2274,Rafael Almeida,rafael.almeida@exemplo.com.br,(58) 95338-1303,018.880.650-44,SC,Pessoa Física,2022-04-09
+C2275,Carla Carvalho,carla.carvalho@exemplo.com.br,(37) 99681-1899,481.601.322-98,BA,Governo,2021-01-24
+C2276,Fábio Almeida,fabio.almeida@exemplo.com.br,(49) 93498-9992,911.037.787-57,CE,Varejo,2022-02-01
+C2277,Gabriela Costa,gabriela.costa@exemplo.com.br,(77) 93049-4989,244.206.103-10,ES,Atacado,2021-11-12
+C2278,Tiago Oliveira,tiago.oliveira@exemplo.com.br,(69) 97121-3116,684.836.150-02,GO,Governo,2023-02-25
+C2279,Nicolas Pereira,nicolas.pereira@exemplo.com.br,(71) 98804-1509,452.738.837-17,SC,Atacado,2021-08-30
+C2280,Íris Martins,iris.martins@exemplo.com.br,(27) 99744-9186,518.642.565-67,RJ,Governo,2021-09-21
+C2281,Carla Ferreira,carla.ferreira@exemplo.com.br,(38) 97465-5680,035.721.463-30,ES,Varejo,2022-03-07
+C2282,Sofia Martins,sofia.martins@exemplo.com.br,(12) 91331-9374,653.724.121-94,RS,Pessoa Física,2022-09-17
+C2283,Nicolas Ribeiro,nicolas.ribeiro@exemplo.com.br,(39) 95325-3983,152.349.038-18,PE,Atacado,2023-02-16
+C2284,Marina Carvalho,marina.carvalho@exemplo.com.br,(67) 91797-8124,448.881.914-17,CE,Pessoa Física,2022-02-03
+C2285,Yasmin Lima,yasmin.lima@exemplo.com.br,(28) 91460-9055,697.531.724-00,GO,Pessoa Física,2021-10-03
+C2286,Karina Lima,karina.lima@exemplo.com.br,(24) 92981-2051,352.182.537-07,RJ,Atacado,2022-10-16
+C2287,Úrsula Ferreira,ursula.ferreira@exemplo.com.br,(61) 92054-6732,069.676.896-81,RJ,Atacado,2021-07-02
+C2288,Sofia Pereira,sofia.pereira@exemplo.com.br,(44) 98683-3337,536.623.566-94,PR,Governo,2021-01-24
+C2289,Lucas Rodrigues,lucas.rodrigues@exemplo.com.br,(12) 98083-7480,978.309.329-05,PR,Atacado,2022-02-11
+C2290,Karina Silva,karina.silva@exemplo.com.br,(13) 92460-6156,576.432.961-20,GO,Varejo,2021-07-28
+C2291,Paulo Oliveira,paulo.oliveira@exemplo.com.br,(58) 98429-8549,224.452.309-85,BA,Pessoa Física,2021-10-07
+C2292,Queila Oliveira,queila.oliveira@exemplo.com.br,(92) 99525-1200,916.329.934-81,GO,Governo,2022-10-31
+C2293,Wanda Carvalho,wanda.carvalho@exemplo.com.br,(42) 98490-7808,625.108.747-13,MG,Atacado,2022-09-12
+C2294,Diego Gomes,diego.gomes@exemplo.com.br,(19) 92953-9935,120.925.634-75,BA,Pessoa Física,2021-05-14
+C2295,Vitor Silva,vitor.silva@exemplo.com.br,(55) 99331-2003,818.359.811-00,BA,Governo,2021-05-17
+C2296,Carla Nascimento,carla.nascimento@exemplo.com.br,(73) 93806-9028,606.899.047-89,SC,Pessoa Física,2022-07-24
+C2297,Karina Lima,karina.lima@exemplo.com.br,(35) 99721-3424,760.572.212-57,CE,Pessoa Física,2022-07-01
+C2298,Diego Santos,diego.santos@exemplo.com.br,(37) 98838-5347,587.430.840-79,RJ,Governo,2022-07-21
+C2299,Íris Lima,iris.lima@exemplo.com.br,(80) 91669-2314,095.980.877-94,MG,Governo,2022-06-03

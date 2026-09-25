@@ -1,0 +1,241 @@
+Matrícula,Nome do Colaborador,CPF,E-mail corporativo,Departamento,Cargo,Data de Admissão,Salário,Ativo,Avaliação,Horas Extras,Comentário do gestor
+40000,Wanda Santos,138.080.524-49,wanda.santos@empresaficticia.com,Operações,Assistente de Logística,05/10/2020,"R$ 10.892,57",S,"4,4",33,Liderou o projeto de migração com ótimo resultado.
+40001,Tiago Gomes,281.084.084-90,tiago.gomes@empresaficticia.com,Tecnologia,Desenvolvedor,15/10/2016,"R$ 15.064,93",S,"3,3",28,Precisa melhorar a organização das tarefas.
+40002,Wanda Rodrigues,825.010.784-54,wanda.rodrigues@empresaficticia.com,Vendas,Coordenador de Vendas,16/09/2020,"R$ 12.731,25",S,"3,1",17,Excelente relacionamento com clientes.
+40003,Carla Silva,560.100.930-90,carla.silva@empresaficticia.com,Operações,Assistente de Logística,17/07/2021,"R$ 15.761,77",S,"3,1",2,Faltas recorrentes no trimestre; conversar. Ciclo 2.
+40004,Wanda Gomes,065.711.429-45,wanda.gomes@empresaficticia.com,Operações,Supervisor,03/09/2020,"R$ 9.737,91",S,"4,4",25,Em adaptação; acompanhar no próximo ciclo. Ciclo 4.
+40005,João Silva,493.967.762-11,joao.silva@empresaficticia.com,Operações,Supervisor,20/08/2023,"R$ 3.175,18",N,"3,4",19,Em adaptação; acompanhar no próximo ciclo.
+40006,Vitor Ferreira,009.695.127-32,vitor.ferreira@empresaficticia.com,Financeiro,Controller,13/09/2021,"R$ 14.587,23",N,"4,9",14,Precisa melhorar a organização das tarefas. Ciclo 1.
+40007,Wanda Ribeiro,804.870.484-66,wanda.ribeiro@empresaficticia.com,Vendas,Vendedor,07/10/2018,"R$ 7.428,09",S,"3,6",3,Excelente relacionamento com clientes. Ciclo 2.
+40008,Íris Costa,034.820.962-28,iris.costa@empresaficticia.com,Vendas,Coordenador de Vendas,31/10/2021,"R$ 12.246,88",S,"2,7",10,Faltas recorrentes no trimestre; conversar. Ciclo 2.
+40009,Bruno Ferreira,343.646.912-24,bruno.ferreira@empresaficticia.com,Vendas,Coordenador de Vendas,29/12/2016,"R$ 9.289,01",N,"2,7",34,Faltas recorrentes no trimestre; conversar.
+40010,Yasmin Santos,982.227.323-15,yasmin.santos@empresaficticia.com,Financeiro,Controller,17/08/2020,"R$ 7.697,42",N,"3,2",8,Em adaptação; acompanhar no próximo ciclo.
+40011,Nicolas Ferreira,674.790.082-01,nicolas.ferreira@empresaficticia.com,Pessoas,Recrutador,25/09/2020,"R$ 11.693,46",N,"4,5",5,Precisa melhorar a organização das tarefas. Ciclo 1.
+40012,Lucas Lima,634.454.842-87,lucas.lima@empresaficticia.com,Operações,Assistente de Logística,26/02/2023,"R$ 9.548,05",S,"3,5",12,Precisa melhorar a organização das tarefas.
+40013,Olívia Pereira,981.277.439-41,olivia.pereira@empresaficticia.com,Operações,Assistente de Logística,19/11/2020,"R$ 12.671,40",N,"4,4",13,Faltas recorrentes no trimestre; conversar.
+40014,Rafael Santos,840.730.800-59,rafael.santos@empresaficticia.com,Financeiro,Analista Financeiro,23/02/2023,"R$ 3.794,30",N,"4,0",12,Precisa melhorar a organização das tarefas.
+40015,Elisa Oliveira,285.520.680-44,elisa.oliveira@empresaficticia.com,Operações,Supervisor,24/11/2019,"R$ 8.799,94",S,"3,2",12,Excelente relacionamento com clientes. Ciclo 2.
+40016,Úrsula Ribeiro,528.695.641-63,ursula.ribeiro@empresaficticia.com,Financeiro,Controller,19/01/2021,"R$ 15.856,17",N,"2,7",12,Excelente relacionamento com clientes.
+40017,Vitor Almeida,775.205.989-77,vitor.almeida@empresaficticia.com,Financeiro,Analista Financeiro,02/06/2019,"R$ 9.981,69",S,"4,0",19,Faltas recorrentes no trimestre; conversar.
+40018,Marina Ferreira,208.210.162-29,marina.ferreira@empresaficticia.com,Vendas,Coordenador de Vendas,11/06/2016,"R$ 8.054,38",S,"3,8",14,Entrega consistente e boa comunicação com o time. Ciclo 2.
+40019,Heitor Carvalho,171.474.027-74,heitor.carvalho@empresaficticia.com,Tecnologia,Analista de Dados,09/03/2022,"R$ 8.920,54",N,"4,5",6,Entrega consistente e boa comunicação com o time. Ciclo 1.
+40020,Nicolas Araújo,141.298.574-95,nicolas.araujo@empresaficticia.com,Operações,Assistente de Logística,22/01/2018,"R$ 2.935,19",S,"3,1",23,Liderou o projeto de migração com ótimo resultado. Ciclo 3.
+40021,Vitor Lima,541.568.258-92,vitor.lima@empresaficticia.com,Pessoas,Analista de RH,29/07/2020,"R$ 6.082,25",S,"3,4",4,Excelente relacionamento com clientes. Ciclo 1.
+40022,Karina Ferreira,461.802.801-77,karina.ferreira@empresaficticia.com,Financeiro,Analista Financeiro,31/03/2023,"R$ 9.830,11",S,"3,3",19,Liderou o projeto de migração com ótimo resultado. Ciclo 4.
+40023,Rafael Almeida,003.499.201-41,rafael.almeida@empresaficticia.com,Pessoas,Recrutador,16/08/2015,"R$ 10.150,98",S,"4,5",38,Precisa melhorar a organização das tarefas. Ciclo 4.
+40024,Íris Carvalho,245.269.142-90,iris.carvalho@empresaficticia.com,Operações,Supervisor,03/03/2017,"R$ 11.431,72",N,"4,2",36,Excelente relacionamento com clientes. Ciclo 2.
+40025,Karina Araújo,290.358.590-30,karina.araujo@empresaficticia.com,Tecnologia,Tech Lead,30/11/2019,"R$ 10.007,08",S,"3,1",16,Entrega consistente e boa comunicação com o time. Ciclo 1.
+40026,Nicolas Pereira,213.660.849-50,nicolas.pereira@empresaficticia.com,Tecnologia,Desenvolvedor,09/01/2015,"R$ 16.936,34",S,"3,7",33,Em adaptação; acompanhar no próximo ciclo.
+40027,Vitor Santos,414.335.339-36,vitor.santos@empresaficticia.com,Pessoas,Recrutador,07/08/2017,"R$ 9.590,26",S,"3,6",0,Faltas recorrentes no trimestre; conversar.
+40028,Yasmin Carvalho,783.563.623-93,yasmin.carvalho@empresaficticia.com,Tecnologia,Tech Lead,20/12/2022,"R$ 15.934,26",N,"3,5",6,Entrega consistente e boa comunicação com o time. Ciclo 1.
+40029,Tiago Souza,610.392.228-38,tiago.souza@empresaficticia.com,Operações,Assistente de Logística,08/08/2017,"R$ 16.876,55",S,"3,9",17,Excelente relacionamento com clientes. Ciclo 4.
+40030,João Ribeiro,612.561.112-44,joao.ribeiro@empresaficticia.com,Vendas,Coordenador de Vendas,31/05/2018,"R$ 11.541,31",N,"3,5",7,Entrega consistente e boa comunicação com o time. Ciclo 3.
+40031,Carla Rodrigues,580.362.524-81,carla.rodrigues@empresaficticia.com,Tecnologia,Desenvolvedor,28/07/2022,"R$ 17.968,88",N,"3,1",37,Faltas recorrentes no trimestre; conversar. Ciclo 3.
+40032,Rafael Ribeiro,480.814.782-30,rafael.ribeiro@empresaficticia.com,Operações,Assistente de Logística,24/08/2019,"R$ 6.032,22",S,"4,1",40,Precisa melhorar a organização das tarefas.
+40033,Wanda Almeida,839.625.390-00,wanda.almeida@empresaficticia.com,Operações,Assistente de Logística,15/10/2021,"R$ 17.932,20",S,"3,2",36,Precisa melhorar a organização das tarefas.
+40034,Rafael Nascimento,807.541.411-01,rafael.nascimento@empresaficticia.com,Pessoas,Analista de RH,04/10/2023,"R$ 11.545,29",S,"4,3",1,Excelente relacionamento com clientes.
+40035,Karina Ribeiro,225.352.063-23,karina.ribeiro@empresaficticia.com,Operações,Assistente de Logística,02/06/2018,"R$ 6.508,61",S,"4,5",4,Liderou o projeto de migração com ótimo resultado. Ciclo 2.
+40036,Gabriela Martins,919.460.303-09,gabriela.martins@empresaficticia.com,Tecnologia,Analista de Dados,14/12/2015,"R$ 17.018,02",S,"4,7",22,Liderou o projeto de migração com ótimo resultado.
+40037,Tiago Nascimento,471.650.724-62,tiago.nascimento@empresaficticia.com,Financeiro,Analista Financeiro,17/11/2017,"R$ 2.308,95",S,"2,9",2,Em adaptação; acompanhar no próximo ciclo.
+40038,Úrsula Pereira,915.283.405-07,ursula.pereira@empresaficticia.com,Operações,Assistente de Logística,02/09/2022,"R$ 3.563,86",S,"3,4",16,Faltas recorrentes no trimestre; conversar.
+40039,Lucas Oliveira,982.321.410-77,lucas.oliveira@empresaficticia.com,Operações,Supervisor,04/06/2020,"R$ 13.461,77",S,"3,4",6,Entrega consistente e boa comunicação com o time.
+40040,Vitor Martins,288.597.896-13,vitor.martins@empresaficticia.com,Pessoas,Recrutador,03/01/2022,"R$ 7.831,02",S,"3,9",13,Faltas recorrentes no trimestre; conversar.
+40041,Rafael Oliveira,361.208.796-76,rafael.oliveira@empresaficticia.com,Tecnologia,Analista de Dados,09/05/2018,"R$ 12.645,13",S,"4,3",40,Liderou o projeto de migração com ótimo resultado.
+40042,Rafael Araújo,312.497.830-70,rafael.araujo@empresaficticia.com,Financeiro,Controller,21/06/2023,"R$ 12.329,60",S,"3,1",31,Faltas recorrentes no trimestre; conversar.
+40043,Ana Nascimento,471.361.894-20,ana.nascimento@empresaficticia.com,Tecnologia,Analista de Dados,14/10/2016,"R$ 10.570,72",S,"3,9",11,Em adaptação; acompanhar no próximo ciclo.
+40044,Olívia Souza,768.333.261-50,olivia.souza@empresaficticia.com,Pessoas,Recrutador,21/02/2019,"R$ 8.568,83",S,"3,3",33,Excelente relacionamento com clientes.
+40045,Lucas Nascimento,644.174.771-59,lucas.nascimento@empresaficticia.com,Tecnologia,Desenvolvedor,09/09/2017,"R$ 16.209,79",S,"5,0",15,Faltas recorrentes no trimestre; conversar. Ciclo 2.
+40046,Wanda Santos,215.530.128-60,wanda.santos@empresaficticia.com,Vendas,Coordenador de Vendas,07/03/2023,"R$ 9.271,83",N,"3,6",25,Em adaptação; acompanhar no próximo ciclo. Ciclo 2.
+40047,João Lima,880.202.081-78,joao.lima@empresaficticia.com,Tecnologia,Tech Lead,18/01/2016,"R$ 4.273,94",N,"4,8",17,Excelente relacionamento com clientes. Ciclo 4.
+40048,Tiago Oliveira,503.833.591-80,tiago.oliveira@empresaficticia.com,Tecnologia,Desenvolvedor,30/04/2017,"R$ 10.189,51",N,"2,8",30,Em adaptação; acompanhar no próximo ciclo. Ciclo 2.
+40049,Heitor Gomes,095.720.787-55,heitor.gomes@empresaficticia.com,Pessoas,Recrutador,06/07/2023,"R$ 10.841,16",N,"3,1",34,Liderou o projeto de migração com ótimo resultado. Ciclo 4.
+40050,Íris Gomes,225.384.463-25,iris.gomes@empresaficticia.com,Tecnologia,Desenvolvedor,14/02/2017,"R$ 5.030,39",N,"4,7",7,Liderou o projeto de migração com ótimo resultado.
+40051,Ana Almeida,482.657.384-71,ana.almeida@empresaficticia.com,Operações,Supervisor,20/09/2017,"R$ 10.942,27",S,"4,9",10,Em adaptação; acompanhar no próximo ciclo. Ciclo 2.
+40052,Úrsula Araújo,598.365.634-15,ursula.araujo@empresaficticia.com,Vendas,Coordenador de Vendas,27/12/2022,"R$ 12.594,08",S,"3,6",21,Liderou o projeto de migração com ótimo resultado.
+40053,Lucas Araújo,382.377.318-67,lucas.araujo@empresaficticia.com,Operações,Assistente de Logística,25/11/2022,"R$ 14.674,17",S,"2,6",32,Em adaptação; acompanhar no próximo ciclo. Ciclo 2.
+40054,Marina Araújo,128.174.199-01,marina.araujo@empresaficticia.com,Vendas,Vendedor,06/06/2023,"R$ 13.693,70",N,"3,8",18,Faltas recorrentes no trimestre; conversar. Ciclo 2.
+40055,Tiago Lima,930.211.855-09,tiago.lima@empresaficticia.com,Financeiro,Controller,23/01/2020,"R$ 15.611,52",S,"4,1",14,Em adaptação; acompanhar no próximo ciclo. Ciclo 2.
+40056,Íris Araújo,306.897.641-38,iris.araujo@empresaficticia.com,Operações,Supervisor,25/11/2020,"R$ 9.599,10",S,"4,3",4,Liderou o projeto de migração com ótimo resultado.
+40057,Carla Pereira,519.161.137-37,carla.pereira@empresaficticia.com,Financeiro,Controller,23/08/2022,"R$ 4.779,19",S,"4,4",40,Precisa melhorar a organização das tarefas.
+40058,Fábio Silva,974.115.141-10,fabio.silva@empresaficticia.com,Operações,Supervisor,17/12/2022,"R$ 10.740,43",S,"4,3",26,Excelente relacionamento com clientes.
+40059,Elisa Costa,826.157.497-06,elisa.costa@empresaficticia.com,Pessoas,Analista de RH,14/11/2019,"R$ 14.437,91",S,"2,9",36,Liderou o projeto de migração com ótimo resultado.
+40060,Olívia Ferreira,286.174.710-26,olivia.ferreira@empresaficticia.com,Operações,Assistente de Logística,26/03/2019,"R$ 12.797,02",S,"3,7",15,Liderou o projeto de migração com ótimo resultado. Ciclo 3.
+40061,Sofia Costa,027.154.712-03,sofia.costa@empresaficticia.com,Financeiro,Analista Financeiro,24/01/2020,"R$ 8.060,82",N,"4,3",37,Precisa melhorar a organização das tarefas.
+40062,Gabriela Rodrigues,393.482.630-05,gabriela.rodrigues@empresaficticia.com,Pessoas,Analista de RH,08/07/2018,"R$ 8.960,00",S,"3,0",24,Entrega consistente e boa comunicação com o time. Ciclo 2.
+40063,Diego Carvalho,420.288.005-69,diego.carvalho@empresaficticia.com,Tecnologia,Desenvolvedor,20/01/2022,"R$ 7.397,99",S,"3,8",29,Excelente relacionamento com clientes. Ciclo 2.
+40064,João Pereira,254.689.132-40,joao.pereira@empresaficticia.com,Financeiro,Analista Financeiro,06/03/2020,"R$ 2.796,43",N,"4,5",8,Entrega consistente e boa comunicação com o time. Ciclo 2.
+40065,Olívia Pereira,297.437.803-00,olivia.pereira@empresaficticia.com,Pessoas,Recrutador,30/04/2021,"R$ 5.310,51",S,"3,2",10,Excelente relacionamento com clientes.
+40066,Nicolas Santos,163.706.083-19,nicolas.santos@empresaficticia.com,Financeiro,Controller,04/07/2016,"R$ 6.254,06",S,"4,0",2,Liderou o projeto de migração com ótimo resultado. Ciclo 3.
+40067,Fábio Santos,036.257.333-66,fabio.santos@empresaficticia.com,Operações,Assistente de Logística,20/09/2017,"R$ 3.122,59",N,"4,3",12,Liderou o projeto de migração com ótimo resultado.
+40068,Queila Lima,996.897.283-50,queila.lima@empresaficticia.com,Pessoas,Analista de RH,22/09/2021,"R$ 3.558,67",N,"3,6",33,Excelente relacionamento com clientes. Ciclo 3.
+40069,Bruno Pereira,333.760.940-63,bruno.pereira@empresaficticia.com,Financeiro,Analista Financeiro,20/07/2020,"R$ 5.326,13",S,"4,3",16,Faltas recorrentes no trimestre; conversar. Ciclo 3.
+40070,Vitor Araújo,615.388.683-34,vitor.araujo@empresaficticia.com,Financeiro,Controller,06/08/2018,"R$ 7.837,65",N,"2,7",4,Entrega consistente e boa comunicação com o time. Ciclo 1.
+40071,Yasmin Silva,811.427.172-83,yasmin.silva@empresaficticia.com,Pessoas,Analista de RH,17/11/2021,"R$ 6.309,98",S,"4,2",35,Excelente relacionamento com clientes.
+40072,Queila Rodrigues,967.458.665-28,queila.rodrigues@empresaficticia.com,Financeiro,Analista Financeiro,04/04/2022,"R$ 17.559,36",N,"2,8",38,Precisa melhorar a organização das tarefas. Ciclo 3.
+40073,Rafael Gomes,525.439.960-01,rafael.gomes@empresaficticia.com,Pessoas,Recrutador,14/03/2022,"R$ 3.100,76",S,"4,5",36,Liderou o projeto de migração com ótimo resultado. Ciclo 3.
+40074,Karina Souza,430.727.387-77,karina.souza@empresaficticia.com,Pessoas,Recrutador,09/10/2015,"R$ 8.518,54",N,"4,5",23,Liderou o projeto de migração com ótimo resultado. Ciclo 2.
+40075,Íris Rodrigues,858.301.954-10,iris.rodrigues@empresaficticia.com,Vendas,Vendedor,20/08/2019,"R$ 3.599,49",S,"4,2",0,Faltas recorrentes no trimestre; conversar. Ciclo 3.
+40076,Rafael Costa,386.601.818-59,rafael.costa@empresaficticia.com,Financeiro,Analista Financeiro,15/01/2020,"R$ 10.294,79",S,"4,6",40,Excelente relacionamento com clientes. Ciclo 4.
+40077,Marina Ribeiro,360.185.042-78,marina.ribeiro@empresaficticia.com,Tecnologia,Analista de Dados,02/03/2017,"R$ 15.154,88",N,"3,6",27,Liderou o projeto de migração com ótimo resultado.
+40078,Yasmin Oliveira,070.776.103-49,yasmin.oliveira@empresaficticia.com,Financeiro,Controller,19/01/2021,"R$ 10.485,71",N,"2,7",13,Excelente relacionamento com clientes. Ciclo 4.
+40079,Heitor Souza,890.949.507-31,heitor.souza@empresaficticia.com,Pessoas,Recrutador,09/10/2016,"R$ 13.670,26",N,"3,1",35,Em adaptação; acompanhar no próximo ciclo. Ciclo 4.
+40080,Ana Souza,521.905.668-94,ana.souza@empresaficticia.com,Operações,Assistente de Logística,08/01/2016,"R$ 17.231,05",S,"3,8",40,Faltas recorrentes no trimestre; conversar.
+40081,Paulo Ferreira,277.931.325-05,paulo.ferreira@empresaficticia.com,Operações,Supervisor,28/05/2016,"R$ 2.293,46",S,"3,1",39,Em adaptação; acompanhar no próximo ciclo. Ciclo 2.
+40082,Nicolas Costa,691.222.500-42,nicolas.costa@empresaficticia.com,Pessoas,Recrutador,20/10/2018,"R$ 14.881,64",S,"3,1",16,Excelente relacionamento com clientes. Ciclo 1.
+40083,Vitor Martins,345.552.251-39,vitor.martins@empresaficticia.com,Vendas,Vendedor,30/12/2019,"R$ 12.022,13",S,"3,0",8,Faltas recorrentes no trimestre; conversar.
+40084,Wanda Ribeiro,779.524.626-52,wanda.ribeiro@empresaficticia.com,Vendas,Vendedor,27/01/2018,"R$ 10.122,22",N,"4,6",6,Precisa melhorar a organização das tarefas.
+40085,João Santos,319.204.013-00,joao.santos@empresaficticia.com,Financeiro,Controller,13/07/2023,"R$ 16.717,55",S,"4,6",28,Precisa melhorar a organização das tarefas. Ciclo 3.
+40086,Rafael Martins,818.672.312-98,rafael.martins@empresaficticia.com,Pessoas,Analista de RH,28/04/2022,"R$ 11.809,96",S,"3,0",4,Em adaptação; acompanhar no próximo ciclo. Ciclo 1.
+40087,Fábio Souza,366.233.170-58,fabio.souza@empresaficticia.com,Tecnologia,Tech Lead,13/05/2015,"R$ 10.562,27",N,"3,2",3,Liderou o projeto de migração com ótimo resultado. Ciclo 3.
+40088,Elisa Almeida,407.550.659-21,elisa.almeida@empresaficticia.com,Vendas,Coordenador de Vendas,14/03/2017,"R$ 17.833,99",N,"2,6",0,Excelente relacionamento com clientes.
+40089,Lucas Araújo,547.582.467-34,lucas.araujo@empresaficticia.com,Operações,Assistente de Logística,16/08/2018,"R$ 3.292,92",S,"4,7",6,Excelente relacionamento com clientes.
+40090,Lucas Nascimento,236.485.425-32,lucas.nascimento@empresaficticia.com,Pessoas,Recrutador,08/02/2023,"R$ 15.995,77",N,"3,0",2,Faltas recorrentes no trimestre; conversar.
+40091,Nicolas Costa,946.375.211-06,nicolas.costa@empresaficticia.com,Vendas,Vendedor,17/12/2015,"R$ 16.714,64",S,"4,1",39,Liderou o projeto de migração com ótimo resultado.
+40092,Fábio Souza,795.581.529-78,fabio.souza@empresaficticia.com,Tecnologia,Desenvolvedor,11/09/2018,"R$ 3.249,74",S,"4,3",23,Faltas recorrentes no trimestre; conversar.
+40093,Ana Pereira,932.549.314-40,ana.pereira@empresaficticia.com,Operações,Assistente de Logística,28/09/2015,"R$ 2.239,32",S,"3,1",36,Entrega consistente e boa comunicação com o time. Ciclo 4.
+40094,Ana Ribeiro,729.753.667-95,ana.ribeiro@empresaficticia.com,Vendas,Vendedor,06/03/2017,"R$ 7.976,77",S,"4,4",30,Em adaptação; acompanhar no próximo ciclo. Ciclo 2.
+40095,Rafael Souza,716.666.557-24,rafael.souza@empresaficticia.com,Tecnologia,Tech Lead,06/07/2017,"R$ 12.663,83",S,"4,1",29,Excelente relacionamento com clientes.
+40096,Lucas Lima,327.900.089-06,lucas.lima@empresaficticia.com,Pessoas,Analista de RH,28/01/2022,"R$ 12.645,61",N,"2,8",13,Liderou o projeto de migração com ótimo resultado. Ciclo 1.
+40097,Fábio Souza,356.678.606-35,fabio.souza@empresaficticia.com,Financeiro,Analista Financeiro,15/01/2020,"R$ 10.848,87",S,"4,9",32,Em adaptação; acompanhar no próximo ciclo.
+40098,Sofia Santos,848.734.208-65,sofia.santos@empresaficticia.com,Vendas,Vendedor,25/02/2016,"R$ 12.290,57",S,"4,3",17,Faltas recorrentes no trimestre; conversar.
+40099,Rafael Santos,900.508.567-31,rafael.santos@empresaficticia.com,Financeiro,Analista Financeiro,28/05/2020,"R$ 17.699,77",S,"2,9",36,Precisa melhorar a organização das tarefas.
+40100,Rafael Rodrigues,644.098.412-89,rafael.rodrigues@empresaficticia.com,Tecnologia,Desenvolvedor,25/09/2022,"R$ 7.757,16",S,"3,7",13,Precisa melhorar a organização das tarefas. Ciclo 2.
+40101,Nicolas Ribeiro,113.370.750-51,nicolas.ribeiro@empresaficticia.com,Pessoas,Analista de RH,12/10/2015,"R$ 3.736,95",N,"3,8",15,Excelente relacionamento com clientes. Ciclo 4.
+40102,Diego Pereira,193.900.615-55,diego.pereira@empresaficticia.com,Tecnologia,Analista de Dados,14/08/2015,"R$ 3.976,94",S,"4,4",30,Excelente relacionamento com clientes.
+40103,Úrsula Martins,372.494.343-14,ursula.martins@empresaficticia.com,Pessoas,Analista de RH,09/06/2017,"R$ 9.452,60",S,"4,9",12,Excelente relacionamento com clientes. Ciclo 4.
+40104,Fábio Ribeiro,235.459.731-23,fabio.ribeiro@empresaficticia.com,Vendas,Coordenador de Vendas,12/05/2022,"R$ 13.728,44",S,"2,8",30,Excelente relacionamento com clientes.
+40105,Tiago Nascimento,140.788.043-81,tiago.nascimento@empresaficticia.com,Tecnologia,Analista de Dados,28/03/2023,"R$ 15.334,89",S,"2,6",18,Liderou o projeto de migração com ótimo resultado.
+40106,Sofia Gomes,147.313.437-47,sofia.gomes@empresaficticia.com,Pessoas,Analista de RH,18/07/2017,"R$ 11.055,20",S,"4,4",16,Faltas recorrentes no trimestre; conversar.
+40107,Yasmin Santos,877.782.541-15,yasmin.santos@empresaficticia.com,Operações,Supervisor,21/10/2015,"R$ 6.887,64",N,"4,5",0,Excelente relacionamento com clientes.
+40108,João Pereira,120.205.230-43,joao.pereira@empresaficticia.com,Pessoas,Analista de RH,24/01/2015,"R$ 16.635,14",S,"2,8",0,Excelente relacionamento com clientes. Ciclo 1.
+40109,Fábio Gomes,646.879.383-10,fabio.gomes@empresaficticia.com,Vendas,Vendedor,23/03/2016,"R$ 6.291,32",S,"3,1",3,Entrega consistente e boa comunicação com o time. Ciclo 1.
+40110,Marina Martins,205.606.231-35,marina.martins@empresaficticia.com,Tecnologia,Tech Lead,23/08/2018,"R$ 10.964,06",S,"3,7",25,Excelente relacionamento com clientes.
+40111,Karina Souza,031.027.398-65,karina.souza@empresaficticia.com,Operações,Supervisor,07/01/2021,"R$ 14.448,20",S,"3,0",14,Precisa melhorar a organização das tarefas.
+40112,Lucas Lima,126.194.737-13,lucas.lima@empresaficticia.com,Financeiro,Analista Financeiro,02/09/2015,"R$ 12.387,73",S,"4,1",22,Entrega consistente e boa comunicação com o time.
+40113,Gabriela Almeida,329.836.438-08,gabriela.almeida@empresaficticia.com,Pessoas,Recrutador,18/01/2019,"R$ 11.124,16",S,"4,3",14,Precisa melhorar a organização das tarefas.
+40114,Vitor Rodrigues,568.594.446-22,vitor.rodrigues@empresaficticia.com,Financeiro,Analista Financeiro,06/12/2019,"R$ 15.098,03",S,"3,3",7,Liderou o projeto de migração com ótimo resultado.
+40115,Queila Santos,069.651.394-39,queila.santos@empresaficticia.com,Vendas,Coordenador de Vendas,04/02/2016,"R$ 2.559,03",S,"4,9",8,Entrega consistente e boa comunicação com o time.
+40116,Diego Rodrigues,320.953.534-55,diego.rodrigues@empresaficticia.com,Tecnologia,Analista de Dados,13/02/2015,"R$ 11.474,42",N,"4,8",22,Precisa melhorar a organização das tarefas. Ciclo 3.
+40117,Karina Almeida,887.961.586-62,karina.almeida@empresaficticia.com,Tecnologia,Tech Lead,05/05/2019,"R$ 6.515,40",S,"2,6",14,Entrega consistente e boa comunicação com o time.
+40118,João Souza,704.928.623-03,joao.souza@empresaficticia.com,Operações,Supervisor,15/01/2018,"R$ 6.605,98",S,"4,9",22,Em adaptação; acompanhar no próximo ciclo. Ciclo 4.
+40119,Wanda Ribeiro,676.051.565-02,wanda.ribeiro@empresaficticia.com,Operações,Supervisor,06/03/2021,"R$ 14.550,63",S,"4,3",26,Excelente relacionamento com clientes.
+40120,Lucas Oliveira,401.175.040-92,lucas.oliveira@empresaficticia.com,Pessoas,Recrutador,14/08/2015,"R$ 12.818,25",N,"4,8",18,Excelente relacionamento com clientes. Ciclo 2.
+40121,Vitor Silva,036.313.865-08,vitor.silva@empresaficticia.com,Operações,Supervisor,25/03/2017,"R$ 9.519,27",S,"4,9",34,Faltas recorrentes no trimestre; conversar.
+40122,Rafael Ferreira,872.204.269-50,rafael.ferreira@empresaficticia.com,Financeiro,Controller,16/04/2017,"R$ 8.697,15",S,"4,6",12,Excelente relacionamento com clientes.
+40123,Karina Almeida,106.375.188-88,karina.almeida@empresaficticia.com,Operações,Assistente de Logística,11/06/2022,"R$ 10.189,08",S,"4,0",36,Em adaptação; acompanhar no próximo ciclo.
+40124,Carla Nascimento,596.681.704-90,carla.nascimento@empresaficticia.com,Financeiro,Controller,14/12/2017,"R$ 5.456,06",N,"4,2",36,Precisa melhorar a organização das tarefas. Ciclo 3.
+40125,Fábio Ribeiro,506.551.127-66,fabio.ribeiro@empresaficticia.com,Tecnologia,Tech Lead,27/10/2017,"R$ 11.110,51",S,"2,9",21,Entrega consistente e boa comunicação com o time. Ciclo 1.
+40126,João Gomes,041.777.581-40,joao.gomes@empresaficticia.com,Financeiro,Analista Financeiro,24/11/2017,"R$ 17.429,23",S,"4,9",31,Precisa melhorar a organização das tarefas. Ciclo 3.
+40127,Bruno Araújo,192.172.059-07,bruno.araujo@empresaficticia.com,Operações,Supervisor,16/09/2018,"R$ 11.784,65",S,"4,1",10,Liderou o projeto de migração com ótimo resultado. Ciclo 4.
+40128,Olívia Nascimento,842.545.920-60,olivia.nascimento@empresaficticia.com,Operações,Supervisor,19/07/2021,"R$ 17.833,71",S,"4,4",11,Entrega consistente e boa comunicação com o time.
+40129,João Santos,069.317.055-71,joao.santos@empresaficticia.com,Vendas,Vendedor,24/06/2021,"R$ 12.742,27",S,"2,7",11,Liderou o projeto de migração com ótimo resultado. Ciclo 2.
+40130,João Gomes,386.082.733-22,joao.gomes@empresaficticia.com,Tecnologia,Desenvolvedor,21/12/2021,"R$ 6.583,62",N,"4,3",7,Faltas recorrentes no trimestre; conversar. Ciclo 2.
+40131,Ana Almeida,334.030.190-55,ana.almeida@empresaficticia.com,Financeiro,Controller,14/04/2016,"R$ 9.204,51",S,"3,1",25,Excelente relacionamento com clientes. Ciclo 2.
+40132,Paulo Pereira,325.634.646-41,paulo.pereira@empresaficticia.com,Financeiro,Controller,13/05/2023,"R$ 14.553,60",S,"4,6",38,Liderou o projeto de migração com ótimo resultado. Ciclo 1.
+40133,Elisa Nascimento,067.361.339-98,elisa.nascimento@empresaficticia.com,Financeiro,Controller,22/03/2023,"R$ 10.546,65",S,"4,1",2,Precisa melhorar a organização das tarefas.
+40134,Elisa Carvalho,357.541.061-57,elisa.carvalho@empresaficticia.com,Tecnologia,Desenvolvedor,18/09/2018,"R$ 3.412,74",N,"4,1",22,Excelente relacionamento com clientes.
+40135,João Nascimento,315.107.345-03,joao.nascimento@empresaficticia.com,Operações,Assistente de Logística,23/12/2017,"R$ 10.167,26",S,"2,9",2,Precisa melhorar a organização das tarefas. Ciclo 3.
+40136,Elisa Pereira,623.338.431-10,elisa.pereira@empresaficticia.com,Vendas,Vendedor,23/04/2019,"R$ 6.404,37",S,"3,4",40,Entrega consistente e boa comunicação com o time. Ciclo 4.
+40137,Carla Costa,474.556.657-33,carla.costa@empresaficticia.com,Vendas,Coordenador de Vendas,07/12/2016,"R$ 17.159,26",S,"3,2",0,Em adaptação; acompanhar no próximo ciclo.
+40138,Yasmin Ferreira,040.766.765-21,yasmin.ferreira@empresaficticia.com,Tecnologia,Desenvolvedor,04/09/2018,"R$ 16.094,97",S,"5,0",13,Precisa melhorar a organização das tarefas. Ciclo 4.
+40139,Fábio Araújo,345.120.168-21,fabio.araujo@empresaficticia.com,Operações,Assistente de Logística,28/12/2017,"R$ 3.234,97",S,"3,7",2,Precisa melhorar a organização das tarefas.
+40140,Vitor Nascimento,926.348.939-49,vitor.nascimento@empresaficticia.com,Vendas,Coordenador de Vendas,16/04/2016,"R$ 10.983,89",S,"3,9",17,Entrega consistente e boa comunicação com o time.
+40141,Wanda Ferreira,599.921.172-73,wanda.ferreira@empresaficticia.com,Tecnologia,Tech Lead,14/12/2018,"R$ 6.353,40",N,"3,6",12,Entrega consistente e boa comunicação com o time.
+40142,Vitor Silva,799.385.152-15,vitor.silva@empresaficticia.com,Operações,Assistente de Logística,29/07/2016,"R$ 9.820,89",S,"4,2",27,Em adaptação; acompanhar no próximo ciclo.
+40143,Karina Pereira,547.636.062-04,karina.pereira@empresaficticia.com,Tecnologia,Tech Lead,20/02/2017,"R$ 16.382,97",N,"3,3",6,Faltas recorrentes no trimestre; conversar.
+40144,Lucas Gomes,169.413.257-98,lucas.gomes@empresaficticia.com,Vendas,Vendedor,06/09/2018,"R$ 4.110,64",S,"2,8",23,Faltas recorrentes no trimestre; conversar. Ciclo 4.
+40145,Úrsula Nascimento,175.319.231-57,ursula.nascimento@empresaficticia.com,Operações,Supervisor,29/04/2015,"R$ 3.878,97",S,"4,2",34,Entrega consistente e boa comunicação com o time. Ciclo 1.
+40146,Sofia Rodrigues,748.623.021-65,sofia.rodrigues@empresaficticia.com,Pessoas,Recrutador,03/09/2018,"R$ 5.266,51",S,"3,8",13,Excelente relacionamento com clientes.
+40147,Paulo Silva,420.597.261-07,paulo.silva@empresaficticia.com,Vendas,Vendedor,29/03/2017,"R$ 11.097,22",S,"4,0",32,Liderou o projeto de migração com ótimo resultado. Ciclo 2.
+40148,Tiago Carvalho,885.445.991-76,tiago.carvalho@empresaficticia.com,Financeiro,Analista Financeiro,21/10/2022,"R$ 6.556,24",S,"4,3",36,Em adaptação; acompanhar no próximo ciclo. Ciclo 3.
+40149,Rafael Oliveira,610.237.614-59,rafael.oliveira@empresaficticia.com,Pessoas,Analista de RH,17/02/2017,"R$ 11.207,51",S,"3,1",33,Precisa melhorar a organização das tarefas.
+40150,Fábio Gomes,023.491.441-60,fabio.gomes@empresaficticia.com,Vendas,Coordenador de Vendas,09/09/2022,"R$ 2.238,83",S,"3,7",36,Em adaptação; acompanhar no próximo ciclo.
+40151,Tiago Santos,530.958.297-52,tiago.santos@empresaficticia.com,Pessoas,Recrutador,21/02/2015,"R$ 17.842,72",N,"3,0",38,Em adaptação; acompanhar no próximo ciclo.
+40152,João Silva,832.365.404-27,joao.silva@empresaficticia.com,Operações,Assistente de Logística,01/03/2023,"R$ 12.293,96",S,"4,8",19,Em adaptação; acompanhar no próximo ciclo. Ciclo 4.
+40153,João Lima,366.270.448-03,joao.lima@empresaficticia.com,Vendas,Coordenador de Vendas,13/12/2015,"R$ 17.828,04",S,"3,6",13,Precisa melhorar a organização das tarefas. Ciclo 4.
+40154,Carla Martins,456.488.451-46,carla.martins@empresaficticia.com,Financeiro,Controller,09/03/2022,"R$ 3.770,52",N,"4,6",32,Excelente relacionamento com clientes. Ciclo 1.
+40155,Queila Oliveira,464.508.569-71,queila.oliveira@empresaficticia.com,Vendas,Coordenador de Vendas,07/07/2022,"R$ 13.947,63",S,"4,9",40,Faltas recorrentes no trimestre; conversar. Ciclo 2.
+40156,Olívia Gomes,725.276.101-02,olivia.gomes@empresaficticia.com,Vendas,Coordenador de Vendas,13/04/2022,"R$ 13.950,00",S,"3,0",21,Precisa melhorar a organização das tarefas.
+40157,João Ribeiro,709.281.283-69,joao.ribeiro@empresaficticia.com,Operações,Assistente de Logística,23/01/2022,"R$ 5.964,22",N,"3,3",20,Em adaptação; acompanhar no próximo ciclo.
+40158,Lucas Oliveira,022.107.188-13,lucas.oliveira@empresaficticia.com,Pessoas,Recrutador,30/07/2016,"R$ 13.879,79",N,"4,1",30,Liderou o projeto de migração com ótimo resultado.
+40159,Nicolas Silva,971.709.349-06,nicolas.silva@empresaficticia.com,Operações,Assistente de Logística,28/12/2020,"R$ 4.015,36",S,"4,9",34,Excelente relacionamento com clientes. Ciclo 1.
+40160,Heitor Lima,526.029.625-70,heitor.lima@empresaficticia.com,Vendas,Coordenador de Vendas,14/12/2020,"R$ 7.773,35",N,"3,8",14,Faltas recorrentes no trimestre; conversar.
+40161,Paulo Costa,008.134.971-83,paulo.costa@empresaficticia.com,Tecnologia,Desenvolvedor,27/06/2017,"R$ 6.545,36",S,"2,9",26,Precisa melhorar a organização das tarefas. Ciclo 4.
+40162,Lucas Silva,136.088.668-09,lucas.silva@empresaficticia.com,Operações,Assistente de Logística,19/12/2017,"R$ 17.801,31",S,"2,9",40,Entrega consistente e boa comunicação com o time. Ciclo 4.
+40163,Vitor Oliveira,094.405.301-70,vitor.oliveira@empresaficticia.com,Pessoas,Analista de RH,06/03/2023,"R$ 8.870,58",S,"4,3",7,Excelente relacionamento com clientes. Ciclo 3.
+40164,João Ribeiro,625.340.484-90,joao.ribeiro@empresaficticia.com,Pessoas,Recrutador,02/10/2017,"R$ 17.312,76",S,"3,2",19,Excelente relacionamento com clientes.
+40165,Fábio Nascimento,975.259.339-95,fabio.nascimento@empresaficticia.com,Financeiro,Analista Financeiro,20/08/2021,"R$ 14.268,53",S,"4,0",15,Liderou o projeto de migração com ótimo resultado.
+40166,Nicolas Pereira,338.847.017-03,nicolas.pereira@empresaficticia.com,Pessoas,Recrutador,10/12/2021,"R$ 5.489,22",S,"3,0",12,Faltas recorrentes no trimestre; conversar. Ciclo 3.
+40167,Marina Costa,270.619.027-28,marina.costa@empresaficticia.com,Tecnologia,Analista de Dados,31/12/2022,"R$ 10.644,39",N,"4,8",32,Excelente relacionamento com clientes.
+40168,Rafael Almeida,864.068.440-50,rafael.almeida@empresaficticia.com,Tecnologia,Analista de Dados,14/10/2021,"R$ 8.548,92",S,"4,1",35,Em adaptação; acompanhar no próximo ciclo. Ciclo 4.
+40169,Sofia Lima,180.333.504-15,sofia.lima@empresaficticia.com,Vendas,Vendedor,08/10/2017,"R$ 10.765,91",S,"2,6",38,Entrega consistente e boa comunicação com o time.
+40170,Bruno Souza,428.814.569-44,bruno.souza@empresaficticia.com,Pessoas,Recrutador,19/01/2018,"R$ 9.840,89",N,"4,0",31,Precisa melhorar a organização das tarefas. Ciclo 4.
+40171,Karina Gomes,753.425.139-79,karina.gomes@empresaficticia.com,Tecnologia,Tech Lead,23/09/2018,"R$ 14.522,55",S,"4,8",36,Entrega consistente e boa comunicação com o time. Ciclo 1.
+40172,Sofia Martins,763.601.827-69,sofia.martins@empresaficticia.com,Tecnologia,Desenvolvedor,22/08/2019,"R$ 7.443,27",N,"4,0",34,Precisa melhorar a organização das tarefas.
+40173,Nicolas Silva,360.281.696-68,nicolas.silva@empresaficticia.com,Financeiro,Controller,13/10/2017,"R$ 4.198,35",S,"3,5",19,Em adaptação; acompanhar no próximo ciclo. Ciclo 2.
+40174,Vitor Nascimento,362.257.121-78,vitor.nascimento@empresaficticia.com,Pessoas,Recrutador,11/08/2017,"R$ 14.109,98",N,"3,1",6,Em adaptação; acompanhar no próximo ciclo. Ciclo 3.
+40175,João Martins,537.693.652-08,joao.martins@empresaficticia.com,Financeiro,Analista Financeiro,13/05/2017,"R$ 9.413,03",S,"3,0",1,Excelente relacionamento com clientes. Ciclo 4.
+40176,Wanda Nascimento,954.945.070-84,wanda.nascimento@empresaficticia.com,Pessoas,Analista de RH,20/04/2021,"R$ 7.749,92",N,"2,6",19,Excelente relacionamento com clientes. Ciclo 3.
+40177,Vitor Rodrigues,530.933.962-04,vitor.rodrigues@empresaficticia.com,Vendas,Vendedor,03/07/2022,"R$ 8.830,14",N,"4,3",31,Em adaptação; acompanhar no próximo ciclo.
+40178,Wanda Almeida,880.286.437-36,wanda.almeida@empresaficticia.com,Tecnologia,Analista de Dados,06/11/2018,"R$ 6.758,11",S,"4,7",34,Excelente relacionamento com clientes. Ciclo 2.
+40179,Tiago Souza,578.098.852-86,tiago.souza@empresaficticia.com,Operações,Supervisor,18/10/2017,"R$ 8.266,60",S,"3,6",14,Entrega consistente e boa comunicação com o time.
+40180,Rafael Nascimento,063.775.947-80,rafael.nascimento@empresaficticia.com,Operações,Supervisor,06/08/2022,"R$ 16.335,95",S,"4,4",39,Liderou o projeto de migração com ótimo resultado. Ciclo 2.
+40181,Gabriela Oliveira,806.201.453-31,gabriela.oliveira@empresaficticia.com,Vendas,Vendedor,06/10/2019,"R$ 4.147,15",S,"4,0",33,Precisa melhorar a organização das tarefas.
+40182,Heitor Pereira,309.450.470-10,heitor.pereira@empresaficticia.com,Vendas,Vendedor,23/12/2021,"R$ 2.413,52",S,"4,1",18,Excelente relacionamento com clientes. Ciclo 1.
+40183,Queila Rodrigues,260.420.810-55,queila.rodrigues@empresaficticia.com,Operações,Supervisor,03/06/2015,"R$ 8.436,52",N,"2,8",32,Precisa melhorar a organização das tarefas. Ciclo 1.
+40184,Ana Costa,512.902.759-04,ana.costa@empresaficticia.com,Vendas,Coordenador de Vendas,30/04/2016,"R$ 6.060,15",S,"3,4",19,Excelente relacionamento com clientes.
+40185,Paulo Araújo,019.386.787-70,paulo.araujo@empresaficticia.com,Pessoas,Recrutador,01/10/2023,"R$ 9.951,86",S,"4,3",8,Entrega consistente e boa comunicação com o time.
+40186,Gabriela Santos,295.868.796-15,gabriela.santos@empresaficticia.com,Financeiro,Analista Financeiro,09/07/2018,"R$ 10.453,66",N,"2,9",38,Excelente relacionamento com clientes. Ciclo 4.
+40187,Íris Nascimento,079.886.223-82,iris.nascimento@empresaficticia.com,Operações,Assistente de Logística,23/09/2019,"R$ 10.702,22",N,"3,8",40,Excelente relacionamento com clientes. Ciclo 2.
+40188,Ana Santos,583.264.762-93,ana.santos@empresaficticia.com,Vendas,Coordenador de Vendas,06/04/2019,"R$ 9.428,50",S,"4,3",33,Em adaptação; acompanhar no próximo ciclo. Ciclo 4.
+40189,Gabriela Pereira,022.068.582-74,gabriela.pereira@empresaficticia.com,Operações,Assistente de Logística,09/11/2021,"R$ 11.688,23",S,"2,8",30,Precisa melhorar a organização das tarefas. Ciclo 4.
+40190,Yasmin Almeida,465.293.333-98,yasmin.almeida@empresaficticia.com,Pessoas,Recrutador,13/02/2017,"R$ 12.060,85",N,"3,7",33,Faltas recorrentes no trimestre; conversar.
+40191,Marina Martins,887.389.309-00,marina.martins@empresaficticia.com,Operações,Supervisor,13/02/2021,"R$ 11.362,69",S,"3,4",0,Precisa melhorar a organização das tarefas.
+40192,Ana Pereira,221.140.219-47,ana.pereira@empresaficticia.com,Vendas,Coordenador de Vendas,27/01/2019,"R$ 17.190,76",S,"3,0",23,Entrega consistente e boa comunicação com o time. Ciclo 2.
+40193,Queila Nascimento,138.457.757-26,queila.nascimento@empresaficticia.com,Pessoas,Analista de RH,07/04/2015,"R$ 10.457,44",N,"2,7",15,Liderou o projeto de migração com ótimo resultado.
+40194,Rafael Gomes,066.896.765-01,rafael.gomes@empresaficticia.com,Operações,Assistente de Logística,22/12/2017,"R$ 7.919,78",S,"3,7",13,Liderou o projeto de migração com ótimo resultado. Ciclo 4.
+40195,Wanda Costa,065.312.168-75,wanda.costa@empresaficticia.com,Financeiro,Analista Financeiro,22/01/2022,"R$ 10.404,55",S,"4,6",22,Liderou o projeto de migração com ótimo resultado.
+40196,Wanda Santos,815.040.407-40,wanda.santos@empresaficticia.com,Pessoas,Analista de RH,21/08/2020,"R$ 12.830,65",S,"4,9",14,Precisa melhorar a organização das tarefas.
+40197,Íris Ferreira,159.006.907-25,iris.ferreira@empresaficticia.com,Pessoas,Recrutador,30/03/2021,"R$ 16.782,40",S,"3,4",2,Entrega consistente e boa comunicação com o time. Ciclo 2.
+40198,Olívia Santos,050.708.072-69,olivia.santos@empresaficticia.com,Pessoas,Recrutador,17/09/2020,"R$ 9.590,38",N,"4,0",35,Excelente relacionamento com clientes.
+40199,Úrsula Souza,565.978.035-07,ursula.souza@empresaficticia.com,Operações,Assistente de Logística,02/12/2019,"R$ 10.532,18",S,"4,3",35,Precisa melhorar a organização das tarefas.
+40200,Diego Araújo,775.800.813-50,diego.araujo@empresaficticia.com,Financeiro,Controller,01/03/2019,"R$ 10.013,30",S,"4,1",30,Excelente relacionamento com clientes. Ciclo 4.
+40201,Elisa Gomes,242.599.864-06,elisa.gomes@empresaficticia.com,Pessoas,Recrutador,02/03/2015,"R$ 14.127,57",S,"4,3",35,Excelente relacionamento com clientes. Ciclo 1.
+40202,Rafael Gomes,010.582.783-55,rafael.gomes@empresaficticia.com,Financeiro,Controller,05/05/2019,"R$ 15.840,05",N,"4,0",37,Faltas recorrentes no trimestre; conversar.
+40203,Yasmin Oliveira,713.998.105-10,yasmin.oliveira@empresaficticia.com,Tecnologia,Tech Lead,14/07/2015,"R$ 2.776,83",N,"3,9",4,Precisa melhorar a organização das tarefas.
+40204,Íris Almeida,427.689.346-15,iris.almeida@empresaficticia.com,Financeiro,Analista Financeiro,03/12/2020,"R$ 4.953,57",S,"3,0",34,Em adaptação; acompanhar no próximo ciclo. Ciclo 2.
+40205,Karina Santos,363.537.852-67,karina.santos@empresaficticia.com,Financeiro,Analista Financeiro,01/03/2018,"R$ 2.416,80",S,"3,8",36,Liderou o projeto de migração com ótimo resultado. Ciclo 4.
+40206,Olívia Souza,481.223.079-90,olivia.souza@empresaficticia.com,Vendas,Vendedor,03/09/2020,"R$ 8.001,10",S,"2,7",35,Precisa melhorar a organização das tarefas.
+40207,Queila Silva,589.130.332-91,queila.silva@empresaficticia.com,Tecnologia,Tech Lead,20/03/2016,"R$ 8.463,93",S,"4,0",5,Entrega consistente e boa comunicação com o time.
+40208,Heitor Santos,429.462.011-04,heitor.santos@empresaficticia.com,Tecnologia,Tech Lead,13/05/2017,"R$ 10.096,43",S,"2,8",33,Faltas recorrentes no trimestre; conversar. Ciclo 1.
+40209,Lucas Oliveira,799.322.039-47,lucas.oliveira@empresaficticia.com,Financeiro,Controller,14/11/2021,"R$ 5.833,60",S,"3,8",33,Precisa melhorar a organização das tarefas.
+40210,Sofia Martins,472.818.892-24,sofia.martins@empresaficticia.com,Vendas,Vendedor,12/02/2017,"R$ 7.709,54",N,"2,8",3,Entrega consistente e boa comunicação com o time.
+40211,Diego Nascimento,745.752.539-44,diego.nascimento@empresaficticia.com,Operações,Assistente de Logística,20/03/2019,"R$ 10.296,51",S,"4,0",11,Em adaptação; acompanhar no próximo ciclo. Ciclo 2.
+40212,Úrsula Oliveira,651.914.393-68,ursula.oliveira@empresaficticia.com,Pessoas,Recrutador,05/06/2016,"R$ 5.211,31",S,"2,7",37,Excelente relacionamento com clientes.
+40213,Heitor Ribeiro,962.970.318-19,heitor.ribeiro@empresaficticia.com,Vendas,Coordenador de Vendas,29/09/2017,"R$ 5.300,93",N,"4,9",8,Entrega consistente e boa comunicação com o time. Ciclo 2.
+40214,Marina Pereira,827.901.226-52,marina.pereira@empresaficticia.com,Vendas,Vendedor,13/04/2023,"R$ 11.743,13",S,"4,0",7,Em adaptação; acompanhar no próximo ciclo. Ciclo 3.
+40215,João Nascimento,527.490.936-19,joao.nascimento@empresaficticia.com,Operações,Assistente de Logística,05/04/2015,"R$ 5.102,41",S,"3,8",32,Precisa melhorar a organização das tarefas. Ciclo 4.
+40216,Heitor Souza,775.049.591-62,heitor.souza@empresaficticia.com,Financeiro,Analista Financeiro,13/01/2019,"R$ 15.830,71",S,"3,9",8,Faltas recorrentes no trimestre; conversar. Ciclo 2.
+40217,Paulo Lima,340.998.372-46,paulo.lima@empresaficticia.com,Operações,Assistente de Logística,04/08/2023,"R$ 14.392,00",S,"3,7",18,Em adaptação; acompanhar no próximo ciclo.
+40218,Yasmin Gomes,840.993.229-63,yasmin.gomes@empresaficticia.com,Financeiro,Controller,19/06/2022,"R$ 2.621,58",S,"2,5",35,Precisa melhorar a organização das tarefas. Ciclo 1.
+40219,Úrsula Lima,180.783.159-02,ursula.lima@empresaficticia.com,Operações,Assistente de Logística,26/01/2017,"R$ 13.365,39",N,"2,9",27,Entrega consistente e boa comunicação com o time. Ciclo 2.
+40220,Rafael Ferreira,725.009.555-24,rafael.ferreira@empresaficticia.com,Operações,Supervisor,31/08/2017,"R$ 12.286,36",N,"4,1",14,Precisa melhorar a organização das tarefas.
+40221,Heitor Carvalho,041.591.525-20,heitor.carvalho@empresaficticia.com,Pessoas,Analista de RH,13/10/2018,"R$ 16.448,64",S,"2,6",3,Liderou o projeto de migração com ótimo resultado. Ciclo 1.
+40222,Bruno Souza,418.903.885-72,bruno.souza@empresaficticia.com,Operações,Supervisor,23/03/2019,"R$ 8.255,84",S,"4,0",17,Liderou o projeto de migração com ótimo resultado.
+40223,Paulo Silva,887.132.481-11,paulo.silva@empresaficticia.com,Vendas,Coordenador de Vendas,01/07/2016,"R$ 2.938,06",S,"3,9",31,Excelente relacionamento com clientes. Ciclo 2.
+40224,Sofia Ferreira,915.063.656-12,sofia.ferreira@empresaficticia.com,Financeiro,Controller,07/11/2015,"R$ 8.681,56",N,"3,5",18,Liderou o projeto de migração com ótimo resultado.
+40225,Marina Costa,764.332.597-90,marina.costa@empresaficticia.com,Tecnologia,Desenvolvedor,25/04/2016,"R$ 8.671,26",S,"2,8",34,Excelente relacionamento com clientes. Ciclo 3.
+40226,Paulo Ribeiro,025.890.571-99,paulo.ribeiro@empresaficticia.com,Operações,Supervisor,21/03/2021,"R$ 15.044,48",S,"3,9",3,Faltas recorrentes no trimestre; conversar.
+40227,Queila Nascimento,882.443.393-65,queila.nascimento@empresaficticia.com,Pessoas,Recrutador,28/09/2019,"R$ 12.356,74",S,"4,3",2,Excelente relacionamento com clientes.
+40228,Yasmin Silva,197.415.928-09,yasmin.silva@empresaficticia.com,Vendas,Vendedor,19/07/2015,"R$ 11.459,80",N,"4,2",28,Precisa melhorar a organização das tarefas.
+40229,Queila Costa,069.390.176-40,queila.costa@empresaficticia.com,Operações,Assistente de Logística,20/09/2023,"R$ 6.391,71",N,"3,6",40,Precisa melhorar a organização das tarefas.
+40230,Carla Silva,543.882.928-42,carla.silva@empresaficticia.com,Tecnologia,Analista de Dados,18/12/2022,"R$ 8.116,57",S,"3,5",9,Em adaptação; acompanhar no próximo ciclo. Ciclo 2.
+40231,Sofia Souza,377.693.976-18,sofia.souza@empresaficticia.com,Tecnologia,Analista de Dados,17/05/2021,"R$ 10.870,07",S,"2,9",16,Faltas recorrentes no trimestre; conversar. Ciclo 1.
+40232,Marina Silva,724.905.284-59,marina.silva@empresaficticia.com,Financeiro,Analista Financeiro,02/10/2016,"R$ 17.190,46",N,"3,2",19,Liderou o projeto de migração com ótimo resultado. Ciclo 3.
+40233,Sofia Ribeiro,456.397.001-81,sofia.ribeiro@empresaficticia.com,Tecnologia,Desenvolvedor,13/12/2018,"R$ 3.756,16",S,"4,5",4,Em adaptação; acompanhar no próximo ciclo.
+40234,Olívia Oliveira,274.799.872-00,olivia.oliveira@empresaficticia.com,Operações,Supervisor,14/04/2023,"R$ 11.696,14",S,"3,2",1,Excelente relacionamento com clientes.
+40235,Paulo Araújo,763.655.352-01,paulo.araujo@empresaficticia.com,Operações,Supervisor,06/07/2019,"R$ 7.941,32",S,"3,1",3,Precisa melhorar a organização das tarefas.
+40236,Wanda Martins,228.687.898-62,wanda.martins@empresaficticia.com,Operações,Supervisor,07/07/2021,"R$ 8.274,09",S,"4,6",35,Precisa melhorar a organização das tarefas.
+40237,Tiago Gomes,071.735.843-70,tiago.gomes@empresaficticia.com,Operações,Assistente de Logística,13/10/2022,"R$ 13.395,70",N,"3,2",3,Liderou o projeto de migração com ótimo resultado. Ciclo 1.
+40238,Gabriela Santos,285.316.526-42,gabriela.santos@empresaficticia.com,Tecnologia,Analista de Dados,13/08/2018,"R$ 15.853,19",S,"3,7",31,Entrega consistente e boa comunicação com o time. Ciclo 3.
+40239,Wanda Gomes,922.476.819-99,wanda.gomes@empresaficticia.com,Pessoas,Recrutador,24/08/2016,"R$ 4.403,51",S,"3,0",23,Entrega consistente e boa comunicação com o time.
