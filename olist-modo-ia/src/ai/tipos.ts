@@ -19,6 +19,8 @@ export interface RespostaCompletar {
   ms: number;
   tokensEntrada?: number;
   tokensSaida?: number;
+  /** Números do próprio WebLLM (ttft, tokens/s, tempo da gramática) para o BENCHMARK no PC. */
+  metricas?: Record<string, number>;
 }
 
 export interface MotorLLM {

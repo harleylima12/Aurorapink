@@ -1,0 +1,29 @@
+{
+  "webllm": "0.2.85",
+  "libs": {
+    "v0_2_84/base/Qwen2-1.5B-Instruct-q4f16_1_cs1k-webgpu.wasm": {
+      "sha256": "0fceb50bbaf47efdc31fce96b72c115dcb7f5221c85abe6a9fc02dda9d1d6fc3",
+      "bytes": 5225782
+    },
+    "v0_2_84/base/Qwen2-1.5B-Instruct-q4f32_1_cs1k-webgpu.wasm": {
+      "sha256": "7c18e20929f6a1145f985c4bdcf9ce8beec67f2445c91b361c842d323758060d",
+      "bytes": 5106483
+    },
+    "v0_2_84/base/Qwen3.5-0.8B-q4f16_1_cs1k-webgpu.wasm": {
+      "sha256": "3dd8cff049bf4599bfbb505880aea11ba95f85f3924b7e171f967d1f1348ae29",
+      "bytes": 6197129
+    },
+    "v0_2_84/base/Qwen3.5-0.8B-q4f32_1_cs1k-webgpu.wasm": {
+      "sha256": "48232ec3bc756521463ca9bc49ff036d82ea9c7930d2a41ef6d9bfb20e5c684d",
+      "bytes": 6080025
+    },
+    "v0_2_84/base/Llama-3.2-1B-Instruct-q4f16_1_cs1k-webgpu.wasm": {
+      "sha256": "2aa9b5f0c8de532f6cbf6bb7b863aaa02645bf6fff856083b202f968712d3f92",
+      "bytes": 5320982
+    },
+    "v0_2_84/base/Llama-3.2-1B-Instruct-q4f32_1_cs1k-webgpu.wasm": {
+      "sha256": "a1407404cb85b7dbc6db4bd77569291f02dab50aaeb1dc595b17595c2e204c66",
+      "bytes": 5203275
+    }
+  }
+}

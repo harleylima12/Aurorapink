@@ -16,7 +16,8 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "baixar-extensoes": "node scripts/baixar-extensoes.mjs",
-    "baixar-extensoes:verificar": "node scripts/baixar-extensoes.mjs --verificar"
+    "baixar-extensoes:verificar": "node scripts/baixar-extensoes.mjs --verificar",
+    "baixar-modelo": "node scripts/baixar-modelo.mjs"
   },
   "dependencies": {
     "@duckdb/duckdb-wasm": "1.32.0",
