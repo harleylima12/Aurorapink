@@ -465,3 +465,9 @@ Formato: **contexto → decisão → alternativa descartada**. As decisões da F
 
 - Ligado, os bytes ficam no IndexedDB deste navegador; desligar apaga na hora, e há botão "Apagar". A Fase 6
   inclui isso no "Apagar dados locais".
+
+### D45. Limite de tamanho da planilha
+
+- **Medido na nuvem:** até 3 milhões de linhas (297 MB) abrem sem erro (22 s de leitura). O corte de 300 MB
+  (`LIMITE_BYTES`) é de segurança e ainda não foi medido como limite real: a máquina da nuvem tem 16 GB de RAM e o
+  PC do Harley pode ter menos. Medir no PC antes de mudar (BENCHMARK, Fase 5).

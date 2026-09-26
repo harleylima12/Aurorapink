@@ -105,3 +105,31 @@ verdade está marcado **medir no PC**; roteiro no `CLAUDE.md`. Nada abaixo foi e
 | Textos do narrador aprovados pelo validador | — | medir no PC |
 | Domínios contatados no modo demo | só os de `DOMINIOS_PESOS_DEMO` | medir no PC |
 | Requisições externas no modo local | 0 | medir no PC |
+
+## Fase 5: Modo Universal
+
+**Tamanho x tempo** (`LIMITE=1 npx playwright test universal-limite`, `evals/resultados/limite-planilha.json`):
+CSV sintético no formato do `vendas_br.csv` (13 colunas, ";" e vírgula decimal), gerado dentro da página. Leitura =
+do arquivo escolhido até a tela "Entendi assim" (codificação, separador, cabeçalho, limpeza e perfil). Dashboard =
+do clique em "Gerar dashboard" até o primeiro gráfico. Nuvem do Claude Code, Chromium headless, 4 CPUs, sem GPU.
+
+| Linhas | Tamanho | Leitura | Dashboard |
+|---:|---:|---:|---:|
+| 100.000 | 9,7 MB | 1,3 s | 1,0 s |
+| 500.000 | 49 MB | 3,9 s | 2,0 s |
+| 1.000.000 | 98 MB | 6,7 s | 4,1 s |
+| 2.000.000 | 197 MB | 15,8 s | 9,9 s |
+| 3.000.000 | 297 MB | 22,1 s | 11,3 s |
+
+- Nenhum tamanho falhou. O app recusa arquivos acima de 300 MB (`LIMITE_BYTES`) com uma dica ("filtre um período
+  menor…"): esse corte é de segurança, **não é o ponto em que o navegador quebra** (não foi medido acima de
+  297 MB). No PC, repetir com `LIMITE_LINHAS=1000000,3000000,5000000` e ajustar o corte se fizer sentido.
+- Primeira rodada da medição travou em 500 mil linhas: era o próprio TESTE (o layout do tamanho anterior foi
+  salvo como modelo, então a planilha seguinte abriu direto no dashboard e a tela esperada nunca veio). Corrigido
+  no teste; o app estava certo.
+
+**Perfil das colunas** (`npm test`, `evals/resultados/perfil-planilhas.json`): 82/82 nas 11 planilhas de teste;
+**87,5% (21/24) na primeira rodada das 3 planilhas às cegas** (ver D37).
+
+**Pacote:** o Modo Universal é carregado sob demanda (58,6 kB, 20,5 kB gzip); o pacote principal cresceu 2,6 kB
+em relação à Fase 4.

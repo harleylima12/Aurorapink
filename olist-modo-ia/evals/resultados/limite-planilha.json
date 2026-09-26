@@ -1,0 +1,40 @@
+{
+  "ambiente": "nuvem do Claude Code (Chromium headless, sem GPU)",
+  "resultados": [
+    {
+      "linhas": 100000,
+      "mb": 9.7,
+      "resultado": "ok",
+      "leituraS": 1.348,
+      "dashboardS": 0.964
+    },
+    {
+      "linhas": 500000,
+      "mb": 49,
+      "resultado": "ok",
+      "leituraS": 3.924,
+      "dashboardS": 2.042
+    },
+    {
+      "linhas": 1000000,
+      "mb": 98.2,
+      "resultado": "ok",
+      "leituraS": 6.723,
+      "dashboardS": 4.099
+    },
+    {
+      "linhas": 2000000,
+      "mb": 197.4,
+      "resultado": "ok",
+      "leituraS": 15.775,
+      "dashboardS": 9.856
+    },
+    {
+      "linhas": 3000000,
+      "mb": 296.7,
+      "resultado": "ok",
+      "leituraS": 22.088,
+      "dashboardS": 11.33
+    }
+  ]
+}
