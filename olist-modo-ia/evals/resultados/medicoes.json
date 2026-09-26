@@ -1,80 +1,80 @@
 {
   "rodadas": 5,
   "fria": {
-    "fcp": 224,
-    "motorPronto": 1418,
-    "graficosProntos": 1677
+    "fcp": 232,
+    "motorPronto": 1757,
+    "graficosProntos": 2003
   },
   "quente": {
-    "fcp": 120,
-    "motorPronto": 1274,
-    "graficosProntos": 1456
+    "fcp": 132,
+    "motorPronto": 1574,
+    "graficosProntos": 1783
   },
   "trocaDeFiltroMs": {
-    "mediana": 122,
-    "max": 144
+    "mediana": 174,
+    "max": 181
   },
   "brutos": {
     "frias": [
       {
         "fcp": 232,
-        "motorPronto": 1420,
-        "graficosProntos": 1719
+        "motorPronto": 1757,
+        "graficosProntos": 2008
       },
       {
-        "fcp": 224,
-        "motorPronto": 1413,
-        "graficosProntos": 1677
+        "fcp": 232,
+        "motorPronto": 1769,
+        "graficosProntos": 2043
       },
       {
         "fcp": 220,
-        "motorPronto": 1416,
-        "graficosProntos": 1686
+        "motorPronto": 1762,
+        "graficosProntos": 2003
       },
       {
-        "fcp": 248,
-        "motorPronto": 1418,
-        "graficosProntos": 1656
+        "fcp": 228,
+        "motorPronto": 1734,
+        "graficosProntos": 1990
       },
       {
-        "fcp": 212,
-        "motorPronto": 1434,
-        "graficosProntos": 1659
+        "fcp": 236,
+        "motorPronto": 1751,
+        "graficosProntos": 1998
       }
     ],
     "quentes": [
       {
-        "fcp": 112,
-        "motorPronto": 1323,
-        "graficosProntos": 1562
+        "fcp": 144,
+        "motorPronto": 1553,
+        "graficosProntos": 1764
       },
       {
-        "fcp": 120,
-        "motorPronto": 1326,
-        "graficosProntos": 1531
+        "fcp": 108,
+        "motorPronto": 1635,
+        "graficosProntos": 1855
       },
       {
-        "fcp": 120,
-        "motorPronto": 1274,
-        "graficosProntos": 1454
+        "fcp": 116,
+        "motorPronto": 1557,
+        "graficosProntos": 1753
       },
       {
-        "fcp": 128,
-        "motorPronto": 1269,
-        "graficosProntos": 1456
+        "fcp": 140,
+        "motorPronto": 1574,
+        "graficosProntos": 1785
       },
       {
-        "fcp": 104,
-        "motorPronto": 1245,
-        "graficosProntos": 1424
+        "fcp": 132,
+        "motorPronto": 1585,
+        "graficosProntos": 1783
       }
     ],
     "filtros": [
-      144,
-      112,
-      122,
-      116,
-      124
+      174,
+      181,
+      180,
+      168,
+      174
     ]
   }
 }

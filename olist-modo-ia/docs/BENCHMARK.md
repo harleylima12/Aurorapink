@@ -43,6 +43,22 @@ final, o Parquet (1,59 MB br) substitui o `.duckdb`, mas a extensão `parquet` e
 
 **A medir no PC do Harley:** as mesmas medições com o caminho final (Parquet + extensão), GPU/CPU reais e rede real.
 
+**Caminho final medido na nuvem** (depois que o Harley liberou `extensions.duckdb.org`; mesma máquina e método,
+mediana de 5 rodadas):
+
+| Momento | Carga fria | Carga com cache |
+|---|---:|---:|
+| Primeira pintura | **0,23 s** | 0,13 s |
+| DuckDB pronto + extensão parquet + metadados | 1,76 s | 1,57 s |
+| KPIs e todos os gráficos na tela | **2,00 s** | 1,78 s |
+| Trocar o filtro de Ano (mediana / máx.) | 174 ms / 181 ms | |
+
+- Meta "primeira pintura < 2 s": cumprida. O dashboard completo ficou ~0,35 s mais lento que no `.duckdb`
+  provisório (2,00 s contra 1,65 s): o `LOAD parquet` confere a assinatura da extensão e o `read_parquet` lê o
+  arquivo a cada consulta. O caminho final segue valendo pela seção 6 da especificação (Parquet e nada de CDN).
+- Extensão parquet (`wasm_eh`): 3,05 MB bruto, 0,70 MB gzip. `fato_itens.parquet`: 1,77 MB (1,59 MB gzip; já é
+  comprimido). O `.duckdb` provisório (2,90 MB) sai do download no caminho final.
+
 ## Fase 3: Modo Rápido (sem IA)
 
 **Como medi:** `npx playwright test modo-ia` (resultado em `evals/resultados/latencia-modo-rapido.json`), mesma

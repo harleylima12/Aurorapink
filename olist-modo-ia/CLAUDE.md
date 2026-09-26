@@ -44,14 +44,14 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
 - **Fase 3 (Modo Rápido):** aprovada. Parser de tempo, Camada 0 (`src/router/layer0.ts`), insights e decomposição (`src/insights/`), seletor de gráfico, narrador por template + validador, painel "✨ Modo IA". Suíte `evals/perguntas.json` (76). Prints em `docs/prints/fase3/`.
 - **Fase 4 (IA local):** aprovada até onde deu sem GPU; **falta a validação no PC** (roteiro abaixo). Worker do WebLLM com import dinâmico (`src/ai/motorWebLLM.ts`, `engine.worker.ts`), escolha do modelo pela `prebuiltAppConfig` instalada (`modelos.ts`), planejador com JSON Schema (`planner.ts`, `prompts/planner.ts`), valores conferidos na base (`src/query/valueResolver.ts`), narrador com placeholders + validador (`narrator.ts`), motor falso (`motorFalso.ts`), `npm run baixar-modelo`. Decisões D28–D35. Testes: `npm test` (149), `npx playwright test` (22, com `PRINTS=1` grava prints), `python -m pytest tests/dados` (57). Prints em `docs/prints/fase4/`.
 - **Fase 5 (Modo Universal):** concluída na nuvem, aguardando o OK do Harley. Rota `/planilha`: leitura (`src/universal/leitor.ts`), limpeza, perfil das colunas (`perfil.ts`), semântica automática (`semanticaAuto.ts`), impressão digital e modelos (`impressao.ts`), vários arquivos (`relacoes.ts`, `montar.ts`), dashboard automático (`painelAuto.ts`) e telas em `src/ui/universal/`. Planilhas de teste em `evals/planilhas/` (`npm run gerar-planilhas-teste`). Decisões D36–D45. Testes: `npm test` (172), `npx playwright test` (24 + 3 pulados: prints com `PRINTS=1`, limite com `LIMITE=1`), `python -m pytest tests/dados` (57). **Excel pendente: SheetJS bloqueada na nuvem (D39), passo no roteiro abaixo.**
-- **Caminho de dados:** o app usa o `.duckdb` PROVISÓRIO até alguém rodar `npm run baixar-extensoes` (D17). O rodapé mostra qual caminho está ativo.
-- **Validar no PC do Harley (dados, continua pendente):**
-  1. `npm ci`, `npx playwright install chromium`, `npm run baixar-extensoes` (primeiro download: registra o SHA-256 no lock; commitar lock, manifesto e `public/duckdb-extensions/`).
-  2. `npx playwright test`: o teste do rodapé passa a exigir "Parquet (caminho final)"; conferir zero violações de CSP e a auditoria de rede.
-  3. `RODADAS=5 npx playwright test medicoes` e anotar no BENCHMARK.md (tamanho real da extensão incluso).
-  4. `python scripts/preparar_dados.py` no Windows (caminho com acento e espaço).
-  5. Conferir o frete total no card do Power BI (D16).
-  6. Decidir se o `.duckdb` provisório fica como plano B ou sai (Fase 6).
+- **Caminho de dados:** caminho FINAL ativo desde 26/09 (extensão parquet em `public/duckdb-extensions/`, SHA-256 no lock). O `.duckdb` provisório continua como plano B automático; decidir na Fase 6 se fica.
+- **Rede da nuvem:** o Harley liberou `cdn.sheetjs.com`, `extensions.duckdb.org`, `huggingface.co` e `*.hf.co`. O `curl` passa direto; o Node precisa de `NODE_USE_ENV_PROXY=1` nesta nuvem (no PC, não).
+- **Validar no PC do Harley (continua pendente):**
+  1. `npm ci`, `npx playwright install chromium`, `npx playwright test` (o rodapé deve dizer "Parquet (caminho final)").
+  2. `RODADAS=5 npx playwright test medicoes` com rede real e anotar no BENCHMARK.md.
+  3. `python scripts/preparar_dados.py` no Windows (caminho com acento e espaço).
+  4. Conferir o frete total no card do Power BI (D16).
+  5. IA na GPU (roteiro abaixo).
 - **Próximo passo:** validar a IA no PC (roteiro abaixo); depois, Fase 5 com o OK do Harley.
 
 ## Roteiro: Excel no Modo Universal (Fase 5, SheetJS)
