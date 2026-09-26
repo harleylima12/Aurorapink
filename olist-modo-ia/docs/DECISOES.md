@@ -371,3 +371,97 @@ Formato: **contexto → decisão → alternativa descartada**. As decisões da F
   só é baixado ao clicar em "Ativar IA local": 6,0 MB (2,15 MB gzip) na thread principal + 6,0 MB (2,15 MB gzip) no
   worker. A thread principal só precisa da `prebuiltAppConfig` e do cliente do worker; mover a escolha do modelo
   para dentro do worker cortaria ~2 MB gzip (Fase 7). Os pesos (centenas de MB) ficam no cache do navegador.
+
+## Fase 5: Modo Universal (qualquer planilha)
+
+### D36. Quem lê o quê: o JS decide o formato, o DuckDB lê e converte
+
+- **Contexto:** CSV brasileiro vem em Latin-1, com ";" e vírgula decimal, títulos acima da tabela e linhas de total.
+  O leitor automático do DuckDB não trata títulos nem Latin-1 (que exige extensão, bloqueada).
+- **Decisão:** o JS olha só o começo do arquivo (até 2 MB) e decide codificação (UTF-8 válido ou Windows-1252),
+  separador (o que divide as linhas no mesmo número de colunas com mais frequência; empate favorece ";") e a linha
+  do cabeçalho (primeira com várias células de texto seguida de linhas de largura parecida). O arquivo inteiro vai
+  para o DuckDB como texto (`read_csv(... all_varchar=true, skip=n, names=[...])`), a limpeza é um `DELETE`
+  (linhas vazias e de total/subtotal) e a conversão de tipos é SQL gerado pelo app (`TRY_CAST`, `TRY_STRPTIME`).
+  Todo número do dashboard continua vindo do DuckDB (P1). Ajuste 12 da Fase 0.
+- **Descartado:** fazer o parse do arquivo inteiro em JS (lento e duplica a memória em planilhas grandes) e
+  confiar no sniffer do DuckDB (erra títulos e totais).
+
+### D37. Perfil das colunas: regras explicáveis e resultado honesto
+
+- **Decisão:** `src/universal/perfil.ts` classifica cada coluna em 11 tipos pelo nome, por uma amostra aleatória
+  repetível (600 linhas, `REPEATABLE (42)`), pela cardinalidade e pelos vazios. Cada regra exige a MAIORIA da
+  amostra (um e-mail perdido não vira "dado pessoal"). O motivo aparece na tela "Entendi assim".
+- **Resultado:** 8 planilhas escritas junto com as regras: 58/58 colunas. Depois, 3 planilhas **às cegas**
+  (esperado escrito antes de rodar): **21/24 (87,5%) na primeira rodada**, abaixo da meta de 90%. Os 3 erros eram
+  lacunas reais (nomes de coluna em inglês: "Revenue", "Discount Rate"; comentários curtos repetidos virando
+  categoria). Corrigido de forma geral (dicas em inglês, "frases são texto"), a suíte foi a 82/82. Como na D24,
+  o 100% é otimista; a Fase 7 traz planilhas novas que não servem para ajuste.
+- **Teste de conversão sem perda:** toda célula preenchida precisa virar um valor do tipo escolhido. Ele pegou
+  um erro que a classificação não mostrava: data com hora sem segundos ("2024-03-15 11:48") virava vazio.
+
+### D38. Semântica automática no MESMO formato da Olist
+
+- **Decisão:** `semanticaAuto.ts` gera um semantic.json validado pelo mesmo Zod: métrica "Registros" (contagem de
+  linhas); soma e média de cada coluna de dinheiro; soma ou média de números (média quando o nome sugere nota,
+  idade, score); média de porcentagens; contagem distinta de ids que se repetem (ex.: "Cliente (distintos)");
+  dimensões de categoria/UF/cidade/Sim-Não; a data mais "de evento" vira o eixo do tempo. Sinônimos vêm de um
+  dicionário PT-BR de termos de negócio. Dashboard, Camada 0, IA e insights funcionam sem mudança.
+- **Privacidade:** dados pessoais (e-mail, CPF/CNPJ, telefone, nome de pessoa) são mascarados JÁ na tabela
+  tipada ("***.***.***-12", "a***@dominio", "Yasmin S."), não só na tela; eles e o texto livre ficam fora do
+  catálogo da IA (P6). Na tela, dado pessoal só pode ter o papel "Ignorar".
+- `time_column` virou opcional (planilha sem data): o compilador recusa filtro de período com mensagem clara.
+- A tabela tipada ganha nome novo a cada "Gerar"/edição: o cache de consultas do motor (por texto do SQL) nunca
+  devolve número de uma configuração antiga. As antigas são descartadas.
+
+### D39. Excel: SheetJS bloqueada na nuvem, sem atalho
+
+- **Contexto:** a especificação manda instalar a SheetJS pelo tarball oficial (`cdn.sheetjs.com`), porque a
+  versão do npm está desatualizada. Esse domínio é bloqueado nesta nuvem (proxy devolve 403).
+- **Decisão:** não usar a versão do npm nem espelho (instrução do Harley). O código do Excel está pronto
+  (`src/universal/excel.ts`: escolhe a aba com dados, converte para CSV e segue o mesmo caminho) e procura a
+  biblioteca por `import.meta.glob('/node_modules/xlsx/xlsx.mjs')`: sem ela, o build passa e a tela explica
+  "salve como CSV". Testado com uma SheetJS falsa; a planilha `financeiro_titulo_total.xlsx` (título mesclado,
+  aba "Leia-me" antes da de dados, fórmula no total) já está em `evals/planilhas/` para o teste real no PC.
+  A interface usada (`read`, `utils.sheet_to_json`) precisa ser conferida no `node_modules` quando a lib chegar (P8).
+- **Parquet do usuário:** também depende da extensão parquet (D15); sem ela, a tela avisa e sugere CSV.
+
+### D40. Modelos de planilha ("joga e pronto")
+
+- **Decisão:** impressão digital = nomes normalizados + tipos DETECTADOS das colunas, na ordem (FNV-1a de 64
+  bits). As vendas do mês seguinte têm a mesma impressão e abrem direto no dashboard, com o aviso "Reconheci o
+  layout… Revisar colunas". A configuração fica no `localStorage`; exportar/importar leva a outro computador, e
+  todo `.json` importado passa pelo schema Zod (ids só `a-z0-9_`; um id com SQL é recusado, testado).
+- **Descartado:** impressão pelos tipos EDITADOS (a planilha nova ainda não foi editada, então nunca bateria).
+
+### D41. Vários arquivos: ligação medida pelos valores, sem duplicar linhas
+
+- **Decisão:** candidatas = colunas com o mesmo nome-base ("Cliente ID" = id_cliente = cod_cliente) ou dois
+  identificadores. Cada candidata é medida no DuckDB: % dos valores de um lado que existem do outro, com
+  exemplos dos que não batem. A planilha "um" (chave única) entra por `LEFT JOIN` como dimensões com prefixo
+  ("Segmento (clientes)"); se a chave se repete, o app mostra o risco de grão e não deixa ligar. Métricas da
+  planilha "um" ficam de fora (somadas por linha da principal, sairiam infladas). Planilha sem nenhuma ligação
+  ganha o alerta "não tem relação com as outras". Setor provável de cada uma (Vendas, RH, Estoque…) pelos nomes
+  das colunas. Conferido: vendas + clientes = 1.500 linhas e a mesma receita antes e depois da junção.
+
+### D42. `/planilha` em vez de trocar a tela inicial
+
+- **Contexto:** a seção 14 pede uma tela inicial com "Arraste sua planilha" + "Ver demo com dados da Olist".
+- **Decisão (provisória, rever na Fase 8):** `/` continua sendo o dashboard da Olist (links diretos, testes e a
+  comparação com o Power BI dependem disso); `/planilha` tem a área de arrastar, o botão "Ver demo com dados da
+  Olist", os modelos salvos e "Lembrar a última planilha". A barra lateral da Olist ganhou o link "📂 Sua
+  planilha". O código do Modo Universal é carregado sob demanda (58,6 kB, 20,5 kB gzip); o pacote principal
+  ficou só 2,6 kB maior que o da Fase 4.
+- **Filtros:** o dashboard da planilha não tem a barra de filtros (Ano/UF são da Olist); o Modo IA filtra por
+  pergunta ("em SP", "em 2024").
+
+### D43. Bibliotecas do modelo baixadas no build
+
+- **Decisão do Harley:** as 6 `model_lib` (31,6 MB) ficam fora do git; `npm run build` roda
+  `baixar-modelo --so-libs` antes, que só baixa o que falta e confere o SHA-256 do `modelos.lock.json`
+  (arquivo diferente = build falha). Revisar na hora do deploy (Fase 8).
+
+### D44. "Lembrar a última planilha": opcional e desligado por padrão
+
+- Ligado, os bytes ficam no IndexedDB deste navegador; desligar apaga na hora, e há botão "Apagar". A Fase 6
+  inclui isso no "Apagar dados locais".

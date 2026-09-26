@@ -42,7 +42,8 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
 - **Fase 1 (dados):** aprovada. Parquet batendo com o Power BI no centavo (`dados/validacao.md`).
 - **Fase 2 (base):** aprovada. Dashboard de 3 páginas, compilador spec→SQL, CSP.
 - **Fase 3 (Modo Rápido):** aprovada. Parser de tempo, Camada 0 (`src/router/layer0.ts`), insights e decomposição (`src/insights/`), seletor de gráfico, narrador por template + validador, painel "✨ Modo IA". Suíte `evals/perguntas.json` (76). Prints em `docs/prints/fase3/`.
-- **Fase 4 (IA local):** escrita na nuvem (sem GPU, Hugging Face bloqueado), aguardando o OK do Harley **e a validação no PC** (roteiro abaixo). Worker do WebLLM com import dinâmico (`src/ai/motorWebLLM.ts`, `engine.worker.ts`), escolha do modelo pela `prebuiltAppConfig` instalada (`modelos.ts`), planejador com JSON Schema (`planner.ts`, `prompts/planner.ts`), valores conferidos na base (`src/query/valueResolver.ts`), narrador com placeholders + validador (`narrator.ts`), motor falso (`motorFalso.ts`), `npm run baixar-modelo`. Decisões D28–D35. Testes: `npm test` (149), `npx playwright test` (22, com `PRINTS=1` grava prints), `python -m pytest tests/dados` (57). Prints em `docs/prints/fase4/`.
+- **Fase 4 (IA local):** aprovada até onde deu sem GPU; **falta a validação no PC** (roteiro abaixo). Worker do WebLLM com import dinâmico (`src/ai/motorWebLLM.ts`, `engine.worker.ts`), escolha do modelo pela `prebuiltAppConfig` instalada (`modelos.ts`), planejador com JSON Schema (`planner.ts`, `prompts/planner.ts`), valores conferidos na base (`src/query/valueResolver.ts`), narrador com placeholders + validador (`narrator.ts`), motor falso (`motorFalso.ts`), `npm run baixar-modelo`. Decisões D28–D35. Testes: `npm test` (149), `npx playwright test` (22, com `PRINTS=1` grava prints), `python -m pytest tests/dados` (57). Prints em `docs/prints/fase4/`.
+- **Fase 5 (Modo Universal):** concluída na nuvem, aguardando o OK do Harley. Rota `/planilha`: leitura (`src/universal/leitor.ts`), limpeza, perfil das colunas (`perfil.ts`), semântica automática (`semanticaAuto.ts`), impressão digital e modelos (`impressao.ts`), vários arquivos (`relacoes.ts`, `montar.ts`), dashboard automático (`painelAuto.ts`) e telas em `src/ui/universal/`. Planilhas de teste em `evals/planilhas/` (`npm run gerar-planilhas-teste`). Decisões D36–D44. **Excel pendente: SheetJS bloqueada na nuvem (D39), passo no roteiro abaixo.**
 - **Caminho de dados:** o app usa o `.duckdb` PROVISÓRIO até alguém rodar `npm run baixar-extensoes` (D17). O rodapé mostra qual caminho está ativo.
 - **Validar no PC do Harley (dados, continua pendente):**
   1. `npm ci`, `npx playwright install chromium`, `npm run baixar-extensoes` (primeiro download: registra o SHA-256 no lock; commitar lock, manifesto e `public/duckdb-extensions/`).
@@ -52,6 +53,21 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
   5. Conferir o frete total no card do Power BI (D16).
   6. Decidir se o `.duckdb` provisório fica como plano B ou sai (Fase 6).
 - **Próximo passo:** validar a IA no PC (roteiro abaixo); depois, Fase 5 com o OK do Harley.
+
+## Roteiro: Excel no Modo Universal (Fase 5, SheetJS)
+
+A especificação manda instalar a SheetJS pelo tarball oficial (a do npm está desatualizada). No PC:
+
+1. Conferir a versão atual em https://cdn.sheetjs.com/ (a Fase 0 fixou 0.20.3) e baixar o tarball para `vendor/`:
+   `curl -o vendor/xlsx-0.20.3.tgz https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz`
+   (PowerShell: `Invoke-WebRequest -OutFile vendor/xlsx-0.20.3.tgz https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz`).
+2. Anotar o SHA-256 (`Get-FileHash vendor\xlsx-0.20.3.tgz` / `sha256sum`) no `docs/DECISOES.md` (D39) e instalar:
+   `npm install --save-exact file:vendor/xlsx-0.20.3.tgz`. Commitar `vendor/xlsx-0.20.3.tgz`, `package.json` e o lock.
+3. Conferir que a interface usada em `src/universal/excel.ts` (`read`, `utils.sheet_to_json` com `header: 1`,
+   `raw: false`, `defval`, `blankrows`, `dateNF`) bate com `node_modules/xlsx/types/index.d.ts`.
+4. `npm test` e `npx playwright test universal`: o teste "Excel sem SheetJS" vai falhar (agora a SheetJS existe):
+   trocar por um teste que solta `evals/planilhas/financeiro_titulo_total.xlsx` e confere aba "Dados", 60 linhas,
+   linha de total removida e receita total igual à do CSV (`esperado.json`).
 
 ## Roteiro: validar a IA de verdade no PC (Fase 4)
 

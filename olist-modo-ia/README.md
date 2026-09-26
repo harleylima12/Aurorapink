@@ -16,7 +16,8 @@ Dashboard da base pública da Olist com **Modo IA 100% local** (WebLLM + DuckDB-
 | 2. Base | ✅ dashboard de 3 páginas, compilador spec→SQL, CSP; prints em [`docs/prints/fase2`](docs/prints/fase2) |
 | 3. Modo Rápido | ✅ perguntas em PT-BR respondidas sem IA em < 100 ms (p95); prints em [`docs/prints/fase3`](docs/prints/fase3) |
 | 4. IA local | ✅ na nuvem (sem GPU): planejador + narrador validados com motor falso; **modelo real a validar no PC**; prints em [`docs/prints/fase4`](docs/prints/fase4) |
-| 5 a 8 | a fazer |
+| 5. Modo Universal | ✅ arraste um CSV em `/planilha`: limpeza, perfil das colunas, tela "Entendi assim" e dashboard automático; Excel pendente (SheetJS); prints em [`docs/prints/fase5`](docs/prints/fase5) |
+| 6 a 8 | a fazer |
 
 ## Fase 1: preparar os dados
 
@@ -64,6 +65,13 @@ VITE_MODEL_SOURCE=local npm run dev   # nenhum domínio externo (PowerShell: $en
 ```
 
 `VITE_MODELO=<model_id>` força um modelo. Detalhes e números: `docs/DECISOES.md` (D28 a D35) e `docs/BENCHMARK.md`.
+
+## Fase 5: Modo Universal (sua planilha)
+
+Abra `/planilha` (ou "📂 Sua planilha" na barra lateral) e arraste um ou mais CSVs. O app detecta codificação,
+separador e cabeçalho, remove linhas vazias e de total, classifica cada coluna (data, dinheiro, %, categoria, UF,
+dado pessoal…), mostra a tela **Entendi assim** para revisão e gera o dashboard e o Modo IA sobre a planilha.
+Nada é enviado: tudo roda no navegador. Planilhas de teste em `evals/planilhas/` (`npm run gerar-planilhas-teste`).
 
 ## Dados e licença
 
