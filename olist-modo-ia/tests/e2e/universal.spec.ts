@@ -94,8 +94,11 @@ test('mesma planilha de novo: reconhece o layout e abre direto', async ({ page }
   await soltar(page, ['rh_ficticio.csv']);
   await expect(page.getByRole('heading', { name: 'Entendi assim' })).toBeVisible({ timeout: 30_000 });
   await expect(page.locator('tr[data-coluna="CPF"]')).toHaveAttribute('data-tipo', 'pessoal');
+  await expect(page.getByTestId('dados-sensiveis').locator('input')).toBeChecked();
   await page.getByRole('button', { name: 'Gerar dashboard' }).click();
-  await expect(page.locator('[data-visual="detalhe"] tbody tr').first()).toContainText('***.***.***-');
+  // Planilha com CPF e salário: dados sensíveis ligados por padrão (grupos < 5 escondidos, sem detalhe linha a linha).
+  await expect(page.locator('[data-visual="protecao"]')).toContainText('menos de 5 registros');
+  await expect(page.locator('[data-visual="detalhe"]')).toHaveCount(0);
   await page.getByRole('button', { name: 'Trocar planilha' }).click();
   await expect(page.locator('.lista-modelos')).toContainText('rh_ficticio');
   await soltar(page, ['rh_ficticio.csv']);

@@ -124,7 +124,19 @@ export interface InfoTabela {
   linhas: number;
   /** Menor e maior data da coluna de tempo (AAAA-MM-DD), se houver. */
   periodo?: { de: string; ate: string };
+  /** Dados sensíveis: esconder grupos com menos de N registros (seção 15). */
+  minGroupSize?: number;
 }
+
+/** Planilha sensível por padrão: tem dado pessoal (CPF, e-mail, nome…) ou coluna típica de RH/saúde. */
+export function pareceSensivel(colunas: readonly Pick<ColunaConfig, 'tipo' | 'original'>[]): boolean {
+  return (
+    colunas.some((c) => c.tipo === 'pessoal') ||
+    colunas.some((c) => temDica(palavras(c.original), ['salario', 'remuneracao', 'diagnostico', 'cid', 'paciente', 'doenca', 'avaliacao de desempenho', 'afastamento']))
+  );
+}
+
+export const TAMANHO_MINIMO_PADRAO = 5;
 
 export function idsDeMetrica(c: ColunaConfig): string {
   if (c.agregacao === 'contagem_distinta') return `distintos_${c.id}`;
@@ -236,6 +248,7 @@ export function montarSemantica(colunas: readonly ColunaConfig[], info: InfoTabe
       order_key: 'linha_planilha',
       order_columns: [],
       ...(tempo ? { time_column: tempo.id } : {}),
+      ...(info.minGroupSize ? { min_group_size: info.minGroupSize } : {}),
       source: 'planilha enviada pelo usuário (processada só no navegador)',
     },
     metrics: metricas,

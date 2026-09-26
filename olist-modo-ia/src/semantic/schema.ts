@@ -92,6 +92,11 @@ export const semanticaSchema = z
       order_columns: z.array(identificador),
       /** Opcional: planilha do Modo Universal sem nenhuma data não tem eixo de tempo. */
       time_column: identificador.optional(),
+      /**
+       * Dados sensíveis (RH, saúde): nenhum resultado agregado sobre menos de N registros aparece
+       * (seção 15, `minGroupSize`). Vale para dashboard, Modo Rápido e IA, porque é aplicado no compilador.
+       */
+      min_group_size: z.number().int().min(2).max(100).optional(),
       source: z.string().optional(),
       license: z.string().optional(),
     }),

@@ -16,6 +16,7 @@ export interface KpiPrevia {
 interface Props {
   grupo: Grupo;
   aoMudar: (parte: 'principal' | number, config: ColunaConfig[]) => void;
+  aoMudarSensivel: (minGroupSize: number | undefined) => void;
   aoGerar: (lembrarLayout: boolean) => void;
   aoVoltar: () => void;
   previa: KpiPrevia[] | 'calculando' | { erro: string };
@@ -151,7 +152,7 @@ function Cabecalho({ parte, papel }: { parte: ParteGrupo; papel: string }) {
 }
 
 /** Tela "Entendi assim" (seção 7A item 6): revisão de 1 minuto, tudo editável, com prévia dos KPIs. */
-export function EntendiAssim({ grupo, aoMudar, aoGerar, aoVoltar, previa, gerando }: Props) {
+export function EntendiAssim({ grupo, aoMudar, aoMudarSensivel, aoGerar, aoVoltar, previa, gerando }: Props) {
   const [lembrar, setLembrar] = useState(true);
   return (
     <div className="entendi-assim">
@@ -194,6 +195,10 @@ export function EntendiAssim({ grupo, aoMudar, aoGerar, aoVoltar, previa, gerand
       ))}
 
       <footer className="entendi-rodape">
+        <label className="alternar" data-testid="dados-sensiveis">
+          <input type="checkbox" checked={grupo.minGroupSize !== undefined} onChange={(e) => aoMudarSensivel(e.target.checked ? 5 : undefined)} />
+          Dados sensíveis: esconder grupos com menos de 5 registros (e a tabela de detalhe){grupo.minGroupSize !== undefined ? ' · ligado porque a planilha tem dados pessoais ou de RH' : ''}
+        </label>
         <label className="alternar">
           <input type="checkbox" checked={lembrar} onChange={(e) => setLembrar(e.target.checked)} />
           Lembrar este layout (a próxima planilha igual abre direto no dashboard)

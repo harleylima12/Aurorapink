@@ -196,7 +196,7 @@ export interface PlanilhaPronta {
 }
 
 /** Depois da revisão: cria a tabela tipada e a semântica. */
-export async function aplicarConfig(leitura: LeituraPlanilha, config: ColunaConfig[], banco: BancoUniversal): Promise<PlanilhaPronta> {
+export async function aplicarConfig(leitura: LeituraPlanilha, config: ColunaConfig[], banco: BancoUniversal, opcoes: { minGroupSize?: number } = {}): Promise<PlanilhaPronta> {
   const t0 = performance.now();
   // Nome novo a cada aplicação: o cache de consultas do motor (por texto do SQL) nunca devolve número velho.
   const tabela = `${leitura.prefixo}_t${(versaoTipada++).toString(36)}`;
@@ -214,6 +214,7 @@ export async function aplicarConfig(leitura: LeituraPlanilha, config: ColunaConf
     tabela,
     linhas: leitura.linhas,
     periodo,
+    minGroupSize: opcoes.minGroupSize,
   });
   return { semantica, config, tabela, linhas: leitura.linhas, periodo, ms: performance.now() - t0 };
 }

@@ -365,3 +365,30 @@ describe('dashboard automático e Modo IA da planilha', () => {
     }
   });
 });
+
+describe('dados sensíveis (minGroupSize, seção 15)', () => {
+  it('RH: grupo com menos de 5 pessoas não sai do banco, nem por filtro', async () => {
+    const { pareceSensivel } = await import('../../src/universal/semanticaAuto');
+    const l = leituras.get('rh_ficticio.csv');
+    if (!l) throw new Error('rh');
+    expect(pareceSensivel(configPadrao(l.perfis))).toBe(true);
+    expect(pareceSensivel(configPadrao(leituras.get('estoque.tsv')?.perfis ?? []))).toBe(false);
+    // "Horas Extras" (0 a 40) como dimensão: vários grupos com menos de 5 pessoas.
+    const config = configPadrao(l.perfis).map((c) => (c.id === 'horas_extras' ? { ...c, tipo: 'categoria' as const, papel: 'dimensao' as const } : c));
+    const aberta = await aplicarConfig(l, config, banco);
+    const protegida = await aplicarConfig(l, config, banco, { minGroupSize: 5 });
+    const spec = { intent: 'comparacao' as const, metrics: ['registros', 'media_salario'], dimensions: ['horas_extras'], filters: [] };
+    const todos = await banco.executar(compilar(spec, aberta.semantica).sql);
+    const visiveis = await banco.executar(compilar(spec, protegida.semantica).sql);
+    const pequenos = todos.filter((r) => Number(r.registros) < 5);
+    expect(pequenos.length).toBeGreaterThan(0);
+    expect(visiveis.every((r) => Number(r.registros) >= 5)).toBe(true);
+    expect(visiveis.length).toBe(todos.length - pequenos.length);
+    // Filtro que isola um grupo pequeno: o KPI (salário médio) não volta nada.
+    const valor = String(pequenos[0]?.horas_extras);
+    const kpi = compilar({ intent: 'kpi', metrics: ['media_salario'], dimensions: [], filters: [{ dimension: 'horas_extras', op: 'in', values: [valor] }] }, protegida.semantica);
+    expect(await banco.executar(kpi.sql.replace('?', `'${valor}'`))).toHaveLength(0);
+    const kpiAberto = compilar({ intent: 'kpi', metrics: ['media_salario'], dimensions: [], filters: [{ dimension: 'horas_extras', op: 'in', values: [valor] }] }, aberta.semantica);
+    expect(await banco.executar(kpiAberto.sql.replace('?', `'${valor}'`))).toHaveLength(1);
+  });
+});

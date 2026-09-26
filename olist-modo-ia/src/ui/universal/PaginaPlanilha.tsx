@@ -7,6 +7,7 @@ import { aplicarModelo, buscarModelo, criarModelo, impressaoDigital, salvarModel
 import { descartar, montarGrupo, type Grupo, type ParteGrupo, type PlanilhaMontada } from '../../universal/montar';
 import { configPadrao, type ColunaConfig } from '../../universal/perfil';
 import { sugerirLigacoes, type Ligacao } from '../../universal/relacoes';
+import { pareceSensivel, TAMANHO_MINIMO_PADRAO } from '../../universal/semanticaAuto';
 import { guardarUltima, type ArquivoGuardado } from '../../universal/ultima';
 import { DashboardPlanilha } from './DashboardPlanilha';
 import { EntendiAssim, type KpiPrevia } from './EntendiAssim';
@@ -24,6 +25,12 @@ function parte(leitura: LeituraPlanilha, ligacao?: Ligacao): ParteGrupo {
   const modelo = buscarModelo(impressaoDigital(leitura.perfis));
   const salvo = modelo ? aplicarModelo(modelo, leitura.perfis) : null;
   return { leitura, config: salvo ?? configPadrao(leitura.perfis), ligacao, reconhecido: salvo && modelo ? modelo : undefined };
+}
+
+/** Grupo novo: proteção de grupos pequenos ligada por padrão quando a planilha parece sensível. */
+function novoGrupo(principal: ParteGrupo, juntas: ParteGrupo[]): Grupo {
+  const sensivel = [principal, ...juntas].some((p) => pareceSensivel(p.config));
+  return { principal, juntas, ...(sensivel ? { minGroupSize: TAMANHO_MINIMO_PADRAO } : {}) };
 }
 
 const nomeDoGrupo = (g: Grupo) => [g.principal, ...g.juntas].map((p) => p.leitura.nome.replace(/\.[a-z0-9]+$/i, '')).join(' + ');
@@ -67,7 +74,7 @@ export function PaginaPlanilha({ motor, aoVerDemo }: { motor: Motor; aoVerDemo: 
         }
         const [unica] = leituras;
         if (!unica) return;
-        const grupo: Grupo = { principal: parte(unica), juntas: [] };
+        const grupo = novoGrupo(parte(unica), []);
         // Layout conhecido ("joga e pronto"): pula a revisão.
         if (grupo.principal.reconhecido) await irParaDashboard(grupo, grupo.principal.reconhecido.nome);
         else setEtapa({ tipo: 'revisao', grupo });
@@ -164,12 +171,12 @@ export function PaginaPlanilha({ motor, aoVerDemo }: { motor: Motor; aoVerDemo: 
               const leitura = etapa.leituras[l.para.planilha];
               return leitura ? parte(leitura, l) : null;
             });
-            const grupo: Grupo = { principal: parte(p), juntas: juntas.filter((j): j is ParteGrupo => j !== null) };
+            const grupo = novoGrupo(parte(p), juntas.filter((j): j is ParteGrupo => j !== null));
             setEtapa({ tipo: 'revisao', grupo });
           }}
         />
       )}
-      {etapa.tipo === 'revisao' && <EntendiAssim grupo={etapa.grupo} aoMudar={mudarConfig} aoGerar={(l) => void gerar(l)} aoVoltar={voltar} previa={previa} gerando={gerando} />}
+      {etapa.tipo === 'revisao' && <EntendiAssim grupo={etapa.grupo} aoMudarSensivel={(n) => setEtapa({ tipo: 'revisao', grupo: { ...etapa.grupo, minGroupSize: n } })} aoMudar={mudarConfig} aoGerar={(l) => void gerar(l)} aoVoltar={voltar} previa={previa} gerando={gerando} />}
       {etapa.tipo === 'pronto' && (
         <DashboardPlanilha
           motor={motor}

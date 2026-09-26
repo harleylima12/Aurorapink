@@ -196,11 +196,14 @@ export function compilar(spec: QuerySpec, semantica: Semantica): SqlCompilado {
   const aliases = dimensoes.map((d) => d.alias);
   const agrupar = aliases.length ? `\n  GROUP BY ${aliases.join(', ')}` : '';
   const agregado = (m: (typeof metricas)[number]) => `CAST((${m.def.sql}) AS DOUBLE) AS ${nome(m.id)}`;
+  // Dados sensíveis: grupo (ou recorte filtrado) com menos de N registros não sai do banco.
+  const minimo = semantica.dataset.min_group_size;
+  const protecao = minimo ? `\n  HAVING COUNT(*) >= ${Math.trunc(minimo)}` : '';
 
   // 3. Métricas de item: agregam as linhas do fato.
   const deItem = metricas.filter((m) => m.def.grain === 'item');
   if (deItem.length) {
-    ctes.push(`por_item AS (\n  SELECT ${[...aliases, ...deItem.map(agregado)].join(',\n         ')}\n  FROM base${agrupar}\n)`);
+    ctes.push(`por_item AS (\n  SELECT ${[...aliases, ...deItem.map(agregado)].join(',\n         ')}\n  FROM base${agrupar}${protecao}\n)`);
   }
 
   // 4. Métricas de pedido: um registro por pedido antes de agregar (P7).
@@ -209,7 +212,7 @@ export function compilar(spec: QuerySpec, semantica: Semantica): SqlCompilado {
     const colunasPedido = [...new Set([semantica.dataset.order_key, ...semantica.dataset.order_columns])].map(nome);
     ctes.push(
       `por_pedido AS (\n  SELECT ${[...aliases, ...dePedido.map(agregado)].join(',\n         ')}\n` +
-        `  FROM (SELECT DISTINCT ${[...colunasPedido, ...aliases].join(', ')} FROM base) AS pedidos${agrupar}\n)`,
+        `  FROM (SELECT DISTINCT ${[...colunasPedido, ...aliases].join(', ')} FROM base) AS pedidos${agrupar}${protecao}\n)`,
     );
   }
 

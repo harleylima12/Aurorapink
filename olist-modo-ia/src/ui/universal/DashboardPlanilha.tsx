@@ -189,7 +189,19 @@ export function DashboardPlanilha({ motor, montada, nome, reconhecido, resumo, a
             {montada.painel.visuais.map((v) => (
               <Visual key={`${montada.tabela}-${v.id}`} definicao={v} filtros={SEM_FILTROS} />
             ))}
-            <DetalheTabela motor={motor} montada={montada} />
+            {montada.semantica.dataset.min_group_size ? (
+              <section className="painel largo" data-visual="protecao">
+                <header className="painel-cabecalho">
+                  <h2>Dados sensíveis protegidos</h2>
+                  <p>
+                    Grupos com menos de {montada.semantica.dataset.min_group_size} registros não aparecem em nenhum gráfico, KPI ou resposta do Modo IA, e a
+                    tabela de detalhe (linha a linha) fica escondida. Desligue em "Revisar colunas" se a planilha não for sensível.
+                  </p>
+                </header>
+              </section>
+            ) : (
+              <DetalheTabela motor={motor} montada={montada} />
+            )}
           </div>
           {resumo.length > 0 && (
             <details className="painel relatorio-final">

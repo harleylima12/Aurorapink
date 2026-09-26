@@ -23,6 +23,8 @@ export interface ParteGrupo {
 export interface Grupo {
   principal: ParteGrupo;
   juntas: ParteGrupo[];
+  /** Dados sensíveis: grupos com menos de N registros ficam escondidos (undefined = desligado). */
+  minGroupSize?: number;
 }
 
 export interface PlanilhaMontada {
@@ -41,7 +43,7 @@ export interface PlanilhaMontada {
 
 export async function montarGrupo(grupo: Grupo, banco: BancoUniversal): Promise<PlanilhaMontada> {
   const t0 = performance.now();
-  const principal = await aplicarConfig(grupo.principal.leitura, grupo.principal.config, banco);
+  const principal = await aplicarConfig(grupo.principal.leitura, grupo.principal.config, banco, { minGroupSize: grupo.minGroupSize });
   const criadas = [principal.tabela];
   const distintos: Record<string, number> = Object.fromEntries(grupo.principal.leitura.perfis.map((p) => [p.id, p.distintos]));
   let tabela = principal.tabela;
@@ -64,7 +66,7 @@ export async function montarGrupo(grupo: Grupo, banco: BancoUniversal): Promise<
     nomes.push(junta.leitura.nome);
   }
   if (grupo.juntas.some((j) => j.ligacao)) {
-    semantica = montarSemantica(config, { nome: nomes.map((n) => n.replace(/\.[a-z0-9]+$/i, '')).join(' + '), tabela, linhas: principal.linhas, periodo: principal.periodo });
+    semantica = montarSemantica(config, { nome: nomes.map((n) => n.replace(/\.[a-z0-9]+$/i, '')).join(' + '), tabela, linhas: principal.linhas, periodo: principal.periodo, minGroupSize: grupo.minGroupSize });
   }
   return {
     semantica,

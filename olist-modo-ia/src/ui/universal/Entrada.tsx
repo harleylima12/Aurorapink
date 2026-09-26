@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type DragEvent } from 'react';
 
 import { apagarModelo, importarModelo, lerModelos, salvarModelo, type ModeloPlanilha } from '../../universal/impressao';
+import { SeloPrivacidade } from '../privacidade/SeloPrivacidade';
 import { apagarUltima, definirLembrar, lembrarLigado, lerUltima, type ArquivoGuardado } from '../../universal/ultima';
 
 interface Props {
@@ -104,6 +105,9 @@ export function Entrada({ aoEscolher, aoVerDemo, erro, leParquet }: Props) {
       </div>
 
       <div className="universal-lateral">
+        <section className="painel">
+          <SeloPrivacidade />
+        </section>
         <section className="painel" aria-labelledby="titulo-modelos">
           <h2 id="titulo-modelos">Modelos de planilha</h2>
           <p className="nota">Quando você gera um dashboard, o app guarda o layout (nomes e tipos das colunas). Planilha com o mesmo layout abre direto.</p>
