@@ -502,3 +502,40 @@ Formato: **contexto → decisão → alternativa descartada**. As decisões da F
   **só no PC, com GPU de verdade** (roteiro no CLAUDE.md).
 - **Ajuste que o teste mostrou:** o status dizia só "carregou em 19,6 s" e escondia o aquecimento; agora mostra
   os dois tempos.
+
+## Fase 6: Privacidade
+
+### D48. Service Worker "firewall" assume a página ANTES do DuckDB
+
+- **Contexto:** a especificação pede que o SW veja também as requisições dos workers ("confirme no Chrome que os
+  workers estão sob controle; se não estiverem, instrumente o fetch dentro deles"). Um worker só fica sob o SW se
+  nascer depois que o SW controla a página; na 1ª visita, o SW normal só assume depois do carregamento.
+- **Decisão:** `main.tsx` registra o SW e o motor de dados espera ele assumir (`clients.claim()`, no máximo 3 s)
+  antes de criar o worker do DuckDB. Conferido no Chromium: o SW vê requisições feitas **de dentro do worker**
+  (a extensão parquet é baixada pelo worker do DuckDB), então não foi preciso instrumentar o `fetch` dos workers.
+  O SW conta as externas, avisa as abas (contador ao vivo) e, no modo local, responde erro para qualquer uma.
+- **Custo medido:** a 1ª visita ficou mais lenta até o dashboard completo: 2,52–2,63 s (era 2,00 s). A primeira
+  pintura não mudou (0,23 s) e as visitas seguintes não esperam (1,96–2,13 s). Registrado no BENCHMARK.
+- **Descartado:** instrumentar o `fetch` dentro dos workers (o do DuckDB é de terceiros, e o SW já cobre) e
+  registrar o SW sem esperar (a 1ª visita ficaria fora do contador).
+- **Em `npm run dev` o SW fica desligado** (o HMR do Vite não combina com ele); o selo diz isso.
+
+### D49. Offline (PWA) sem duplicar os pesos do modelo
+
+- Manifesto + ícones (gerados do `icone.svg`). O SW guarda no Cache Storage o que o app usou: arquivos com hash
+  (`/assets/`) cache primeiro; o resto rede primeiro com cache se offline; toda rota usa o mesmo `index.html`.
+  `/models/` fica de fora: o WebLLM já guarda os pesos no cache dele (não guardar duas vezes 400-800 MB).
+- Evidência: `privacidade.spec.ts` recarrega a página offline e o faturamento continua R$ 13.494.400,74.
+
+### D50. Dados sensíveis: tamanho mínimo de grupo no compilador
+
+- **Decisão:** `dataset.min_group_size` na semântica; o compilador põe `HAVING COUNT(*) >= N` em toda agregação
+  (com ou sem dimensão). Vale para dashboard, Modo Rápido e IA ao mesmo tempo, e fecha o furo do filtro ("salário
+  médio de quem tem 3 horas extras" com 2 pessoas não volta nada). Ligado por padrão (N = 5) quando a planilha tem
+  dado pessoal ou coluna de salário/saúde; a tabela linha a linha fica escondida. A Olist não usa (dados públicos).
+- **Descartado:** esconder grupos só no gráfico (o KPI filtrado e a IA ainda mostrariam o número).
+
+### D51. "Apagar dados locais" diz o tamanho real
+
+- A estimativa do navegador (`navigator.storage.estimate()`) demora a atualizar e mostrava "0,0 MB liberados"
+  logo depois de apagar 35 MB. O relatório agora soma o `Content-Length` do que estava nos caches antes de apagar.

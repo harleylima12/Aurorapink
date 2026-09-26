@@ -16,8 +16,9 @@ Dashboard da base pública da Olist com **Modo IA 100% local** (WebLLM + DuckDB-
 | 2. Base | ✅ dashboard de 3 páginas, compilador spec→SQL, CSP; prints em [`docs/prints/fase2`](docs/prints/fase2) |
 | 3. Modo Rápido | ✅ perguntas em PT-BR respondidas sem IA em < 100 ms (p95); prints em [`docs/prints/fase3`](docs/prints/fase3) |
 | 4. IA local | ✅ na nuvem (sem GPU): planejador + narrador validados com motor falso; **modelo real a validar no PC**; prints em [`docs/prints/fase4`](docs/prints/fase4) |
-| 5. Modo Universal | ✅ arraste um CSV em `/planilha`: limpeza, perfil das colunas, tela "Entendi assim" e dashboard automático; Excel pendente (SheetJS); prints em [`docs/prints/fase5`](docs/prints/fase5) |
-| 6 a 8 | a fazer |
+| 5. Modo Universal | ✅ arraste um CSV em `/planilha`: limpeza, perfil das colunas, tela "Entendi assim" e dashboard automático; Excel via SheetJS; prints em [`docs/prints/fase5`](docs/prints/fase5) |
+| 6. Privacidade | ✅ firewall (Service Worker) com contador de requisições externas, offline, "Apagar dados locais", proteção de dados sensíveis; ver [`docs/PRIVACIDADE.md`](docs/PRIVACIDADE.md) |
+| 7 e 8 | a fazer |
 
 ## Fase 1: preparar os dados
 

@@ -149,3 +149,19 @@ do clique em "Gerar dashboard" até o primeiro gráfico. Nuvem do Claude Code, C
 
 **Pacote:** o Modo Universal é carregado sob demanda (58,6 kB, 20,5 kB gzip); o pacote principal cresceu 2,6 kB
 em relação à Fase 4.
+
+## Fase 6: custo do firewall (Service Worker)
+
+`npx playwright test medicoes`, mesma máquina, caminho final (Parquet), mediana de 5 rodadas; com SW, duas execuções
+(a faixa mostra a variação entre elas):
+
+| Momento | 1ª visita (antes do SW) | 1ª visita (com SW) | Com cache (com SW) |
+|---|---:|---:|---:|
+| Primeira pintura | 0,23 s | 0,22–0,23 s | 0,19 s |
+| DuckDB pronto | 1,76 s | 2,23–2,34 s | 1,73–1,87 s |
+| KPIs e gráficos na tela | 2,00 s | **2,52–2,63 s** | 1,96–2,13 s |
+| Trocar filtro (mediana) | 174 ms | 182–201 ms | |
+
+- A 1ª visita paga ~0,5–0,6 s para o SW assumir antes do DuckDB (D48); a meta "primeira pintura < 2 s" continua
+  cumprida. Nas visitas seguintes o SW já está no controle e não há espera.
+- Cache do app guardado pelo SW para funcionar offline: 35,6 MB (medido pelo "Apagar dados locais").

@@ -34,7 +34,7 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
 - CSVs da Olist em `./dados/` (manter fora do git). O `geolocation` não é usado e não foi copiado; o original está em `..\dashboard-vendas-olist\Dados\`.
 - Projeto Power BI de referência: `..\dashboard-vendas-olist\` (tema em `Imagens\tema_olist_dark.json`).
 - `gh` e `vercel` já estão autenticados. **Só crie repositório público ou faça deploy com autorização explícita** (Fase 8).
-- **Claude Code na nuvem:** o projeto fica na pasta `olist-modo-ia/` do repositório `harleylima12/Aurorapink` (branch `claude/gracious-carson-hgcwsu`). Os CSVs vêm de `python scripts/baixar_dados.py` (repositório oficial da Olist, commit fixo + SHA-256). Kaggle, Hugging Face e `extensions.duckdb.org` são bloqueados pela rede da nuvem; npm, PyPI e `raw.githubusercontent.com` funcionam. Sem GPU: a Fase 4 (WebGPU) precisa do PC.
+- **Claude Code na nuvem:** o projeto fica na pasta `olist-modo-ia/` do repositório `harleylima12/Aurorapink` (branch `claude/gracious-carson-hgcwsu`). Os CSVs vêm de `python scripts/baixar_dados.py` (repositório oficial da Olist, commit fixo + SHA-256). Kaggle continua bloqueado; npm, PyPI, `raw.githubusercontent.com`, Hugging Face, `extensions.duckdb.org` e `cdn.sheetjs.com` funcionam (os três últimos liberados pelo Harley em 26/09). Sem GPU: a Fase 4 (WebGPU) precisa do PC.
 
 ## Estado atual
 
@@ -43,7 +43,8 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
 - **Fase 2 (base):** aprovada. Dashboard de 3 páginas, compilador spec→SQL, CSP.
 - **Fase 3 (Modo Rápido):** aprovada. Parser de tempo, Camada 0 (`src/router/layer0.ts`), insights e decomposição (`src/insights/`), seletor de gráfico, narrador por template + validador, painel "✨ Modo IA". Suíte `evals/perguntas.json` (76). Prints em `docs/prints/fase3/`.
 - **Fase 4 (IA local):** aprovada até onde deu sem GPU; **falta a validação no PC** (roteiro abaixo). Worker do WebLLM com import dinâmico (`src/ai/motorWebLLM.ts`, `engine.worker.ts`), escolha do modelo pela `prebuiltAppConfig` instalada (`modelos.ts`), planejador com JSON Schema (`planner.ts`, `prompts/planner.ts`), valores conferidos na base (`src/query/valueResolver.ts`), narrador com placeholders + validador (`narrator.ts`), motor falso (`motorFalso.ts`), `npm run baixar-modelo`. Decisões D28–D35. Testes: `npm test` (149), `npx playwright test` (22, com `PRINTS=1` grava prints), `python -m pytest tests/dados` (57). Prints em `docs/prints/fase4/`.
-- **Fase 5 (Modo Universal):** concluída na nuvem, aguardando o OK do Harley. Rota `/planilha`: leitura (`src/universal/leitor.ts`), limpeza, perfil das colunas (`perfil.ts`), semântica automática (`semanticaAuto.ts`), impressão digital e modelos (`impressao.ts`), vários arquivos (`relacoes.ts`, `montar.ts`), dashboard automático (`painelAuto.ts`) e telas em `src/ui/universal/`. Planilhas de teste em `evals/planilhas/` (`npm run gerar-planilhas-teste`). Decisões D36–D45. Testes: `npm test` (172), `npx playwright test` (24 + 3 pulados: prints com `PRINTS=1`, limite com `LIMITE=1`), `python -m pytest tests/dados` (57). **Excel pendente: SheetJS bloqueada na nuvem (D39), passo no roteiro abaixo.**
+- **Fase 5 (Modo Universal):** aprovada. Rota `/planilha`: leitura (`src/universal/leitor.ts`), limpeza, perfil das colunas (`perfil.ts`), semântica automática (`semanticaAuto.ts`), impressão digital e modelos (`impressao.ts`), vários arquivos (`relacoes.ts`, `montar.ts`), dashboard automático (`painelAuto.ts`) e telas em `src/ui/universal/`. Planilhas de teste em `evals/planilhas/` (`npm run gerar-planilhas-teste`). Decisões D36–D45. Testes: `npm test` (172), `npx playwright test` (24 + 3 pulados: prints com `PRINTS=1`, limite com `LIMITE=1`), `python -m pytest tests/dados` (57). Excel pela SheetJS 0.20.3 (tarball oficial em `vendor/`, D46).
+- **Fase 6 (Privacidade):** concluída na nuvem, aguardando o OK do Harley. Service Worker "firewall" (`public/sw.js`, `src/privacidade/firewall.ts`) com contador ao vivo e bloqueio no modo local, PWA offline, "Apagar dados locais" (`src/privacidade/apagar.ts`), tamanho mínimo de grupo para dados sensíveis (`min_group_size` no compilador), `docs/PRIVACIDADE.md`. Decisões D48–D51. Testes: `npm test` (174), `npx playwright test` (28 + 3 pulados: prints com `PRINTS=1`, limite com `LIMITE=1`), `python -m pytest tests/dados` (57). Prints em `docs/prints/fase6/`.
 - **Caminho de dados:** caminho FINAL ativo desde 26/09 (extensão parquet em `public/duckdb-extensions/`, SHA-256 no lock). O `.duckdb` provisório continua como plano B automático; decidir na Fase 6 se fica.
 - **Rede da nuvem:** o Harley liberou `cdn.sheetjs.com`, `extensions.duckdb.org`, `huggingface.co` e `*.hf.co`. O `curl` passa direto; o Node precisa de `NODE_USE_ENV_PROXY=1` nesta nuvem (no PC, não).
 - **Validar no PC do Harley (continua pendente):**
@@ -52,22 +53,8 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
   3. `python scripts/preparar_dados.py` no Windows (caminho com acento e espaço).
   4. Conferir o frete total no card do Power BI (D16).
   5. IA na GPU (roteiro abaixo).
-- **Próximo passo:** validar a IA no PC (roteiro abaixo); depois, Fase 5 com o OK do Harley.
-
-## Roteiro: Excel no Modo Universal (Fase 5, SheetJS)
-
-A especificação manda instalar a SheetJS pelo tarball oficial (a do npm está desatualizada). No PC:
-
-1. Conferir a versão atual em https://cdn.sheetjs.com/ (a Fase 0 fixou 0.20.3) e baixar o tarball para `vendor/`:
-   `curl -o vendor/xlsx-0.20.3.tgz https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz`
-   (PowerShell: `Invoke-WebRequest -OutFile vendor/xlsx-0.20.3.tgz https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz`).
-2. Anotar o SHA-256 (`Get-FileHash vendor\xlsx-0.20.3.tgz` / `sha256sum`) no `docs/DECISOES.md` (D39) e instalar:
-   `npm install --save-exact file:vendor/xlsx-0.20.3.tgz`. Commitar `vendor/xlsx-0.20.3.tgz`, `package.json` e o lock.
-3. Conferir que a interface usada em `src/universal/excel.ts` (`read`, `utils.sheet_to_json` com `header: 1`,
-   `raw: false`, `defval`, `blankrows`, `dateNF`) bate com `node_modules/xlsx/types/index.d.ts`.
-4. `npm test` e `npx playwright test universal`: o teste "Excel sem SheetJS" vai falhar (agora a SheetJS existe):
-   trocar por um teste que solta `evals/planilhas/financeiro_titulo_total.xlsx` e confere aba "Dados", 60 linhas,
-   linha de total removida e receita total igual à do CSV (`esperado.json`).
+- **Próximo passo:** Fase 7 (avaliação e performance) com o OK do Harley; IA na GPU continua no roteiro abaixo.
+- **Decisão pendente do Harley:** manter o `.duckdb` provisório como plano B automático (recomendado: só é baixado se o caminho final falhar) ou tirar.
 
 ## Roteiro: validar a IA de verdade no PC (Fase 4)
 
