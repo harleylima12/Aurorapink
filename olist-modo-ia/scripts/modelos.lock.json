@@ -25,5 +25,19 @@
       "sha256": "a1407404cb85b7dbc6db4bd77569291f02dab50aaeb1dc595b17595c2e204c66",
       "bytes": 5203275
     }
+  },
+  "pesos": {
+    "Qwen3.5-0.8B-q4f16_1-MLC": {
+      "repo": "mlc-ai/Qwen3.5-0.8B-q4f16_1-MLC",
+      "revisao": "0ec138972555613c1d7812a821778ad0398c8790",
+      "bytes_total": 447175503,
+      "arquivos": 18
+    },
+    "Qwen3.5-0.8B-q4f32_1-MLC": {
+      "repo": "mlc-ai/Qwen3.5-0.8B-q4f32_1-MLC",
+      "revisao": "4ed017713f04c91ffe55a9dca8c7ac853c41314d",
+      "bytes_total": 447173765,
+      "arquivos": 18
+    }
   }
 }

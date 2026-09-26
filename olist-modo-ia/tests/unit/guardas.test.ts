@@ -77,7 +77,7 @@ describe('guardas', () => {
     const demo = cspProducaoPara('demo');
     const externos = demo.match(/https:\/\/[^\s;]+/g) ?? [];
     expect(externos).toEqual([...DOMINIOS_PESOS_DEMO]);
-    for (const d of DOMINIOS_PESOS_DEMO) expect(d).toMatch(/^https:\/\/([a-z0-9-]+\.)*(huggingface\.co|hf\.co)$/);
+    for (const d of DOMINIOS_PESOS_DEMO) expect(d).toMatch(/^https:\/\/(\*\.|[a-z0-9-]+\.)*(huggingface\.co|hf\.co)$/);
     const connect = demo.split(';').find((d) => d.trim().startsWith('connect-src')) ?? '';
     for (const d of DOMINIOS_PESOS_DEMO) expect(connect).toContain(d);
   });

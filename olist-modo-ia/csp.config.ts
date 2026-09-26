@@ -31,18 +31,12 @@ const base: Record<string, string[]> = {
 };
 
 /**
- * Domínios dos pesos no modo demo. ATENÇÃO: lista de CANDIDATOS, ainda não medida. O Hugging Face
- * é bloqueado na nuvem onde a Fase 4 foi escrita (docs/DECISOES.md D29). No PC: baixar o modelo no
- * modo demo, ver no DevTools (Rede, coluna Domínio) quais aparecem e tirar daqui os que não aparecerem.
- * O `/resolve/` do Hugging Face redireciona para a CDN de arquivos grandes (LFS ou Xet).
+ * Domínios dos pesos no modo demo, MEDIDOS em 26/09 (docs/DECISOES.md D46): arquivos pequenos (config) vêm de
+ * huggingface.co; os grandes (pesos, tokenizer) são redirecionados para a CDN deles, que nesta nuvem foi
+ * us.aws.cdn.hf.co. O prefixo é de região (pode mudar para quem baixa do Brasil), por isso *.hf.co: todos os
+ * subdomínios da CDN do Hugging Face e nada além. Confirmar no PC (DevTools > Rede > Domínio).
  */
-export const DOMINIOS_PESOS_DEMO = [
-  'https://huggingface.co',
-  'https://cdn-lfs.hf.co',
-  'https://cdn-lfs-us-1.hf.co',
-  'https://cdn-lfs-eu-1.hf.co',
-  'https://cas-bridge.xethub.hf.co',
-] as const;
+export const DOMINIOS_PESOS_DEMO = ['https://huggingface.co', 'https://*.hf.co'] as const;
 
 export type FontePesos = 'demo' | 'local';
 

@@ -414,7 +414,7 @@ Formato: **contexto → decisão → alternativa descartada**. As decisões da F
 - A tabela tipada ganha nome novo a cada "Gerar"/edição: o cache de consultas do motor (por texto do SQL) nunca
   devolve número de uma configuração antiga. As antigas são descartadas.
 
-### D39. Excel: SheetJS bloqueada na nuvem, sem atalho
+### D39. Excel: SheetJS pelo tarball oficial (bloqueada no início, liberada depois)
 
 - **Contexto:** a especificação manda instalar a SheetJS pelo tarball oficial (`cdn.sheetjs.com`), porque a
   versão do npm está desatualizada. Esse domínio é bloqueado nesta nuvem (proxy devolve 403).
@@ -471,3 +471,21 @@ Formato: **contexto → decisão → alternativa descartada**. As decisões da F
 - **Medido na nuvem:** até 3 milhões de linhas (297 MB) abrem sem erro (22 s de leitura). O corte de 300 MB
   (`LIMITE_BYTES`) é de segurança e ainda não foi medido como limite real: a máquina da nuvem tem 16 GB de RAM e o
   PC do Harley pode ter menos. Medir no PC antes de mudar (BENCHMARK, Fase 5).
+
+### D46. Rede liberada pelo Harley (26/09): caminho final, Excel e domínios reais dos pesos
+
+- **Contexto:** o Harley liberou `cdn.sheetjs.com`, `extensions.duckdb.org`, `huggingface.co` e `*.hf.co` na rede
+  do ambiente de nuvem. Detalhe desta nuvem: o `curl` passa pelo proxy liberado, mas o `fetch` do Node só passa
+  com `NODE_USE_ENV_PROXY=1` (sem isso, "Host not in allowlist"). É configuração da nuvem, não do projeto.
+- **Caminho final dos dados ativo:** `npm run baixar-extensoes` baixou a extensão parquet v1.4.3
+  (`wasm_mvp` 2,87 MB, SHA-256 `0785c6c9…`; `wasm_eh` 3,05 MB, `22765c8f…`), agora commitada. O e2e inteiro passa
+  no caminho final (rodapé "Parquet (caminho final)", zero violações de CSP, só o próprio site na rede).
+- **SheetJS:** a versão mais recente em `cdn.sheetjs.com` é a 0.20.3 (a da Fase 0). Tarball em
+  `vendor/xlsx-0.20.3.tgz`, SHA-256 `8dc73fc3b00203e72d176e85b50938627c7b086e607c682e8d3c22c02bb99fe8`, instalado
+  com `npm install --save-exact file:vendor/xlsx-0.20.3.tgz`. A interface usada foi conferida em
+  `node_modules/xlsx/types/index.d.ts`. Carregada sob demanda (492 kB, só quando alguém solta um Excel).
+  O `.xlsx` de teste (título mesclado, aba "Leia-me" antes da de dados, total com fórmula) passou de primeira:
+  aba certa, 60 linhas, total removido, 6/6 colunas certas e a mesma receita do CSV equivalente.
+- **Domínio real dos pesos:** um download de teste de `huggingface.co/.../resolve/main/params_shard_0.bin`
+  redirecionou para `us.aws.cdn.hf.co` (armazenamento Xet), que NÃO estava na lista de candidatos da D29.
+  Entra em `DOMINIOS_PESOS_DEMO`; a lista completa só fecha quando o modelo inteiro for baixado.
