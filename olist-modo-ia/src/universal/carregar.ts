@@ -131,11 +131,13 @@ export async function lerPlanilha(arquivo: ArquivoPlanilha, banco: BancoUniversa
   let texto: string;
   let codificacao: Codificacao;
   let aba: string | undefined;
+  let abas: string[] = [];
   if (tipo === 'excel') {
     const excel = await lerExcelComoCsv(arquivo.bytes);
     texto = excel.csv;
     codificacao = 'utf-8';
     aba = excel.aba;
+    abas = excel.abas;
   } else {
     ({ texto, codificacao } = decodificar(arquivo.bytes));
   }
@@ -171,7 +173,10 @@ export async function lerPlanilha(arquivo: ArquivoPlanilha, banco: BancoUniversa
     colunas: uteis,
     perfis,
     relatorio,
-    resumo: descreverRelatorio(relatorio),
+    resumo:
+      tipo === 'excel'
+        ? [`Excel: dados lidos da aba "${aba ?? ''}"${abas.length > 1 ? ` (a com mais células preenchidas, de ${abas.length} abas)` : ''}.`, ...descreverRelatorio(relatorio).slice(1)]
+        : descreverRelatorio(relatorio),
     avisos: plano.cabecalho.avisos,
     linhas,
     bytes: arquivo.bytes.length,

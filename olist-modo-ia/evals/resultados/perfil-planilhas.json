@@ -1,7 +1,7 @@
 {
   "geradoEm": "npm test",
-  "certas": 82,
-  "total": 82,
+  "certas": 88,
+  "total": 88,
   "acerto": 100,
   "porArquivo": {
     "vendas_br.csv": {
@@ -37,6 +37,11 @@
     "desenhada.csv": {
       "certas": 0,
       "total": 0,
+      "erros": []
+    },
+    "financeiro_titulo_total.xlsx": {
+      "certas": 6,
+      "total": 6,
       "erros": []
     },
     "cega_escola.csv": {

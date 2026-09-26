@@ -21,12 +21,13 @@ import { abrirBancoTeste, RAIZ } from './ajuda/duckdbNode';
 
 const PASTA = path.join(RAIZ, 'evals', 'planilhas');
 interface Esperado {
-  leitura: { separador?: string; codificacao?: string; linha_cabecalho?: number; linhas_total_removidas?: number; aviso?: string };
+  leitura: { separador?: string; codificacao?: string; linha_cabecalho?: number; linhas_total_removidas?: number; aviso?: string; aba?: string };
   colunas: Record<string, string>;
   totais?: Record<string, number>;
 }
 const ESPERADO = JSON.parse(readFileSync(path.join(PASTA, 'esperado.json'), 'utf8')) as Record<string, Esperado>;
-const CSVS = Object.keys(ESPERADO).filter((n) => tipoDoArquivo(n) === 'csv');
+// CSV e Excel (a SheetJS entrou pelo tarball oficial, D39).
+const CSVS = Object.keys(ESPERADO).filter((n) => tipoDoArquivo(n) === 'csv' || tipoDoArquivo(n) === 'excel');
 
 let banco: BancoUniversal;
 const leituras = new Map<string, LeituraPlanilha>();
@@ -113,6 +114,7 @@ describe('planilhas de teste (evals/planilhas)', () => {
       if (e.codificacao) expect(l.relatorio.codificacao, nome).toBe(e.codificacao);
       if (e.linha_cabecalho !== undefined) expect(l.relatorio.linhasTitulo, nome).toBe(e.linha_cabecalho);
       if (e.linhas_total_removidas !== undefined) expect(l.relatorio.linhasTotal, nome).toBe(e.linhas_total_removidas);
+      if (e.aba) expect(l.aba, nome).toBe(e.aba);
       if (e.aviso) expect(l.avisos, nome).toContain(e.aviso);
       else expect(l.avisos, nome).toEqual([]);
     }
@@ -257,7 +259,16 @@ describe('semântica automática (funções puras)', () => {
   });
 });
 
-describe('Excel (SheetJS pendente, D39)', () => {
+describe('Excel (SheetJS, D39)', () => {
+  it('o .xlsx de teste soma a mesma receita que o CSV equivalente', async () => {
+    const l = leituras.get('financeiro_titulo_total.xlsx');
+    if (!l) throw new Error('xlsx');
+    expect(l.linhas).toBe(60);
+    const pronta = await aplicarConfig(l, configPadrao(l.perfis), banco);
+    const { sql } = compilar({ intent: 'kpi', metrics: ['soma_receita'], dimensions: [], filters: [] }, pronta.semantica);
+    expect(Number((await banco.executar(sql))[0]?.soma_receita)).toBeCloseTo(ESPERADO['financeiro_titulo_total.csv']?.totais?.Receita ?? 0, 2);
+  });
+
   it('sem a SheetJS instalada, o erro diz o que fazer', async () => {
     await expect(lerExcelComoCsv(new Uint8Array([1, 2, 3]), null)).rejects.toThrow(/SheetJS/);
   });

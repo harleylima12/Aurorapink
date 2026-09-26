@@ -1,12 +1,9 @@
 /**
  * Excel -> CSV com a SheetJS (seção 5: "empacotada localmente, pelo tarball oficial da própria SheetJS").
  *
- * PENDENTE (docs/DECISOES.md D39): o domínio da SheetJS (cdn.sheetjs.com) é bloqueado na nuvem onde a
- * Fase 5 foi escrita, e a versão do npm está desatualizada (a especificação proíbe usá-la). Por isso a
- * biblioteca é procurada com `import.meta.glob`: sem ela instalada, o glob volta vazio, o build passa e
- * o app avisa "salve como CSV". Com ela instalada (roteiro do PC no CLAUDE.md), o mesmo código passa a
- * ler .xlsx sem nenhuma outra mudança. A interface abaixo é o MÍNIMO que usamos; conferir contra
- * node_modules/xlsx/types/index.d.ts quando a biblioteca chegar (P8).
+ * Instalada pelo tarball oficial em vendor/xlsx-0.20.3.tgz (SHA-256 em docs/DECISOES.md, D39); a versão do
+ * npm está desatualizada e a especificação proíbe usá-la. A interface abaixo é o MÍNIMO que usamos, conferido
+ * contra node_modules/xlsx/types/index.d.ts (P8); os testes trocam a biblioteca por uma falsa.
  */
 import { ErroPlanilha } from './erros';
 
@@ -22,11 +19,13 @@ export interface SheetJS {
   };
 }
 
-const modulos = import.meta.glob<SheetJS>('/node_modules/xlsx/xlsx.mjs');
-
+/** Import dinâmico: a SheetJS (~430 kB) só é baixada quando alguém solta um Excel. */
 export async function carregarSheetJS(): Promise<SheetJS | null> {
-  const carregar = Object.values(modulos)[0];
-  return carregar ? carregar() : null;
+  const xlsx = await import('xlsx');
+  return {
+    read: (dados, opcoes) => xlsx.read(dados, opcoes),
+    utils: { sheet_to_json: (aba, opcoes) => xlsx.utils.sheet_to_json<unknown[]>(aba as import('xlsx').WorkSheet, opcoes) },
+  };
 }
 
 function celulaCsv(v: unknown): string {

@@ -119,13 +119,17 @@ test('vários arquivos: vendas + clientes ligados por "Cliente ID", RH sem rela�
   await expect(page.locator('.kpi[data-metrica="registros"] .kpi-valor')).toHaveAttribute('data-valor', '1500');
 });
 
-test('limites honestos: planilha "desenhada" avisa; Excel sem SheetJS explica o que fazer', async ({ page }) => {
+test('limites honestos: planilha "desenhada" avisa; Excel com título e aba "Leia-me" é lido', async ({ page }) => {
   await abrirPlanilha(page);
   await soltar(page, ['desenhada.csv']);
   await expect(page.locator('.aviso-planilha[data-aviso="varias_tabelas"]')).toBeVisible({ timeout: 30_000 });
   if (prints) await page.screenshot({ path: path.join(PASTA, '6-planilha-desenhada.png') });
   await page.getByRole('button', { name: 'Trocar planilha' }).click();
   await soltar(page, ['financeiro_titulo_total.xlsx']);
-  await expect(page.locator('.erro-planilha')).toContainText('SheetJS');
-  await expect(page.locator('.erro-planilha .dica')).toContainText('CSV');
+  await expect(page.getByRole('heading', { name: 'Entendi assim' })).toBeVisible({ timeout: 30_000 });
+  await expect(page.locator('.parte-cabecalho')).toContainText('aba "Dados"');
+  await expect(page.locator('.relatorio-limpeza')).toContainText('linha de total');
+  await expect(page.locator('tr[data-coluna="Receita"]')).toHaveAttribute('data-tipo', 'dinheiro');
+  await expect(page.locator('tr[data-coluna="Margem %"]')).toHaveAttribute('data-tipo', 'porcentagem');
+  if (prints) await page.screenshot({ path: path.join(PASTA, '7-excel.png') });
 });

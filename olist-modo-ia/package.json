@@ -27,6 +27,7 @@
     "fuse.js": "7.5.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
+    "xlsx": "file:vendor/xlsx-0.20.3.tgz",
     "zod": "4.6.5"
   },
   "devDependencies": {
