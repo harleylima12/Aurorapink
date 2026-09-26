@@ -539,3 +539,22 @@ Formato: **contexto → decisão → alternativa descartada**. As decisões da F
 
 - A estimativa do navegador (`navigator.storage.estimate()`) demora a atualizar e mostrava "0,0 MB liberados"
   logo depois de apagar 35 MB. O relatório agora soma o `Content-Length` do que estava nos caches antes de apagar.
+
+## Publicação (antes da Fase 7)
+
+### D52. Site público na Vercel no modo demo, repositório próprio
+
+- **Decisão do Harley:** repositório público `HarleylimaDados/olist-modo-ia` (a pasta `olist-modo-ia/` vira a
+  raiz, com o histórico, via `git subtree split`) e deploy na Vercel (time SiteUp). O `.duckdb` provisório fica
+  como plano B automático (só é baixado se o caminho final falhar).
+- **Configuração:** `vercel.json` gerado do `csp.config.ts` (`npm run gerar-vercel-json`) com a CSP do modo demo
+  (`huggingface.co`, `us.aws.cdn.hf.co`, `*.hf.co`); `npm ci` + `npm run build` (que baixa e confere as 6
+  `model_lib` pelo SHA-256 do lock); saída `dist/`; rewrite de toda rota para o `index.html` (a Vercel serve
+  primeiro o arquivo que existe); `sw.js` com `no-cache`. A extensão parquet, os dados e o `.duckdb` estão no git.
+- **Conferido num clone limpo** (sem `public/models`, como a Vercel): build do zero em 7 s, nada modificado no git.
+  Servido com os cabeçalhos do `vercel.json` (`scripts/servir-como-vercel.mjs`): rodapé "Parquet (caminho final)",
+  firewall ativo, contador 0, `/planilha`, `/produtos`, `/logistica` e `/avaliacao` abrem ao recarregar, a CSP chega
+  ao worker do DuckDB, abre offline, zero violações de CSP e zero requisições externas.
+- **A conferir no 1º deploy:** limite de tamanho por arquivo estático (os maiores são os WASM do DuckDB, 34 e 39 MB;
+  `dist/` tem 131 MB) e se os downloads dos pesos do modelo passam pela CSP no domínio da Vercel.
+- `/avaliacao` ainda mostra o dashboard (a página chega na Fase 7).
