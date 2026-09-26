@@ -3,9 +3,12 @@ import { createRoot } from 'react-dom/client';
 
 import './ui/estilos.css';
 import { App } from './ui/App';
+import { iniciarFirewall } from './privacidade/firewall';
 import { obterMotor } from './ui/motor';
 
-// Começa a baixar o WASM do DuckDB e os dados antes mesmo do React desenhar a tela.
+// 1º o firewall (Service Worker) assume a página; depois o DuckDB começa, já sob o firewall (Fase 6).
+// A espera é curta (o SW é um arquivo pequeno) e nunca impede o app de abrir.
+void iniciarFirewall();
 void obterMotor().catch(() => undefined);
 
 const raiz = document.getElementById('root');

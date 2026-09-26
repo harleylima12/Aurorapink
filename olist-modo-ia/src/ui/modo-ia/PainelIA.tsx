@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import type { ControleIA } from '../../modo-ia/useIALocal';
 import type { EstadoModoIA } from '../../modo-ia/useModoIA';
 import { CartaoResposta } from './CartaoResposta';
+import { ContadorExternas } from '../privacidade/SeloPrivacidade';
 import { StatusIA } from './StatusIA';
 
 const SUGESTOES = [
@@ -57,6 +58,7 @@ export function PainelIA({ estado, ia, aoFechar, campo, sugestoes = SUGESTOES, n
         <div>
           <h2>✨ Modo IA</h2>
           <StatusIA ia={ia} />
+          <ContadorExternas />
         </div>
         <button type="button" className="fechar" onClick={aoFechar} aria-label="Fechar o Modo IA">
           ✕

@@ -1,5 +1,6 @@
 import { formatar } from '../format/numeros';
 import { useDados } from './contexto';
+import { SeloPrivacidade } from './privacidade/SeloPrivacidade';
 
 export function Rodape() {
   const { motor, meta } = useDados();
@@ -7,6 +8,7 @@ export function Rodape() {
   const provisorio = fonte.tipo === 'duckdb-provisorio';
   return (
     <footer className="rodape">
+      <SeloPrivacidade />
       <p className={`selo-fonte${provisorio ? ' provisorio' : ''}`} data-fonte={fonte.tipo}>
         {provisorio ? 'Dados: arquivo .duckdb (caminho provisório)' : 'Dados: Parquet (caminho final)'}
         {' · '}
