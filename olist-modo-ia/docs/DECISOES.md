@@ -489,3 +489,16 @@ Formato: **contexto → decisão → alternativa descartada**. As decisões da F
 - **Domínio real dos pesos:** um download de teste de `huggingface.co/.../resolve/main/params_shard_0.bin`
   redirecionou para `us.aws.cdn.hf.co` (armazenamento Xet), que NÃO estava na lista de candidatos da D29.
   Entra em `DOMINIOS_PESOS_DEMO`; a lista completa só fecha quando o modelo inteiro for baixado.
+
+### D47. Modelo real na GPU simulada: carrega, mas não serve para medir nada
+
+- **O que foi feito:** Chromium com WebGPU por software (SwiftShader), build no modo local com
+  `VITE_MODELO=Qwen3.5-0.8B-q4f32_1-MLC` (SwiftShader não tem `shader-f16`), pesos baixados pelo
+  `npm run baixar-modelo` (18 arquivos, 426,5 MB, hashes do Hugging Face conferidos).
+- **Resultado:** a integração real funcionou até o fim da carga: import dinâmico, worker sob a CSP, `model_lib` e
+  pesos servidos pelo próprio site (405 MB lidos em ~10 s), status "IA pronta · 100% local". Carga 19,6 s, mas o
+  aquecimento (compilar os shaders em CPU) levou ~17 min, e a primeira pergunta ao planejador não terminou em
+  15 min (prompt de ~4.000 caracteres processado em CPU). Qualidade do JSON e velocidade continuam sem medida:
+  **só no PC, com GPU de verdade** (roteiro no CLAUDE.md).
+- **Ajuste que o teste mostrou:** o status dizia só "carregou em 19,6 s" e escondia o aquecimento; agora mostra
+  os dois tempos.

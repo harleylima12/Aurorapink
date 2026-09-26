@@ -24,7 +24,7 @@ export function StatusIA({ ia }: { ia: ControleIA }) {
           <span className="ponto" aria-hidden="true" /> IA pronta · 100% local
         </p>
         <p className="status-detalhe" data-modelo={info.id}>
-          {info.id} · carregou em {formatar(info.segundosCarga, 'dec1')} s
+          {info.id} · carregou em {formatar(info.segundosCarga, 'dec1')} s{info.segundosAquecimento >= 0.05 ? ` + aquecimento ${formatar(info.segundosAquecimento, 'dec1')} s` : ''}
           {info.fonte === 'demo' ? ' · pesos do Hugging Face (modo demo)' : info.fonte === 'local' ? ' · pesos servidos por este site' : ''}
         </p>
       </>

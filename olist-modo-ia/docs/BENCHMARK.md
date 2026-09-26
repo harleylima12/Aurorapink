@@ -111,7 +111,7 @@ verdade está marcado **medir no PC**; roteiro no `CLAUDE.md`. Nada abaixo foi e
 | Item | Meta | Resultado |
 |---|---|---|
 | Modelo escolhido na GPU do Harley (e por quê) | — | medir no PC |
-| Download dos pesos na 1ª ativação (MB reais, `manifesto.json` no modo local) | — | medir no PC |
+| Download dos pesos (medido pela API do Hugging Face, 26/09) | — | Qwen2.5-1.5B 839,5 MB · Llama-3.2-1B 671,9 MB · Qwen3.5-0.8B 426,5 MB (q4f16 e q4f32 iguais) |
 | Tempo de carga: 1ª vez (download) e com cache | "depois abre em segundos" | medir no PC |
 | Aquecimento (1ª geração, compila shaders) | — | medir no PC |
 | Planejamento com IA, modelo em cache (p50 / p95) | < 3 s GPU dedicada · < 6 s integrada | medir no PC |
@@ -119,7 +119,7 @@ verdade está marcado **medir no PC**; roteiro no `CLAUDE.md`. Nada abaixo foi e
 | Tokens/s de prefill e de decode, tempo da gramática (`metricas` do WebLLM) | — | medir no PC |
 | Specs válidos do planejador na suíte (sem ajuda da Camada 0) | — | medir no PC (Fase 7) |
 | Textos do narrador aprovados pelo validador | — | medir no PC |
-| Domínios contatados no modo demo | só os de `DOMINIOS_PESOS_DEMO` | medir no PC |
+| Domínios contatados no modo demo | só os de `DOMINIOS_PESOS_DEMO` | medido na nuvem: `huggingface.co` + `us.aws.cdn.hf.co` (região; conferir no PC) |
 | Requisições externas no modo local | 0 | medir no PC |
 
 ## Fase 5: Modo Universal
