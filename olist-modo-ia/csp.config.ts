@@ -33,10 +33,10 @@ const base: Record<string, string[]> = {
 /**
  * Domínios dos pesos no modo demo, MEDIDOS em 26/09 (docs/DECISOES.md D46): arquivos pequenos (config) vêm de
  * huggingface.co; os grandes (pesos, tokenizer) são redirecionados para a CDN deles, que nesta nuvem foi
- * us.aws.cdn.hf.co. O prefixo é de região (pode mudar para quem baixa do Brasil), por isso *.hf.co: todos os
- * subdomínios da CDN do Hugging Face e nada além. Confirmar no PC (DevTools > Rede > Domínio).
+ * us.aws.cdn.hf.co (listado explicitamente). O prefixo é de região (pode mudar para quem baixa do Brasil), por isso
+ * também *.hf.co: todos os subdomínios da CDN do Hugging Face e nada além. Confirmar no PC (DevTools > Rede > Domínio).
  */
-export const DOMINIOS_PESOS_DEMO = ['https://huggingface.co', 'https://*.hf.co'] as const;
+export const DOMINIOS_PESOS_DEMO = ['https://huggingface.co', 'https://us.aws.cdn.hf.co', 'https://*.hf.co'] as const;
 
 export type FontePesos = 'demo' | 'local';
 
@@ -52,7 +52,7 @@ function comPesos(fonte: FontePesos): Record<string, string[]> {
 
 const semFrameAncestors = (d: Record<string, string[]>) => Object.fromEntries(Object.entries(d).filter(([nome]) => nome !== 'frame-ancestors'));
 
-/** Política de produção ESTRITA (modo local: nenhum domínio externo). É a do vercel.json por enquanto. */
+/** Política de produção ESTRITA (modo local: nenhum domínio externo). */
 export const cspProducao = montar(base);
 
 /** Política de produção para a fonte de pesos escolhida no build. */

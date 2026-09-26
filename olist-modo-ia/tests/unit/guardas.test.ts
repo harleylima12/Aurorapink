@@ -55,13 +55,17 @@ describe('guardas', () => {
     expect(diretos).toEqual([]);
   });
 
-  it('vercel.json usa exatamente os cabeçalhos do csp.config.ts', () => {
+  it('vercel.json usa exatamente os cabeçalhos do csp.config.ts (modo demo, o do site público)', () => {
     const vercel = JSON.parse(readFileSync(path.join(RAIZ, 'vercel.json'), 'utf8')) as {
       headers: { source: string; headers: { key: string; value: string }[] }[];
     };
     const todos = vercel.headers.find((h) => h.source === '/(.*)');
     const noVercel = Object.fromEntries((todos?.headers ?? []).map((h) => [h.key, h.value]));
-    expect(noVercel).toEqual(cabecalhosSeguranca(cspProducao));
+    expect(noVercel).toEqual(cabecalhosSeguranca(cspProducaoPara('demo')));
+    const connect = (noVercel['Content-Security-Policy'] ?? '').split(';').find((d) => d.trim().startsWith('connect-src')) ?? '';
+    expect(connect).toContain('https://us.aws.cdn.hf.co');
+    expect(connect).toContain('https://huggingface.co');
+    expect(vercel.headers.some((h) => h.source === '/sw.js')).toBe(true);
   });
 
   it('a CSP de produção não libera script inline nem domínio externo', () => {

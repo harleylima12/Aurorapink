@@ -18,7 +18,8 @@
     "baixar-extensoes": "node scripts/baixar-extensoes.mjs",
     "baixar-extensoes:verificar": "node scripts/baixar-extensoes.mjs --verificar",
     "baixar-modelo": "node scripts/baixar-modelo.mjs",
-    "gerar-planilhas-teste": "python scripts/gerar_planilhas_teste.py"
+    "gerar-planilhas-teste": "python scripts/gerar_planilhas_teste.py",
+    "gerar-vercel-json": "node --experimental-strip-types scripts/gerar-vercel-json.mjs"
   },
   "dependencies": {
     "@duckdb/duckdb-wasm": "1.32.0",
