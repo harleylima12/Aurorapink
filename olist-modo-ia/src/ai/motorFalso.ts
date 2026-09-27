@@ -85,6 +85,23 @@ function ultimaDoUsuario(mensagens: readonly MensagemChat[]): string {
   return [...mensagens].reverse().find((m) => m.role === 'user')?.content ?? '';
 }
 
+export function ehPedidoDeTema(mensagens: readonly MensagemChat[]): boolean {
+  return (mensagens[0]?.content ?? '').includes('Você classifica o TEMA');
+}
+
+/** Tema de mentira: palavras bem óbvias nos NOMES das colunas (o motor falso só vê metadados, como o real). */
+function sugerirTema(mensagens: readonly MensagemChat[], modo: ModoFalso): string {
+  if (modo === 'json-quebrado') return '{"tema": "vendas", "rotulos": [';
+  const colunas = JSON.parse(ultimaDoUsuario(mensagens).replace(/^COLUNAS: /, '')) as { id: string; nome: string }[];
+  const nomes = normalizar(colunas.map((c) => c.nome).join(' '));
+  const tema = modo === 'metrica-inventada' ? 'astrologia' : /cliente|segmento|pedido|venda/.test(nomes) ? 'vendas' : 'generico';
+  const rotulos = colunas.slice(0, 2).map((c) => ({ coluna: c.id, rotulo: `${c.nome} (IA)` }));
+  if (modo === 'valor-inexistente') rotulos.push({ coluna: 'coluna_fantasma', rotulo: 'Inventada' });
+  const perguntas = ['Quais segmentos têm mais clientes?', 'De que estados vêm os clientes?'];
+  if (modo === 'narrador-com-numero') perguntas.push('Os clientes cresceram 15%?');
+  return JSON.stringify({ tema, rotulos, perguntas });
+}
+
 export function ehPedidoDoNarrador(mensagens: readonly MensagemChat[]): boolean {
   return (mensagens[0]?.content ?? '').includes('Você escreve a análise');
 }
@@ -136,7 +153,11 @@ export function criarMotorFalso(opcoes: OpcoesMotorFalso = {}): MotorFalso {
       motor.chamadas.push(pedido);
       if (opcoes.atrasoMs) await new Promise((r) => setTimeout(r, opcoes.atrasoMs));
       if (motor.modo === 'erro') throw new Error('falha simulada do motor');
-      const texto = ehPedidoDoNarrador(pedido.mensagens) ? narrar(pedido.mensagens, motor.modo) : planejar(pedido.mensagens, motor.modo, planos);
+      const texto = ehPedidoDeTema(pedido.mensagens)
+        ? sugerirTema(pedido.mensagens, motor.modo)
+        : ehPedidoDoNarrador(pedido.mensagens)
+          ? narrar(pedido.mensagens, motor.modo)
+          : planejar(pedido.mensagens, motor.modo, planos);
       // Streaming de mentira: entrega em 3 pedaços.
       if (pedido.aoParcial) for (const n of [0.3, 0.6, 1]) pedido.aoParcial(texto.slice(0, Math.ceil(texto.length * n)));
       return { texto, ms: performance.now() - t0 };
