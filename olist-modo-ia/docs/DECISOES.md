@@ -558,3 +558,108 @@ Formato: **contexto → decisão → alternativa descartada**. As decisões da F
 - **A conferir no 1º deploy:** limite de tamanho por arquivo estático (os maiores são os WASM do DuckDB, 34 e 39 MB;
   `dist/` tem 131 MB) e se os downloads dos pesos do modelo passam pela CSP no domínio da Vercel.
 - `/avaliacao` ainda mostra o dashboard (a página chega na Fase 7).
+
+## Fase 5B: dashboards por tema
+
+### D53. Tema da planilha sem IA (Camada 0), medido antes de ajustar
+
+- **Contexto:** o dashboard automático da Fase 5 é igual para qualquer planilha. Uma planilha de vendas pede
+  faturamento, ticket médio e produtos campeões; uma de RH pede pessoas por área e turnover.
+- **Decisão:** um detector puro (`src/universal/temas/detector.ts`) dá pontos a cada tema por três pistas:
+  1. **nome da coluna:** dicionário PT-BR/EN com pesos (cada coluna conta uma vez, pela palavra mais forte);
+  2. **valores:** "Entrada/Saída", "Baixa/Média/Alta", "Aprovado/Reprovado", códigos CID-10, nomes de convênio,
+     vistos numa amostra de até 12 valores distintos por coluna (nunca de dado pessoal nem de texto livre);
+  3. **tipo:** um bônus pequeno (dinheiro reforça vendas/financeiro), que só soma se o tema já tem outra pista.
+- **Resultado:** tema, confiança e porquê ("encontrei Pedido, Data do Pedido, Total do Pedido…").
+  - Confiança = 40% da força do 1º colocado + 60% da distância para o 2º.
+  - Menos de 4 pontos vira "Genérico".
+  - Com confiança média ou baixa, a tela pergunta o tema.
+- **Avaliação honesta:** o tema esperado de cada planilha foi escrito ANTES do detector (commit `631a9db`):
+  15 planilhas novas por tema, mais 10 da Fase 5.
+  - **1ª rodada, sem nenhum ajuste: 24/25 (96%)**, acima da meta de 90% (`evals/resultados/temas.json`).
+  - O erro: `clientes.csv`, um cadastro de clientes (nome, e-mail, UF, segmento), foi esperado como "vendas",
+    mas veio "genérico" com confiança **baixa**. Então a tela pergunta, e o ranking já sugere Vendas.
+  - **Não ajustei para esse caso:** um cadastro sem valor de venda é ambíguo de verdade, e forçar "vendas" pioraria
+    outras planilhas.
+  - Com IA: medir no PC.
+- **Descartado:** perguntar à IA sempre (lento sem GPU, e a Camada 0 já acerta 96%); regras por nome de arquivo
+  (o nome muda, as colunas não).
+
+### D54. Papéis de negócio: o tipo precisa bater, e cada coluna tem um papel só
+
+- **Decisão:** cada tema procura papéis ("valor", "produto", "data", "salário", "estoque atual"…).
+  - Uma coluna só entra se o TIPO do perfil bater (valor = dinheiro; data = data).
+  - Palavras de "evitar" tiram candidatas ("Preço Unitário" não é o valor total; "Estoque Mínimo" não é o estoque atual).
+  - Cada coluna fica com um papel só: os pares com maior nota ganham primeiro.
+- **Dado pessoal não conta pessoas:** "Paciente" com nomes mascarados ("Ana S.") não vira "pacientes distintos",
+  porque nomes mascarados colidem. Nesse caso o KPI some; "ID Paciente" funciona.
+- **Tudo é corrigível:** na tela, "Colunas que usei para cada papel". A escolha manual fica guardada (`fixos`) e
+  sobrevive quando o tipo de outra coluna muda.
+
+### D55. Receitas declarativas por tema, validadas com Zod; papel faltando degrada sem inventar
+
+- **Decisão:** `src/universal/temas/receitas.ts` guarda 8 receitas (vendas, financeiro, RH, estoque, marketing,
+  atendimento, educação, saúde) como DADOS. Cada uma tem:
+  - papéis;
+  - métricas com SQL de agregação e marcadores `{papel}`;
+  - KPIs e seções (métrica × dimensão);
+  - 3 objetivos, que mudam a ordem das seções e os KPIs;
+  - seções que alimentam os insights;
+  - perguntas sugeridas para o Modo IA.
+
+  O Zod confere na carga que toda métrica, seção, objetivo e marcador existe.
+- **Como vira número:** o marcador vira o nome real da coluna, sempre entre aspas (`ident`), e a métrica entra na
+  MESMA semântica (`metricasExtras`). Daí em diante o caminho é o de sempre: QuerySpec → compilador → DuckDB.
+  A receita não tem número nenhum.
+- **Degradação:** cada métrica tem alternativas, e vale a primeira cujos papéis existem.
+  - Sem "valor", faturamento = preço × quantidade.
+  - Sem "pedido", "valor médio por venda" no lugar do ticket.
+  - Se nenhuma alternativa serve, o painel some, e o quadro "O que ficou de fora (e por quê)" diz qual coluna faltou.
+  - Algumas contas "não se aplicam" e somem caladas: "total lançado" misturaria entradas com saídas quando existe
+    a coluna Tipo.
+  - Só explico o que faltou nas seções do objetivo escolhido; o resto da receita some calado, para não virar
+    uma lista de desculpas.
+- **Objetivo padrão:** o que tem mais painéis possíveis com as colunas da planilha. Ex.: numa planilha de contas a
+  pagar, abre "Acompanhar contas a pagar", não "Controlar o caixa".
+- **Público:**
+
+  | Público | O que aparece |
+  |---|---|
+  | Gestor | 4 painéis, sem tabela linha a linha |
+  | Equipe | tudo, com a tabela de detalhe |
+  | Cliente | 3 painéis, sem os marcados como internos (vendedor, custos por fornecedor, salário por cargo) e sem tabela |
+
+- **Temas sensíveis** (RH, educação, saúde) ligam a proteção de grupos pequenos (D50) por padrão.
+- **Conferido:** em todas as 24 planilhas com tema, cada KPI e cada painel roda no DuckDB e volta linhas.
+  Faturamento, ticket e saldo batem com SQL feito à mão (`tests/unit/temas.test.ts`); no navegador, com somas
+  feitas direto do CSV (`tests/e2e/temas.spec.ts`).
+- **Descartado:** receitas em código (TSX por tema): mais difícil de validar e de explicar.
+
+### D56. IA local para o tema: opcional, só metadados, e só decide quando a Camada 0 hesita
+
+- **Decisão:** botão "✨ Pedir sugestão à IA local" (nada é baixado antes do clique).
+  - **O que a IA recebe:** nome, tipo, quantos valores diferentes e % preenchido de cada coluna. Nenhuma linha,
+    nenhum valor, nenhum texto livre (P6). Dado pessoal aparece só como "dado pessoal".
+  - **O que ela devolve:** JSON preso a um JSON Schema, que o Zod valida de novo (tema da lista, rótulos, até 3 perguntas).
+  - **O que é descartado:** coluna inventada e pergunta com número.
+  - **Quem decide:** a IA só troca o tema quando a confiança da Camada 0 é média ou baixa. Os rótulos dela só
+    entram em colunas cujo rótulo o usuário não editou. As perguntas vão para os chips do Modo IA e são
+    respondidas pelo caminho normal.
+  - **Transparência:** a tela mostra "O que a IA recebeu".
+- **Evidência:**
+  - Um teste confere que nenhum valor da planilha de RH (CPF, nome, e-mail, categoria) aparece no pedido.
+  - O motor falso cobre JSON quebrado, tema inventado, coluna fantasma e erro (unitário), e o fluxo completo no navegador (e2e).
+  - **A qualidade com o modelo real fica para o PC** (D47).
+
+### D57. O modelo salvo guarda o tema e as respostas
+
+- `modeloSchema` ganhou `tema` opcional: tema, objetivo, público e papéis escolhidos à mão. Modelos antigos
+  continuam válidos.
+- A próxima planilha com o mesmo layout abre direto no dashboard com o mesmo tema, objetivo e público
+  (e2e: estoque, "Acompanhar as movimentações", "Cliente").
+
+### D58. Exemplos por tema na tela inicial
+
+- 8 botões ("Vendas", "Financeiro", "RH"…) abrem planilhas fictícias servidas pelo próprio site
+  (`public/exemplos/`, geradas por `scripts/gerar_planilhas_temas.py` com semente fixa). Os nomes são sorteados de
+  listas comuns e os CPFs são inventados: nenhuma pessoa real.

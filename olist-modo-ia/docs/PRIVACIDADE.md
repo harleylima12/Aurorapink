@@ -95,5 +95,9 @@ Evidência: `tests/e2e/privacidade.spec.ts` (4º teste), print `docs/prints/fase
   fica escondida. A regra está no compilador SQL, então vale para tudo.
   Evidência: `tests/unit/universal.test.ts` ("dados sensíveis"), `tests/e2e/universal.spec.ts` (RH).
 
+- **Tema pela IA local (opcional, Fase 5B):** a IA recebe só metadados (nome e tipo da coluna, quantos valores
+  diferentes, % preenchido), nunca valores nem linhas. A tela mostra exatamente o que foi enviado ao modelo
+  (que também roda no navegador). Evidência: `tests/unit/temas.test.ts` ("a IA só vê metadados").
+
 **Limite honesto:** o app protege o que ELE mostra. Quem tem a planilha original já tem os dados; a proteção
 serve para compartilhar a tela ou o dashboard sem expor pessoas.
