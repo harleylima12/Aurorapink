@@ -10,6 +10,8 @@ import { ident } from '../../universal/limpeza';
 import type { PlanilhaMontada } from '../../universal/montar';
 import { exemplosDaPlanilha, sugestoesDaPlanilha } from '../../universal/painelAuto';
 import type { ColunaConfig } from '../../universal/perfil';
+import { ROTULO_PUBLICO, type PainelTema } from '../../universal/temas/aplicar';
+import { DEF_TEMAS } from '../../universal/temas/definicoes';
 import { Dados, type ContextoDados } from '../contexto';
 import { KpiCard } from '../KpiCard';
 import { PainelIA } from '../modo-ia/PainelIA';
@@ -109,17 +111,21 @@ export function DashboardPlanilha({ motor, montada, nome, reconhecido, resumo, a
     () => ({ motor, semantica: montada.semantica, meta: { anos: [], ufs: [], mesesParciais: new Set<string>(), ancora } }),
     [motor, montada.semantica, ancora],
   );
+  const tema: PainelTema | null = 'tema' in montada.painel ? montada.painel : null;
   const extras = useMemo<ExtrasModoIA>(
     () => ({
       semantica: montada.semantica,
-      gerarInsights: insightsDaPlanilha(montada.painel.visuais.map((v) => ({ titulo: v.titulo, spec: v.spec }))),
+      gerarInsights: insightsDaPlanilha(('tema' in montada.painel ? montada.painel.insights : montada.painel.visuais).map((v) => ({ titulo: v.titulo, spec: v.spec }))),
       exemplosIA: exemplosDaPlanilha(montada.semantica),
     }),
     [montada],
   );
   const ia = useIALocal(iaAberto);
   const modoIA = useModoIA(motor, ancora, dados.meta.mesesParciais, iaAberto, ia.motor, extras);
-  const sugestoes = useMemo(() => sugestoesDaPlanilha(montada.semantica, montada.painel), [montada]);
+  const sugestoes = useMemo(
+    () => ('tema' in montada.painel && montada.painel.perguntas.length ? [...montada.painel.perguntas, 'Quantos registros?'] : sugestoesDaPlanilha(montada.semantica, montada.painel)),
+    [montada],
+  );
 
   useEffect(() => {
     document.title = `${nome} · Modo Universal · Modo IA local`;
@@ -151,6 +157,12 @@ export function DashboardPlanilha({ motor, montada, nome, reconhecido, resumo, a
                 {montada.periodo ? ` · de ${montada.periodo.de.split('-').reverse().join('/')} a ${montada.periodo.ate.split('-').reverse().join('/')}` : ' · sem coluna de data'}
                 {' · '}dashboard gerado em {formatar(montada.ms, 'int')} ms
               </p>
+              {tema && (
+                <p className="tema-linha" data-testid="tema-dashboard" data-tema={tema.tema}>
+                  <span aria-hidden="true">{DEF_TEMAS[tema.tema].icone}</span> {DEF_TEMAS[tema.tema].rotulo}
+                  {tema.objetivo ? ` · ${tema.objetivo.rotulo}` : ''} · para: {ROTULO_PUBLICO[tema.publico]}
+                </p>
+              )}
               {reconhecido && (
                 <p className="reconhecido" role="status">
                   ✓ Reconheci o layout do modelo “{reconhecido}” e abri direto.{' '}
@@ -189,6 +201,26 @@ export function DashboardPlanilha({ motor, montada, nome, reconhecido, resumo, a
             {montada.painel.visuais.map((v) => (
               <Visual key={`${montada.tabela}-${v.id}`} definicao={v} filtros={SEM_FILTROS} />
             ))}
+            {tema && (tema.escondidos.length > 0 || tema.cortadosPeloPublico > 0) && (
+              <section className="painel largo painel-escondidos" data-visual="escondidos" aria-labelledby="titulo-escondidos">
+                <header className="painel-cabecalho">
+                  <h2 id="titulo-escondidos">O que ficou de fora (e por quê)</h2>
+                  <p>O app não inventa: sem a coluna certa, o painel não aparece. Dá para indicar a coluna em "Revisar colunas".</p>
+                </header>
+                <ul>
+                  {tema.escondidos.map((e) => (
+                    <li key={e.motivo}>
+                      <strong>{e.titulos.join(', ')}</strong>: {e.motivo}.
+                    </li>
+                  ))}
+                  {tema.cortadosPeloPublico > 0 && (
+                    <li>
+                      {tema.cortadosPeloPublico} {tema.cortadosPeloPublico === 1 ? 'painel ficou' : 'painéis ficaram'} de fora para o público “{ROTULO_PUBLICO[tema.publico]}” (mostro menos para quem só precisa do resumo).
+                    </li>
+                  )}
+                </ul>
+              </section>
+            )}
             {montada.semantica.dataset.min_group_size ? (
               <section className="painel largo" data-visual="protecao">
                 <header className="painel-cabecalho">
@@ -199,9 +231,9 @@ export function DashboardPlanilha({ motor, montada, nome, reconhecido, resumo, a
                   </p>
                 </header>
               </section>
-            ) : (
+            ) : !tema || tema.mostrarDetalhe ? (
               <DetalheTabela motor={motor} montada={montada} />
-            )}
+            ) : null}
           </div>
           {resumo.length > 0 && (
             <details className="painel relatorio-final">

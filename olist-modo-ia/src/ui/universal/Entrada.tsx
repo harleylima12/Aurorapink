@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type DragEvent } from 'react';
 
 import { apagarModelo, importarModelo, lerModelos, salvarModelo, type ModeloPlanilha } from '../../universal/impressao';
 import { SeloPrivacidade } from '../privacidade/SeloPrivacidade';
+import { DEF_TEMAS, type Tema } from '../../universal/temas/definicoes';
 import { apagarUltima, definirLembrar, lembrarLigado, lerUltima, type ArquivoGuardado } from '../../universal/ultima';
 
 interface Props {
@@ -25,11 +26,22 @@ function baixarJson(nome: string, conteudo: unknown) {
 }
 
 /** Tela inicial do Modo Universal: arrastar planilhas, modelos salvos e "lembrar a última". */
+/** Planilhas de exemplo (fictícias, geradas por scripts/gerar_planilhas_temas.py), servidas pelo próprio site. */
+export const EXEMPLOS: readonly Tema[] = ['vendas', 'financeiro', 'rh', 'estoque', 'marketing', 'atendimento', 'educacao', 'saude'];
+
+async function baixarExemplo(tema: Tema): Promise<ArquivoGuardado> {
+  const nome = `exemplo_${tema}.csv`;
+  const r = await fetch(`${import.meta.env.BASE_URL}exemplos/${nome}`);
+  if (!r.ok) throw new Error(`não consegui abrir o exemplo (${r.status})`);
+  return { nome, bytes: new Uint8Array(await r.arrayBuffer()) };
+}
+
 export function Entrada({ aoEscolher, aoVerDemo, erro, leParquet }: Props) {
   const [arrastando, setArrastando] = useState(false);
   const [modelos, setModelos] = useState<ModeloPlanilha[]>(() => lerModelos());
   const [lembrar, setLembrar] = useState(() => lembrarLigado());
   const [ultima, setUltima] = useState<ArquivoGuardado[] | null>(null);
+  const [erroExemplo, setErroExemplo] = useState('');
   const [aviso, setAviso] = useState('');
   const campo = useRef<HTMLInputElement>(null);
   const campoModelo = useRef<HTMLInputElement>(null);
@@ -83,6 +95,17 @@ export function Entrada({ aoEscolher, aoVerDemo, erro, leParquet }: Props) {
           <button type="button" className="botao-secundario" onClick={aoVerDemo}>
             Ver demo com dados da Olist
           </button>
+        </div>
+        <div className="exemplos-tema" data-testid="exemplos-tema">
+          <p>Sem planilha à mão? Experimente um exemplo (dados fictícios, sem pessoas reais):</p>
+          <div className="chips" role="group" aria-label="Planilhas de exemplo">
+            {EXEMPLOS.map((t) => (
+              <button key={t} type="button" className="chip" data-exemplo={t} onClick={() => void baixarExemplo(t).then((a) => aoEscolher([a]), (e: unknown) => setErroExemplo(e instanceof Error ? e.message : String(e)))}>
+                <span aria-hidden="true">{DEF_TEMAS[t].icone}</span> {DEF_TEMAS[t].rotulo.split(' / ')[0]}
+              </button>
+            ))}
+          </div>
+          {erroExemplo && <p className="erro">{erroExemplo}</p>}
         </div>
         <input
           ref={campo}
