@@ -1,4 +1,8 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+
+import { combinarTema, sugerirTemaIA, type ResultadoTemaIA } from '../../ai/temaIA';
+import { iaFoiAtivada } from '../../modo-ia/armazenamento';
+import { useIALocal } from '../../modo-ia/useIALocal';
 
 import type { ColunaConfig, PerfilColuna } from '../../universal/perfil';
 import { EXPLICA_PUBLICO, objetivoPadrao, objetivosPossiveis, planejarTema, PUBLICOS, ROTULO_PUBLICO, type EscolhaTema, type Publico } from '../../universal/temas/aplicar';
@@ -14,6 +18,7 @@ interface Props {
   perfis: readonly PerfilColuna[];
   config: readonly ColunaConfig[];
   aoMudar: (escolha: EscolhaTema) => void;
+  aoAplicarIA: (tema: Tema | null, rotulos: { coluna: string; rotulo: string }[], perguntas: string[]) => void;
 }
 
 const NIVEL = { alta: 'alta', media: 'média', baixa: 'baixa' } as const;
@@ -34,10 +39,81 @@ function Chips<T extends string>({ rotulo, opcoes, valor, aoEscolher, nome }: { 
 }
 
 /**
+ * Camada 1 opcional: a IA local sugere tema, rótulos e perguntas vendo SÓ metadados (nome, tipo, cardinalidade).
+ * Nada é baixado antes do clique. Sem WebGPU, a tela diz que a detecção por nomes continua valendo.
+ */
+function SugestaoIA({ deteccao, perfis, config, aoAplicarIA }: Pick<Props, 'deteccao' | 'perfis' | 'config' | 'aoAplicarIA'>) {
+  const [pedido, setPedido] = useState(false);
+  const ia = useIALocal(pedido);
+  const [resultado, setResultado] = useState<{ r: ResultadoTemaIA; motivo: string } | null>(null);
+  const { estado, ativar, motor } = ia;
+
+  useEffect(() => {
+    // Quem já ativou a IA antes é reativado pelo próprio useIALocal; aqui só o 1º clique.
+    if (pedido && estado.fase === 'disponivel' && !iaFoiAtivada()) ativar();
+  }, [pedido, estado.fase, ativar]);
+
+  useEffect(() => {
+    if (!motor || resultado) return;
+    let vivo = true;
+    void sugerirTemaIA(motor, perfis, config).then((r) => {
+      if (!vivo) return;
+      const decisao = combinarTema(deteccao, r.sugestao);
+      setResultado({ r, motivo: decisao.motivo });
+      if (r.sugestao) aoAplicarIA(decisao.fonte === 'ia' ? decisao.tema : null, r.sugestao.rotulos, r.sugestao.perguntas);
+    });
+    return () => {
+      vivo = false;
+    };
+    // Roda uma vez quando o motor fica pronto.
+  }, [motor]);
+
+  if (!pedido) {
+    return (
+      <div className="sugestao-ia">
+        <button type="button" className="botao-secundario" onClick={() => setPedido(true)}>
+          ✨ Pedir sugestão à IA local
+        </button>
+        <small>Opcional. A IA vê só nomes e tipos das colunas (nenhum valor) e roda no seu navegador.</small>
+      </div>
+    );
+  }
+  return (
+    <div className="sugestao-ia" role="status" aria-live="polite" data-testid="sugestao-ia">
+      {estado.fase === 'verificando' && <p className="nota">Verificando WebGPU…</p>}
+      {estado.fase === 'sem-webgpu' && <p className="nota">{estado.motivo} A detecção por nomes (sem IA) continua valendo.</p>}
+      {estado.fase === 'erro' && <p className="erro">A IA não carregou: {estado.motivo}. A detecção por nomes continua valendo.</p>}
+      {estado.fase === 'baixando' && (
+        <p className="nota">
+          Carregando a IA local: {Math.round(estado.progresso.fracao * 100)}% · {estado.progresso.texto}
+        </p>
+      )}
+      {estado.fase === 'pronta' && !resultado && <p className="nota">A IA está lendo os nomes das colunas…</p>}
+      {resultado && (
+        <>
+          <p>
+            <strong>IA local:</strong>{' '}
+            {resultado.r.sugestao
+              ? `sugeriu ${DEF_TEMAS[resultado.r.sugestao.tema].rotulo}; ${resultado.motivo}. Rótulos sugeridos: ${resultado.r.sugestao.rotulos.length}. Perguntas: ${resultado.r.sugestao.perguntas.length} (vão para o Modo IA).`
+              : `a resposta não passou na validação (${resultado.r.erros[0] ?? 'erro'}); vale a detecção por nomes.`}{' '}
+            <small>({Math.round(resultado.r.ms)} ms)</small>
+          </p>
+          {resultado.r.erros.length > 0 && resultado.r.sugestao && <p className="nota">Descartado da resposta: {resultado.r.erros.join(' · ')}</p>}
+          <details>
+            <summary>O que a IA recebeu (só metadados)</summary>
+            <pre>{resultado.r.mensagens.find((m) => m.role === 'user')?.content}</pre>
+          </details>
+        </>
+      )}
+    </div>
+  );
+}
+
+/**
  * Cartão do tema na tela "Entendi assim" (Fase 5B): o que o app achou (tema, confiança, porquê) e 2 a 4 perguntas
  * rápidas. Todas são opcionais: sem resposta, vale o padrão que aparece marcado.
  */
-export function PerguntasTema({ deteccao, escolha, perfis, config, aoMudar }: Props) {
+export function PerguntasTema({ deteccao, escolha, perfis, config, aoMudar, aoAplicarIA }: Props) {
   const def = DEF_TEMAS[escolha.tema];
   const receita = receitaDe(escolha.tema);
   const plano = useMemo(() => planejarTema(escolha, config), [escolha, config]);
@@ -153,6 +229,7 @@ export function PerguntasTema({ deteccao, escolha, perfis, config, aoMudar }: Pr
           </select>
         </label>
       )}
+      <SugestaoIA deteccao={deteccao} perfis={perfis} config={config} aoAplicarIA={aoAplicarIA} />
       <p className="nota">Tudo aqui é opcional: se você pular, uso o que está marcado.</p>
     </section>
   );

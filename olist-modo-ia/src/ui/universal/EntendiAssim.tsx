@@ -7,6 +7,7 @@ import type { Grupo, ParteGrupo } from '../../universal/montar';
 import { ROTULO_TIPO, TIPOS_COLUNA, type Agregacao, type ColunaConfig, type Papel, type TipoColuna } from '../../universal/perfil';
 import { setorProvavel } from '../../universal/relacoes';
 import type { EscolhaTema } from '../../universal/temas/aplicar';
+import type { Tema } from '../../universal/temas/definicoes';
 import { PerguntasTema } from './PerguntasTema';
 
 export interface KpiPrevia {
@@ -20,6 +21,7 @@ interface Props {
   aoMudar: (parte: 'principal' | number, config: ColunaConfig[]) => void;
   aoMudarSensivel: (minGroupSize: number | undefined) => void;
   aoMudarTema: (escolha: EscolhaTema) => void;
+  aoAplicarIA: (tema: Tema | null, rotulos: { coluna: string; rotulo: string }[], perguntas: string[]) => void;
   aoGerar: (lembrarLayout: boolean) => void;
   aoVoltar: () => void;
   previa: KpiPrevia[] | 'calculando' | { erro: string };
@@ -155,7 +157,7 @@ function Cabecalho({ parte, papel }: { parte: ParteGrupo; papel: string }) {
 }
 
 /** Tela "Entendi assim" (seção 7A item 6): revisão de 1 minuto, tudo editável, com prévia dos KPIs. */
-export function EntendiAssim({ grupo, aoMudar, aoMudarSensivel, aoMudarTema, aoGerar, aoVoltar, previa, gerando }: Props) {
+export function EntendiAssim({ grupo, aoMudar, aoMudarSensivel, aoMudarTema, aoAplicarIA, aoGerar, aoVoltar, previa, gerando }: Props) {
   const [lembrar, setLembrar] = useState(true);
   return (
     <div className="entendi-assim">
@@ -172,7 +174,7 @@ export function EntendiAssim({ grupo, aoMudar, aoMudarSensivel, aoMudarTema, aoG
       </header>
 
       {grupo.tema && grupo.deteccao && (
-        <PerguntasTema deteccao={grupo.deteccao} escolha={grupo.tema} perfis={grupo.principal.leitura.perfis} config={grupo.principal.config} aoMudar={aoMudarTema} />
+        <PerguntasTema deteccao={grupo.deteccao} escolha={grupo.tema} perfis={grupo.principal.leitura.perfis} config={grupo.principal.config} aoMudar={aoMudarTema} aoAplicarIA={aoAplicarIA} />
       )}
 
       <section className="previa-kpis" aria-label="Prévia dos KPIs" aria-live="polite">

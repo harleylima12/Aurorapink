@@ -36,6 +36,8 @@ export interface EscolhaTema {
   papeis: Papeis;
   /** Só as escolhas feitas à mão ("" = o usuário disse que não tem). Isto é o que fica salvo no modelo. */
   fixos?: Papeis;
+  /** Perguntas sugeridas pela IA local (Camada 1); respondidas pelo caminho normal (Camada 0/planejador). */
+  perguntasIA?: string[];
 }
 
 export interface MetricaResolvida {

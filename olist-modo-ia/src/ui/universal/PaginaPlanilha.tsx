@@ -9,7 +9,7 @@ import { configPadrao, type ColunaConfig } from '../../universal/perfil';
 import { sugerirLigacoes, type Ligacao } from '../../universal/relacoes';
 import { pareceSensivel, TAMANHO_MINIMO_PADRAO } from '../../universal/semanticaAuto';
 import type { EscolhaTema } from '../../universal/temas/aplicar';
-import { DEF_TEMAS } from '../../universal/temas/definicoes';
+import { DEF_TEMAS, type Tema } from '../../universal/temas/definicoes';
 import { detectarTema } from '../../universal/temas/detector';
 import { escolhaDoTema } from '../../universal/temas/escolha';
 import { guardarUltima, type ArquivoGuardado } from '../../universal/ultima';
@@ -142,6 +142,23 @@ export function PaginaPlanilha({ motor, aoVerDemo }: { motor: Motor; aoVerDemo: 
     setEtapa({ tipo: 'revisao', grupo });
   };
 
+  /** Sugestão da IA local: tema (só se a Camada 0 não tinha confiança alta), rótulos e perguntas, numa atualização só. */
+  const aplicarIA = (tema: Tema | null, rotulos: { coluna: string; rotulo: string }[], perguntas: string[]) => {
+    setEtapa((atual) => {
+      if (atual.tipo !== 'revisao' || !atual.grupo.tema) return atual;
+      const g = atual.grupo;
+      // Rótulo que a pessoa já editou não é trocado.
+      const config = g.principal.config.map((c) => {
+        const r = rotulos.find((x) => x.coluna === c.id);
+        return r && c.rotulo === c.original ? { ...c, rotulo: r.rotulo } : c;
+      });
+      const trocou = tema !== null && tema !== g.tema!.tema;
+      const escolha = escolhaDoTema(tema ?? g.tema!.tema, g.principal.leitura.perfis, config, { ...(trocou ? { publico: g.tema!.publico } : g.tema!), perguntasIA: perguntas });
+      const minGroupSize = DEF_TEMAS[escolha.tema].sensivel ? (g.minGroupSize ?? TAMANHO_MINIMO_PADRAO) : g.minGroupSize;
+      return { tipo: 'revisao', grupo: { ...g, principal: { ...g.principal, config }, tema: escolha, ...(minGroupSize !== undefined ? { minGroupSize } : {}) } };
+    });
+  };
+
   const mudarTema = (tema: EscolhaTema) => {
     if (etapa.tipo !== 'revisao') return;
     const g = etapa.grupo;
@@ -200,7 +217,7 @@ export function PaginaPlanilha({ motor, aoVerDemo }: { motor: Motor; aoVerDemo: 
           }}
         />
       )}
-      {etapa.tipo === 'revisao' && <EntendiAssim grupo={etapa.grupo} aoMudarSensivel={(n) => setEtapa({ tipo: 'revisao', grupo: { ...etapa.grupo, minGroupSize: n } })} aoMudarTema={mudarTema} aoMudar={mudarConfig} aoGerar={(l) => void gerar(l)} aoVoltar={voltar} previa={previa} gerando={gerando} />}
+      {etapa.tipo === 'revisao' && <EntendiAssim grupo={etapa.grupo} aoMudarSensivel={(n) => setEtapa({ tipo: 'revisao', grupo: { ...etapa.grupo, minGroupSize: n } })} aoMudarTema={mudarTema} aoAplicarIA={aplicarIA} aoMudar={mudarConfig} aoGerar={(l) => void gerar(l)} aoVoltar={voltar} previa={previa} gerando={gerando} />}
       {etapa.tipo === 'pronto' && (
         <DashboardPlanilha
           motor={motor}
@@ -208,6 +225,7 @@ export function PaginaPlanilha({ motor, aoVerDemo }: { motor: Motor; aoVerDemo: 
           nome={nomeDoGrupo(etapa.grupo)}
           reconhecido={etapa.reconhecido}
           resumo={etapa.grupo.principal.leitura.resumo}
+          perguntasIA={etapa.grupo.tema?.perguntasIA}
           aoRevisar={() => setEtapa({ tipo: 'revisao', grupo: etapa.grupo })}
           aoTrocar={voltar}
         />

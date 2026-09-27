@@ -21,6 +21,7 @@ export function escolhaDoTema(tema: Tema, perfis: readonly PerfilColuna[], confi
     tema,
     ...(objetivo ? { objetivo } : {}),
     ...(anterior.publico ? { publico: anterior.publico } : {}),
+    ...(anterior.perguntasIA?.length ? { perguntasIA: anterior.perguntasIA } : {}),
     fixos,
     papeis: receita ? atribuirPapeis(perfisDaConfig(perfis, config), receita.papeis, fixos) : {},
   };

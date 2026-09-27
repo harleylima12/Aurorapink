@@ -100,10 +100,12 @@ interface Props {
   resumo: string[];
   aoRevisar: () => void;
   aoTrocar: () => void;
+  /** Perguntas sugeridas pela IA local na tela "Entendi assim" (se foi pedida). */
+  perguntasIA?: string[];
 }
 
 /** Dashboard automático (seção 7A item 7) + Modo IA sobre a planilha. */
-export function DashboardPlanilha({ motor, montada, nome, reconhecido, resumo, aoRevisar, aoTrocar }: Props) {
+export function DashboardPlanilha({ motor, montada, nome, reconhecido, resumo, aoRevisar, aoTrocar, perguntasIA }: Props) {
   const [iaAberto, setIaAberto] = useState(false);
   const campo = useRef<HTMLInputElement>(null);
   const ancora = montada.periodo?.ate ?? new Date().toISOString().slice(0, 10);
@@ -123,8 +125,11 @@ export function DashboardPlanilha({ motor, montada, nome, reconhecido, resumo, a
   const ia = useIALocal(iaAberto);
   const modoIA = useModoIA(motor, ancora, dados.meta.mesesParciais, iaAberto, ia.motor, extras);
   const sugestoes = useMemo(
-    () => ('tema' in montada.painel && montada.painel.perguntas.length ? [...montada.painel.perguntas, 'Quantos registros?'] : sugestoesDaPlanilha(montada.semantica, montada.painel)),
-    [montada],
+    () => [
+      ...(perguntasIA ?? []),
+      ...('tema' in montada.painel && montada.painel.perguntas.length ? [...montada.painel.perguntas, 'Quantos registros?'] : sugestoesDaPlanilha(montada.semantica, montada.painel)),
+    ].slice(0, 7),
+    [montada, perguntasIA],
   );
 
   useEffect(() => {
