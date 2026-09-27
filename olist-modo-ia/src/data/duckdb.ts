@@ -141,6 +141,7 @@ export async function iniciarMotor(): Promise<Motor> {
   await conn.query('SET autoload_known_extensions = false');
   const versao = await db.getVersion();
   const fimMotor = performance.now();
+  performance.mark('duckdb-pronto');
 
   let fonte: InfoFonte;
   if (plano.tipo === 'parquet' && manifesto) {
@@ -155,6 +156,7 @@ export async function iniciarMotor(): Promise<Motor> {
     fonte = await carregarProvisorio(db, conn, dadosPlanejados, versao, plano.tipo === 'duckdb-provisorio' ? plano.motivo : '');
   }
   const fim = performance.now();
+  performance.mark('dados-prontos');
 
   const cache = new Map<string, Promise<Resultado>>();
 

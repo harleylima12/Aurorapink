@@ -95,6 +95,7 @@ async function registrar(esperaMs: number): Promise<void> {
       ]);
     }
     const ativo = Boolean(navigator.serviceWorker.controller);
+    performance.mark('firewall-pronto');
     publicar({
       ...estado,
       ativo,

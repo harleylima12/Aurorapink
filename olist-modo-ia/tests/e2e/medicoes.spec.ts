@@ -13,6 +13,10 @@ const RODADAS = Number(process.env.RODADAS ?? 5);
 
 interface Marcas {
   fcp: number;
+  /** Fase 7: onde o tempo vai até o motor ficar pronto. */
+  firewall: number;
+  duckdb: number;
+  dados: number;
   motorPronto: number;
   graficosProntos: number;
 }
@@ -21,7 +25,14 @@ async function marcas(page: Page): Promise<Marcas> {
   await esperarDashboard(page);
   return page.evaluate(() => {
     const t = (nome: string) => Math.round(performance.getEntriesByName(nome)[0]?.startTime ?? Number.NaN);
-    return { fcp: t('first-contentful-paint'), motorPronto: t('motor-pronto'), graficosProntos: t('graficos-prontos') };
+    return {
+      fcp: t('first-contentful-paint'),
+      firewall: t('firewall-pronto'),
+      duckdb: t('duckdb-pronto'),
+      dados: t('dados-prontos'),
+      motorPronto: t('motor-pronto'),
+      graficosProntos: t('graficos-prontos'),
+    };
   });
 }
 
@@ -73,11 +84,17 @@ test('carga fria, carga com cache e troca de filtro', async ({ browser }) => {
     rodadas: RODADAS,
     fria: {
       fcp: mediana(frias.map((m) => m.fcp)),
+      firewall: mediana(frias.map((m) => m.firewall)),
+      duckdb: mediana(frias.map((m) => m.duckdb)),
+      dados: mediana(frias.map((m) => m.dados)),
       motorPronto: mediana(frias.map((m) => m.motorPronto)),
       graficosProntos: mediana(frias.map((m) => m.graficosProntos)),
     },
     quente: {
       fcp: mediana(quentes.map((m) => m.fcp)),
+      firewall: mediana(quentes.map((m) => m.firewall)),
+      duckdb: mediana(quentes.map((m) => m.duckdb)),
+      dados: mediana(quentes.map((m) => m.dados)),
       motorPronto: mediana(quentes.map((m) => m.motorPronto)),
       graficosProntos: mediana(quentes.map((m) => m.graficosProntos)),
     },
