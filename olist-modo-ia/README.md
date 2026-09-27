@@ -17,6 +17,7 @@ Dashboard da base pública da Olist com **Modo IA 100% local** (WebLLM + DuckDB-
 | 3. Modo Rápido | ✅ perguntas em PT-BR respondidas sem IA em < 100 ms (p95); prints em [`docs/prints/fase3`](docs/prints/fase3) |
 | 4. IA local | ✅ na nuvem (sem GPU): planejador + narrador validados com motor falso; **modelo real a validar no PC**; prints em [`docs/prints/fase4`](docs/prints/fase4) |
 | 5. Modo Universal | ✅ arraste um CSV em `/planilha`: limpeza, perfil das colunas, tela "Entendi assim" e dashboard automático; Excel via SheetJS; prints em [`docs/prints/fase5`](docs/prints/fase5) |
+| 5B. Dashboards por tema | ✅ o app reconhece o tema da planilha (vendas, financeiro, RH, estoque, marketing, atendimento, educação, saúde) **sem IA**, com 96% de acerto na 1ª rodada, e monta o dashboard pela receita do tema; prints em [`docs/prints/fase5b`](docs/prints/fase5b) |
 | 6. Privacidade | ✅ firewall (Service Worker) com contador de requisições externas, offline, "Apagar dados locais", proteção de dados sensíveis; ver [`docs/PRIVACIDADE.md`](docs/PRIVACIDADE.md) |
 | 7 e 8 | a fazer |
 
@@ -73,6 +74,16 @@ Abra `/planilha` (ou "📂 Sua planilha" na barra lateral) e arraste um ou mais 
 separador e cabeçalho, remove linhas vazias e de total, classifica cada coluna (data, dinheiro, %, categoria, UF,
 dado pessoal…), mostra a tela **Entendi assim** para revisão e gera o dashboard e o Modo IA sobre a planilha.
 Nada é enviado: tudo roda no navegador. Planilhas de teste em `evals/planilhas/` (`npm run gerar-planilhas-teste`).
+
+**Dashboards por tema (Fase 5B):** o app diz de que tema a planilha parece ser, com a confiança e o porquê
+("encontrei Pedido, Data do Pedido, Total do Pedido…"). Depois faz 2 ou 3 perguntas opcionais:
+- **o objetivo** (ex.: acompanhar faturamento, achar produtos campeões, entender sazonalidade);
+- **quem vai ver** (gestor, equipe, cliente);
+- **a coluna que faltar** ("Qual coluna é o valor principal?").
+
+O dashboard segue uma receita declarativa do tema. Sem a coluna certa, o painel some e a tela explica por quê;
+nenhum número é inventado. A IA local pode sugerir o tema vendo só os nomes e tipos das colunas (opcional).
+Exemplos na tela inicial: "Experimente: Vendas, RH, Estoque, Financeiro…" (dados fictícios; `npm run gerar-planilhas-temas`).
 
 ## Dados e licença
 

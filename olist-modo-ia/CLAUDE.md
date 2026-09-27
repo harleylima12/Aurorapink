@@ -45,6 +45,13 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
 - **Fase 4 (IA local):** aprovada até onde deu sem GPU; **falta a validação no PC** (roteiro abaixo). Worker do WebLLM com import dinâmico (`src/ai/motorWebLLM.ts`, `engine.worker.ts`), escolha do modelo pela `prebuiltAppConfig` instalada (`modelos.ts`), planejador com JSON Schema (`planner.ts`, `prompts/planner.ts`), valores conferidos na base (`src/query/valueResolver.ts`), narrador com placeholders + validador (`narrator.ts`), motor falso (`motorFalso.ts`), `npm run baixar-modelo`. Decisões D28–D35. Testes: `npm test` (149), `npx playwright test` (22, com `PRINTS=1` grava prints), `python -m pytest tests/dados` (57). Prints em `docs/prints/fase4/`.
 - **Fase 5 (Modo Universal):** aprovada. Rota `/planilha`: leitura (`src/universal/leitor.ts`), limpeza, perfil das colunas (`perfil.ts`), semântica automática (`semanticaAuto.ts`), impressão digital e modelos (`impressao.ts`), vários arquivos (`relacoes.ts`, `montar.ts`), dashboard automático (`painelAuto.ts`) e telas em `src/ui/universal/`. Planilhas de teste em `evals/planilhas/` (`npm run gerar-planilhas-teste`). Decisões D36–D45. Testes: `npm test` (172), `npx playwright test` (24 + 3 pulados: prints com `PRINTS=1`, limite com `LIMITE=1`), `python -m pytest tests/dados` (57). Excel pela SheetJS 0.20.3 (tarball oficial em `vendor/`, D46).
 - **Fase 6 (Privacidade):** aprovada. Service Worker "firewall" (`public/sw.js`, `src/privacidade/firewall.ts`) com contador ao vivo e bloqueio no modo local, PWA offline, "Apagar dados locais" (`src/privacidade/apagar.ts`), tamanho mínimo de grupo para dados sensíveis (`min_group_size` no compilador), `docs/PRIVACIDADE.md`. Decisões D48–D51. Testes: `npm test` (174), `npx playwright test` (28 + 3 pulados: prints com `PRINTS=1`, limite com `LIMITE=1`), `python -m pytest tests/dados` (57). Prints em `docs/prints/fase6/`.
+- **Fase 5B (dashboards por tema):** concluída, aguardando o OK do Harley. Detector de tema sem IA
+  (`src/universal/temas/detector.ts`), papéis (`papeis.ts`), receitas declarativas com Zod (`receitas.ts`),
+  aplicação (`aplicar.ts`), perguntas na tela (`src/ui/universal/PerguntasTema.tsx`), IA opcional só com
+  metadados (`src/ai/temaIA.ts`), exemplos em `public/exemplos/`. Planilhas com tema esperado em
+  `evals/planilhas/temas/` (`npm run gerar-planilhas-temas`). Acerto do tema sem IA: 24/25 (96%) na 1ª rodada
+  (`evals/resultados/temas.json`). Decisões D53–D58. Testes: `npm test` (192), `npx playwright test` (33 + 3 pulados: prints com `PRINTS=1`,
+  limite com `LIMITE=1`), `python -m pytest tests/dados` (57). Prints em `docs/prints/fase5b/` (`PRINTS=1`).
 - **Caminho de dados:** caminho FINAL ativo desde 26/09 (extensão parquet em `public/duckdb-extensions/`, SHA-256 no lock). O `.duckdb` provisório fica como plano B automático (decisão do Harley).
 - **Publicação (D52):** repositório público `HarleylimaDados/olist-modo-ia` (branch `main`, raiz = esta pasta) e deploy na Vercel (time SiteUp), modo demo. `vercel.json` é gerado por `npm run gerar-vercel-json`; teste local como a Vercel: `npm run build && node scripts/servir-como-vercel.mjs`.
 - **Rede da nuvem:** o Harley liberou `cdn.sheetjs.com`, `extensions.duckdb.org`, `huggingface.co` e `*.hf.co`. O `curl` passa direto; o Node precisa de `NODE_USE_ENV_PROXY=1` nesta nuvem (no PC, não).
@@ -54,7 +61,8 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
   3. `python scripts/preparar_dados.py` no Windows (caminho com acento e espaço).
   4. Conferir o frete total no card do Power BI (D16).
   5. IA na GPU (roteiro abaixo).
-- **Próximo passo:** site no ar (D52); depois, Fase 7 (avaliação e performance). IA na GPU continua no roteiro abaixo.
+- **Próximo passo:** Fase 7 (avaliação e performance), depois Fase 8 (README, GIF, acessibilidade, SEO). IA na GPU
+  continua no roteiro abaixo (incluir o tema pela IA: `clientes.csv` e as planilhas de `evals/planilhas/temas/`).
 
 ## Roteiro: validar a IA de verdade no PC (Fase 4)
 
