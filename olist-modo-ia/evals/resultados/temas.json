@@ -1,0 +1,475 @@
+{
+  "gerado_em": "2026-09-27T03:57:16.910Z",
+  "modo": "camada0_sem_ia",
+  "acertos": 24,
+  "total": 25,
+  "taxa": 96,
+  "planilhas": [
+    {
+      "arquivo": "temas/pedidos_loja_virtual.csv",
+      "esperado": "vendas",
+      "detectado": "vendas",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Pedido, Data do Pedido, Total do Pedido e Status do Pedido e mais 5"
+      ],
+      "ranking": [
+        {
+          "tema": "vendas",
+          "pontos": 22
+        }
+      ]
+    },
+    {
+      "arquivo": "temas/fluxo_caixa.csv",
+      "esperado": "financeiro",
+      "detectado": "financeiro",
+      "acertou": true,
+      "confianca": 0.72,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Conta e Forma de Pagamento",
+        "valores do tipo entrada/saída em \"Tipo\""
+      ],
+      "ranking": [
+        {
+          "tema": "financeiro",
+          "pontos": 6.5
+        },
+        {
+          "tema": "estoque",
+          "pontos": 1.5
+        }
+      ]
+    },
+    {
+      "arquivo": "temas/contas_a_pagar.csv",
+      "esperado": "financeiro",
+      "detectado": "financeiro",
+      "acertou": true,
+      "confianca": 0.9,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Vencimento, Centro de Custo, Pago em e Fornecedor e mais 1",
+        "valores do tipo pago/em aberto em \"Status\""
+      ],
+      "ranking": [
+        {
+          "tema": "financeiro",
+          "pontos": 12.5
+        },
+        {
+          "tema": "estoque",
+          "pontos": 2
+        },
+        {
+          "tema": "vendas",
+          "pontos": 1.5
+        }
+      ]
+    },
+    {
+      "arquivo": "temas/folha_pagamento.csv",
+      "esperado": "rh",
+      "detectado": "rh",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Cargo, Salário Base, Salário Líquido e Departamento e mais 4"
+      ],
+      "ranking": [
+        {
+          "tema": "rh",
+          "pontos": 16
+        }
+      ]
+    },
+    {
+      "arquivo": "temas/turnover.csv",
+      "esperado": "rh",
+      "detectado": "rh",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "encontrei ID Funcionário, Data de Admissão, Data de Desligamento e Motivo do Desligamento e mais 3"
+      ],
+      "ranking": [
+        {
+          "tema": "rh",
+          "pontos": 18
+        }
+      ]
+    },
+    {
+      "arquivo": "temas/movimentacao_estoque.csv",
+      "esperado": "estoque",
+      "detectado": "estoque",
+      "acertou": true,
+      "confianca": 0.88,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Tipo de Movimento, Armazém, Lote e SKU e mais 1",
+        "valores do tipo entrada/saída/ajuste em \"Tipo de Movimento\""
+      ],
+      "ranking": [
+        {
+          "tema": "estoque",
+          "pontos": 14.5
+        },
+        {
+          "tema": "vendas",
+          "pontos": 3
+        }
+      ]
+    },
+    {
+      "arquivo": "temas/inventory_en.csv",
+      "esperado": "estoque",
+      "detectado": "estoque",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "encontrei On Hand, Reorder Point, Warehouse e Item Code e mais 2"
+      ],
+      "ranking": [
+        {
+          "tema": "estoque",
+          "pontos": 15
+        }
+      ]
+    },
+    {
+      "arquivo": "temas/campanhas_marketing.csv",
+      "esperado": "marketing",
+      "detectado": "marketing",
+      "acertou": true,
+      "confianca": 0.93,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Campanha, Impressões, Cliques e Conversões e mais 3",
+        "valores de canais de mídia em \"Canal\""
+      ],
+      "ranking": [
+        {
+          "tema": "marketing",
+          "pontos": 20
+        },
+        {
+          "tema": "financeiro",
+          "pontos": 2.5
+        }
+      ]
+    },
+    {
+      "arquivo": "temas/leads.csv",
+      "esperado": "marketing",
+      "detectado": "marketing",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "encontrei utm_source, utm_campaign, Lead ID e Status do Lead e mais 1",
+        "valores de canais de mídia em \"utm_source\""
+      ],
+      "ranking": [
+        {
+          "tema": "marketing",
+          "pontos": 17
+        }
+      ]
+    },
+    {
+      "arquivo": "temas/tickets_suporte.csv",
+      "esperado": "atendimento",
+      "detectado": "atendimento",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Prioridade, CSAT, Tempo de Primeira Resposta (min) e Ticket e mais 3",
+        "valores de prioridade (baixa/média/alta) em \"Prioridade\"",
+        "valores de status de chamado em \"Status\""
+      ],
+      "ranking": [
+        {
+          "tema": "atendimento",
+          "pontos": 20
+        }
+      ]
+    },
+    {
+      "arquivo": "temas/notas_turma.csv",
+      "esperado": "educacao",
+      "detectado": "educacao",
+      "acertou": true,
+      "confianca": 0.97,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Matrícula do Aluno, Turma, Disciplina e Nota 1 e mais 3",
+        "valores de situação do aluno em \"Situação\""
+      ],
+      "ranking": [
+        {
+          "tema": "educacao",
+          "pontos": 19
+        },
+        {
+          "tema": "rh",
+          "pontos": 1
+        }
+      ]
+    },
+    {
+      "arquivo": "temas/atendimentos_clinica.csv",
+      "esperado": "saude",
+      "detectado": "saude",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Paciente, CPF do Paciente, Data da Consulta e Especialidade e mais 5",
+        "códigos no formato CID-10 em \"CID\"",
+        "nomes de convênio em \"Convênio\""
+      ],
+      "ranking": [
+        {
+          "tema": "saude",
+          "pontos": 31
+        }
+      ]
+    },
+    {
+      "arquivo": "temas/exames_laboratorio.csv",
+      "esperado": "saude",
+      "detectado": "saude",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "encontrei ID Paciente, Exame, Valor de Referência e Laboratório e mais 1"
+      ],
+      "ranking": [
+        {
+          "tema": "saude",
+          "pontos": 14
+        }
+      ]
+    },
+    {
+      "arquivo": "temas/leituras_sensores.csv",
+      "esperado": "generico",
+      "detectado": "generico",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "nenhuma coluna com nome de um tema conhecido"
+      ],
+      "ranking": []
+    },
+    {
+      "arquivo": "temas/biblioteca_pessoal.csv",
+      "esperado": "generico",
+      "detectado": "generico",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "nenhuma coluna com nome de um tema conhecido"
+      ],
+      "ranking": []
+    },
+    {
+      "arquivo": "vendas_br.csv",
+      "esperado": "vendas",
+      "detectado": "vendas",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Data da Venda, Nº Pedido, Vendedor e Cliente ID e mais 6"
+      ],
+      "ranking": [
+        {
+          "tema": "vendas",
+          "pontos": 22.25
+        }
+      ]
+    },
+    {
+      "arquivo": "clientes.csv",
+      "esperado": "vendas",
+      "detectado": "generico",
+      "acertou": false,
+      "confianca": 0.38,
+      "nivel": "baixa",
+      "porque": [
+        "poucas pistas de tema (a mais forte: Vendas / E-commerce, 2.5 pontos)"
+      ],
+      "ranking": [
+        {
+          "tema": "vendas",
+          "pontos": 2.5
+        }
+      ]
+    },
+    {
+      "arquivo": "financeiro_titulo_total.csv",
+      "esperado": "financeiro",
+      "detectado": "financeiro",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Centro de Custo, Despesa, Receita e Margem %"
+      ],
+      "ranking": [
+        {
+          "tema": "financeiro",
+          "pontos": 10.5
+        }
+      ]
+    },
+    {
+      "arquivo": "financeiro_titulo_total.xlsx",
+      "esperado": "financeiro",
+      "detectado": "financeiro",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Centro de Custo, Despesa, Receita e Margem %"
+      ],
+      "ranking": [
+        {
+          "tema": "financeiro",
+          "pontos": 10.5
+        }
+      ]
+    },
+    {
+      "arquivo": "rh_ficticio.csv",
+      "esperado": "rh",
+      "detectado": "rh",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Nome do Colaborador, Cargo, Data de Admissão e Salário e mais 4"
+      ],
+      "ranking": [
+        {
+          "tema": "rh",
+          "pontos": 19
+        }
+      ]
+    },
+    {
+      "arquivo": "estoque.tsv",
+      "esperado": "estoque",
+      "detectado": "estoque",
+      "acertou": true,
+      "confianca": 0.88,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Quantidade em Estoque, Estoque Mínimo, Armazém e SKU e mais 1"
+      ],
+      "ranking": [
+        {
+          "tema": "estoque",
+          "pontos": 13
+        },
+        {
+          "tema": "financeiro",
+          "pontos": 2.5
+        },
+        {
+          "tema": "vendas",
+          "pontos": 1.5
+        }
+      ]
+    },
+    {
+      "arquivo": "baguncada.csv",
+      "esperado": "vendas",
+      "detectado": "vendas",
+      "acertou": true,
+      "confianca": 0.84,
+      "nivel": "alta",
+      "porque": [
+        "encontrei cliente, produto e Qtd."
+      ],
+      "ranking": [
+        {
+          "tema": "vendas",
+          "pontos": 6
+        }
+      ]
+    },
+    {
+      "arquivo": "cega_escola.csv",
+      "esperado": "educacao",
+      "detectado": "educacao",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Aluno, Turma, Data da Prova e Nota Final e mais 3"
+      ],
+      "ranking": [
+        {
+          "tema": "educacao",
+          "pontos": 16.25
+        }
+      ]
+    },
+    {
+      "arquivo": "cega_chamados.csv",
+      "esperado": "atendimento",
+      "detectado": "atendimento",
+      "acertou": true,
+      "confianca": 0.91,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Prioridade, Tempo de Resposta (h), Atendente e Protocolo e mais 2",
+        "valores de prioridade (baixa/média/alta) em \"Prioridade\""
+      ],
+      "ranking": [
+        {
+          "tema": "atendimento",
+          "pontos": 17
+        },
+        {
+          "tema": "vendas",
+          "pontos": 2.5
+        },
+        {
+          "tema": "financeiro",
+          "pontos": 1.5
+        }
+      ]
+    },
+    {
+      "arquivo": "cega_vendas_en.csv",
+      "esperado": "vendas",
+      "detectado": "vendas",
+      "acertou": true,
+      "confianca": 1,
+      "nivel": "alta",
+      "porque": [
+        "encontrei Order Date, Revenue, Customer Email e Discount Rate e mais 2"
+      ],
+      "ranking": [
+        {
+          "tema": "vendas",
+          "pontos": 11.5
+        }
+      ]
+    }
+  ]
+}
