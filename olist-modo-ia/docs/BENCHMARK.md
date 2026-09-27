@@ -165,3 +165,62 @@ em relação à Fase 4.
 - A 1ª visita paga ~0,5–0,6 s para o SW assumir antes do DuckDB (D48); a meta "primeira pintura < 2 s" continua
   cumprida. Nas visitas seguintes o SW já está no controle e não há espera.
 - Cache do app guardado pelo SW para funcionar offline: 35,6 MB (medido pelo "Apagar dados locais").
+
+## Fase 7: avaliação e performance
+
+### Qualidade: suíte de 102 perguntas (`evals/perguntas.json`)
+
+**Como medi:** `npm test` (Node, `evals/resultados/avaliacao-camada0.json`) e a página **`/avaliacao`** (navegador,
+Chromium headless, build de produção, mesmo caminho do Modo IA: roteamento, SQL no DuckDB, insights e texto).
+
+| Recorte | Resultado |
+|---|---:|
+| **Lote cego da Fase 7, 1ª rodada** (26 perguntas commitadas antes de rodar, `bcb76e5`) | **21/26 (80,8%)** |
+| Suíte inteira, 1ª rodada | 97/102 (95,1%) |
+| Suíte inteira, depois dos ajustes (D60) | 102/102 (100%) |
+| Metas da seção 17: fáceis + médias ≥ 90% · geral ≥ 75% · fora de escopo 100% | 55/55 · 102/102 · 11/11 |
+| Latência ponta a ponta no navegador (p50 / p95 / máx.), `/avaliacao` | **22 / 88 / 106 ms** (meta < 300 ms) |
+| Só o roteamento (Node, p50 / p95) | 0,6 / 7,8 ms |
+
+- **Leia com cuidado o 100%:** as 76 perguntas antigas foram escritas junto com o roteador (Fase 3), e os 5 erros
+  do lote cego viraram ajustes. O número que mede generalização é o da 1ª rodada do lote cego: **80,8%**.
+- Os 3 erros de "perguntar de volta" (em vez de responder) eram seguros: nenhum número errado. Os 2 graves foram
+  o follow-up "e os pedidos?", que perdia o contexto, e "me fala dos números", recusada como fora de escopo.
+- **Com IA (Camada 0 + 1):** medido só com o motor falso (texto recusado 0% no modo normal, 100% no modo "número
+  inventado", sem mudar nenhum spec). **Medir no PC:** abrir `/avaliacao`, "Ativar a IA local", "Rodar com Camada 0 +
+  IA local" e "Exportar JSON". Anotar acerto por categoria, p50/p95 e % de texto recusado.
+
+### Abertura do dashboard: onde vai o tempo
+
+**Como medi:** `RODADAS=5 npx playwright test medicoes`, mediana de 5 rodadas, com marcas novas (`firewall-pronto`,
+`duckdb-pronto`, `dados-prontos`). Antes e depois foram medidos **no mesmo dia e na mesma máquina**. Esta máquina de
+nuvem estava mais lenta que na Fase 6, então compare só as duas colunas entre si.
+
+| Momento (ms desde o início, carga fria) | Antes | Depois (D59) |
+|---|---:|---:|
+| Primeira pintura | 272 | 280 |
+| Firewall (Service Worker) no controle | 276 | 287 |
+| DuckDB pronto (WASM de 34 MB baixado e compilado) | 2.196 | **1.963** |
+| Dados prontos (extensão parquet + arquivo) | 2.661 | 2.425 |
+| Metadados (anos, UFs, meses parciais) | 2.882 | 2.655 |
+| **KPIs e gráficos na tela** | **3.246** | **3.010 (−236 ms, −7%)** |
+| Com cache: KPIs e gráficos | 2.604 | 2.545 |
+| Trocar o filtro de Ano (mediana) | 229 ms | 225 ms |
+
+- **O que mudou (D59):** o Service Worker esperava gravar a resposta inteira no cache ANTES de entregá-la. Com o
+  WASM de 34 MB, o worker do DuckDB só recebia o 1º byte depois do download completo e da gravação. Agora a
+  resposta vai na hora e a cópia é gravada em segundo plano.
+- Em localhost o download é quase instantâneo. Com rede de verdade, o ganho tende a ser maior, porque o navegador
+  compila enquanto baixa. **Hipótese a medir no site** (DevTools → Performance).
+- O maior bloco continua sendo compilar o WASM do DuckDB (~1,7 s aqui, sem GPU e com CPU de nuvem). Reduzir isso
+  pede outra versão do DuckDB-WASM ou cache do código compilado, e fica como limite conhecido.
+
+### Pacote (build de produção)
+
+| Arquivo | Bruto | gzip | Quando baixa |
+|---|---:|---:|---|
+| JS principal (React, ECharts só com barra/linha/dispersão, Zod, fuse.js, API do DuckDB) | 1,18 MB | 0,37 MB | sempre |
+| Modo Universal (`/planilha`) | 125 kB | 39 kB | ao abrir `/planilha` |
+| SheetJS (Excel) | 492 kB | 157 kB | ao soltar um `.xlsx` |
+| Página `/avaliacao` (suíte + executor) | 36 kB | 9 kB | ao abrir `/avaliacao` |
+| WebLLM (página + worker) | 6,0 MB cada | 2,15 MB cada | só depois de "Ativar IA local" |

@@ -663,3 +663,44 @@ Formato: **contexto → decisão → alternativa descartada**. As decisões da F
 - 8 botões ("Vendas", "Financeiro", "RH"…) abrem planilhas fictícias servidas pelo próprio site
   (`public/exemplos/`, geradas por `scripts/gerar_planilhas_temas.py` com semente fixa). Os nomes são sorteados de
   listas comuns e os CPFs são inventados: nenhuma pessoa real.
+
+## Fase 7: avaliação e performance
+
+### D59. Service Worker: gravar no cache depois de responder
+
+- **Contexto:** a medição com marcas novas mostrou quase 2 s até o DuckDB ficar pronto a frio. O SW fazia
+  `await cache.put(...)` antes de devolver a resposta. Para o WASM de 34 MB, isso segurava o download inteiro e a
+  gravação, e o navegador não compilava em streaming.
+- **Decisão:** a resposta vai direto para a página/worker; a cópia é gravada com `event.waitUntil` (o SW continua
+  vivo até terminar). Offline continua funcionando (`privacidade.spec.ts`).
+- **Medido:** KPIs e gráficos a frio 3.246 → 3.010 ms (mesmo dia, mesma máquina; BENCHMARK, Fase 7).
+- **Descartado:** pré-carregar o WASM antes de o SW assumir. Ganha pouco em localhost e abriria uma exceção na
+  regra "todo worker nasce sob o firewall" (D48).
+
+### D60. Suíte de 102 perguntas com lote cego; ajustes gerais, não por pergunta
+
+- **Contexto:** a suíte da Fase 3 (76) acertava 100%, mas foi escrita junto com o roteador. Número otimista.
+- **Decisão:** 26 perguntas novas (lote `fase7`), com o spec esperado commitado ANTES da 1ª rodada (`bcb76e5`).
+  1ª rodada: **21/26 (80,8%)**; suíte 97/102. A página `/avaliacao` mostra os dois números.
+- **Ajustes** (valem para qualquer pergunta parecida, não só para as 5):
+  - follow-up que só troca a métrica ("e os pedidos?") mantém dimensões, período e filtros;
+  - verbos "vendem/vende/fatura";
+  - gírias e abreviações "qnto/qto/gnt";
+  - "percentual/porcentagem" como modificador neutro;
+  - "me fala/visão geral/panorama" como pedido vago (pergunta de volta em vez de recusar).
+  - Bug visível corrigido de brinde: o chip "Frete total total".
+- **Efeito colateral honesto:** "me fala algo sobre isso aí" passou a ser resolvida pela Camada 0 (pergunta de
+  volta), então o teste que exercita a IA ganhou outra pergunta vaga ("o que tu acha disso aí?").
+
+### D61. Página `/avaliacao` roda a suíte no navegador, pelo caminho real
+
+- **Decisão:** o executor (`src/avaliacao/rodar.ts`) chama o MESMO `responder` do Modo IA, então a latência
+  medida é de ponta a ponta. A página mostra:
+  - acerto por categoria e as metas da seção 17 (✓/✗);
+  - o lote cego separado;
+  - p50/p95/máx.;
+  - com IA, a % de texto recusado pelo validador (fallback do narrador);
+  - os números do Modo Universal (perfil 88/88, tema 24/25).
+
+  Exporta JSON. Carregada sob demanda (36 kB), com link na barra lateral.
+- **Com IA real:** só no PC (botão "Ativar a IA local" na própria página); aqui, o motor falso (e2e).
