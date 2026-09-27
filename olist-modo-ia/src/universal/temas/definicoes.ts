@@ -148,7 +148,7 @@ export const PAPEIS = [
   'tipo_lancamento', 'centro_custo', 'fornecedor', 'salario', 'departamento', 'cargo', 'colaborador', 'desligamento',
   'estoque_atual', 'estoque_minimo', 'armazem', 'item', 'movimento', 'campanha', 'canal', 'investimento', 'impressoes', 'cliques',
   'conversoes', 'receita_atribuida', 'lead', 'chamado', 'prioridade', 'agente', 'tempo_resposta', 'satisfacao', 'aluno', 'turma',
-  'disciplina', 'nota', 'frequencia', 'faltas', 'paciente', 'especialidade', 'profissional', 'procedimento', 'convenio',
+  'disciplina', 'nota', 'frequencia', 'presenca', 'faltas', 'paciente', 'especialidade', 'profissional', 'procedimento', 'convenio',
 ] as const;
 export type PapelNegocio = (typeof PAPEIS)[number];
 
@@ -216,10 +216,14 @@ export const DEF_PAPEIS: Readonly<Record<PapelNegocio, DefPapel>> = {
   tempo_resposta: { rotulo: 'tempo de resposta', pergunta: 'Qual coluna é o tempo de resposta?', tipos: ['numero'], palavras: ['tempo', 'resposta', 'sla', 'minutos', 'horas'] },
   satisfacao: { rotulo: 'satisfação', pergunta: 'Qual coluna é a satisfação?', tipos: ['numero'], palavras: ['csat', 'satisfacao', 'nps', 'avaliacao', 'nota'] },
   aluno: { rotulo: 'aluno', pergunta: 'Qual coluna identifica o aluno?', tipos: ['id'], palavras: ['aluno', 'student', 'matricula'] },
-  turma: { rotulo: 'turma', pergunta: 'Qual coluna é a turma?', tipos: CAT, palavras: ['turma', 'classe', 'serie', 'class'] },
+  turma: { rotulo: 'turma', pergunta: 'Qual coluna é a turma (ou nível)?', tipos: CAT, palavras: ['turma', 'classe', 'serie', 'class', 'nivel', 'level', 'modulo'] },
   disciplina: { rotulo: 'disciplina', pergunta: 'Qual coluna é a disciplina?', tipos: CAT, palavras: ['disciplina', 'materia', 'subject', 'curso'] },
   nota: { rotulo: 'nota', pergunta: 'Qual coluna é a nota?', tipos: ['numero'], palavras: ['media', 'nota', 'grade', 'score'] },
   frequencia: { rotulo: 'frequência', pergunta: 'Qual coluna é a frequência?', tipos: ['porcentagem', 'numero'], palavras: ['frequencia', 'presenca', 'attendance'] },
+  presenca: {
+    rotulo: 'presença', pergunta: 'Qual coluna diz se a pessoa veio (presente/faltou)?', tipos: CAT, palavras: ['presenca', 'comparecimento', 'compareceu', 'attendance'],
+    valores: ['presente', 'faltou', 'ausente', 'compareceu', 'falta', 'sim', 'nao'],
+  },
   faltas: { rotulo: 'faltas', pergunta: 'Qual coluna são as faltas?', tipos: ['numero'], palavras: ['faltas', 'ausencias', 'absences'] },
   paciente: { rotulo: 'paciente', pergunta: 'Qual coluna identifica o paciente?', tipos: ['id'], palavras: ['paciente', 'patient'] },
   especialidade: { rotulo: 'especialidade', pergunta: 'Qual coluna é a especialidade?', tipos: CAT, palavras: ['especialidade', 'specialty', 'setor'] },

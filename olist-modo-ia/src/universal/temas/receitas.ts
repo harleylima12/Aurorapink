@@ -425,7 +425,7 @@ const BRUTAS: Record<Exclude<Tema, 'generico'>, z.input<typeof receitaSchema>> =
   educacao: {
     tema: 'educacao',
     essenciais: [['nota']],
-    papeis: ['aluno', 'turma', 'disciplina', 'nota', 'frequencia', 'faltas', 'status', 'data'],
+    papeis: ['aluno', 'turma', 'disciplina', 'nota', 'frequencia', 'presenca', 'faltas', 'status', 'data'],
     metricas: [
       { id: 'alunos', rotulo: 'Alunos', descricao: 'Alunos diferentes', formato: 'int', sinonimos: ['alunos', 'quantos alunos', 'estudantes'], zeroSeVazio: true,
         alternativas: [{ sql: 'COUNT(DISTINCT {aluno})' }, { sql: 'COUNT(*)', rotulo: 'Registros' }] },
@@ -433,7 +433,12 @@ const BRUTAS: Record<Exclude<Tema, 'generico'>, z.input<typeof receitaSchema>> =
       { id: 'aprovacao', rotulo: '% aprovados', descricao: 'Parte dos registros marcada como aprovada', formato: 'pct', polaridade: 'higher_is_better', sinonimos: ['aprovacao', 'aprovados', 'taxa de aprovacao'],
         alternativas: [{ sql: `AVG(CASE WHEN ${em('status', ['aprovado', 'sim', 'true'])} THEN 1.0 ELSE 0 END)` }] },
       { id: 'frequencia', rotulo: 'Frequência média', descricao: 'Média da frequência', formato: 'pct', polaridade: 'higher_is_better', sinonimos: ['frequencia', 'presenca', 'frequencia media'],
-        alternativas: [{ sql: 'AVG({frequencia})', seTipo: { frequencia: ['porcentagem'] } }, { sql: 'AVG({frequencia}) / 100.0' }] },
+        alternativas: [
+          { sql: 'AVG({frequencia})', seTipo: { frequencia: ['porcentagem'] } },
+          { sql: 'AVG({frequencia}) / 100.0' },
+          // Aula a aula ("Presente/Faltou"): frequência = parte das aulas com presença.
+          { sql: `AVG(CASE WHEN ${em('presenca', ['presente', 'compareceu', 'sim'])} THEN 1.0 ELSE 0 END)`, rotulo: 'Presença nas aulas' },
+        ] },
       soma('faltas', 'Faltas', 'faltas', 'int', 'Soma das faltas', 'lower_is_better', ['faltas', 'ausencias']),
     ],
     kpis: ['alunos', 'media', 'aprovacao', 'frequencia', 'faltas'],
