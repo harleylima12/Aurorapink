@@ -1494,3 +1494,62 @@ button.link {
   max-height: 180px;
   overflow: auto;
 }
+
+/* Fase 7: página /avaliacao. */
+.pagina-avaliacao {
+  display: grid;
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pagina-avaliacao .painel {
+  display: grid;
+  gap: 12px;
+}
+
+.avaliacao-kpis {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.avaliacao-kpis .kpi-rodape {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--texto-2);
+}
+
+.avaliacao-tabelas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.avaliacao-tabelas td.ok {
+  color: var(--destaque);
+}
+
+.avaliacao-tabelas td.erro {
+  color: var(--alerta);
+}
+
+.avaliacao-erros ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  font-size: 12.5px;
+  color: var(--texto-2);
+  display: grid;
+  gap: 3px;
+  max-height: 320px;
+  overflow: auto;
+}
+
+.pagina-avaliacao .zona-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.botao-exportar {
+  justify-self: start;
+}

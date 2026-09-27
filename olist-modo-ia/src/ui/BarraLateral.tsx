@@ -8,6 +8,7 @@ interface Props {
   local: Local;
   navegar: (novo: Local, opcoes?: { substituir?: boolean }) => void;
   irPlanilha?: () => void;
+  irAvaliacao?: () => void;
 }
 
 function Navegacao({ local, navegar }: Props) {
@@ -97,6 +98,18 @@ export function BarraLateral(props: Props) {
       >
         <span>📂 Sua planilha</span>
         <small>Modo Universal: CSV ou Excel</small>
+      </a>
+      <a
+        className="link-planilha"
+        href="/avaliacao"
+        onClick={(e) => {
+          if (!props.irAvaliacao || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+          e.preventDefault();
+          props.irAvaliacao();
+        }}
+      >
+        <span>📏 Avaliação</span>
+        <small>Acerto e latência medidos aqui</small>
       </a>
     </aside>
   );

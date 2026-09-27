@@ -46,7 +46,7 @@ async function carregarMetadados(motor: Motor): Promise<Metadados> {
 
 type Carga = { status: 'carregando' } | { status: 'pronto'; dados: ContextoDados } | { status: 'erro'; mensagem: string };
 
-function Painel({ dados, irPlanilha }: { dados: ContextoDados; irPlanilha: () => void }) {
+function Painel({ dados, irPlanilha, irAvaliacao }: { dados: ContextoDados; irPlanilha: () => void; irAvaliacao: () => void }) {
   const [local, navegar] = useLocal();
   const pagina = PAGINAS.find((p) => p.id === local.pagina) ?? PAGINAS[0];
   const renderizados = useRef(new Set<string>());
@@ -90,7 +90,7 @@ function Painel({ dados, irPlanilha }: { dados: ContextoDados; irPlanilha: () =>
   return (
     <Dados.Provider value={dados}>
       <div className={`app${iaAberto ? ' com-ia' : ''}`}>
-        <BarraLateral local={local} navegar={navegar} irPlanilha={irPlanilha} />
+        <BarraLateral local={local} navegar={navegar} irPlanilha={irPlanilha} irAvaliacao={irAvaliacao} />
         <main className="conteudo" id="conteudo">
           <header className="topo">
             <div>
@@ -134,7 +134,13 @@ function Painel({ dados, irPlanilha }: { dados: ContextoDados; irPlanilha: () =>
 // Modo Universal sob demanda: quem só vê a demo da Olist não baixa o código das planilhas.
 const PaginaPlanilha = lazy(() => import('./universal/PaginaPlanilha').then((m) => ({ default: m.PaginaPlanilha })));
 
-const rotaAtual = () => (window.location.pathname.replace(/\/+$/, '') === '/planilha' ? 'planilha' : 'olist');
+// Avaliação sob demanda também (a suíte e o executor só vêm quando alguém abre /avaliacao).
+const PaginaAvaliacao = lazy(() => import('./avaliacao/PaginaAvaliacao').then((m) => ({ default: m.PaginaAvaliacao })));
+
+const rotaAtual = () => {
+  const caminho = window.location.pathname.replace(/\/+$/, '');
+  return caminho === '/planilha' ? 'planilha' : caminho === '/avaliacao' ? 'avaliacao' : 'olist';
+};
 
 export function App() {
   const [carga, setCarga] = useState<Carga>({ status: 'carregando' });
@@ -176,7 +182,14 @@ export function App() {
         </Suspense>
       );
     }
-    return <Painel dados={carga.dados} irPlanilha={() => ir('/planilha')} />;
+    if (rota === 'avaliacao') {
+      return (
+        <Suspense fallback={<div className="carregando-app" role="status">Abrindo a avaliação…</div>}>
+          <PaginaAvaliacao motor={carga.dados.motor} meta={carga.dados.meta} aoVoltar={() => ir('/')} />
+        </Suspense>
+      );
+    }
+    return <Painel dados={carga.dados} irPlanilha={() => ir('/planilha')} irAvaliacao={() => ir('/avaliacao')} />;
   }
   return (
     <div className="carregando-app" role="status" aria-live="polite">
