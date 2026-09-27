@@ -55,6 +55,8 @@ export interface PerfilColuna {
   mascara?: Mascara;
   /** Números: todos inteiros na amostra (formato sem casas decimais). */
   inteiro?: boolean;
+  /** Até 12 valores distintos da amostra (nunca de dado pessoal nem texto livre): sinal para o detector de tema. */
+  amostraValores?: string[];
   distintos: number;
   preenchidas: number;
   linhas: number;
@@ -190,7 +192,13 @@ export function classificarColuna(e: EstatisticaColuna, ctx: Contexto = {}): Per
   const p = palavras(e.original);
   const a = e.amostra.map((v) => v.trim()).filter(Boolean);
   const razaoDistintos = e.preenchidas ? e.distintos / e.preenchidas : 0;
-  const r = (tipo: TipoColuna, motivo: string, extra: Partial<PerfilColuna> = {}): PerfilColuna => ({ ...base, tipo, motivo, ...extra });
+  const r = (tipo: TipoColuna, motivo: string, extra: Partial<PerfilColuna> = {}): PerfilColuna => ({
+    ...base,
+    tipo,
+    motivo,
+    ...(tipo === 'pessoal' || tipo === 'texto' ? {} : { amostraValores: [...new Set(a)].slice(0, 12) }),
+    ...extra,
+  });
 
   if (!a.length) return r('texto', 'coluna vazia');
 
