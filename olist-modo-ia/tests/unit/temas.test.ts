@@ -8,6 +8,8 @@ import path from 'node:path';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import type { Linha } from '../../src/data/duckdb';
+import { criarMotorFalso } from '../../src/ai/motorFalso';
+import { combinarTema, metadadosParaIA, sugerirTemaIA, validarTemaDoModelo } from '../../src/ai/temaIA';
 import { compilar } from '../../src/query/compiler';
 import { configPadrao, lerPlanilha, type BancoUniversal, type LeituraPlanilha } from '../../src/universal/carregar';
 import { montarGrupo, type PlanilhaMontada } from '../../src/universal/montar';
@@ -191,5 +193,46 @@ describe('receitas por tema', () => {
     const { painel } = await montarComTema('temas/pedidos_loja_virtual.csv');
     expect(painel.perguntas).toContain('Faturamento mês a mês');
     expect(painel.perguntas.some((q) => /vendedor/i.test(q))).toBe(false);
+  });
+});
+
+describe('tema pela IA local (Camada 1, opcional)', () => {
+  it('a IA só vê metadados: nenhum valor da planilha (nem CPF, nem nome, nem categoria) vai no pedido', () => {
+    const l = leituras.get('rh_ficticio.csv')!;
+    const texto = JSON.stringify(metadadosParaIA(l.perfis, configPadrao(l.perfis)));
+    const valores = l.previa.flatMap((linha) => Object.values(linha)).map((v) => String(v ?? '').trim()).filter((v) => v.length >= 4);
+    expect(valores.length).toBeGreaterThan(20);
+    for (const v of valores) expect(texto.includes(v), v).toBe(false);
+    expect(texto).toContain('"tipo":"dado pessoal"');
+  });
+
+  it('saída ruim nunca passa: JSON quebrado, tema fora da lista, coluna inventada e pergunta com número', () => {
+    expect(validarTemaDoModelo('{"tema": "vendas"', ['a']).sugestao).toBeNull();
+    expect(validarTemaDoModelo('{"tema":"astrologia","rotulos":[],"perguntas":[]}', ['a']).sugestao).toBeNull();
+    const r = validarTemaDoModelo('Claro! {"tema":"rh","rotulos":[{"coluna":"a","rotulo":"Área"},{"coluna":"x","rotulo":"?"}],"perguntas":["Quem cresceu 15%?","Salário médio por área"]}', ['a']);
+    expect(r.sugestao).toEqual({ tema: 'rh', rotulos: [{ coluna: 'a', rotulo: 'Área' }], perguntas: ['Salário médio por área'] });
+    expect(r.erros).toHaveLength(2);
+  });
+
+  it('a IA só troca o tema quando a Camada 0 não tem confiança alta', () => {
+    const alta = detectarTema(leituras.get('vendas_br.csv')!.perfis);
+    const baixa = detectarTema(leituras.get('clientes.csv')!.perfis);
+    const sugestao = { tema: 'rh' as const, rotulos: [], perguntas: [] };
+    expect(combinarTema(alta, sugestao)).toMatchObject({ tema: 'vendas', fonte: 'camada0' });
+    expect(combinarTema(baixa, sugestao)).toMatchObject({ tema: 'rh', fonte: 'ia' });
+    expect(combinarTema(baixa, null)).toMatchObject({ tema: 'generico', fonte: 'camada0' });
+  });
+
+  it('com o motor falso: clientes.csv vira vendas; modos adversários são barrados', async () => {
+    const l = leituras.get('clientes.csv')!;
+    const config = configPadrao(l.perfis);
+    const ok = await sugerirTemaIA(criarMotorFalso(), l.perfis, config);
+    expect(ok.sugestao?.tema).toBe('vendas');
+    expect(ok.mensagens[1]?.content).not.toContain('@');
+    expect((await sugerirTemaIA(criarMotorFalso({ modo: 'json-quebrado' }), l.perfis, config)).sugestao).toBeNull();
+    expect((await sugerirTemaIA(criarMotorFalso({ modo: 'metrica-inventada' }), l.perfis, config)).sugestao).toBeNull();
+    const fantasma = await sugerirTemaIA(criarMotorFalso({ modo: 'valor-inexistente' }), l.perfis, config);
+    expect(fantasma.sugestao?.rotulos.map((r) => r.coluna)).not.toContain('coluna_fantasma');
+    expect((await sugerirTemaIA(criarMotorFalso({ modo: 'erro' }), l.perfis, config)).erros[0]).toMatch(/falhou/);
   });
 });

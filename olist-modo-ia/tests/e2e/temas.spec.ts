@@ -172,3 +172,27 @@ test('modelo salvo guarda tema e respostas: a mesma planilha abre direto com o m
   await expect(page.locator('[data-visual^="tema-"]')).toHaveCount(3);
   await foto(page, '9-modelo-salvo-abre-direto.png');
 });
+
+test('IA local opcional (motor falso): só metadados; com confiança baixa, a sugestão dela decide o tema', async ({ page }) => {
+  test.setTimeout(120_000);
+  await vigiarCsp(page);
+  await page.goto('/planilha?motor=falso');
+  await expect(page.getByRole('heading', { name: 'Arraste sua planilha aqui' })).toBeVisible({ timeout: 60_000 });
+  await soltar(page, 'clientes.csv');
+  const cartao = page.locator('.tema-cartao');
+  await expect(cartao).toHaveAttribute('data-tema', 'generico', { timeout: 30_000 });
+  await cartao.getByRole('button', { name: /Pedir sugestão à IA local/ }).click();
+  const ia = page.getByTestId('sugestao-ia');
+  await expect(ia).toContainText('sugeriu Vendas / E-commerce; a detecção por nomes estava com confiança baixa, então usei a sugestão da IA', { timeout: 30_000 });
+  await expect(cartao).toHaveAttribute('data-tema', 'vendas');
+  await ia.getByText('O que a IA recebeu').click();
+  const recebido = (await ia.locator('pre').textContent()) ?? '';
+  expect(recebido).toContain('"tipo":"dado pessoal"');
+  expect(recebido).not.toMatch(/@|\d{3}\.\d{3}\.\d{3}-\d{2}|Atacado/);
+  await expect(page.locator('tr[data-coluna="Cliente ID"] input')).toHaveValue('Cliente ID (IA)');
+  await foto(page, '10-sugestao-ia-local.png');
+  await page.getByRole('button', { name: 'Gerar dashboard' }).click();
+  await page.getByRole('button', { name: /Modo IA/ }).click();
+  await expect(page.locator('.painel-ia .chip').first()).toHaveText('Quais segmentos têm mais clientes?', { timeout: 30_000 });
+  expect(await violacoesCsp(page)).toEqual([]);
+});
