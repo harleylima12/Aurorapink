@@ -8,6 +8,8 @@
 import { normalizar } from '../router/normalizar';
 import { z } from '../zod';
 import { TIPOS_COLUNA, type ColunaConfig, type PerfilColuna } from './perfil';
+import { PUBLICOS } from './temas/aplicar';
+import { PAPEIS, TEMAS } from './temas/definicoes';
 
 /** FNV-1a de 64 bits (em BigInt): rápido, determinístico e sem depender de crypto.subtle. */
 export function hash64(texto: string): string {
@@ -37,18 +39,28 @@ const colunaConfig = z.object({
   inteiro: z.boolean().optional(),
 });
 
+/** Tema, objetivo, público e papéis escolhidos à mão (Fase 5B). Opcional: modelos antigos continuam valendo. */
+const temaSalvo = z.object({
+  tema: z.enum(TEMAS),
+  objetivo: z.string().regex(/^[a-z][a-z0-9_]*$/).optional(),
+  publico: z.enum(PUBLICOS).optional(),
+  fixos: z.partialRecord(z.enum(PAPEIS), z.string().regex(/^([a-z][a-z0-9_]*)?$/)).optional(),
+});
+export type TemaSalvo = z.infer<typeof temaSalvo>;
+
 export const modeloSchema = z.object({
   formato: z.literal('olist-modo-ia/modelo-planilha'),
   versao: z.literal(1),
   impressao: z.string().regex(/^[0-9a-f]{16}$/),
   nome: z.string().min(1).max(120),
   colunas: z.array(colunaConfig).min(1).max(300),
+  tema: temaSalvo.optional(),
   salvoEm: z.string(),
 });
 export type ModeloPlanilha = z.infer<typeof modeloSchema>;
 
-export function criarModelo(nome: string, impressao: string, colunas: readonly ColunaConfig[]): ModeloPlanilha {
-  return modeloSchema.parse({ formato: 'olist-modo-ia/modelo-planilha', versao: 1, impressao, nome, colunas, salvoEm: new Date().toISOString() });
+export function criarModelo(nome: string, impressao: string, colunas: readonly ColunaConfig[], tema?: TemaSalvo): ModeloPlanilha {
+  return modeloSchema.parse({ formato: 'olist-modo-ia/modelo-planilha', versao: 1, impressao, nome, colunas, ...(tema ? { tema } : {}), salvoEm: new Date().toISOString() });
 }
 
 /** Importar é validar: um .json de fora nunca entra sem passar pelo schema (e nunca vira SQL solto). */

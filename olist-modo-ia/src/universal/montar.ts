@@ -11,6 +11,7 @@ import type { ColunaConfig } from './perfil';
 import { montarJuncao, prefixoDe, type Ligacao } from './relacoes';
 import { montarSemantica } from './semanticaAuto';
 import { painelDoTema, planejarTema, type EscolhaTema, type PainelTema } from './temas/aplicar';
+import type { ResultadoTema } from './temas/detector';
 
 export interface ParteGrupo {
   leitura: LeituraPlanilha;
@@ -28,6 +29,8 @@ export interface Grupo {
   minGroupSize?: number;
   /** Tema, objetivo, público e papéis (Fase 5B). Sem isso (ou tema genérico), vale o painel automático. */
   tema?: EscolhaTema;
+  /** O que o detector achou (para a tela mostrar o porquê). */
+  deteccao?: ResultadoTema;
 }
 
 export interface PlanilhaMontada {
