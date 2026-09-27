@@ -19,7 +19,8 @@ Dashboard da base pública da Olist com **Modo IA 100% local** (WebLLM + DuckDB-
 | 5. Modo Universal | ✅ arraste um CSV em `/planilha`: limpeza, perfil das colunas, tela "Entendi assim" e dashboard automático; Excel via SheetJS; prints em [`docs/prints/fase5`](docs/prints/fase5) |
 | 5B. Dashboards por tema | ✅ o app reconhece o tema da planilha (vendas, financeiro, RH, estoque, marketing, atendimento, educação, saúde) **sem IA**, com 96% de acerto na 1ª rodada, e monta o dashboard pela receita do tema; prints em [`docs/prints/fase5b`](docs/prints/fase5b) |
 | 6. Privacidade | ✅ firewall (Service Worker) com contador de requisições externas, offline, "Apagar dados locais", proteção de dados sensíveis; ver [`docs/PRIVACIDADE.md`](docs/PRIVACIDADE.md) |
-| 7 e 8 | a fazer |
+| 7. Avaliação e performance | ✅ suíte com 102 perguntas; lote cego novo: 80,8% na 1ª rodada, 100% depois de ajustes gerais; página [`/avaliacao`](https://olist-modo-ia.vercel.app/avaliacao) roda tudo no navegador (p95 88 ms ponta a ponta); abertura 7% mais rápida (D59); ver [`docs/BENCHMARK.md`](docs/BENCHMARK.md) |
+| 8. Portfólio | a fazer |
 
 ## Fase 1: preparar os dados
 

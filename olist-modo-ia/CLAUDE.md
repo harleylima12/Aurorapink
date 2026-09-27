@@ -52,6 +52,11 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
   `evals/planilhas/temas/` (`npm run gerar-planilhas-temas`). Acerto do tema sem IA: 24/25 (96%) na 1ª rodada
   (`evals/resultados/temas.json`). Decisões D53–D58. Testes: `npm test` (192), `npx playwright test` (33 + 3 pulados: prints com `PRINTS=1`,
   limite com `LIMITE=1`), `python -m pytest tests/dados` (57). Prints em `docs/prints/fase5b/` (`PRINTS=1`).
+- **Fase 7 (avaliação e performance):** concluída, aguardando o OK do Harley. Suíte com 102 perguntas
+  (`evals/perguntas.json`); lote cego `fase7`: 21/26 (80,8%) na 1ª rodada, 102/102 depois dos ajustes (D60).
+  Página `/avaliacao` (`src/ui/avaliacao/`, executor `src/avaliacao/rodar.ts`). SW grava no cache depois de
+  responder (D59, −236 ms a frio). Marcas de abertura: `firewall-pronto`, `duckdb-pronto`, `dados-prontos`.
+  Decisões D59–D61. Testes: `npm test` (195), `npx playwright test` (34 + 3 pulados: prints com `PRINTS=1`, limite com `LIMITE=1`). Prints em `docs/prints/fase7/`.
 - **Caminho de dados:** caminho FINAL ativo desde 26/09 (extensão parquet em `public/duckdb-extensions/`, SHA-256 no lock). O `.duckdb` provisório fica como plano B automático (decisão do Harley).
 - **Publicação (D52):** repositório público `HarleylimaDados/olist-modo-ia` (branch `main`, raiz = esta pasta) e deploy na Vercel (time SiteUp), modo demo. `vercel.json` é gerado por `npm run gerar-vercel-json`; teste local como a Vercel: `npm run build && node scripts/servir-como-vercel.mjs`.
 - **Rede da nuvem:** o Harley liberou `cdn.sheetjs.com`, `extensions.duckdb.org`, `huggingface.co` e `*.hf.co`. O `curl` passa direto; o Node precisa de `NODE_USE_ENV_PROXY=1` nesta nuvem (no PC, não).
@@ -61,8 +66,8 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
   3. `python scripts/preparar_dados.py` no Windows (caminho com acento e espaço).
   4. Conferir o frete total no card do Power BI (D16).
   5. IA na GPU (roteiro abaixo).
-- **Próximo passo:** Fase 7 (avaliação e performance), depois Fase 8 (README, GIF, acessibilidade, SEO). IA na GPU
-  continua no roteiro abaixo (incluir o tema pela IA: `clientes.csv` e as planilhas de `evals/planilhas/temas/`).
+- **Próximo passo:** Fase 8 (README, GIF, arquitetura, ENTREVISTA, acessibilidade, SEO). IA na GPU continua no
+  roteiro abaixo (incluir `/avaliacao` com a IA e o tema pela IA: `clientes.csv` e `evals/planilhas/temas/`).
 
 ## Roteiro: validar a IA de verdade no PC (Fase 4)
 
@@ -89,7 +94,9 @@ variável de ambiente é `$env:VITE_MODEL_SOURCE="local"; npm run dev` (no bash:
 5. **Metas:** planejamento < 3 s com GPU dedicada, < 6 s com integrada (modelo já em cache); zero violações de CSP;
    zero requisições externas no modo local. Se não bater: testar `VITE_MODELO=Llama-3.2-1B-Instruct-q4f16_1-MLC`
    e `VITE_MODELO=Qwen3.5-0.8B-q4f16_1-MLC` e anotar os três.
-6. **Anotar** tudo na tabela "Medir no PC" do `docs/BENCHMARK.md`, junto com a GPU (`chrome://gpu`). No console,
+6. **Suíte com a IA:** abrir `/avaliacao`, "Ativar a IA local", "Rodar com Camada 0 + IA local", "Exportar JSON"
+   (acerto por categoria, p50/p95, % de texto recusado) e anotar no BENCHMARK (Fase 7).
+7. **Anotar** tudo na tabela "Medir no PC" do `docs/BENCHMARK.md`, junto com a GPU (`chrome://gpu`). No console,
    `JSON.parse(localStorage['olist-modo-ia:falhas-narrador'] ?? '[]')` mostra os textos da IA que o validador recusou.
-7. Calibrar `LIMITE_FRACA` em `src/ai/modelos.ts` se a escolha automática não fizer sentido na máquina.
+8. Calibrar `LIMITE_FRACA` em `src/ai/modelos.ts` se a escolha automática não fizer sentido na máquina.
 
