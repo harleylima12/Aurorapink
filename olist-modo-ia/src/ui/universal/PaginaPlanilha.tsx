@@ -226,6 +226,7 @@ export function PaginaPlanilha({ motor, aoVerDemo }: { motor: Motor; aoVerDemo: 
           reconhecido={etapa.reconhecido}
           resumo={etapa.grupo.principal.leitura.resumo}
           perguntasIA={etapa.grupo.tema?.perguntasIA}
+          tema={etapa.grupo.tema?.tema}
           aoRevisar={() => setEtapa({ tipo: 'revisao', grupo: etapa.grupo })}
           aoTrocar={voltar}
         />

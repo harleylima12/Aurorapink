@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 
 import { SEM_FILTROS } from '../../dashboard/filtros';
 import type { Linha, Motor } from '../../data/duckdb';
@@ -10,8 +10,9 @@ import { ident } from '../../universal/limpeza';
 import type { PlanilhaMontada } from '../../universal/montar';
 import { exemplosDaPlanilha, sugestoesDaPlanilha } from '../../universal/painelAuto';
 import type { ColunaConfig } from '../../universal/perfil';
+import { PALETAS, rampaOrdinal } from '../../charts/paletas';
 import { ROTULO_PUBLICO, type PainelTema } from '../../universal/temas/aplicar';
-import { DEF_TEMAS } from '../../universal/temas/definicoes';
+import { DEF_TEMAS, type Tema } from '../../universal/temas/definicoes';
 import { Dados, type ContextoDados } from '../contexto';
 import { KpiCard } from '../KpiCard';
 import { PainelIA } from '../modo-ia/PainelIA';
@@ -103,17 +104,26 @@ interface Props {
   aoTrocar: () => void;
   /** Perguntas sugeridas pela IA local na tela "Entendi assim" (se foi pedida). */
   perguntasIA?: string[];
+  /** Tema escolhido (define a paleta; sem tema, a neutra do "Genérico"). */
+  tema?: Tema;
 }
 
 /** Dashboard automático (seção 7A item 7) + Modo IA sobre a planilha. */
-export function DashboardPlanilha({ motor, montada, nome, reconhecido, resumo, aoRevisar, aoTrocar, perguntasIA }: Props) {
+export function DashboardPlanilha({ motor, montada, nome, reconhecido, resumo, aoRevisar, aoTrocar, perguntasIA, tema: temaEscolhido }: Props) {
   const [iaAberto, setIaAberto] = useState(false);
   const campo = useRef<HTMLInputElement>(null);
   const ancora = montada.periodo?.ate ?? new Date().toISOString().slice(0, 10);
+  // Identidade visual do tema (Fase 5C): cor de destaque e paleta validadas (src/charts/paletas.ts).
+  const idTema: Tema = ('tema' in montada.painel ? montada.painel.tema : temaEscolhido) ?? 'generico';
+  const paleta = PALETAS[idTema];
   const dados = useMemo<ContextoDados>(
-    () => ({ motor, semantica: montada.semantica, meta: { anos: [], ufs: [], mesesParciais: new Set<string>(), ancora } }),
-    [motor, montada.semantica, ancora],
+    () => ({ motor, semantica: montada.semantica, paleta, meta: { anos: [], ufs: [], mesesParciais: new Set<string>(), ancora } }),
+    [motor, montada.semantica, ancora, paleta],
   );
+  const estiloTema = useMemo(() => {
+    const [a, b] = rampaOrdinal(paleta.destaque, 2);
+    return { '--destaque': paleta.destaque, '--gradiente': `linear-gradient(90deg, ${a}, ${b})` } as CSSProperties;
+  }, [paleta]);
   const tema: PainelTema | null = 'tema' in montada.painel ? montada.painel : null;
   const extras = useMemo<ExtrasModoIA>(
     () => ({
@@ -153,7 +163,7 @@ export function DashboardPlanilha({ motor, montada, nome, reconhecido, resumo, a
 
   return (
     <Dados.Provider value={dados}>
-      <div className={`app-planilha${iaAberto ? ' com-ia' : ''}`}>
+      <div className={`app-planilha${iaAberto ? ' com-ia' : ''}`} data-tema={idTema} style={estiloTema}>
         <main className="conteudo" id="conteudo">
           <header className="topo">
             <div>
@@ -198,9 +208,16 @@ export function DashboardPlanilha({ motor, montada, nome, reconhecido, resumo, a
               </button>
             </div>
           </header>
-          <section className="kpis" aria-label="Indicadores" aria-live="polite">
+          <section className={`kpis layout-${tema?.layoutKpis ?? 'padrao'}`} aria-label="Indicadores" aria-live="polite">
             {montada.painel.kpis.map((k) => (
-              <KpiCard key={`${montada.tabela}-${k.metrica}`} definicao={k} filtros={SEM_FILTROS} />
+              <KpiCard
+                key={`${montada.tabela}-${k.metrica}`}
+                definicao={
+                  // Estoque: o KPI "ruim" (itens abaixo do mínimo) vira cartão de alerta quando passa de zero.
+                  tema?.layoutKpis === 'alerta' && montada.semantica.metrics[k.metrica]?.polarity === 'lower_is_better' ? { ...k, alerta: true, seMaiorQueZero: true } : k
+                }
+                filtros={SEM_FILTROS}
+              />
             ))}
           </section>
           <div className="grade">

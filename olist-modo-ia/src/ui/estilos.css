@@ -1558,3 +1558,96 @@ button.link {
 .botao-exportar {
   justify-self: start;
 }
+
+/* Fase 5C: identidade por tema. --destaque e --gradiente vêm da paleta do tema (style no .app-planilha). */
+.app-planilha .tema-linha {
+  color: var(--destaque);
+}
+
+.icone-secao {
+  font-size: 0.95em;
+}
+
+/* Gráfico principal do objetivo: primeiro, largo, com uma borda da cor do tema. */
+.painel.hero {
+  border-color: color-mix(in srgb, var(--destaque) 45%, var(--borda));
+}
+
+.painel.hero .painel-cabecalho h2 {
+  font-size: 18px;
+}
+
+/* Financeiro: o saldo (1º KPI) ocupa duas colunas e tem número maior. */
+.kpis.layout-saldo .kpi:first-child {
+  grid-column: span 2;
+}
+
+.kpis.layout-saldo .kpi:first-child .kpi-valor {
+  font-size: 40px;
+}
+
+.kpis.layout-saldo {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.selo-alerta {
+  color: var(--alerta);
+  font-weight: 700;
+}
+
+.kpi[data-alerta] {
+  border-color: color-mix(in srgb, var(--alerta) 55%, var(--borda));
+}
+
+/* Medidor (SLA): número grande + trilho com a cor do tema. */
+.medidor {
+  display: grid;
+  gap: 10px;
+  padding: 12px 4px 4px;
+}
+
+.medidor-valor {
+  margin: 0;
+  font-size: 44px;
+  font-weight: 700;
+}
+
+.medidor-trilho {
+  height: 12px;
+  border-radius: 999px;
+  background: var(--borda);
+  overflow: hidden;
+}
+
+.medidor-trilho span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--destaque);
+}
+
+.tabela-alerta td.alerta {
+  color: var(--alerta);
+  font-weight: 700;
+}
+
+@media (max-width: 1180px) {
+  .kpis.layout-saldo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  /* Uma coluna só no celular: o saldo não pode pedir duas (criaria rolagem lateral). */
+  .kpis.layout-saldo .kpi:first-child {
+    grid-column: auto;
+  }
+  .kpis.layout-saldo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Painel de meia largura seguido de um largo deixava buraco: o grid preenche os vãos (Fase 5C). */
+.app-planilha .grade {
+  grid-auto-flow: row dense;
+}

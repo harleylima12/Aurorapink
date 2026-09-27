@@ -11,6 +11,8 @@ export interface DefinicaoKpi {
   metrica: string;
   /** Destaca em vermelho (só atraso/negativo). */
   alerta?: boolean;
+  /** Fase 5C: alerta condicional; o cartão só fica vermelho, com "⚠ atenção", se o valor passar de zero. */
+  seMaiorQueZero?: boolean;
 }
 
 export type TipoVisual = 'linha' | 'barra' | 'coluna' | 'dispersao';

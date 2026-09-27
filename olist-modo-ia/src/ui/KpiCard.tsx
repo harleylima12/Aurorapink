@@ -36,9 +36,14 @@ export function KpiCard({ definicao, filtros }: { definicao: DefinicaoKpi; filtr
   const caminho = caminhoSparkline(valoresSerie, LARGURA, ALTURA);
   const carregando = estadoValor.status === 'carregando';
 
+  const emAlerta = Boolean(definicao.alerta) && (!definicao.seMaiorQueZero || (valor ?? 0) > 0);
+
   return (
-    <article className={`kpi${definicao.alerta ? ' kpi-alerta' : ''}`} data-metrica={definicao.metrica} aria-busy={carregando}>
-      <h2 className="kpi-rotulo">{metrica.label}</h2>
+    <article className={`kpi${emAlerta ? ' kpi-alerta' : ''}`} data-metrica={definicao.metrica} data-alerta={emAlerta || undefined} aria-busy={carregando}>
+      <h2 className="kpi-rotulo">
+        {metrica.label}
+        {emAlerta && definicao.seMaiorQueZero && <span className="selo-alerta"> ⚠ atenção</span>}
+      </h2>
       <div className="kpi-linha">
         {estadoValor.status === 'erro' ? (
           <p className="erro">Erro: {estadoValor.mensagem}</p>

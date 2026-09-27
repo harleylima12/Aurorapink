@@ -354,7 +354,7 @@ function visualDaSecao(s: SecaoReceita, forma: Forma, nota: string | undefined, 
       return {
         ...comum,
         titulo: titulo(''),
-        subtitulo: `${s.explicacao} · pela coluna "${tempo.label}"${nota ? ` · ${nota}` : ''}`,
+        subtitulo: `${s.explicacao} · pela coluna "${tempo.label}"${semantica.dataset.min_group_size ? ` · quadrado vazio = menos de ${semantica.dataset.min_group_size} registros (dado sensível)` : ''}${nota ? ` · ${nota}` : ''}`,
         tipo: 'coluna',
         largo: true,
         spec: { ...base, intent: 'comparacao', metrics: [m], dimensions: [idSemana(tempoCol), dim2] },
