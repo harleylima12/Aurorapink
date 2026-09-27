@@ -116,7 +116,7 @@ function SugestaoIA({ deteccao, perfis, config, aoAplicarIA }: Pick<Props, 'dete
 export function PerguntasTema({ deteccao, escolha, perfis, config, aoMudar, aoAplicarIA }: Props) {
   const def = DEF_TEMAS[escolha.tema];
   const receita = receitaDe(escolha.tema);
-  const plano = useMemo(() => planejarTema(escolha, config), [escolha, config]);
+  const plano = useMemo(() => planejarTema(escolha, config, Object.fromEntries(perfis.map((p) => [p.id, p.amostraValores ?? []]))), [escolha, config, perfis]);
   const objetivos = plano ? objetivosPossiveis(escolha.tema, plano, escolha.papeis) : [];
   const objetivoAtual = escolha.objetivo ?? (plano ? objetivoPadrao(escolha.tema, plano, escolha.papeis) : undefined);
   const faltando = essencialFaltando(escolha);
