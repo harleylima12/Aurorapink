@@ -39,7 +39,7 @@ export interface EstadoModoIA {
   contexto: ContextoResposta | null;
 }
 
-async function carregarValores(motor: Motor, semantica: Semantica): Promise<Valores> {
+export async function carregarValores(motor: Motor, semantica: Semantica): Promise<Valores> {
   const { sql } = consultaValoresDistintos(semantica);
   const { linhas } = await motor.consultar(sql);
   const valores: Record<string, string[]> = {};
