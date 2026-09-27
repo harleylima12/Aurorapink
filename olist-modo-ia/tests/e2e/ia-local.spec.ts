@@ -95,7 +95,7 @@ test('Camada 0 resolve o fácil; a IA planeja o difícil; o DuckDB calcula', asy
   const fora = await perguntar(page, 'quanto sobra pra gente depois de pagar tudo?');
   await expect(fora).toHaveAttribute('data-tipo', 'fora_de_escopo');
   await expect(fora).toContainText('não dá para calcular o que sobra');
-  const vago = await perguntar(page, 'me fala algo sobre isso aí');
+  const vago = await perguntar(page, 'o que tu acha disso aí?');
   await expect(vago).toHaveAttribute('data-tipo', 'esclarecer');
   await expect(vago.locator('.chips .chip')).toHaveCount(3);
   if (prints) await page.locator('.painel-ia').screenshot({ path: path.join(PASTA, '4-fora-de-escopo-e-esclarecer.png') });

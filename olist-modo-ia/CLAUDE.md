@@ -83,7 +83,7 @@ variável de ambiente é `$env:VITE_MODEL_SOURCE="local"; npm run dev` (no bash:
    - `quais produtos de casa deram mais dinheiro no ano retrasado?` (selo "IA"; ranking de categorias em 2017)
    - `a turma paulista tá comprando muito?` e depois `e a galera carioca?` (filtro SP, depois RJ)
    - `quanto sobra pra gente depois de pagar tudo?` (fora de escopo: não há custos)
-   - `me fala algo sobre isso aí` (pergunta de volta com 3 chips)
+   - `o que tu acha disso aí?` (pergunta de volta com 3 chips, vinda da IA)
    - `top 5 categorias em 2018` (Modo Rápido, SEM chamar o modelo; o texto pode virar "texto: IA")
    - Em cada resposta de dados: o texto da IA não pode ter número que não esteja nos "Fatos usados no texto".
 5. **Metas:** planejamento < 3 s com GPU dedicada, < 6 s com integrada (modelo já em cache); zero violações de CSP;

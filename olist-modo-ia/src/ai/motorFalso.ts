@@ -52,7 +52,7 @@ export const PLANOS_FALSOS: Record<string, RespostaPlanejador> = {
     filters: [],
     out_of_scope_reason: 'A base não tem custos nem despesas, então não dá para calcular o que sobra (lucro). Posso mostrar faturamento ou frete.',
   },
-  'me fala algo sobre isso ai': {
+  'o que tu acha disso ai': {
     intent: 'esclarecer',
     metrics: [],
     dimensions: [],

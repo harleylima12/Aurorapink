@@ -287,7 +287,7 @@ describe('pipeline com o motor falso (Camada 0 -> Camada 1)', () => {
   it('fora de escopo e esclarecimento vindos da IA', async () => {
     const c = { ...ctx, ia: { motor: criarMotorFalso(), valores } };
     expect((await responder('quanto sobra pra gente depois de pagar tudo?', c)).tipo).toBe('fora_de_escopo');
-    const e = await responder('me fala algo sobre isso aí', c);
+    const e = await responder('o que tu acha disso aí?', c);
     expect(e.tipo).toBe('esclarecer');
     expect(e.sugestoes).toHaveLength(3);
   });
