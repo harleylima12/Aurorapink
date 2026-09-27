@@ -123,7 +123,7 @@ function Resultado({ r }: { r: Relatorio }) {
       </div>
       <details className="avaliacao-erros">
         <summary>{erros.length ? `${erros.length} erro(s): ver o que veio diferente do esperado` : 'Nenhum erro: ver todas as respostas'}</summary>
-        <ul>
+        <ul tabIndex={0} aria-label="Respostas da suíte">
           {(erros.length ? erros : r.resultados).map((x) => (
             <li key={x.id}>
               <code>{x.id}</code> “{x.pergunta}” · {x.modo === 'ia' ? 'IA' : 'Camada 0'} · {formatar(x.ms, 'int')} ms{x.erros.length ? ` · ${x.erros.join('; ')}` : ''}

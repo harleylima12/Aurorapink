@@ -23,7 +23,7 @@ export function ComoCalculei({ estado }: { estado: EstadoConsulta }) {
         <h3>
           Dados ({linhas.length} {linhas.length === 1 ? 'linha' : 'linhas'})
         </h3>
-        <div className="tabela-rolagem">
+        <div className="tabela-rolagem" tabIndex={0} role="region" aria-label="Tabela com os resultados">
           <table>
             <thead>
               <tr>

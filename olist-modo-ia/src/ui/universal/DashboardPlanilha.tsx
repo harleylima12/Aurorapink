@@ -57,7 +57,8 @@ function DetalheTabela({ motor, montada }: { motor: Motor; montada: PlanilhaMont
       ) : !linhas ? (
         <div className="esqueleto grafico-esqueleto" style={{ height: 200 }} />
       ) : (
-        <div className="tabela-rolagem detalhe-rolagem">
+        // Área com rolagem: foco pelo teclado para rolar sem mouse (WCAG 2.1.1, achado pelo axe na Fase 8).
+        <div className="tabela-rolagem detalhe-rolagem" tabIndex={0} role="region" aria-labelledby="titulo-detalhe">
           <table className="tabela-resposta">
             <thead>
               <tr>

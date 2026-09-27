@@ -84,7 +84,7 @@ export function CartaoResposta({ resposta, msTela, selo, aoEscolher, fixadoId, n
         <Grafico opcoes={sel.opcoes} rotulo={sel.descricao} altura={sel.tipo === 'barra' ? Math.min(60 + resposta.linhas.length * 22, 400) : 240} aoIniciar={(i) => (grafico.current = i)} />
       )}
       {tipo === 'dados' && sel?.tipo === 'tabela' && (
-        <div className="tabela-rolagem">
+        <div className="tabela-rolagem" tabIndex={0} role="region" aria-label="Tabela com os resultados">
           <table className="tabela-resposta">
             <thead>
               <tr>{resposta.colunas.map((c) => <th key={c.id} scope="col">{c.label}</th>)}</tr>

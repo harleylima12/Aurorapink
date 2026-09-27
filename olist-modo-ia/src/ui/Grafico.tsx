@@ -41,7 +41,9 @@ export function Grafico({ opcoes, rotulo, altura, aoRenderizar, aoIniciar }: Pro
   }, []);
 
   useEffect(() => {
-    grafico.current?.setOption(opcoes, { notMerge: true });
+    // Quem pede menos movimento no sistema (prefers-reduced-motion) recebe o gráfico sem animação.
+    const semAnimacao = typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    grafico.current?.setOption(semAnimacao ? { ...opcoes, animation: false } : opcoes, { notMerge: true });
     callback.current?.();
   }, [opcoes]);
 
