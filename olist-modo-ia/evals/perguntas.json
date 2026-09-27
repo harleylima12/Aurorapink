@@ -1,6 +1,6 @@
 {
-  "versao": 1,
-  "descricao": "Suíte parcial da Fase 3 (a Fase 7 amplia para 80+). 'esperado' traz só os campos essenciais do QuerySpec; campos ausentes não são conferidos.",
+  "versao": 2,
+  "descricao": "Suíte da Fase 7 (102 perguntas). 'esperado' traz só os campos essenciais do QuerySpec; campos ausentes não são conferidos. 'cega': escrita sem rodar o roteador antes; lote 'fase7': 26 perguntas novas escritas e commitadas ANTES da 1ª rodada (medem generalização, sem ajuste).",
   "ancora": "2018-08-31",
   "perguntas": [
     {
@@ -1156,6 +1156,461 @@
           "from": "2017-12-01",
           "to": "2017-12-31"
         }
+      }
+    },
+    {
+      "id": "n01",
+      "categoria": "facil",
+      "pergunta": "quanto a olist faturou em 2018?",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "time": {
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        }
+      }
+    },
+    {
+      "id": "n02",
+      "categoria": "facil",
+      "pergunta": "número de pedidos em 2017",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "pedidos"
+        ],
+        "time": {
+          "from": "2017-01-01",
+          "to": "2017-12-31"
+        }
+      }
+    },
+    {
+      "id": "n03",
+      "categoria": "facil",
+      "pergunta": "qual foi o frete médio?",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "frete_medio"
+        ]
+      }
+    },
+    {
+      "id": "n04",
+      "categoria": "facil",
+      "pergunta": "percentual de entregas no prazo",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "pct_no_prazo"
+        ]
+      }
+    },
+    {
+      "id": "n05",
+      "categoria": "facil",
+      "pergunta": "faturamento mês a mês em 2018",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "tendencia",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "tempo"
+        ],
+        "time": {
+          "grain": "mes",
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        }
+      }
+    },
+    {
+      "id": "n06",
+      "categoria": "media",
+      "pergunta": "top 3 estados em faturamento",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "estado_cliente"
+        ],
+        "limit": 3
+      }
+    },
+    {
+      "id": "n07",
+      "categoria": "media",
+      "pergunta": "nota média de quem pagou com cartão de crédito",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "nota_media"
+        ],
+        "filters": [
+          {
+            "dimension": "forma_pagamento",
+            "values": [
+              "Cartão de crédito"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "n08",
+      "categoria": "media",
+      "pergunta": "quais categorias vendem menos?",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "categoria"
+        ],
+        "sort": {
+          "dir": "asc"
+        }
+      }
+    },
+    {
+      "id": "n09",
+      "categoria": "media",
+      "pergunta": "pedidos por forma de pagamento em 2018",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "comparacao",
+        "metrics": [
+          "pedidos"
+        ],
+        "dimensions": [
+          "forma_pagamento"
+        ],
+        "time": {
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        }
+      }
+    },
+    {
+      "id": "n10",
+      "categoria": "media",
+      "pergunta": "prazo de entrega por estado",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "prazo_medio_entrega"
+        ],
+        "dimensions": [
+          "estado_cliente"
+        ]
+      }
+    },
+    {
+      "id": "n11",
+      "categoria": "media",
+      "pergunta": "faturamento de eletrônicos",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "filters": [
+          {
+            "dimension": "categoria",
+            "values": [
+              "Eletrônicos"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "n12",
+      "categoria": "media",
+      "pergunta": "atraso em 2018 mês a mês",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "tendencia",
+        "metrics": [
+          "pct_atraso"
+        ],
+        "dimensions": [
+          "tempo"
+        ],
+        "time": {
+          "grain": "mes",
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        }
+      }
+    },
+    {
+      "id": "n13",
+      "categoria": "media",
+      "pergunta": "itens vendidos por categoria em 2017",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "itens"
+        ],
+        "dimensions": [
+          "categoria"
+        ],
+        "time": {
+          "from": "2017-01-01",
+          "to": "2017-12-31"
+        }
+      }
+    },
+    {
+      "id": "n14",
+      "categoria": "dificil",
+      "pergunta": "por que os pedidos caíram em junho de 2018?",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "explicar_variacao",
+        "metrics": [
+          "pedidos"
+        ],
+        "time": {
+          "from": "2018-06-01",
+          "to": "2018-06-30"
+        }
+      }
+    },
+    {
+      "id": "n15",
+      "categoria": "dificil",
+      "pergunta": "faturamento do rio grande do sul em 2017 comparado com o ano anterior",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "filters": [
+          {
+            "dimension": "estado_cliente",
+            "values": [
+              "RS"
+            ]
+          }
+        ],
+        "time": {
+          "from": "2017-01-01",
+          "to": "2017-12-31",
+          "compare": "mesmo_periodo_ano_anterior"
+        }
+      }
+    },
+    {
+      "id": "n16",
+      "categoria": "dificil",
+      "pergunta": "quais cidades de minas mais compraram?",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "cidade_cliente"
+        ],
+        "filters": [
+          {
+            "dimension": "estado_cliente",
+            "values": [
+              "MG"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "n17",
+      "categoria": "followup",
+      "pergunta": "e em 2017?",
+      "anterior": "n06",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "faturamento"
+        ],
+        "dimensions": [
+          "estado_cliente"
+        ],
+        "limit": 3,
+        "time": {
+          "from": "2017-01-01",
+          "to": "2017-12-31"
+        }
+      }
+    },
+    {
+      "id": "n18",
+      "categoria": "followup",
+      "pergunta": "e os pedidos?",
+      "anterior": "n05",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "tendencia",
+        "metrics": [
+          "pedidos"
+        ],
+        "dimensions": [
+          "tempo"
+        ],
+        "time": {
+          "grain": "mes",
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        }
+      }
+    },
+    {
+      "id": "n19",
+      "categoria": "followup",
+      "pergunta": "e por estado?",
+      "anterior": "n03",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "ranking",
+        "metrics": [
+          "frete_medio"
+        ],
+        "dimensions": [
+          "estado_cliente"
+        ]
+      }
+    },
+    {
+      "id": "n20",
+      "categoria": "digitacao",
+      "pergunta": "fatrameto em 2018",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "faturamento"
+        ],
+        "time": {
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        }
+      }
+    },
+    {
+      "id": "n21",
+      "categoria": "digitacao",
+      "pergunta": "qnto de frete a gnt pagou",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "frete_total"
+        ]
+      }
+    },
+    {
+      "id": "n22",
+      "categoria": "digitacao",
+      "pergunta": "nota dos clientes do parana",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "kpi",
+        "metrics": [
+          "nota_media"
+        ],
+        "filters": [
+          {
+            "dimension": "estado_cliente",
+            "values": [
+              "PR"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "n23",
+      "categoria": "ambigua",
+      "pergunta": "me fala dos números",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "esclarecer"
+      }
+    },
+    {
+      "id": "n24",
+      "categoria": "fora",
+      "pergunta": "qual o lucro líquido de 2018?",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "fora_de_escopo"
+      }
+    },
+    {
+      "id": "n25",
+      "categoria": "fora",
+      "pergunta": "quantos visitantes o site teve?",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "fora_de_escopo"
+      }
+    },
+    {
+      "id": "n26",
+      "categoria": "fora",
+      "pergunta": "qual o salário dos vendedores?",
+      "cega": true,
+      "lote": "fase7",
+      "esperado": {
+        "intent": "fora_de_escopo"
       }
     }
   ]
