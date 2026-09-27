@@ -10,6 +10,7 @@ import { ident } from '../../universal/limpeza';
 import type { PlanilhaMontada } from '../../universal/montar';
 import { exemplosDaPlanilha, sugestoesDaPlanilha } from '../../universal/painelAuto';
 import type { ColunaConfig } from '../../universal/perfil';
+import '../../charts/echartsTemas';
 import { PALETAS, rampaOrdinal } from '../../charts/paletas';
 import { ROTULO_PUBLICO, type PainelTema } from '../../universal/temas/aplicar';
 import { DEF_TEMAS, type Tema } from '../../universal/temas/definicoes';
