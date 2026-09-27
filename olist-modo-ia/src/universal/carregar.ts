@@ -22,7 +22,7 @@ import {
   type RelatorioLimpeza,
 } from './limpeza';
 import { classificarColuna, configPadrao, type ColunaConfig, type PerfilColuna } from './perfil';
-import { montarSemantica, sqlTabelaTipada } from './semanticaAuto';
+import { montarSemantica, sqlTabelaTipada, type InfoTabela } from './semanticaAuto';
 
 export interface BancoUniversal {
   registrarArquivo(nome: string, bytes: Uint8Array): Promise<void>;
@@ -196,7 +196,7 @@ export interface PlanilhaPronta {
 }
 
 /** Depois da revisão: cria a tabela tipada e a semântica. */
-export async function aplicarConfig(leitura: LeituraPlanilha, config: ColunaConfig[], banco: BancoUniversal, opcoes: { minGroupSize?: number } = {}): Promise<PlanilhaPronta> {
+export async function aplicarConfig(leitura: LeituraPlanilha, config: ColunaConfig[], banco: BancoUniversal, opcoes: { minGroupSize?: number; metricasExtras?: InfoTabela['metricasExtras'] } = {}): Promise<PlanilhaPronta> {
   const t0 = performance.now();
   // Nome novo a cada aplicação: o cache de consultas do motor (por texto do SQL) nunca devolve número velho.
   const tabela = `${leitura.prefixo}_t${(versaoTipada++).toString(36)}`;
@@ -215,6 +215,7 @@ export async function aplicarConfig(leitura: LeituraPlanilha, config: ColunaConf
     linhas: leitura.linhas,
     periodo,
     minGroupSize: opcoes.minGroupSize,
+    metricasExtras: opcoes.metricasExtras,
   });
   return { semantica, config, tabela, linhas: leitura.linhas, periodo, ms: performance.now() - t0 };
 }

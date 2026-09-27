@@ -10,6 +10,7 @@ import { montarPainel, type PainelPlanilha } from './painelAuto';
 import type { ColunaConfig } from './perfil';
 import { montarJuncao, prefixoDe, type Ligacao } from './relacoes';
 import { montarSemantica } from './semanticaAuto';
+import { painelDoTema, planejarTema, type EscolhaTema, type PainelTema } from './temas/aplicar';
 
 export interface ParteGrupo {
   leitura: LeituraPlanilha;
@@ -25,6 +26,8 @@ export interface Grupo {
   juntas: ParteGrupo[];
   /** Dados sensíveis: grupos com menos de N registros ficam escondidos (undefined = desligado). */
   minGroupSize?: number;
+  /** Tema, objetivo, público e papéis (Fase 5B). Sem isso (ou tema genérico), vale o painel automático. */
+  tema?: EscolhaTema;
 }
 
 export interface PlanilhaMontada {
@@ -33,7 +36,7 @@ export interface PlanilhaMontada {
   tabela: string;
   linhas: number;
   periodo?: { de: string; ate: string };
-  painel: PainelPlanilha;
+  painel: PainelPlanilha | PainelTema;
   /** Valores distintos por coluna (para escolher os gráficos). */
   distintos: Record<string, number>;
   ms: number;
@@ -43,7 +46,9 @@ export interface PlanilhaMontada {
 
 export async function montarGrupo(grupo: Grupo, banco: BancoUniversal): Promise<PlanilhaMontada> {
   const t0 = performance.now();
-  const principal = await aplicarConfig(grupo.principal.leitura, grupo.principal.config, banco, { minGroupSize: grupo.minGroupSize });
+  const plano = grupo.tema ? planejarTema(grupo.tema, grupo.principal.config) : null;
+  const metricasExtras = plano?.metricasExtras;
+  const principal = await aplicarConfig(grupo.principal.leitura, plano?.config ?? grupo.principal.config, banco, { minGroupSize: grupo.minGroupSize, metricasExtras });
   const criadas = [principal.tabela];
   const distintos: Record<string, number> = Object.fromEntries(grupo.principal.leitura.perfis.map((p) => [p.id, p.distintos]));
   let tabela = principal.tabela;
@@ -66,7 +71,7 @@ export async function montarGrupo(grupo: Grupo, banco: BancoUniversal): Promise<
     nomes.push(junta.leitura.nome);
   }
   if (grupo.juntas.some((j) => j.ligacao)) {
-    semantica = montarSemantica(config, { nome: nomes.map((n) => n.replace(/\.[a-z0-9]+$/i, '')).join(' + '), tabela, linhas: principal.linhas, periodo: principal.periodo, minGroupSize: grupo.minGroupSize });
+    semantica = montarSemantica(config, { nome: nomes.map((n) => n.replace(/\.[a-z0-9]+$/i, '')).join(' + '), tabela, linhas: principal.linhas, periodo: principal.periodo, minGroupSize: grupo.minGroupSize, metricasExtras });
   }
   return {
     semantica,
@@ -74,7 +79,7 @@ export async function montarGrupo(grupo: Grupo, banco: BancoUniversal): Promise<
     tabela,
     linhas: principal.linhas,
     periodo: principal.periodo,
-    painel: montarPainel(semantica, config, distintos),
+    painel: grupo.tema && plano ? painelDoTema(grupo.tema, plano, semantica, config, distintos) : montarPainel(semantica, config, distintos),
     distintos,
     ms: performance.now() - t0,
     criadas,

@@ -126,6 +126,8 @@ export interface InfoTabela {
   periodo?: { de: string; ate: string };
   /** Dados sensíveis: esconder grupos com menos de N registros (seção 15). */
   minGroupSize?: number;
+  /** Métricas da receita do tema (Fase 5B), com o SQL já montado com os nomes reais das colunas. */
+  metricasExtras?: Record<string, Metrica>;
 }
 
 /** Planilha sensível por padrão: tem dado pessoal (CPF, e-mail, nome…) ou coluna típica de RH/saúde. */
@@ -210,6 +212,8 @@ export function montarSemantica(colunas: readonly ColunaConfig[], info: InfoTabe
       }
     }
   }
+
+  Object.assign(metricas, info.metricasExtras ?? {});
 
   const dimensoes: Record<string, Dimensao> = {};
   const tempo = colunas.find((c) => c.papel === 'tempo');
