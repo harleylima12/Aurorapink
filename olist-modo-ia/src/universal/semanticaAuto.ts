@@ -64,8 +64,21 @@ export function expressaoTipada(col: ColunaConfig): string {
   }
 }
 
+/** Data com hora ("14/02/2024 21:53"): a tabela ganha também a coluna `<id>__hora` (0–23), para o mapa de calor (Fase 5C). */
+export const temHora = (c: Pick<ColunaConfig, 'tipo' | 'formatosData'>) => c.tipo === 'data' && Boolean(c.formatosData?.some((f) => f.includes('%H')));
+export const colunaHora = (id: string) => `${id}__hora`;
+
+function expressaoHora(col: ColunaConfig): string {
+  const c = ident(col.id);
+  return `hour(COALESCE(${(col.formatosData ?? []).map((f) => `TRY_STRPTIME(TRIM(${c}), ${literal(f)})`).join(', ')}))`;
+}
+
 export function sqlTabelaTipada(crua: string, tipada: string, colunas: readonly ColunaConfig[]): string {
-  const selecao = ['CAST(rowid AS BIGINT) + 1 AS linha_planilha', ...colunas.map((c) => `${expressaoTipada(c)} AS ${ident(c.id)}`)];
+  const selecao = [
+    'CAST(rowid AS BIGINT) + 1 AS linha_planilha',
+    ...colunas.map((c) => `${expressaoTipada(c)} AS ${ident(c.id)}`),
+    ...colunas.filter(temHora).map((c) => `${expressaoHora(c)} AS ${ident(colunaHora(c.id))}`),
+  ];
   return `CREATE OR REPLACE TABLE ${ident(tipada)} AS SELECT ${selecao.join(',\n  ')}\nFROM ${ident(crua)}`;
 }
 
@@ -128,6 +141,8 @@ export interface InfoTabela {
   minGroupSize?: number;
   /** Métricas da receita do tema (Fase 5B), com o SQL já montado com os nomes reais das colunas. */
   metricasExtras?: Record<string, Metrica>;
+  /** Dimensões derivadas do tema (Fase 5C): dia da semana, mês, hora, faixas de histograma. */
+  dimensoesExtras?: Record<string, Dimensao>;
 }
 
 /** Planilha sensível por padrão: tem dado pessoal (CPF, e-mail, nome…) ou coluna típica de RH/saúde. */
@@ -239,6 +254,8 @@ export function montarSemantica(colunas: readonly ColunaConfig[], info: InfoTabe
       ...(c.tipo === 'booleano' ? { order: ['Sim', 'Não'] } : {}),
     };
   }
+
+  Object.assign(dimensoes, info.dimensoesExtras ?? {});
 
   const nomeLimpo = info.nome.replace(/\.[a-z0-9]+$/i, '');
   const descricaoMetricas = Object.values(metricas).slice(1, 4).map((m) => m.label.toLowerCase());
