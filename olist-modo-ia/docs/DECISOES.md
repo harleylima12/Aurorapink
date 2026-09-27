@@ -704,3 +704,25 @@ Formato: **contexto → decisão → alternativa descartada**. As decisões da F
 
   Exporta JSON. Carregada sob demanda (36 kB), com link na barra lateral.
 - **Com IA real:** só no PC (botão "Ativar a IA local" na própria página); aqui, o motor falso (e2e).
+
+## Fase 8: portfólio
+
+### D62. Acessibilidade medida (axe-core), não declarada
+
+- **Decisão:** `tests/e2e/acessibilidade.spec.ts` roda o axe-core (WCAG 2.0/2.1 A e AA) em 8 telas: as 3 páginas do
+  dashboard, o Modo IA com resposta, a entrada da planilha, a tela "Entendi assim", o dashboard por tema e
+  `/avaliacao`. O teste falha com qualquer violação; a lista fica em `evals/resultados/acessibilidade.json`.
+- **1ª rodada:** 1 violação: a tabela de detalhe com rolagem não recebia foco pelo teclado. Corrigido
+  (`tabIndex=0`, `role=region` com nome), e o mesmo foi aplicado às outras áreas com rolagem.
+- **Além do axe:** os gráficos param de animar com `prefers-reduced-motion` (o CSS já respeitava).
+- **Limite honesto:** o axe cobre as regras automáticas. Leitor de tela e navegação só por teclado de ponta a ponta
+  não foram testados por uma pessoa.
+
+### D63. Imagem de compartilhamento e GIF gerados do app real
+
+- **Decisão:** `tests/e2e/portfolio.spec.ts` (só com `PRINTS=1`) tira os quadros do GIF e monta a `og-image.png`
+  (1200×630) com o print real do dashboard. `scripts/montar_gif.py` (Pillow) monta `docs/demo.gif`: 10 quadros,
+  22,8 s, 1,06 MB.
+- **SEO:** Open Graph, Twitter card, link canônico, `robots.txt` e `sitemap.xml` (conferidos em `seo.spec.ts`).
+- **Descartado:** vídeo MP4 (o GitHub mostra o GIF direto no README) e imagem montada à mão (desatualiza quando a
+  tela muda).

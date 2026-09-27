@@ -57,6 +57,11 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
   Página `/avaliacao` (`src/ui/avaliacao/`, executor `src/avaliacao/rodar.ts`). SW grava no cache depois de
   responder (D59, −236 ms a frio). Marcas de abertura: `firewall-pronto`, `duckdb-pronto`, `dados-prontos`.
   Decisões D59–D61. Testes: `npm test` (195), `npx playwright test` (34 + 3 pulados: prints com `PRINTS=1`, limite com `LIMITE=1`). Prints em `docs/prints/fase7/`.
+- **Fase 8 (portfólio):** concluída, aguardando o OK do Harley. README novo (problema, GIF, números, Mermaid,
+  limites), `docs/ARQUITETURA.md`, `docs/ENTREVISTA.md`, acessibilidade medida com axe-core (0 violações em 8 telas,
+  D62), SEO + `public/og-image.png` + GIF gerados do app (`PRINTS=1 npx playwright test portfolio` e
+  `.venv/bin/python scripts/montar_gif.py`, D63). Testes: `npm test` (195), `npx playwright test` (36 + 4 pulados:
+  prints, GIF e og-image com `PRINTS=1`; limite com `LIMITE=1`), `python -m pytest tests/dados` (57).
 - **Caminho de dados:** caminho FINAL ativo desde 26/09 (extensão parquet em `public/duckdb-extensions/`, SHA-256 no lock). O `.duckdb` provisório fica como plano B automático (decisão do Harley).
 - **Publicação (D52):** repositório público `HarleylimaDados/olist-modo-ia` (branch `main`, raiz = esta pasta) e deploy na Vercel (time SiteUp), modo demo. `vercel.json` é gerado por `npm run gerar-vercel-json`; teste local como a Vercel: `npm run build && node scripts/servir-como-vercel.mjs`.
 - **Rede da nuvem:** o Harley liberou `cdn.sheetjs.com`, `extensions.duckdb.org`, `huggingface.co` e `*.hf.co`. O `curl` passa direto; o Node precisa de `NODE_USE_ENV_PROXY=1` nesta nuvem (no PC, não).
@@ -66,8 +71,8 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
   3. `python scripts/preparar_dados.py` no Windows (caminho com acento e espaço).
   4. Conferir o frete total no card do Power BI (D16).
   5. IA na GPU (roteiro abaixo).
-- **Próximo passo:** Fase 8 (README, GIF, arquitetura, ENTREVISTA, acessibilidade, SEO). IA na GPU continua no
-  roteiro abaixo (incluir `/avaliacao` com a IA e o tema pela IA: `clientes.csv` e `evals/planilhas/temas/`).
+- **Próximo passo:** o Harley copia o `olist-main` para o repositório público (a Vercel publica). Depois, IA na GPU
+  pelo roteiro abaixo (incluir `/avaliacao` com a IA e o tema pela IA: `clientes.csv` e `evals/planilhas/temas/`).
 
 ## Roteiro: validar a IA de verdade no PC (Fase 4)
 
