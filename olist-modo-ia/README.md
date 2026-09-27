@@ -40,6 +40,17 @@ que às vezes inventa números. Este projeto responde às 4 dúvidas que sempre 
 - **Avaliação ao vivo:** a página `/avaliacao` roda 102 perguntas no seu navegador e mostra acerto por categoria,
   metas e latência.
 
+## Galeria: um dashboard por tema
+
+Cada tema tem a sua cor (validada para contraste e daltonismo), os seus gráficos e o seu gráfico principal, que muda
+com o objetivo escolhido. Os dados são fictícios; clique para ver a página inteira.
+
+| | | |
+|---|---|---|
+| [![Vendas: curva ABC dos produtos](docs/prints/fase5c/galeria/tema-vendas.png)](docs/prints/fase5c/tema-vendas.png)<br>**Vendas:** curva ABC, treemap, média móvel | [![Financeiro: cascata de entradas, saídas e saldo](docs/prints/fase5c/galeria/tema-financeiro.png)](docs/prints/fase5c/tema-financeiro.png)<br>**Financeiro:** cascata, entradas × saídas, saldo acumulado | [![RH: distribuição salarial](docs/prints/fase5c/galeria/tema-rh.png)](docs/prints/fase5c/tema-rh.png)<br>**RH:** histograma de salários, mediana por cargo |
+| [![Estoque: atual × mínimo](docs/prints/fase5c/galeria/tema-estoque.png)](docs/prints/fase5c/tema-estoque.png)<br>**Estoque:** atual × mínimo, itens para repor, curva ABC | [![Marketing: investimento × conversões](docs/prints/fase5c/galeria/tema-marketing.png)](docs/prints/fase5c/tema-marketing.png)<br>**Marketing:** dispersão, funil de mídia, canais | [![Atendimento: mapa dia × hora](docs/prints/fase5c/galeria/tema-atendimento.png)](docs/prints/fase5c/tema-atendimento.png)<br>**Atendimento:** mapa dia × hora, SLA, tempo de resposta |
+| [![Educação: distribuição das notas](docs/prints/fase5c/galeria/tema-educacao.png)](docs/prints/fase5c/tema-educacao.png)<br>**Educação:** distribuição de notas, turma × disciplina | [![Saúde: agenda dia × mês](docs/prints/fase5c/galeria/tema-saude.png)](docs/prints/fase5c/tema-saude.png)<br>**Saúde:** agenda, procedimentos por convênio | [![Genérico: painel automático em cinza-azulado](docs/prints/fase5c/galeria/tema-generico.png)](docs/prints/fase5c/tema-generico.png)<br>**Genérico:** o painel automático, paleta neutra |
+
 ## Números
 
 Medidos, não estimados. Quando uma meta não foi cumprida, está escrito. Detalhes: [`docs/BENCHMARK.md`](docs/BENCHMARK.md).
@@ -54,7 +65,8 @@ Medidos, não estimados. Quando uma meta não foi cumprida, está escrito. Detal
 | Tema da planilha sem IA, 1ª rodada | 24/25 (96%) | ≥ 90% |
 | Primeira pintura | 0,28 s | < 2 s |
 | Dashboard completo, 1ª visita (máquina de nuvem, sem GPU) | 3,0 s | — |
-| Acessibilidade (axe-core, WCAG 2.1 A/AA, 8 telas) | 0 violações | 0 |
+| Acessibilidade (axe-core, WCAG 2.1 A/AA, 8 telas + 3 temas) | 0 violações | 0 |
+| Paletas por tema com contraste AA e seguras para daltonismo | 9/9 | 9/9 |
 | Requisições externas no modo local | 0 | 0 |
 | IA real (planejamento com o modelo em cache) | **a medir no PC com GPU** | < 3 s (GPU dedicada) |
 
@@ -162,7 +174,7 @@ PRINTS=1 npx playwright test     # também grava os prints de docs/prints/ e os 
 ## Documentos
 
 - [`docs/ENTREVISTA.md`](docs/ENTREVISTA.md): roteiro de 5 minutos e 10 perguntas prováveis, com respostas
-- [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md) · [`docs/DECISOES.md`](docs/DECISOES.md) (63 decisões com contexto e alternativa descartada)
+- [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md) · [`docs/DECISOES.md`](docs/DECISOES.md) (67 decisões com contexto e alternativa descartada)
 - [`docs/BENCHMARK.md`](docs/BENCHMARK.md) · [`docs/PRIVACIDADE.md`](docs/PRIVACIDADE.md) · prints em [`docs/prints/`](docs/prints)
 - Especificação original: [`docs/PROMPT_ORIGINAL.md`](docs/PROMPT_ORIGINAL.md); plano: [`docs/FASE0_PLANO.md`](docs/FASE0_PLANO.md)
 
