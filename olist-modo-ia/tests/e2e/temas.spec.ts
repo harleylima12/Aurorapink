@@ -86,7 +86,9 @@ test('Vendas pelo exemplo: tema com porquê, objetivo "produtos campeões" + pú
   // Gestor: 4 painéis, o 1º é o do objetivo, sem tabela linha a linha.
   const paineis = page.locator('[data-visual^="tema-"]');
   await expect(paineis).toHaveCount(4);
-  await expect(paineis.first().getByRole('heading')).toHaveText('Produtos campeões');
+  // Fase 5C: o gráfico principal de "produtos campeões" é a curva ABC.
+  await expect(paineis.first().getByRole('heading')).toHaveText('🏆 Curva ABC dos produtos');
+  await expect(paineis.first()).toHaveAttribute('data-forma', 'pareto');
   await expect(page.locator('[data-visual="detalhe"]')).toHaveCount(0);
   await expect(page.locator('[data-visual="escondidos"]')).toContainText('não achei a coluna de vendedor');
   await expect(page.locator('[data-visual] canvas')).toHaveCount(4, { timeout: 30_000 });
