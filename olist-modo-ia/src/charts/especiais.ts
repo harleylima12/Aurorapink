@@ -108,7 +108,7 @@ export function opcoesPareto(categorias: string[], valores: (number | null)[], s
         return `${escapar(p.name)}<br/>${escapar(serie)}: <b>${escapar(formatar(numero(p.value), formato))}</b><br/>Acumulado: <b>${formatar(x?.acumulado ?? null, 'pct')}</b> · classe ${x?.classe ?? ''}`;
       },
     },
-    xAxis: { type: 'category', data: categorias, axisLabel: { ...TEXTO, show: categorias.length <= 12, interval: 0, width: 80, overflow: 'truncate' } },
+    xAxis: { type: 'category', data: categorias, axisLabel: { ...TEXTO, interval: 0, rotate: categorias.length > 8 ? 35 : 0, width: 90, overflow: 'truncate' } },
     yAxis: { type: 'value', axisLabel: { ...TEXTO, formatter: (v: number) => compacto(v, formato) } },
     series: (['A', 'B', 'C'] as const).map((k, i) => ({
       name: [`A: ${quantos('A')} itens (80% do total)`, `B: ${quantos('B')} itens (próximos 15%)`, `C: ${quantos('C')} itens (5% final)`][i],
@@ -162,16 +162,18 @@ export function opcoesFunil(etapas: { etapa: string; n: number | null }[], forma
         sort: 'none',
         top: 8,
         bottom: 8,
-        left: '8%',
-        width: '84%',
+        left: '4%',
+        width: '58%',
         gap: 2,
-        minSize: '8%',
+        minSize: '6%',
+        // Rótulo fora da forma: etapas pequenas (cliques, conversões) continuam legíveis.
         label: {
-          position: 'inside',
-          color: CORES.fundo,
-          fontWeight: 600,
+          position: 'right',
+          color: CORES.texto,
+          fontSize: 12,
           formatter: (p: { name?: string; value?: unknown }) => `${p.name ?? ''}: ${compacto(numero(p.value), formato)}${primeiro ? ` (${formatar((numero(p.value) ?? 0) / primeiro, 'pct')})` : ''}`,
         },
+        labelLine: { show: true, lineStyle: { color: CORES.borda } },
         itemStyle: { borderColor: CORES.painel, borderWidth: 2 },
         data: etapas.map((e, i) => ({ name: e.etapa, value: e.n ?? 0, itemStyle: { color: cores[i] } })),
       },
@@ -309,6 +311,7 @@ export function opcoesHeatmap(eixoX: string[], eixoY: string[], celulas: [number
       left: 'center',
       bottom: 0,
       itemHeight: 140,
+      text: ['mais', 'menos'],
       textStyle: { color: CORES.textoSecundario, fontSize: 10 },
       formatter: (v: number) => compacto(v, formato),
       inRange: { color: rampaSequencial(paleta.destaque, 5) },
@@ -350,7 +353,7 @@ export function opcoesDispersaoTema(pontos: { nome: string; x: number | null; y:
         return pt ? `${escapar(pt.nome)}<br/>${escapar(x.rotulo)}: <b>${escapar(formatar(pt.x, x.formato))}</b><br/>${escapar(y.rotulo)}: <b>${escapar(formatar(pt.y, y.formato))}</b>` : '';
       },
     },
-    xAxis: { type: 'value', name: x.rotulo, nameLocation: 'middle', nameGap: 28, nameTextStyle: TEXTO, axisLabel: { ...TEXTO, formatter: (v: number) => compacto(v, x.formato) } },
+    xAxis: { type: 'value', scale: true, name: x.rotulo, nameLocation: 'middle', nameGap: 28, nameTextStyle: TEXTO, axisLabel: { ...TEXTO, formatter: (v: number) => compacto(v, x.formato) } },
     yAxis: { type: 'value', name: y.rotulo, nameTextStyle: TEXTO, scale: true, axisLabel: { ...TEXTO, formatter: (v: number) => compacto(v, y.formato) } },
     series: [
       {

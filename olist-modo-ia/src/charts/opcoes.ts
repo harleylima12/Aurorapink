@@ -48,10 +48,12 @@ export interface EntradaLinha {
   /** Pares [rótulo inicial, rótulo final] sombreados como "poucos dados". */
   faixasParciais?: [string, string][];
   alerta?: boolean;
+  /** Cor do tema (Fase 5C); sem ela, a identidade da Olist. */
+  cor?: string;
 }
 
 export function opcoesLinha(entrada: EntradaLinha): EChartsCoreOption {
-  const cor = entrada.alerta ? CORES.alerta : CORES.destaque;
+  const cor = entrada.alerta ? CORES.alerta : (entrada.cor ?? CORES.destaque);
   const parciais = entrada.faixasParciais ?? [];
   return {
     aria: { enabled: true, label: { description: entrada.descricao } },
@@ -120,6 +122,8 @@ export interface EntradaBarras {
   horizontal: boolean;
   /** Categorias pintadas de vermelho (atraso/negativo). */
   alertas?: ReadonlySet<string>;
+  /** Cor do tema (Fase 5C): barra sólida no lugar do gradiente da Olist. */
+  cor?: string;
 }
 
 export function opcoesBarras(entrada: EntradaBarras): EChartsCoreOption {
@@ -135,7 +139,7 @@ export function opcoesBarras(entrada: EntradaBarras): EChartsCoreOption {
     splitNumber: entrada.horizontal ? 3 : 5,
     axisLabel: { ...TEXTO_EIXO, hideOverlap: true, formatter: (v: number) => formatar(v, entrada.formato, { compacto: true }) },
   };
-  const gradiente = entrada.horizontal ? GRADIENTE_HORIZONTAL : GRADIENTE_VERTICAL;
+  const gradiente = entrada.cor ?? (entrada.horizontal ? GRADIENTE_HORIZONTAL : GRADIENTE_VERTICAL);
   return {
     aria: { enabled: true, label: { description: entrada.descricao } },
     grid: { ...GRID, right: 56 },
@@ -183,6 +187,7 @@ export interface EntradaDispersao {
   x: { rotulo: string; formato: Formato };
   y: { rotulo: string; formato: Formato };
   descricao: string;
+  cor?: string;
 }
 
 export function opcoesDispersao(entrada: EntradaDispersao): EChartsCoreOption {
@@ -221,7 +226,7 @@ export function opcoesDispersao(entrada: EntradaDispersao): EChartsCoreOption {
       {
         type: 'scatter',
         symbolSize: 11,
-        itemStyle: { color: CORES.destaque, opacity: 0.8, borderColor: CORES.roxo },
+        itemStyle: { color: entrada.cor ?? CORES.destaque, opacity: 0.8, borderColor: entrada.cor ? CORES.painel : CORES.roxo },
         data: validos.map((p) => [p.x, p.y]),
       },
     ],
