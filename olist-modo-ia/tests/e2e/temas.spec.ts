@@ -185,6 +185,7 @@ test('IA local opcional (motor falso): só metadados; com confiança baixa, a su
   const ia = page.getByTestId('sugestao-ia');
   await expect(ia).toContainText('sugeriu Vendas / E-commerce; a detecção por nomes estava com confiança baixa, então usei a sugestão da IA', { timeout: 30_000 });
   await expect(cartao).toHaveAttribute('data-tema', 'vendas');
+  await expect(cartao.getByRole('heading').first()).toContainText('(sugerido pela IA local)');
   await ia.getByText('O que a IA recebeu').click();
   const recebido = (await ia.locator('pre').textContent()) ?? '';
   expect(recebido).toContain('"tipo":"dado pessoal"');

@@ -38,6 +38,8 @@ export interface EscolhaTema {
   fixos?: Papeis;
   /** Perguntas sugeridas pela IA local (Camada 1); respondidas pelo caminho normal (Camada 0/planejador). */
   perguntasIA?: string[];
+  /** O tema veio da IA local (a Camada 0 não tinha confiança alta). */
+  temaDaIA?: boolean;
 }
 
 export interface MetricaResolvida {
@@ -135,7 +137,7 @@ export function planejarTema(escolha: EscolhaTema, config: readonly ColunaConfig
       empty_is_zero: m.zeroSeVazio,
       polarity: m.polaridade,
       synonyms: [...new Set(nomes)],
-      description: `${m.descricao} (receita do tema ${DEF_TEMAS[escolha.tema].rotulo})`,
+      description: m.descricao,
     };
   }
   return { config: novaConfig, metricasExtras, resolvidas, faltando };

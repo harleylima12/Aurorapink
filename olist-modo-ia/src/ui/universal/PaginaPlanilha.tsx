@@ -155,7 +155,7 @@ export function PaginaPlanilha({ motor, aoVerDemo }: { motor: Motor; aoVerDemo: 
       const trocou = tema !== null && tema !== g.tema!.tema;
       const escolha = escolhaDoTema(tema ?? g.tema!.tema, g.principal.leitura.perfis, config, { ...(trocou ? { publico: g.tema!.publico } : g.tema!), perguntasIA: perguntas });
       const minGroupSize = DEF_TEMAS[escolha.tema].sensivel ? (g.minGroupSize ?? TAMANHO_MINIMO_PADRAO) : g.minGroupSize;
-      return { tipo: 'revisao', grupo: { ...g, principal: { ...g.principal, config }, tema: escolha, ...(minGroupSize !== undefined ? { minGroupSize } : {}) } };
+      return { tipo: 'revisao', grupo: { ...g, principal: { ...g.principal, config }, tema: trocou ? { ...escolha, temaDaIA: true } : escolha, ...(minGroupSize !== undefined ? { minGroupSize } : {}) } };
     });
   };
 

@@ -132,7 +132,7 @@ export function PerguntasTema({ deteccao, escolha, perfis, config, aoMudar, aoAp
     <section className="painel tema-cartao" aria-labelledby="titulo-tema" data-tema={escolha.tema} data-confianca={deteccao.nivel}>
       <header>
         <h2 id="titulo-tema">
-          <span aria-hidden="true">{def.icone}</span> {trocouTema ? `Tema: ${def.rotulo} (escolhido por você)` : escolha.tema === 'generico' ? 'Não reconheci um tema: painel genérico' : `Parece uma planilha de ${def.rotulo}`}
+          <span aria-hidden="true">{def.icone}</span> {trocouTema ? `Tema: ${def.rotulo} (${escolha.temaDaIA ? 'sugerido pela IA local' : 'escolhido por você'})` : escolha.tema === 'generico' ? 'Não reconheci um tema: painel genérico' : `Parece uma planilha de ${def.rotulo}`}
         </h2>
         {!trocouTema && (
           <p className="nota" data-testid="tema-porque">
