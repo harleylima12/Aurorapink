@@ -1,0 +1,421 @@
+Paciente;Telefone;E-mail;Data da Consulta;Procedimento;Dentista;Convênio;Valor;Status
+Olívia Silva;(77) 93820-3547;olivia@exemplo.com;18/05/2024 14:30;Extração;Dr. Renato;Amil Dental;R$ 150,00;Compareceu
+Marina Rocha;(13) 93643-6769;marina@exemplo.com;01/07/2024 18:30;Restauração;Dr. Renato;Odontoprev;R$ 650,00;Compareceu
+Diego Rocha;(42) 92089-3636;diego@exemplo.com;18/07/2024 16:30;Canal;Dr. Renato;SulAmérica;R$ 900,00;Compareceu
+Heitor Martins;(77) 96912-7481;heitor@exemplo.com;06/05/2024 18:30;Clareamento;Dra. Paula;Amil Dental;R$ 220,00;Compareceu
+Íris Silva;(63) 95426-1820;iris@exemplo.com;05/10/2024 15:30;Clareamento;Dr. Renato;Particular;R$ 150,00;Compareceu
+Marina Carvalho;(94) 99611-4043;marina@exemplo.com;15/01/2024 10:00;Canal;Dra. Sônia;Amil Dental;R$ 380,00;Compareceu
+Marina Silva;(67) 92663-6529;marina@exemplo.com;05/04/2024 11:00;Limpeza;Dr. Renato;Particular;R$ 650,00;Faltou
+Íris Souza;(60) 97016-2472;iris@exemplo.com;21/05/2024 08:30;Avaliação;Dra. Paula;Odontoprev;R$ 650,00;Compareceu
+Diego Ferreira;(62) 92451-2376;diego@exemplo.com;25/03/2024 16:30;Restauração;Dra. Sônia;Particular;R$ 220,00;Compareceu
+Paulo Ferreira;(74) 94256-1476;paulo@exemplo.com;07/08/2024 10:00;Limpeza;Dra. Paula;Amil Dental;R$ 650,00;Compareceu
+João Souza;(31) 94533-7797;joão@exemplo.com;24/07/2024 14:00;Avaliação;Dra. Sônia;Odontoprev;R$ 650,00;Faltou
+Fábio Lima;(83) 91879-4065;fabio@exemplo.com;15/07/2024 14:30;Restauração;Dr. Renato;Amil Dental;R$ 220,00;Compareceu
+Paulo Lima;(52) 96332-6459;paulo@exemplo.com;27/04/2024 08:00;Canal;Dra. Sônia;Odontoprev;R$ 150,00;Compareceu
+Paulo Lima;(52) 96332-6459;paulo@exemplo.com;02/02/2024 10:00;Clareamento;Dra. Sônia;Amil Dental;R$ 650,00;Compareceu
+Gabriela Souza;(15) 94928-4221;gabriela@exemplo.com;16/07/2024 18:00;Limpeza;Dra. Paula;Particular;R$ 220,00;Compareceu
+Marina Lima;(30) 91495-9104;marina@exemplo.com;14/07/2024 11:00;Canal;Dra. Sônia;Odontoprev;R$ 220,00;Compareceu
+Heitor Gomes;(93) 95617-2470;heitor@exemplo.com;24/01/2024 16:30;Clareamento;Dra. Paula;Particular;R$ 150,00;Compareceu
+Heitor Ferreira;(95) 97124-5639;heitor@exemplo.com;18/01/2024 10:30;Restauração;Dr. Renato;SulAmérica;R$ 650,00;Compareceu
+Gabriela Martins;(14) 99337-1023;gabriela@exemplo.com;18/03/2024 09:00;Clareamento;Dr. Renato;Particular;R$ 150,00;Compareceu
+Diego Ribeiro;(31) 98074-5321;diego@exemplo.com;07/06/2024 11:00;Restauração;Dr. Renato;SulAmérica;R$ 650,00;Compareceu
+Heitor Ferreira;(48) 99948-7978;heitor@exemplo.com;15/06/2024 15:30;Restauração;Dra. Sônia;Odontoprev;R$ 380,00;Faltou
+Bruno Lima;(88) 92050-7783;bruno@exemplo.com;09/05/2024 14:00;Extração;Dr. Renato;Odontoprev;R$ 650,00;Faltou
+Íris Ribeiro;(47) 94414-1911;iris@exemplo.com;20/09/2024 16:30;Avaliação;Dra. Paula;Amil Dental;R$ 150,00;Compareceu
+Fábio Ferreira;(73) 97468-4613;fabio@exemplo.com;25/10/2024 17:00;Avaliação;Dra. Paula;Amil Dental;R$ 150,00;Compareceu
+Marina Gomes;(73) 98292-1252;marina@exemplo.com;07/08/2024 17:00;Limpeza;Dra. Sônia;Amil Dental;R$ 650,00;Compareceu
+Diego Martins;(29) 99052-2098;diego@exemplo.com;13/04/2024 10:30;Avaliação;Dra. Sônia;Amil Dental;R$ 900,00;Compareceu
+Marina Rocha;(13) 93643-6769;marina@exemplo.com;28/04/2024 16:30;Limpeza;Dr. Renato;Amil Dental;R$ 650,00;Compareceu
+Karina Ribeiro;(70) 92218-5898;karina@exemplo.com;06/08/2024 15:30;Limpeza;Dra. Sônia;Particular;R$ 150,00;Compareceu
+Olívia Silva;(77) 93820-3547;olivia@exemplo.com;10/01/2024 09:00;Clareamento;Dr. Renato;Amil Dental;R$ 150,00;Compareceu
+João Lima;(72) 99557-1269;joão@exemplo.com;12/06/2024 09:00;Limpeza;Dra. Paula;SulAmérica;R$ 220,00;Compareceu
+Fábio Ferreira;(73) 97468-4613;fabio@exemplo.com;16/08/2024 16:30;Extração;Dra. Sônia;Odontoprev;R$ 900,00;Compareceu
+Íris Silva;(59) 99341-7424;iris@exemplo.com;13/09/2024 10:00;Limpeza;Dra. Sônia;Particular;R$ 220,00;Compareceu
+Carla Ferreira;(15) 98907-1991;carla@exemplo.com;07/01/2024 16:00;Avaliação;Dr. Renato;Particular;R$ 650,00;Compareceu
+Elisa Ribeiro;(38) 97413-6825;elisa@exemplo.com;13/08/2024 16:30;Clareamento;Dr. Renato;Odontoprev;R$ 650,00;Compareceu
+Ana Rocha;(81) 95668-8107;ana@exemplo.com;05/04/2024 10:00;Avaliação;Dr. Renato;Odontoprev;R$ 150,00;Compareceu
+Heitor Ferreira;(95) 97124-5639;heitor@exemplo.com;22/05/2024 10:00;Extração;Dra. Paula;Odontoprev;R$ 150,00;Compareceu
+Diego Ribeiro;(31) 98074-5321;diego@exemplo.com;12/09/2024 18:30;Limpeza;Dr. Renato;Odontoprev;R$ 220,00;Faltou
+Gabriela Souza;(15) 94928-4221;gabriela@exemplo.com;10/07/2024 14:00;Canal;Dra. Paula;Odontoprev;R$ 220,00;Compareceu
+Íris Souza;(60) 97016-2472;iris@exemplo.com;24/01/2024 09:30;Canal;Dra. Sônia;Particular;R$ 150,00;Compareceu
+Paulo Gomes;(39) 95477-1755;paulo@exemplo.com;13/01/2024 10:00;Limpeza;Dra. Sônia;Odontoprev;R$ 150,00;Compareceu
+Paulo Ferreira;(61) 97125-8006;paulo@exemplo.com;17/09/2024 15:30;Restauração;Dr. Renato;Amil Dental;R$ 220,00;Compareceu
+Olívia Araújo;(63) 91810-3388;olivia@exemplo.com;12/03/2024 17:30;Restauração;Dra. Paula;Odontoprev;R$ 220,00;Compareceu
+Elisa Lima;(24) 95047-3016;elisa@exemplo.com;07/06/2024 18:30;Canal;Dr. Renato;Particular;R$ 650,00;Compareceu
+Lucas Araújo;(84) 97648-4421;lucas@exemplo.com;28/09/2024 18:30;Limpeza;Dr. Renato;Particular;R$ 380,00;Faltou
+Íris Gomes;(16) 98906-9214;iris@exemplo.com;05/07/2024 17:00;Extração;Dra. Paula;Odontoprev;R$ 150,00;Compareceu
+Karina Rocha;(28) 97758-4558;karina@exemplo.com;20/05/2024 15:00;Clareamento;Dra. Sônia;Amil Dental;R$ 900,00;Compareceu
+João Ferreira;(82) 95968-5687;joão@exemplo.com;25/07/2024 18:30;Extração;Dr. Renato;Odontoprev;R$ 150,00;Compareceu
+Paulo Rocha;(75) 93348-3949;paulo@exemplo.com;16/10/2024 18:00;Limpeza;Dra. Sônia;SulAmérica;R$ 650,00;Compareceu
+Gabriela Souza;(15) 94928-4221;gabriela@exemplo.com;10/01/2024 16:00;Restauração;Dra. Sônia;Amil Dental;R$ 650,00;Compareceu
+Íris Ribeiro;(34) 96393-5511;iris@exemplo.com;11/08/2024 08:00;Restauração;Dra. Sônia;Particular;R$ 650,00;Compareceu
+Gabriela Martins;(14) 99337-1023;gabriela@exemplo.com;03/07/2024 08:00;Avaliação;Dr. Renato;Amil Dental;R$ 150,00;Compareceu
+Íris Ribeiro;(34) 96393-5511;iris@exemplo.com;07/02/2024 17:00;Extração;Dra. Sônia;SulAmérica;R$ 900,00;Compareceu
+Paulo Gomes;(39) 95477-1755;paulo@exemplo.com;25/02/2024 16:00;Avaliação;Dra. Sônia;Odontoprev;R$ 150,00;Compareceu
+Nicolas Rocha;(78) 94271-3537;nicolas@exemplo.com;03/06/2024 18:30;Restauração;Dr. Renato;Amil Dental;R$ 900,00;Compareceu
+Karina Ribeiro;(84) 93260-5300;karina@exemplo.com;24/10/2024 10:00;Restauração;Dra. Paula;Amil Dental;R$ 900,00;Faltou
+Fábio Ferreira;(73) 97468-4613;fabio@exemplo.com;14/02/2024 18:30;Canal;Dr. Renato;Odontoprev;R$ 900,00;Compareceu
+Bruno Gomes;(82) 94947-8918;bruno@exemplo.com;24/03/2024 14:30;Extração;Dra. Sônia;Odontoprev;R$ 150,00;Compareceu
+Paulo Gomes;(39) 95477-1755;paulo@exemplo.com;20/02/2024 14:00;Canal;Dra. Paula;Amil Dental;R$ 900,00;Compareceu
+Elisa Lima;(24) 95047-3016;elisa@exemplo.com;29/04/2024 11:00;Limpeza;Dra. Paula;Particular;R$ 650,00;Compareceu
+Nicolas Rocha;(78) 94271-3537;nicolas@exemplo.com;01/08/2024 11:00;Extração;Dr. Renato;SulAmérica;R$ 650,00;Compareceu
+Gabriela Martins;(14) 99337-1023;gabriela@exemplo.com;16/07/2024 09:30;Extração;Dra. Paula;Amil Dental;R$ 150,00;Compareceu
+Paulo Lima;(52) 96332-6459;paulo@exemplo.com;10/10/2024 17:30;Canal;Dra. Paula;SulAmérica;R$ 220,00;Compareceu
+Íris Silva;(63) 95426-1820;iris@exemplo.com;28/08/2024 17:30;Limpeza;Dr. Renato;Odontoprev;R$ 650,00;Compareceu
+Heitor Lima;(52) 94893-9269;heitor@exemplo.com;08/05/2024 16:00;Avaliação;Dra. Paula;Particular;R$ 150,00;Compareceu
+Diego Ribeiro;(31) 98074-5321;diego@exemplo.com;12/04/2024 14:30;Avaliação;Dr. Renato;Particular;R$ 900,00;Compareceu
+Diego Rocha;(42) 92089-3636;diego@exemplo.com;01/04/2024 14:00;Clareamento;Dra. Paula;Amil Dental;R$ 380,00;Faltou
+Diego Ribeiro;(31) 98074-5321;diego@exemplo.com;27/04/2024 10:00;Limpeza;Dra. Sônia;Odontoprev;R$ 150,00;Faltou
+Heitor Gomes;(84) 97413-1328;heitor@exemplo.com;18/01/2024 11:00;Restauração;Dr. Renato;SulAmérica;R$ 650,00;Compareceu
+Gabriela Araújo;(21) 92261-8127;gabriela@exemplo.com;16/07/2024 17:00;Canal;Dr. Renato;Amil Dental;R$ 220,00;Compareceu
+Ana Ferreira;(12) 96342-4543;ana@exemplo.com;27/02/2024 18:30;Restauração;Dra. Paula;Particular;R$ 900,00;Compareceu
+Íris Ferreira;(82) 93609-6644;iris@exemplo.com;04/02/2024 09:30;Clareamento;Dra. Paula;Odontoprev;R$ 650,00;Compareceu
+Diego Rocha;(93) 97781-7177;diego@exemplo.com;24/06/2024 10:00;Canal;Dra. Sônia;Amil Dental;R$ 900,00;Compareceu
+Diego Martins;(29) 99052-2098;diego@exemplo.com;26/01/2024 09:00;Restauração;Dr. Renato;Odontoprev;R$ 220,00;Compareceu
+Heitor Martins;(77) 96912-7481;heitor@exemplo.com;27/02/2024 14:00;Avaliação;Dr. Renato;Amil Dental;R$ 650,00;Faltou
+Marina Lima;(30) 91495-9104;marina@exemplo.com;26/05/2024 08:30;Clareamento;Dra. Paula;Odontoprev;R$ 380,00;Compareceu
+Gabriela Ribeiro;(63) 95823-3404;gabriela@exemplo.com;19/10/2024 17:30;Limpeza;Dra. Sônia;Amil Dental;R$ 380,00;Compareceu
+Íris Ribeiro;(47) 94414-1911;iris@exemplo.com;31/01/2024 09:30;Restauração;Dr. Renato;Odontoprev;R$ 650,00;Compareceu
+Heitor Silva;(37) 97877-9987;heitor@exemplo.com;15/09/2024 18:30;Clareamento;Dra. Sônia;Amil Dental;R$ 900,00;Compareceu
+Gabriela Araújo;(21) 92261-8127;gabriela@exemplo.com;14/06/2024 10:30;Clareamento;Dra. Paula;Particular;R$ 650,00;Compareceu
+Fábio Ferreira;(73) 97468-4613;fabio@exemplo.com;16/08/2024 17:30;Clareamento;Dra. Paula;Odontoprev;R$ 220,00;Compareceu
+Diego Rocha;(93) 97781-7177;diego@exemplo.com;23/07/2024 11:30;Clareamento;Dra. Sônia;SulAmérica;R$ 650,00;Faltou
+Heitor Ferreira;(48) 99948-7978;heitor@exemplo.com;27/01/2024 16:00;Clareamento;Dra. Paula;SulAmérica;R$ 380,00;Compareceu
+Heitor Silva;(37) 97877-9987;heitor@exemplo.com;21/09/2024 17:30;Canal;Dra. Sônia;Amil Dental;R$ 150,00;Compareceu
+Diego Ribeiro;(31) 98074-5321;diego@exemplo.com;13/03/2024 11:00;Canal;Dra. Sônia;Odontoprev;R$ 900,00;Compareceu
+Marina Carvalho;(94) 99611-4043;marina@exemplo.com;25/05/2024 15:00;Restauração;Dra. Sônia;Odontoprev;R$ 380,00;Faltou
+Elisa Gomes;(17) 93465-7209;elisa@exemplo.com;19/09/2024 18:30;Restauração;Dra. Paula;Odontoprev;R$ 380,00;Compareceu
+Heitor Silva;(37) 97877-9987;heitor@exemplo.com;22/10/2024 11:30;Canal;Dra. Sônia;SulAmérica;R$ 900,00;Compareceu
+Marina Souza;(34) 97030-6889;marina@exemplo.com;31/03/2024 16:00;Extração;Dr. Renato;SulAmérica;R$ 900,00;Compareceu
+Gabriela Souza;(15) 94928-4221;gabriela@exemplo.com;24/02/2024 14:30;Restauração;Dra. Paula;Particular;R$ 150,00;Compareceu
+Paulo Gomes;(54) 93922-8495;paulo@exemplo.com;03/08/2024 09:30;Limpeza;Dra. Sônia;Odontoprev;R$ 380,00;Compareceu
+Fábio Ribeiro;(17) 91066-6730;fabio@exemplo.com;25/08/2024 08:30;Avaliação;Dra. Paula;SulAmérica;R$ 380,00;Compareceu
+Karina Silva;(74) 92019-7281;karina@exemplo.com;28/07/2024 18:00;Avaliação;Dr. Renato;Odontoprev;R$ 220,00;Compareceu
+Ana Rocha;(81) 95668-8107;ana@exemplo.com;08/04/2024 15:30;Avaliação;Dr. Renato;Particular;R$ 380,00;Faltou
+Heitor Martins;(77) 96912-7481;heitor@exemplo.com;29/05/2024 11:00;Limpeza;Dr. Renato;SulAmérica;R$ 380,00;Compareceu
+Elisa Gomes;(17) 93465-7209;elisa@exemplo.com;28/03/2024 17:00;Clareamento;Dra. Sônia;Odontoprev;R$ 380,00;Compareceu
+Nicolas Ferreira;(94) 91866-1523;nicolas@exemplo.com;15/01/2024 10:30;Canal;Dr. Renato;SulAmérica;R$ 650,00;Compareceu
+Heitor Ferreira;(95) 97124-5639;heitor@exemplo.com;27/09/2024 18:30;Extração;Dra. Sônia;Amil Dental;R$ 220,00;Compareceu
+Bruno Carvalho;(99) 98901-5339;bruno@exemplo.com;26/09/2024 08:30;Avaliação;Dra. Sônia;SulAmérica;R$ 900,00;Compareceu
+Diego Araújo;(39) 93743-3990;diego@exemplo.com;08/06/2024 18:00;Limpeza;Dr. Renato;Amil Dental;R$ 650,00;Compareceu
+Lucas Ribeiro;(47) 95772-4195;lucas@exemplo.com;19/10/2024 16:00;Canal;Dr. Renato;Odontoprev;R$ 900,00;Compareceu
+Diego Ferreira;(50) 97828-3483;diego@exemplo.com;15/01/2024 10:30;Restauração;Dra. Sônia;Amil Dental;R$ 650,00;Compareceu
+Marina Gomes;(73) 98292-1252;marina@exemplo.com;11/05/2024 11:30;Avaliação;Dra. Paula;Odontoprev;R$ 380,00;Faltou
+Karina Ribeiro;(84) 93260-5300;karina@exemplo.com;13/08/2024 11:00;Clareamento;Dra. Paula;Amil Dental;R$ 900,00;Compareceu
+Diego Martins;(29) 99052-2098;diego@exemplo.com;29/06/2024 10:30;Canal;Dr. Renato;Particular;R$ 380,00;Compareceu
+Marina Silva;(67) 92663-6529;marina@exemplo.com;20/09/2024 14:00;Avaliação;Dra. Paula;SulAmérica;R$ 220,00;Compareceu
+Elisa Gomes;(17) 93465-7209;elisa@exemplo.com;25/05/2024 16:30;Avaliação;Dra. Paula;SulAmérica;R$ 900,00;Faltou
+Paulo Rocha;(75) 93348-3949;paulo@exemplo.com;16/05/2024 09:00;Clareamento;Dr. Renato;Amil Dental;R$ 380,00;Compareceu
+Karina Ribeiro;(84) 93260-5300;karina@exemplo.com;29/08/2024 18:30;Avaliação;Dr. Renato;SulAmérica;R$ 380,00;Compareceu
+Lucas Ribeiro;(47) 95772-4195;lucas@exemplo.com;19/02/2024 10:30;Restauração;Dra. Paula;SulAmérica;R$ 220,00;Compareceu
+Íris Araújo;(45) 91549-9076;iris@exemplo.com;14/02/2024 15:00;Canal;Dr. Renato;Particular;R$ 220,00;Compareceu
+Paulo Gomes;(54) 93922-8495;paulo@exemplo.com;29/01/2024 08:30;Clareamento;Dr. Renato;SulAmérica;R$ 220,00;Compareceu
+Diego Ferreira;(50) 97828-3483;diego@exemplo.com;16/07/2024 08:30;Limpeza;Dra. Sônia;Amil Dental;R$ 150,00;Compareceu
+Paulo Gomes;(54) 93922-8495;paulo@exemplo.com;30/04/2024 18:30;Clareamento;Dr. Renato;Amil Dental;R$ 900,00;Compareceu
+Nicolas Rocha;(78) 94271-3537;nicolas@exemplo.com;08/07/2024 11:30;Clareamento;Dra. Paula;SulAmérica;R$ 900,00;Compareceu
+Diego Martins;(29) 99052-2098;diego@exemplo.com;17/06/2024 10:00;Extração;Dr. Renato;Amil Dental;R$ 150,00;Compareceu
+Heitor Martins;(77) 96912-7481;heitor@exemplo.com;01/04/2024 09:00;Limpeza;Dra. Sônia;Amil Dental;R$ 150,00;Compareceu
+Marina Silva;(67) 92663-6529;marina@exemplo.com;26/09/2024 08:00;Clareamento;Dra. Paula;Amil Dental;R$ 900,00;Compareceu
+Lucas Souza;(59) 95500-7739;lucas@exemplo.com;22/03/2024 14:00;Restauração;Dra. Paula;SulAmérica;R$ 380,00;Compareceu
+Bruno Gomes;(82) 94947-8918;bruno@exemplo.com;30/05/2024 18:00;Extração;Dr. Renato;Particular;R$ 150,00;Compareceu
+Nicolas Rocha;(78) 94271-3537;nicolas@exemplo.com;29/08/2024 17:30;Extração;Dra. Sônia;SulAmérica;R$ 380,00;Compareceu
+Paulo Ferreira;(74) 94256-1476;paulo@exemplo.com;28/01/2024 17:00;Avaliação;Dra. Sônia;Amil Dental;R$ 380,00;Compareceu
+Olívia Martins;(14) 93325-7662;olivia@exemplo.com;10/04/2024 14:30;Restauração;Dra. Sônia;SulAmérica;R$ 900,00;Compareceu
+Íris Gomes;(82) 96251-1838;iris@exemplo.com;18/02/2024 10:00;Avaliação;Dr. Renato;SulAmérica;R$ 380,00;Compareceu
+Olívia Rocha;(23) 97407-5125;olivia@exemplo.com;11/02/2024 14:30;Clareamento;Dra. Sônia;SulAmérica;R$ 220,00;Faltou
+João Souza;(31) 94533-7797;joão@exemplo.com;13/02/2024 16:00;Clareamento;Dra. Sônia;Odontoprev;R$ 150,00;Faltou
+Heitor Martins;(77) 96912-7481;heitor@exemplo.com;07/04/2024 17:30;Avaliação;Dra. Paula;Amil Dental;R$ 900,00;Compareceu
+Karina Ribeiro;(70) 92218-5898;karina@exemplo.com;16/07/2024 10:00;Extração;Dra. Sônia;Amil Dental;R$ 220,00;Compareceu
+Íris Ribeiro;(47) 94414-1911;iris@exemplo.com;09/09/2024 11:00;Avaliação;Dra. Sônia;Odontoprev;R$ 150,00;Compareceu
+Karina Silva;(74) 92019-7281;karina@exemplo.com;22/06/2024 08:30;Limpeza;Dra. Paula;Odontoprev;R$ 900,00;Compareceu
+Lucas Lima;(80) 92569-7864;lucas@exemplo.com;02/05/2024 11:00;Clareamento;Dr. Renato;Odontoprev;R$ 220,00;Compareceu
+Lucas Souza;(59) 95500-7739;lucas@exemplo.com;10/08/2024 11:00;Clareamento;Dr. Renato;Particular;R$ 380,00;Compareceu
+Ana Ferreira;(12) 96342-4543;ana@exemplo.com;27/07/2024 14:00;Avaliação;Dr. Renato;SulAmérica;R$ 220,00;Compareceu
+Diego Ribeiro;(31) 98074-5321;diego@exemplo.com;19/03/2024 17:30;Canal;Dra. Sônia;Amil Dental;R$ 150,00;Faltou
+Marina Carvalho;(94) 99611-4043;marina@exemplo.com;17/02/2024 18:30;Clareamento;Dra. Sônia;SulAmérica;R$ 650,00;Compareceu
+Diego Ferreira;(62) 92451-2376;diego@exemplo.com;03/09/2024 17:30;Clareamento;Dra. Paula;Odontoprev;R$ 380,00;Compareceu
+Karina Rocha;(28) 97758-4558;karina@exemplo.com;05/02/2024 15:30;Canal;Dra. Paula;Odontoprev;R$ 220,00;Faltou
+Olívia Martins;(14) 93325-7662;olivia@exemplo.com;26/04/2024 15:30;Extração;Dr. Renato;Particular;R$ 380,00;Compareceu
+Carla Silva;(45) 94343-9173;carla@exemplo.com;15/05/2024 08:30;Extração;Dr. Renato;Particular;R$ 150,00;Compareceu
+Elisa Lima;(13) 98756-7132;elisa@exemplo.com;04/09/2024 08:00;Limpeza;Dra. Paula;Odontoprev;R$ 650,00;Faltou
+Paulo Lima;(52) 96332-6459;paulo@exemplo.com;22/08/2024 10:30;Avaliação;Dra. Sônia;Amil Dental;R$ 900,00;Compareceu
+Lucas Souza;(93) 99382-6712;lucas@exemplo.com;11/07/2024 08:30;Clareamento;Dr. Renato;Particular;R$ 220,00;Compareceu
+Carla Ferreira;(15) 98907-1991;carla@exemplo.com;25/02/2024 18:00;Extração;Dra. Sônia;SulAmérica;R$ 900,00;Compareceu
+Olívia Silva;(77) 93820-3547;olivia@exemplo.com;06/01/2024 16:00;Restauração;Dra. Sônia;SulAmérica;R$ 150,00;Compareceu
+Marina Souza;(34) 97030-6889;marina@exemplo.com;28/02/2024 15:30;Limpeza;Dra. Paula;SulAmérica;R$ 220,00;Compareceu
+Nicolas Ferreira;(94) 91866-1523;nicolas@exemplo.com;01/08/2024 08:30;Extração;Dra. Sônia;Amil Dental;R$ 380,00;Compareceu
+Íris Gomes;(16) 98906-9214;iris@exemplo.com;17/09/2024 14:30;Limpeza;Dra. Sônia;Particular;R$ 900,00;Compareceu
+Karina Carvalho;(13) 99984-1575;karina@exemplo.com;04/09/2024 15:30;Limpeza;Dra. Sônia;Odontoprev;R$ 220,00;Faltou
+Elisa Gomes;(17) 93465-7209;elisa@exemplo.com;07/06/2024 09:00;Limpeza;Dra. Paula;Amil Dental;R$ 380,00;Faltou
+Diego Ribeiro;(31) 98074-5321;diego@exemplo.com;16/01/2024 17:00;Avaliação;Dra. Sônia;Amil Dental;R$ 650,00;Compareceu
+Carla Souza;(83) 95293-4662;carla@exemplo.com;22/01/2024 08:30;Extração;Dr. Renato;Amil Dental;R$ 650,00;Compareceu
+Marina Souza;(34) 97030-6889;marina@exemplo.com;20/04/2024 10:00;Extração;Dr. Renato;Amil Dental;R$ 650,00;Compareceu
+Fábio Ferreira;(73) 97468-4613;fabio@exemplo.com;05/09/2024 10:00;Limpeza;Dra. Sônia;Odontoprev;R$ 220,00;Compareceu
+Lucas Souza;(59) 95500-7739;lucas@exemplo.com;22/02/2024 18:30;Canal;Dra. Paula;Amil Dental;R$ 380,00;Compareceu
+Carla Ferreira;(15) 98907-1991;carla@exemplo.com;02/04/2024 15:30;Limpeza;Dra. Paula;SulAmérica;R$ 650,00;Compareceu
+Diego Rocha;(93) 97781-7177;diego@exemplo.com;02/10/2024 11:00;Restauração;Dra. Sônia;Particular;R$ 650,00;Faltou
+Bruno Ribeiro;(55) 97217-4752;bruno@exemplo.com;29/08/2024 09:30;Limpeza;Dra. Paula;Amil Dental;R$ 380,00;Faltou
+Marina Carvalho;(94) 99611-4043;marina@exemplo.com;28/02/2024 17:30;Avaliação;Dr. Renato;Particular;R$ 650,00;Compareceu
+Nicolas Ferreira;(94) 91866-1523;nicolas@exemplo.com;08/01/2024 14:00;Extração;Dra. Sônia;SulAmérica;R$ 900,00;Compareceu
+Paulo Gomes;(54) 93922-8495;paulo@exemplo.com;07/09/2024 09:00;Canal;Dra. Paula;Odontoprev;R$ 380,00;Compareceu
+Bruno Carvalho;(99) 98901-5339;bruno@exemplo.com;07/04/2024 09:30;Canal;Dra. Paula;Particular;R$ 650,00;Compareceu
+Marina Gomes;(73) 98292-1252;marina@exemplo.com;04/08/2024 09:00;Restauração;Dr. Renato;Odontoprev;R$ 380,00;Compareceu
+Paulo Rocha;(75) 93348-3949;paulo@exemplo.com;22/08/2024 16:00;Limpeza;Dr. Renato;Particular;R$ 900,00;Faltou
+Diego Rocha;(42) 92089-3636;diego@exemplo.com;28/05/2024 08:00;Avaliação;Dra. Paula;SulAmérica;R$ 150,00;Faltou
+Bruno Lima;(88) 92050-7783;bruno@exemplo.com;07/10/2024 11:00;Canal;Dra. Sônia;Particular;R$ 150,00;Compareceu
+Íris Ribeiro;(34) 96393-5511;iris@exemplo.com;07/04/2024 10:30;Clareamento;Dra. Sônia;Amil Dental;R$ 150,00;Compareceu
+Gabriela Ribeiro;(63) 95823-3404;gabriela@exemplo.com;05/04/2024 11:00;Restauração;Dra. Sônia;Amil Dental;R$ 150,00;Faltou
+Elisa Ribeiro;(38) 97413-6825;elisa@exemplo.com;16/02/2024 14:00;Restauração;Dra. Paula;Odontoprev;R$ 900,00;Compareceu
+Bruno Gomes;(89) 94631-6884;bruno@exemplo.com;28/03/2024 08:00;Clareamento;Dr. Renato;SulAmérica;R$ 650,00;Compareceu
+Marina Carvalho;(94) 99611-4043;marina@exemplo.com;08/10/2024 10:30;Clareamento;Dr. Renato;SulAmérica;R$ 150,00;Compareceu
+Íris Ribeiro;(47) 94414-1911;iris@exemplo.com;28/05/2024 11:00;Extração;Dra. Paula;Particular;R$ 380,00;Compareceu
+Ana Ferreira;(12) 96342-4543;ana@exemplo.com;20/10/2024 16:30;Extração;Dra. Paula;Particular;R$ 380,00;Compareceu
+Karina Ribeiro;(70) 92218-5898;karina@exemplo.com;04/04/2024 10:30;Limpeza;Dra. Paula;Amil Dental;R$ 220,00;Compareceu
+Gabriela Martins;(14) 99337-1023;gabriela@exemplo.com;10/04/2024 08:00;Restauração;Dra. Sônia;Particular;R$ 900,00;Compareceu
+Paulo Gomes;(54) 93922-8495;paulo@exemplo.com;23/09/2024 15:00;Restauração;Dr. Renato;SulAmérica;R$ 150,00;Compareceu
+Paulo Ferreira;(74) 94256-1476;paulo@exemplo.com;25/06/2024 18:30;Clareamento;Dra. Sônia;Odontoprev;R$ 220,00;Compareceu
+João Ferreira;(82) 95968-5687;joão@exemplo.com;23/06/2024 08:00;Limpeza;Dr. Renato;Amil Dental;R$ 900,00;Compareceu
+Marina Souza;(34) 97030-6889;marina@exemplo.com;09/09/2024 10:30;Clareamento;Dra. Paula;SulAmérica;R$ 650,00;Compareceu
+Olívia Silva;(77) 93820-3547;olivia@exemplo.com;01/03/2024 17:30;Restauração;Dra. Sônia;Odontoprev;R$ 220,00;Compareceu
+Marina Gomes;(73) 98292-1252;marina@exemplo.com;12/01/2024 17:30;Limpeza;Dra. Sônia;Amil Dental;R$ 650,00;Compareceu
+Paulo Ferreira;(74) 94256-1476;paulo@exemplo.com;06/07/2024 08:00;Avaliação;Dra. Sônia;Odontoprev;R$ 900,00;Faltou
+Bruno Carvalho;(99) 98901-5339;bruno@exemplo.com;09/04/2024 11:30;Clareamento;Dra. Sônia;Amil Dental;R$ 380,00;Compareceu
+Heitor Gomes;(93) 95617-2470;heitor@exemplo.com;03/02/2024 16:00;Limpeza;Dra. Sônia;Odontoprev;R$ 900,00;Compareceu
+João Carvalho;(63) 92314-1280;joão@exemplo.com;08/05/2024 10:30;Restauração;Dra. Paula;Odontoprev;R$ 380,00;Compareceu
+Heitor Lima;(52) 94893-9269;heitor@exemplo.com;08/02/2024 14:30;Avaliação;Dr. Renato;Odontoprev;R$ 650,00;Faltou
+Paulo Ferreira;(61) 97125-8006;paulo@exemplo.com;28/05/2024 18:30;Extração;Dr. Renato;Particular;R$ 900,00;Faltou
+Diego Rocha;(93) 97781-7177;diego@exemplo.com;29/01/2024 14:00;Extração;Dra. Paula;SulAmérica;R$ 380,00;Faltou
+Íris Ribeiro;(47) 94414-1911;iris@exemplo.com;16/03/2024 15:30;Restauração;Dra. Paula;Odontoprev;R$ 380,00;Faltou
+João Carvalho;(63) 92314-1280;joão@exemplo.com;01/04/2024 08:30;Extração;Dra. Paula;Odontoprev;R$ 380,00;Compareceu
+Elisa Lima;(13) 98756-7132;elisa@exemplo.com;13/02/2024 18:30;Extração;Dra. Sônia;Amil Dental;R$ 380,00;Compareceu
+Karina Carvalho;(13) 99984-1575;karina@exemplo.com;01/05/2024 10:00;Avaliação;Dr. Renato;Amil Dental;R$ 650,00;Compareceu
+Lucas Souza;(59) 95500-7739;lucas@exemplo.com;01/03/2024 11:30;Avaliação;Dra. Sônia;Particular;R$ 900,00;Compareceu
+Carla Silva;(45) 94343-9173;carla@exemplo.com;26/02/2024 18:00;Avaliação;Dra. Paula;Particular;R$ 900,00;Faltou
+Heitor Gomes;(84) 97413-1328;heitor@exemplo.com;15/07/2024 08:30;Avaliação;Dra. Sônia;Odontoprev;R$ 380,00;Compareceu
+Heitor Martins;(77) 96912-7481;heitor@exemplo.com;19/03/2024 14:00;Restauração;Dra. Paula;Particular;R$ 150,00;Compareceu
+Gabriela Martins;(14) 99337-1023;gabriela@exemplo.com;22/04/2024 11:00;Canal;Dr. Renato;Particular;R$ 900,00;Faltou
+Paulo Rocha;(75) 93348-3949;paulo@exemplo.com;09/09/2024 17:30;Restauração;Dr. Renato;Particular;R$ 220,00;Compareceu
+Diego Rocha;(93) 97781-7177;diego@exemplo.com;20/10/2024 17:00;Extração;Dra. Sônia;SulAmérica;R$ 150,00;Faltou
+Elisa Lima;(24) 95047-3016;elisa@exemplo.com;18/03/2024 15:00;Avaliação;Dra. Sônia;Odontoprev;R$ 900,00;Faltou
+Íris Araújo;(45) 91549-9076;iris@exemplo.com;03/03/2024 08:00;Extração;Dra. Sônia;Amil Dental;R$ 900,00;Compareceu
+Lucas Araújo;(84) 97648-4421;lucas@exemplo.com;17/01/2024 14:00;Restauração;Dra. Sônia;Particular;R$ 220,00;Faltou
+Lucas Souza;(93) 99382-6712;lucas@exemplo.com;24/03/2024 08:00;Avaliação;Dra. Paula;Particular;R$ 900,00;Compareceu
+Carla Silva;(45) 94343-9173;carla@exemplo.com;08/06/2024 11:00;Clareamento;Dr. Renato;SulAmérica;R$ 150,00;Faltou
+Carla Ferreira;(15) 98907-1991;carla@exemplo.com;15/02/2024 10:30;Avaliação;Dr. Renato;SulAmérica;R$ 220,00;Compareceu
+Lucas Lima;(80) 92569-7864;lucas@exemplo.com;17/07/2024 09:30;Avaliação;Dr. Renato;Particular;R$ 220,00;Compareceu
+Elisa Ferreira;(99) 99245-8051;elisa@exemplo.com;17/01/2024 17:00;Canal;Dr. Renato;Odontoprev;R$ 220,00;Compareceu
+Paulo Gomes;(54) 93922-8495;paulo@exemplo.com;19/03/2024 17:00;Canal;Dra. Sônia;Particular;R$ 220,00;Faltou
+Diego Ferreira;(62) 92451-2376;diego@exemplo.com;13/07/2024 16:30;Restauração;Dra. Paula;Particular;R$ 900,00;Compareceu
+Paulo Ferreira;(74) 94256-1476;paulo@exemplo.com;29/03/2024 14:00;Restauração;Dra. Paula;Particular;R$ 650,00;Faltou
+Karina Silva;(74) 92019-7281;karina@exemplo.com;02/07/2024 15:00;Clareamento;Dra. Sônia;Amil Dental;R$ 380,00;Compareceu
+Fábio Lima;(83) 91879-4065;fabio@exemplo.com;20/06/2024 16:30;Canal;Dra. Paula;Amil Dental;R$ 900,00;Compareceu
+Diego Rocha;(93) 97781-7177;diego@exemplo.com;19/03/2024 16:00;Limpeza;Dra. Paula;SulAmérica;R$ 650,00;Compareceu
+Heitor Lima;(52) 94893-9269;heitor@exemplo.com;13/05/2024 10:30;Canal;Dra. Paula;Particular;R$ 380,00;Compareceu
+Olívia Rocha;(23) 97407-5125;olivia@exemplo.com;23/07/2024 18:00;Avaliação;Dr. Renato;Odontoprev;R$ 380,00;Compareceu
+Fábio Lima;(83) 91879-4065;fabio@exemplo.com;26/02/2024 09:00;Clareamento;Dra. Paula;Odontoprev;R$ 650,00;Compareceu
+Olívia Silva;(77) 93820-3547;olivia@exemplo.com;25/02/2024 11:30;Canal;Dra. Sônia;Odontoprev;R$ 900,00;Compareceu
+Marina Rocha;(13) 93643-6769;marina@exemplo.com;06/10/2024 15:30;Restauração;Dra. Sônia;SulAmérica;R$ 900,00;Compareceu
+Marina Lima;(30) 91495-9104;marina@exemplo.com;31/08/2024 17:30;Limpeza;Dr. Renato;SulAmérica;R$ 220,00;Compareceu
+Marina Lima;(30) 91495-9104;marina@exemplo.com;23/04/2024 14:30;Restauração;Dr. Renato;Odontoprev;R$ 380,00;Compareceu
+Marina Carvalho;(94) 99611-4043;marina@exemplo.com;24/05/2024 14:30;Canal;Dra. Paula;Amil Dental;R$ 380,00;Compareceu
+Marina Lima;(30) 91495-9104;marina@exemplo.com;12/03/2024 14:30;Avaliação;Dra. Paula;Odontoprev;R$ 900,00;Compareceu
+Heitor Araújo;(32) 99323-4300;heitor@exemplo.com;10/03/2024 10:00;Avaliação;Dr. Renato;Particular;R$ 900,00;Compareceu
+Elisa Ferreira;(99) 99245-8051;elisa@exemplo.com;23/04/2024 11:00;Extração;Dra. Paula;SulAmérica;R$ 650,00;Compareceu
+Lucas Ribeiro;(47) 95772-4195;lucas@exemplo.com;11/08/2024 10:30;Extração;Dra. Paula;Amil Dental;R$ 380,00;Compareceu
+Diego Rocha;(42) 92089-3636;diego@exemplo.com;10/04/2024 18:00;Limpeza;Dr. Renato;Amil Dental;R$ 900,00;Compareceu
+Íris Silva;(63) 95426-1820;iris@exemplo.com;16/09/2024 14:30;Restauração;Dra. Paula;Odontoprev;R$ 650,00;Compareceu
+Diego Rocha;(93) 97781-7177;diego@exemplo.com;11/05/2024 10:30;Extração;Dra. Paula;Amil Dental;R$ 380,00;Compareceu
+Karina Rocha;(28) 97758-4558;karina@exemplo.com;15/03/2024 16:30;Avaliação;Dra. Sônia;Amil Dental;R$ 900,00;Compareceu
+Paulo Gomes;(54) 93922-8495;paulo@exemplo.com;27/06/2024 17:30;Extração;Dra. Sônia;Odontoprev;R$ 380,00;Faltou
+Olívia Rocha;(23) 97407-5125;olivia@exemplo.com;05/09/2024 09:00;Limpeza;Dra. Sônia;Amil Dental;R$ 150,00;Compareceu
+Íris Ferreira;(82) 93609-6644;iris@exemplo.com;22/04/2024 15:00;Avaliação;Dra. Paula;Odontoprev;R$ 150,00;Compareceu
+Lucas Souza;(59) 95500-7739;lucas@exemplo.com;20/10/2024 18:00;Clareamento;Dra. Paula;Amil Dental;R$ 380,00;Compareceu
+Marina Carvalho;(94) 99611-4043;marina@exemplo.com;15/02/2024 10:00;Extração;Dra. Sônia;SulAmérica;R$ 650,00;Compareceu
+Paulo Ribeiro;(77) 96470-1923;paulo@exemplo.com;06/08/2024 10:30;Restauração;Dr. Renato;Amil Dental;R$ 150,00;Compareceu
+João Souza;(31) 94533-7797;joão@exemplo.com;24/01/2024 16:30;Clareamento;Dr. Renato;Odontoprev;R$ 220,00;Compareceu
+Paulo Lima;(52) 96332-6459;paulo@exemplo.com;14/06/2024 09:30;Clareamento;Dra. Sônia;Odontoprev;R$ 380,00;Compareceu
+Heitor Ferreira;(95) 97124-5639;heitor@exemplo.com;14/09/2024 11:30;Extração;Dra. Paula;Odontoprev;R$ 900,00;Faltou
+Íris Silva;(63) 95426-1820;iris@exemplo.com;17/05/2024 18:30;Canal;Dra. Paula;Odontoprev;R$ 150,00;Compareceu
+Heitor Martins;(77) 96912-7481;heitor@exemplo.com;30/04/2024 18:30;Extração;Dra. Sônia;Amil Dental;R$ 150,00;Compareceu
+Elisa Lima;(13) 98756-7132;elisa@exemplo.com;21/03/2024 09:00;Extração;Dra. Sônia;Amil Dental;R$ 380,00;Faltou
+Lucas Souza;(59) 95500-7739;lucas@exemplo.com;02/02/2024 09:30;Avaliação;Dra. Paula;SulAmérica;R$ 380,00;Compareceu
+Fábio Ferreira;(73) 97468-4613;fabio@exemplo.com;15/06/2024 18:00;Restauração;Dr. Renato;Particular;R$ 220,00;Compareceu
+Íris Silva;(63) 95426-1820;iris@exemplo.com;07/09/2024 18:00;Clareamento;Dr. Renato;SulAmérica;R$ 380,00;Faltou
+Diego Martins;(29) 99052-2098;diego@exemplo.com;16/07/2024 10:30;Extração;Dra. Sônia;Particular;R$ 900,00;Faltou
+Heitor Araújo;(32) 99323-4300;heitor@exemplo.com;31/05/2024 15:30;Restauração;Dr. Renato;Particular;R$ 220,00;Compareceu
+Gabriela Araújo;(78) 99564-6386;gabriela@exemplo.com;03/05/2024 17:00;Restauração;Dra. Sônia;Odontoprev;R$ 150,00;Faltou
+Karina Ribeiro;(45) 96055-2727;karina@exemplo.com;09/01/2024 14:30;Limpeza;Dra. Sônia;Odontoprev;R$ 380,00;Faltou
+Diego Rocha;(42) 92089-3636;diego@exemplo.com;06/03/2024 16:00;Avaliação;Dra. Paula;SulAmérica;R$ 380,00;Compareceu
+Elisa Lima;(24) 95047-3016;elisa@exemplo.com;29/02/2024 18:30;Avaliação;Dr. Renato;Particular;R$ 220,00;Compareceu
+Gabriela Souza;(15) 94928-4221;gabriela@exemplo.com;03/07/2024 15:00;Extração;Dra. Paula;Amil Dental;R$ 650,00;Compareceu
+Paulo Ferreira;(61) 97125-8006;paulo@exemplo.com;08/08/2024 14:00;Clareamento;Dra. Sônia;Odontoprev;R$ 380,00;Compareceu
+Karina Rocha;(28) 97758-4558;karina@exemplo.com;02/01/2024 17:30;Extração;Dra. Paula;Amil Dental;R$ 220,00;Faltou
+Nicolas Rocha;(78) 94271-3537;nicolas@exemplo.com;24/05/2024 09:00;Extração;Dr. Renato;Amil Dental;R$ 650,00;Compareceu
+João Lima;(72) 99557-1269;joão@exemplo.com;11/06/2024 09:30;Clareamento;Dra. Paula;Amil Dental;R$ 380,00;Compareceu
+Heitor Ferreira;(95) 97124-5639;heitor@exemplo.com;06/04/2024 18:00;Restauração;Dra. Paula;Odontoprev;R$ 380,00;Compareceu
+Elisa Ribeiro;(38) 97413-6825;elisa@exemplo.com;15/06/2024 09:30;Extração;Dra. Paula;Odontoprev;R$ 150,00;Faltou
+Fábio Lima;(83) 91879-4065;fabio@exemplo.com;10/03/2024 16:00;Limpeza;Dra. Sônia;Odontoprev;R$ 150,00;Compareceu
+Íris Souza;(60) 97016-2472;iris@exemplo.com;11/06/2024 14:30;Extração;Dra. Sônia;Odontoprev;R$ 150,00;Compareceu
+Karina Silva;(74) 92019-7281;karina@exemplo.com;02/02/2024 18:30;Avaliação;Dra. Paula;SulAmérica;R$ 220,00;Compareceu
+João Carvalho;(63) 92314-1280;joão@exemplo.com;31/07/2024 18:30;Extração;Dr. Renato;SulAmérica;R$ 150,00;Compareceu
+Marina Lima;(30) 91495-9104;marina@exemplo.com;10/03/2024 10:30;Clareamento;Dr. Renato;Odontoprev;R$ 900,00;Compareceu
+Diego Rocha;(42) 92089-3636;diego@exemplo.com;21/02/2024 16:00;Limpeza;Dr. Renato;Amil Dental;R$ 650,00;Compareceu
+Karina Silva;(81) 96651-5007;karina@exemplo.com;19/03/2024 10:30;Limpeza;Dra. Sônia;SulAmérica;R$ 650,00;Compareceu
+Ana Souza;(34) 95994-6400;ana@exemplo.com;17/10/2024 08:30;Clareamento;Dra. Paula;Odontoprev;R$ 380,00;Compareceu
+Gabriela Araújo;(21) 92261-8127;gabriela@exemplo.com;22/03/2024 09:00;Clareamento;Dra. Paula;Particular;R$ 220,00;Faltou
+Íris Gomes;(82) 96251-1838;iris@exemplo.com;24/09/2024 17:00;Avaliação;Dra. Sônia;Particular;R$ 220,00;Compareceu
+Paulo Rocha;(75) 93348-3949;paulo@exemplo.com;09/04/2024 16:30;Limpeza;Dra. Paula;Amil Dental;R$ 220,00;Faltou
+Elisa Gomes;(17) 93465-7209;elisa@exemplo.com;11/04/2024 16:00;Extração;Dra. Sônia;Particular;R$ 900,00;Compareceu
+Diego Rocha;(42) 92089-3636;diego@exemplo.com;04/05/2024 11:30;Avaliação;Dra. Sônia;Odontoprev;R$ 900,00;Compareceu
+Gabriela Araújo;(21) 92261-8127;gabriela@exemplo.com;08/06/2024 11:30;Restauração;Dra. Paula;Odontoprev;R$ 650,00;Compareceu
+Karina Carvalho;(13) 99984-1575;karina@exemplo.com;11/03/2024 11:30;Canal;Dr. Renato;SulAmérica;R$ 220,00;Compareceu
+Karina Silva;(81) 96651-5007;karina@exemplo.com;25/08/2024 14:00;Limpeza;Dr. Renato;SulAmérica;R$ 650,00;Compareceu
+Nicolas Rocha;(78) 94271-3537;nicolas@exemplo.com;19/07/2024 09:00;Restauração;Dra. Sônia;SulAmérica;R$ 220,00;Compareceu
+Olívia Carvalho;(11) 94424-1414;olivia@exemplo.com;29/04/2024 15:30;Avaliação;Dr. Renato;SulAmérica;R$ 900,00;Compareceu
+Ana Rocha;(81) 95668-8107;ana@exemplo.com;23/05/2024 11:00;Limpeza;Dra. Paula;Amil Dental;R$ 650,00;Compareceu
+João Souza;(31) 94533-7797;joão@exemplo.com;13/01/2024 08:00;Canal;Dra. Paula;Particular;R$ 380,00;Compareceu
+João Lima;(72) 99557-1269;joão@exemplo.com;23/10/2024 10:30;Extração;Dra. Sônia;SulAmérica;R$ 380,00;Compareceu
+Nicolas Ferreira;(94) 91866-1523;nicolas@exemplo.com;21/02/2024 14:00;Canal;Dra. Paula;Odontoprev;R$ 220,00;Compareceu
+Karina Ribeiro;(70) 92218-5898;karina@exemplo.com;28/06/2024 08:30;Restauração;Dr. Renato;Particular;R$ 650,00;Compareceu
+Paulo Ribeiro;(77) 96470-1923;paulo@exemplo.com;21/07/2024 08:00;Restauração;Dr. Renato;SulAmérica;R$ 380,00;Faltou
+Elisa Ferreira;(99) 99245-8051;elisa@exemplo.com;08/09/2024 17:30;Clareamento;Dra. Paula;SulAmérica;R$ 900,00;Compareceu
+Fábio Ferreira;(73) 97468-4613;fabio@exemplo.com;04/06/2024 14:00;Restauração;Dra. Paula;Amil Dental;R$ 900,00;Compareceu
+Lucas Lima;(80) 92569-7864;lucas@exemplo.com;10/02/2024 08:00;Limpeza;Dr. Renato;SulAmérica;R$ 150,00;Faltou
+Karina Carvalho;(13) 99984-1575;karina@exemplo.com;16/06/2024 10:30;Avaliação;Dra. Paula;Odontoprev;R$ 220,00;Compareceu
+Paulo Ferreira;(61) 97125-8006;paulo@exemplo.com;21/04/2024 17:00;Clareamento;Dra. Sônia;Odontoprev;R$ 220,00;Compareceu
+Bruno Lima;(88) 92050-7783;bruno@exemplo.com;14/03/2024 18:00;Canal;Dra. Sônia;SulAmérica;R$ 650,00;Compareceu
+Bruno Ribeiro;(55) 97217-4752;bruno@exemplo.com;17/06/2024 15:30;Restauração;Dr. Renato;SulAmérica;R$ 380,00;Compareceu
+Elisa Rocha;(47) 94617-8817;elisa@exemplo.com;07/03/2024 14:00;Restauração;Dra. Paula;Odontoprev;R$ 380,00;Compareceu
+Olívia Carvalho;(11) 94424-1414;olivia@exemplo.com;19/06/2024 14:00;Avaliação;Dr. Renato;Amil Dental;R$ 380,00;Compareceu
+Elisa Ribeiro;(38) 97413-6825;elisa@exemplo.com;13/08/2024 17:00;Extração;Dra. Paula;SulAmérica;R$ 220,00;Compareceu
+Olívia Araújo;(63) 91810-3388;olivia@exemplo.com;07/01/2024 14:00;Restauração;Dr. Renato;Odontoprev;R$ 900,00;Faltou
+Carla Silva;(45) 94343-9173;carla@exemplo.com;02/07/2024 08:00;Restauração;Dr. Renato;SulAmérica;R$ 380,00;Compareceu
+Gabriela Araújo;(78) 99564-6386;gabriela@exemplo.com;20/01/2024 10:30;Clareamento;Dra. Paula;Particular;R$ 220,00;Compareceu
+Olívia Silva;(77) 93820-3547;olivia@exemplo.com;25/01/2024 14:30;Avaliação;Dra. Sônia;SulAmérica;R$ 650,00;Compareceu
+Ana Rocha;(81) 95668-8107;ana@exemplo.com;01/09/2024 17:30;Clareamento;Dr. Renato;Amil Dental;R$ 220,00;Compareceu
+Diego Rocha;(93) 97781-7177;diego@exemplo.com;12/08/2024 18:00;Extração;Dra. Sônia;Amil Dental;R$ 900,00;Compareceu
+Karina Rocha;(28) 97758-4558;karina@exemplo.com;24/03/2024 16:00;Canal;Dr. Renato;SulAmérica;R$ 900,00;Compareceu
+Olívia Martins;(14) 93325-7662;olivia@exemplo.com;01/03/2024 11:00;Canal;Dra. Sônia;Amil Dental;R$ 900,00;Compareceu
+Olívia Araújo;(63) 91810-3388;olivia@exemplo.com;27/01/2024 11:00;Restauração;Dra. Sônia;Odontoprev;R$ 380,00;Compareceu
+Lucas Souza;(93) 99382-6712;lucas@exemplo.com;02/06/2024 08:00;Extração;Dr. Renato;Amil Dental;R$ 380,00;Compareceu
+Paulo Gomes;(39) 95477-1755;paulo@exemplo.com;07/01/2024 09:00;Avaliação;Dr. Renato;Particular;R$ 900,00;Compareceu
+Heitor Gomes;(93) 95617-2470;heitor@exemplo.com;12/08/2024 18:30;Avaliação;Dra. Sônia;Amil Dental;R$ 380,00;Faltou
+Íris Ribeiro;(34) 96393-5511;iris@exemplo.com;27/10/2024 16:00;Canal;Dr. Renato;Particular;R$ 380,00;Compareceu
+Karina Silva;(81) 96651-5007;karina@exemplo.com;01/09/2024 18:30;Canal;Dr. Renato;Particular;R$ 150,00;Compareceu
+Karina Ribeiro;(84) 93260-5300;karina@exemplo.com;18/05/2024 15:00;Extração;Dra. Paula;Particular;R$ 650,00;Compareceu
+Gabriela Araújo;(21) 92261-8127;gabriela@exemplo.com;13/02/2024 08:30;Canal;Dra. Sônia;Amil Dental;R$ 900,00;Compareceu
+João Carvalho;(63) 92314-1280;joão@exemplo.com;30/08/2024 08:00;Avaliação;Dra. Paula;Amil Dental;R$ 150,00;Faltou
+Gabriela Martins;(14) 99337-1023;gabriela@exemplo.com;08/06/2024 16:30;Extração;Dra. Sônia;Particular;R$ 900,00;Compareceu
+Diego Rocha;(42) 92089-3636;diego@exemplo.com;15/06/2024 10:30;Restauração;Dra. Paula;SulAmérica;R$ 650,00;Compareceu
+Íris Souza;(60) 97016-2472;iris@exemplo.com;08/02/2024 11:30;Clareamento;Dra. Sônia;Amil Dental;R$ 380,00;Faltou
+Lucas Souza;(93) 99382-6712;lucas@exemplo.com;10/01/2024 14:30;Avaliação;Dra. Sônia;Particular;R$ 380,00;Compareceu
+Nicolas Rocha;(78) 94271-3537;nicolas@exemplo.com;18/04/2024 17:30;Restauração;Dra. Sônia;SulAmérica;R$ 650,00;Compareceu
+João Lima;(72) 99557-1269;joão@exemplo.com;17/10/2024 09:00;Clareamento;Dra. Sônia;Amil Dental;R$ 650,00;Compareceu
+Paulo Gomes;(39) 95477-1755;paulo@exemplo.com;10/01/2024 17:00;Extração;Dr. Renato;SulAmérica;R$ 150,00;Compareceu
+Paulo Gomes;(39) 95477-1755;paulo@exemplo.com;16/05/2024 15:30;Limpeza;Dra. Sônia;SulAmérica;R$ 900,00;Compareceu
+Marina Silva;(67) 92663-6529;marina@exemplo.com;23/09/2024 18:00;Clareamento;Dra. Paula;Odontoprev;R$ 650,00;Compareceu
+Nicolas Ferreira;(94) 91866-1523;nicolas@exemplo.com;25/04/2024 18:00;Extração;Dra. Paula;Particular;R$ 900,00;Compareceu
+Heitor Ferreira;(95) 97124-5639;heitor@exemplo.com;28/03/2024 14:30;Canal;Dra. Sônia;Particular;R$ 900,00;Compareceu
+João Ferreira;(82) 95968-5687;joão@exemplo.com;12/05/2024 15:00;Restauração;Dr. Renato;SulAmérica;R$ 150,00;Compareceu
+Paulo Rocha;(75) 93348-3949;paulo@exemplo.com;06/05/2024 08:30;Clareamento;Dra. Paula;Amil Dental;R$ 220,00;Compareceu
+Íris Gomes;(82) 96251-1838;iris@exemplo.com;11/05/2024 08:00;Canal;Dra. Paula;Amil Dental;R$ 380,00;Compareceu
+Bruno Ribeiro;(55) 97217-4752;bruno@exemplo.com;14/07/2024 11:30;Limpeza;Dra. Paula;Odontoprev;R$ 650,00;Faltou
+Paulo Ferreira;(61) 97125-8006;paulo@exemplo.com;15/01/2024 09:30;Canal;Dr. Renato;Amil Dental;R$ 900,00;Compareceu
+Diego Ferreira;(50) 97828-3483;diego@exemplo.com;26/02/2024 15:30;Limpeza;Dra. Sônia;SulAmérica;R$ 650,00;Compareceu
+Heitor Gomes;(93) 95617-2470;heitor@exemplo.com;26/01/2024 10:30;Restauração;Dr. Renato;SulAmérica;R$ 650,00;Faltou
+Karina Ribeiro;(84) 93260-5300;karina@exemplo.com;05/02/2024 10:00;Extração;Dra. Paula;Amil Dental;R$ 220,00;Faltou
+Lucas Souza;(93) 99382-6712;lucas@exemplo.com;18/04/2024 14:00;Restauração;Dra. Sônia;Particular;R$ 150,00;Compareceu
+Elisa Ribeiro;(38) 97413-6825;elisa@exemplo.com;04/04/2024 15:00;Restauração;Dra. Paula;SulAmérica;R$ 900,00;Compareceu
+Marina Silva;(67) 92663-6529;marina@exemplo.com;09/02/2024 15:00;Limpeza;Dra. Paula;SulAmérica;R$ 900,00;Compareceu
+Marina Araújo;(21) 97852-1322;marina@exemplo.com;18/02/2024 11:00;Clareamento;Dr. Renato;Odontoprev;R$ 380,00;Compareceu
+Olívia Rocha;(23) 97407-5125;olivia@exemplo.com;07/02/2024 10:00;Restauração;Dra. Sônia;Particular;R$ 900,00;Compareceu
+Bruno Gomes;(82) 94947-8918;bruno@exemplo.com;05/09/2024 18:30;Limpeza;Dra. Paula;SulAmérica;R$ 380,00;Compareceu
+Diego Ferreira;(50) 97828-3483;diego@exemplo.com;03/10/2024 08:30;Extração;Dra. Sônia;Amil Dental;R$ 220,00;Compareceu
+Carla Souza;(83) 95293-4662;carla@exemplo.com;11/06/2024 14:30;Restauração;Dra. Paula;Particular;R$ 650,00;Faltou
+João Ferreira;(82) 95968-5687;joão@exemplo.com;12/05/2024 08:30;Avaliação;Dra. Sônia;SulAmérica;R$ 380,00;Compareceu
+Paulo Gomes;(39) 95477-1755;paulo@exemplo.com;09/06/2024 18:30;Restauração;Dra. Sônia;Odontoprev;R$ 900,00;Compareceu
+Heitor Lima;(52) 94893-9269;heitor@exemplo.com;10/03/2024 14:30;Canal;Dra. Sônia;Amil Dental;R$ 900,00;Compareceu
+Olívia Silva;(77) 93820-3547;olivia@exemplo.com;03/08/2024 08:30;Extração;Dr. Renato;Amil Dental;R$ 900,00;Compareceu
+Bruno Gomes;(89) 94631-6884;bruno@exemplo.com;15/09/2024 17:30;Canal;Dra. Paula;Odontoprev;R$ 220,00;Compareceu
+Íris Ferreira;(82) 93609-6644;iris@exemplo.com;16/07/2024 18:00;Clareamento;Dr. Renato;SulAmérica;R$ 650,00;Compareceu
+Paulo Gomes;(54) 93922-8495;paulo@exemplo.com;08/02/2024 08:30;Clareamento;Dr. Renato;Amil Dental;R$ 150,00;Faltou
+Lucas Souza;(93) 99382-6712;lucas@exemplo.com;23/07/2024 10:30;Limpeza;Dra. Sônia;Odontoprev;R$ 380,00;Compareceu
+Paulo Ferreira;(61) 97125-8006;paulo@exemplo.com;01/03/2024 14:30;Avaliação;Dra. Paula;SulAmérica;R$ 650,00;Compareceu
+Íris Araújo;(45) 91549-9076;iris@exemplo.com;02/06/2024 15:30;Limpeza;Dra. Sônia;Particular;R$ 150,00;Compareceu
+Marina Silva;(67) 92663-6529;marina@exemplo.com;02/03/2024 17:30;Restauração;Dra. Sônia;Odontoprev;R$ 220,00;Compareceu
+Paulo Lima;(52) 96332-6459;paulo@exemplo.com;18/08/2024 17:30;Limpeza;Dra. Paula;Odontoprev;R$ 900,00;Compareceu
+Íris Ribeiro;(34) 96393-5511;iris@exemplo.com;19/07/2024 10:30;Clareamento;Dra. Paula;Amil Dental;R$ 220,00;Faltou
+Íris Ribeiro;(34) 96393-5511;iris@exemplo.com;17/02/2024 17:00;Extração;Dra. Sônia;Odontoprev;R$ 900,00;Compareceu
+João Carvalho;(63) 92314-1280;joão@exemplo.com;07/02/2024 09:00;Limpeza;Dra. Paula;SulAmérica;R$ 220,00;Compareceu
+Lucas Souza;(93) 99382-6712;lucas@exemplo.com;21/04/2024 18:00;Restauração;Dra. Sônia;Odontoprev;R$ 900,00;Compareceu
+Marina Carvalho;(94) 99611-4043;marina@exemplo.com;20/02/2024 14:30;Clareamento;Dr. Renato;Amil Dental;R$ 220,00;Compareceu
+Elisa Lima;(13) 98756-7132;elisa@exemplo.com;24/01/2024 14:00;Avaliação;Dr. Renato;Particular;R$ 650,00;Compareceu
+Bruno Ribeiro;(55) 97217-4752;bruno@exemplo.com;08/10/2024 11:00;Canal;Dra. Sônia;SulAmérica;R$ 650,00;Compareceu
+Gabriela Martins;(14) 99337-1023;gabriela@exemplo.com;21/07/2024 18:00;Limpeza;Dra. Sônia;Amil Dental;R$ 900,00;Compareceu
+Elisa Ferreira;(99) 99245-8051;elisa@exemplo.com;28/09/2024 11:30;Restauração;Dra. Paula;Odontoprev;R$ 650,00;Compareceu
+Ana Ferreira;(12) 96342-4543;ana@exemplo.com;10/02/2024 10:30;Canal;Dra. Paula;Amil Dental;R$ 220,00;Compareceu
+Heitor Martins;(77) 96912-7481;heitor@exemplo.com;25/08/2024 15:00;Canal;Dra. Sônia;Particular;R$ 650,00;Faltou
+Heitor Lima;(52) 94893-9269;heitor@exemplo.com;28/06/2024 11:00;Restauração;Dr. Renato;Particular;R$ 220,00;Compareceu
+Marina Souza;(34) 97030-6889;marina@exemplo.com;19/10/2024 14:30;Clareamento;Dra. Paula;Particular;R$ 650,00;Faltou
+Elisa Lima;(24) 95047-3016;elisa@exemplo.com;25/05/2024 10:00;Limpeza;Dr. Renato;SulAmérica;R$ 380,00;Faltou
+Olívia Silva;(77) 93820-3547;olivia@exemplo.com;28/03/2024 14:00;Clareamento;Dr. Renato;Amil Dental;R$ 380,00;Compareceu
+Lucas Ribeiro;(47) 95772-4195;lucas@exemplo.com;21/08/2024 11:00;Restauração;Dra. Sônia;SulAmérica;R$ 150,00;Compareceu
+Elisa Lima;(13) 98756-7132;elisa@exemplo.com;12/09/2024 18:00;Canal;Dra. Sônia;Particular;R$ 220,00;Compareceu
+Ana Ferreira;(12) 96342-4543;ana@exemplo.com;18/01/2024 18:30;Avaliação;Dra. Paula;Amil Dental;R$ 900,00;Compareceu
+Olívia Rocha;(23) 97407-5125;olivia@exemplo.com;18/05/2024 17:30;Limpeza;Dr. Renato;Particular;R$ 380,00;Compareceu
+Carla Souza;(83) 95293-4662;carla@exemplo.com;29/08/2024 08:30;Extração;Dra. Paula;Amil Dental;R$ 150,00;Compareceu
+Elisa Lima;(24) 95047-3016;elisa@exemplo.com;09/04/2024 08:00;Limpeza;Dr. Renato;SulAmérica;R$ 150,00;Compareceu
+João Lima;(72) 99557-1269;joão@exemplo.com;18/02/2024 16:00;Clareamento;Dra. Sônia;Particular;R$ 150,00;Compareceu
+Karina Silva;(81) 96651-5007;karina@exemplo.com;23/01/2024 09:30;Extração;Dra. Sônia;SulAmérica;R$ 150,00;Compareceu
+Nicolas Ferreira;(94) 91866-1523;nicolas@exemplo.com;28/09/2024 10:30;Avaliação;Dra. Sônia;SulAmérica;R$ 380,00;Compareceu
+Fábio Ribeiro;(17) 91066-6730;fabio@exemplo.com;02/04/2024 18:30;Clareamento;Dra. Paula;SulAmérica;R$ 220,00;Faltou
+Marina Gomes;(73) 98292-1252;marina@exemplo.com;19/10/2024 10:00;Extração;Dra. Sônia;SulAmérica;R$ 150,00;Compareceu
+Heitor Lima;(52) 94893-9269;heitor@exemplo.com;06/07/2024 17:00;Clareamento;Dra. Sônia;SulAmérica;R$ 220,00;Compareceu
+Gabriela Souza;(15) 94928-4221;gabriela@exemplo.com;15/06/2024 16:00;Clareamento;Dra. Paula;Amil Dental;R$ 380,00;Compareceu
+Karina Ribeiro;(70) 92218-5898;karina@exemplo.com;26/02/2024 09:00;Avaliação;Dr. Renato;Amil Dental;R$ 380,00;Compareceu
+Ana Rocha;(81) 95668-8107;ana@exemplo.com;11/06/2024 11:30;Canal;Dra. Paula;Odontoprev;R$ 900,00;Compareceu
+Elisa Lima;(24) 95047-3016;elisa@exemplo.com;04/02/2024 18:30;Clareamento;Dra. Sônia;Particular;R$ 220,00;Compareceu
+Karina Martins;(41) 97076-2954;karina@exemplo.com;30/04/2024 15:00;Canal;Dr. Renato;Particular;R$ 220,00;Compareceu
+Diego Martins;(68) 99778-7425;diego@exemplo.com;17/05/2024 09:30;Extração;Dra. Sônia;Amil Dental;R$ 900,00;Faltou
+Elisa Ribeiro;(38) 97413-6825;elisa@exemplo.com;08/07/2024 18:30;Extração;Dra. Paula;Particular;R$ 220,00;Compareceu
+Carla Ferreira;(15) 98907-1991;carla@exemplo.com;24/10/2024 10:00;Restauração;Dra. Sônia;SulAmérica;R$ 380,00;Faltou
+Diego Araújo;(39) 93743-3990;diego@exemplo.com;23/06/2024 11:00;Clareamento;Dra. Paula;Amil Dental;R$ 900,00;Compareceu
+Carla Ferreira;(15) 98907-1991;carla@exemplo.com;30/08/2024 11:30;Restauração;Dra. Sônia;Odontoprev;R$ 150,00;Compareceu
+Heitor Martins;(77) 96912-7481;heitor@exemplo.com;04/04/2024 16:00;Limpeza;Dr. Renato;SulAmérica;R$ 150,00;Compareceu
+Olívia Carvalho;(11) 94424-1414;olivia@exemplo.com;13/06/2024 18:00;Clareamento;Dra. Sônia;Amil Dental;R$ 380,00;Compareceu
+João Carvalho;(63) 92314-1280;joão@exemplo.com;25/04/2024 09:30;Restauração;Dra. Sônia;Odontoprev;R$ 380,00;Faltou
+Íris Ferreira;(82) 93609-6644;iris@exemplo.com;13/06/2024 11:00;Restauração;Dr. Renato;Odontoprev;R$ 900,00;Faltou
+Paulo Gomes;(54) 93922-8495;paulo@exemplo.com;28/07/2024 09:30;Avaliação;Dra. Paula;SulAmérica;R$ 150,00;Compareceu
+Olívia Carvalho;(11) 94424-1414;olivia@exemplo.com;26/08/2024 14:00;Avaliação;Dra. Paula;Odontoprev;R$ 650,00;Compareceu
+Olívia Martins;(14) 93325-7662;olivia@exemplo.com;16/01/2024 17:00;Limpeza;Dr. Renato;Odontoprev;R$ 220,00;Compareceu
+Diego Ferreira;(62) 92451-2376;diego@exemplo.com;10/02/2024 15:30;Canal;Dra. Paula;SulAmérica;R$ 650,00;Compareceu
+Paulo Lima;(52) 96332-6459;paulo@exemplo.com;04/08/2024 17:30;Avaliação;Dra. Sônia;Amil Dental;R$ 220,00;Faltou
+Gabriela Lima;(43) 97124-7777;gabriela@exemplo.com;29/03/2024 17:00;Clareamento;Dra. Paula;Odontoprev;R$ 380,00;Compareceu
+Carla Ferreira;(15) 98907-1991;carla@exemplo.com;10/10/2024 17:30;Canal;Dra. Paula;Odontoprev;R$ 900,00;Compareceu
+Bruno Gomes;(89) 94631-6884;bruno@exemplo.com;10/01/2024 16:30;Limpeza;Dra. Sônia;Particular;R$ 900,00;Compareceu
+Karina Rocha;(28) 97758-4558;karina@exemplo.com;17/03/2024 15:00;Clareamento;Dra. Paula;Amil Dental;R$ 650,00;Compareceu
+Carla Ferreira;(15) 98907-1991;carla@exemplo.com;02/05/2024 08:00;Restauração;Dra. Paula;SulAmérica;R$ 900,00;Compareceu
+Paulo Ribeiro;(77) 96470-1923;paulo@exemplo.com;17/04/2024 17:00;Clareamento;Dra. Sônia;SulAmérica;R$ 650,00;Compareceu
+Paulo Ribeiro;(77) 96470-1923;paulo@exemplo.com;22/03/2024 17:00;Canal;Dra. Sônia;SulAmérica;R$ 150,00;Compareceu
+Karina Martins;(41) 97076-2954;karina@exemplo.com;09/07/2024 14:30;Clareamento;Dra. Sônia;Particular;R$ 220,00;Compareceu
+Íris Souza;(60) 97016-2472;iris@exemplo.com;25/06/2024 18:00;Extração;Dra. Sônia;SulAmérica;R$ 150,00;Compareceu
+Paulo Lima;(52) 96332-6459;paulo@exemplo.com;24/08/2024 09:30;Extração;Dra. Paula;SulAmérica;R$ 220,00;Compareceu
+Marina Gomes;(73) 98292-1252;marina@exemplo.com;05/09/2024 11:30;Clareamento;Dra. Paula;Particular;R$ 900,00;Faltou
+Karina Martins;(41) 97076-2954;karina@exemplo.com;16/03/2024 18:30;Restauração;Dra. Paula;Odontoprev;R$ 650,00;Compareceu
+João Souza;(31) 94533-7797;joão@exemplo.com;22/02/2024 15:30;Extração;Dr. Renato;SulAmérica;R$ 900,00;Compareceu
+Íris Ribeiro;(47) 94414-1911;iris@exemplo.com;21/09/2024 16:30;Limpeza;Dr. Renato;Odontoprev;R$ 380,00;Faltou
+João Carvalho;(63) 92314-1280;joão@exemplo.com;08/06/2024 18:00;Avaliação;Dra. Sônia;SulAmérica;R$ 380,00;Compareceu
+Íris Gomes;(82) 96251-1838;iris@exemplo.com;21/06/2024 14:30;Avaliação;Dr. Renato;Particular;R$ 150,00;Compareceu
+Karina Silva;(81) 96651-5007;karina@exemplo.com;06/03/2024 16:00;Avaliação;Dra. Sônia;SulAmérica;R$ 380,00;Compareceu
+Karina Ribeiro;(45) 96055-2727;karina@exemplo.com;27/09/2024 10:00;Avaliação;Dr. Renato;Amil Dental;R$ 380,00;Compareceu
+Carla Souza;(83) 95293-4662;carla@exemplo.com;13/09/2024 08:30;Extração;Dr. Renato;Odontoprev;R$ 650,00;Compareceu
+Olívia Carvalho;(11) 94424-1414;olivia@exemplo.com;10/06/2024 09:00;Restauração;Dr. Renato;Odontoprev;R$ 380,00;Compareceu
+Íris Souza;(60) 97016-2472;iris@exemplo.com;07/02/2024 10:00;Avaliação;Dra. Paula;Particular;R$ 220,00;Compareceu
+Ana Souza;(34) 95994-6400;ana@exemplo.com;05/03/2024 18:30;Restauração;Dra. Paula;Amil Dental;R$ 380,00;Compareceu
+Nicolas Rocha;(78) 94271-3537;nicolas@exemplo.com;27/09/2024 18:00;Limpeza;Dra. Sônia;SulAmérica;R$ 220,00;Faltou
+Gabriela Araújo;(21) 92261-8127;gabriela@exemplo.com;21/06/2024 11:30;Canal;Dra. Paula;SulAmérica;R$ 650,00;Compareceu
+Diego Martins;(29) 99052-2098;diego@exemplo.com;06/07/2024 17:00;Extração;Dra. Paula;Particular;R$ 380,00;Compareceu
+Heitor Araújo;(32) 99323-4300;heitor@exemplo.com;26/06/2024 17:00;Restauração;Dra. Sônia;Amil Dental;R$ 150,00;Compareceu
+Fábio Lima;(83) 91879-4065;fabio@exemplo.com;05/06/2024 15:30;Extração;Dra. Paula;Particular;R$ 900,00;Compareceu
+Olívia Carvalho;(11) 94424-1414;olivia@exemplo.com;24/01/2024 18:30;Extração;Dr. Renato;Odontoprev;R$ 650,00;Compareceu
+Diego Ferreira;(50) 97828-3483;diego@exemplo.com;15/02/2024 10:00;Clareamento;Dr. Renato;SulAmérica;R$ 220,00;Compareceu

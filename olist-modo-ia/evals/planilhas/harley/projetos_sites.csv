@@ -1,0 +1,141 @@
+Nº Pedido;Cliente;Tipo de Site;Status;Valor do Projeto;Data do Pedido;Prazo (dias)
+PRJ-300;Diego Martins;E-commerce;Entregue;R$ 2.868,55;24/10/2024;14
+PRJ-301;João Rocha;Institucional;Entregue;R$ 5.286,98;22/03/2024;90
+PRJ-302;Karina Lima;Landing page;Aprovado;R$ 12.234,28;07/02/2024;57
+PRJ-303;Diego Carvalho;Institucional;Aprovado;R$ 7.354,34;30/09/2024;39
+PRJ-304;Fábio Rocha;Institucional;Entregue;R$ 8.039,23;23/08/2024;64
+PRJ-305;Gabriela Gomes;E-commerce;Aprovado;R$ 2.923,09;07/05/2024;70
+PRJ-306;Íris Lima;Institucional;Entregue;R$ 1.521,77;07/01/2024;42
+PRJ-307;Íris Carvalho;E-commerce;Cancelado;R$ 4.204,58;06/01/2024;32
+PRJ-308;Heitor Ferreira;E-commerce;Entregue;R$ 2.538,41;24/05/2024;16
+PRJ-309;Carla Gomes;E-commerce;Entregue;R$ 4.923,67;11/03/2024;25
+PRJ-310;Heitor Rocha;Blog;Orçamento;R$ 13.085,41;21/11/2024;45
+PRJ-311;Lucas Ferreira;Institucional;Em desenvolvimento;R$ 8.853,86;17/09/2024;44
+PRJ-312;Lucas Araújo;Institucional;Orçamento;R$ 8.596,50;11/02/2024;88
+PRJ-313;Ana Silva;Institucional;Entregue;R$ 5.138,74;05/06/2024;87
+PRJ-314;Ana Souza;E-commerce;Entregue;R$ 7.250,34;30/07/2024;18
+PRJ-315;Paulo Martins;Institucional;Em desenvolvimento;R$ 8.130,52;10/06/2024;35
+PRJ-316;Bruno Martins;E-commerce;Entregue;R$ 8.429,43;25/03/2024;54
+PRJ-317;Carla Martins;Landing page;Entregue;R$ 7.283,01;03/07/2024;50
+PRJ-318;Nicolas Martins;E-commerce;Entregue;R$ 3.196,62;30/01/2024;60
+PRJ-319;Heitor Ribeiro;Blog;Aprovado;R$ 1.633,28;30/06/2024;85
+PRJ-320;Nicolas Carvalho;Blog;Em desenvolvimento;R$ 1.702,39;30/08/2024;74
+PRJ-321;Gabriela Gomes;Landing page;Cancelado;R$ 10.929,44;02/05/2024;43
+PRJ-322;Heitor Silva;Blog;Entregue;R$ 3.005,30;02/08/2024;86
+PRJ-323;Paulo Araújo;Institucional;Em desenvolvimento;R$ 8.453,64;25/03/2024;79
+PRJ-324;Gabriela Ferreira;Landing page;Entregue;R$ 7.635,87;09/01/2024;87
+PRJ-325;João Carvalho;Landing page;Em revisão;R$ 5.330,23;26/10/2024;14
+PRJ-326;Gabriela Ribeiro;Blog;Orçamento;R$ 13.734,76;14/05/2024;71
+PRJ-327;Lucas Martins;Landing page;Entregue;R$ 9.033,64;21/05/2024;10
+PRJ-328;Diego Rocha;E-commerce;Aprovado;R$ 2.941,23;21/07/2024;20
+PRJ-329;Heitor Carvalho;E-commerce;Orçamento;R$ 5.018,56;27/09/2024;23
+PRJ-330;Karina Rocha;Institucional;Em desenvolvimento;R$ 3.009,47;28/08/2024;15
+PRJ-331;Paulo Carvalho;E-commerce;Orçamento;R$ 1.558,14;09/11/2024;69
+PRJ-332;Lucas Rocha;E-commerce;Em revisão;R$ 5.154,56;29/05/2024;74
+PRJ-333;Diego Ribeiro;Institucional;Em desenvolvimento;R$ 1.625,91;25/10/2024;47
+PRJ-334;Paulo Ferreira;Institucional;Entregue;R$ 2.543,96;17/08/2024;60
+PRJ-335;Lucas Souza;Blog;Orçamento;R$ 1.675,12;19/11/2024;86
+PRJ-336;Paulo Ribeiro;E-commerce;Em revisão;R$ 11.062,11;01/01/2024;21
+PRJ-337;Paulo Ferreira;E-commerce;Em revisão;R$ 1.791,22;04/05/2024;46
+PRJ-338;Diego Silva;Institucional;Entregue;R$ 4.581,65;29/05/2024;34
+PRJ-339;Lucas Ferreira;Landing page;Orçamento;R$ 1.612,87;19/06/2024;75
+PRJ-340;João Ribeiro;Blog;Entregue;R$ 4.607,79;31/07/2024;69
+PRJ-341;Diego Ferreira;E-commerce;Em desenvolvimento;R$ 5.242,19;22/02/2024;79
+PRJ-342;Elisa Ribeiro;Institucional;Aprovado;R$ 7.291,56;24/11/2024;33
+PRJ-343;Bruno Ribeiro;E-commerce;Orçamento;R$ 5.082,33;03/01/2024;89
+PRJ-344;Paulo Souza;Institucional;Entregue;R$ 8.577,57;15/01/2024;84
+PRJ-345;Marina Lima;Blog;Aprovado;R$ 14.384,83;22/02/2024;23
+PRJ-346;João Souza;Landing page;Cancelado;R$ 5.284,35;26/04/2024;43
+PRJ-347;Bruno Carvalho;Institucional;Entregue;R$ 7.422,18;02/03/2024;36
+PRJ-348;Gabriela Martins;Landing page;Orçamento;R$ 1.466,14;24/04/2024;85
+PRJ-349;Carla Souza;Blog;Entregue;R$ 2.744,32;27/04/2024;53
+PRJ-350;Karina Silva;Institucional;Entregue;R$ 1.473,09;19/02/2024;29
+PRJ-351;Paulo Souza;Blog;Orçamento;R$ 13.390,82;13/01/2024;35
+PRJ-352;Karina Martins;Institucional;Entregue;R$ 1.528,75;03/05/2024;45
+PRJ-353;Íris Araújo;Institucional;Em desenvolvimento;R$ 11.251,59;03/03/2024;47
+PRJ-354;Paulo Souza;E-commerce;Cancelado;R$ 4.485,96;11/04/2024;29
+PRJ-355;Karina Ferreira;E-commerce;Em desenvolvimento;R$ 5.020,28;16/07/2024;80
+PRJ-356;Karina Lima;Landing page;Em desenvolvimento;R$ 5.101,06;27/02/2024;68
+PRJ-357;Ana Ribeiro;Institucional;Entregue;R$ 5.212,58;11/01/2024;12
+PRJ-358;Nicolas Souza;E-commerce;Cancelado;R$ 13.970,17;01/07/2024;67
+PRJ-359;Lucas Lima;Landing page;Aprovado;R$ 5.293,94;29/08/2024;21
+PRJ-360;Nicolas Araújo;Blog;Aprovado;R$ 1.359,46;17/08/2024;73
+PRJ-361;Ana Rocha;Blog;Entregue;R$ 9.353,64;01/08/2024;31
+PRJ-362;Fábio Ferreira;Institucional;Entregue;R$ 14.029,00;03/01/2024;38
+PRJ-363;Bruno Lima;Institucional;Em desenvolvimento;R$ 3.347,89;01/07/2024;19
+PRJ-364;Marina Ferreira;Institucional;Orçamento;R$ 2.987,85;29/10/2024;70
+PRJ-365;Íris Ribeiro;Blog;Orçamento;R$ 12.340,55;18/03/2024;83
+PRJ-366;Gabriela Silva;Institucional;Orçamento;R$ 8.392,92;06/04/2024;65
+PRJ-367;Carla Ferreira;Landing page;Entregue;R$ 1.710,28;19/02/2024;54
+PRJ-368;Paulo Rocha;Blog;Aprovado;R$ 4.845,57;03/05/2024;87
+PRJ-369;Ana Araújo;Landing page;Orçamento;R$ 1.360,94;07/08/2024;23
+PRJ-370;Karina Carvalho;Blog;Em revisão;R$ 1.497,20;25/02/2024;57
+PRJ-371;Diego Carvalho;Landing page;Entregue;R$ 3.322,14;01/09/2024;38
+PRJ-372;Heitor Ribeiro;Institucional;Cancelado;R$ 2.551,83;06/06/2024;75
+PRJ-373;Bruno Carvalho;Landing page;Em revisão;R$ 1.448,94;28/07/2024;13
+PRJ-374;Paulo Martins;Blog;Entregue;R$ 3.177,98;13/06/2024;27
+PRJ-375;Íris Ribeiro;Blog;Entregue;R$ 4.853,08;08/07/2024;63
+PRJ-376;Íris Ferreira;Institucional;Orçamento;R$ 3.266,10;25/07/2024;83
+PRJ-377;Elisa Lima;Institucional;Entregue;R$ 3.093,66;07/07/2024;81
+PRJ-378;Gabriela Ribeiro;Blog;Em revisão;R$ 3.088,03;01/10/2024;29
+PRJ-379;Paulo Lima;Institucional;Entregue;R$ 11.524,57;18/10/2024;27
+PRJ-380;Lucas Ribeiro;Landing page;Em revisão;R$ 1.417,94;29/07/2024;69
+PRJ-381;Nicolas Silva;Landing page;Em desenvolvimento;R$ 1.660,43;15/06/2024;64
+PRJ-382;Íris Gomes;Institucional;Orçamento;R$ 1.671,62;18/04/2024;36
+PRJ-383;Diego Rocha;Blog;Orçamento;R$ 1.354,94;27/06/2024;63
+PRJ-384;Paulo Lima;E-commerce;Aprovado;R$ 1.624,86;26/10/2024;65
+PRJ-385;Gabriela Lima;Landing page;Orçamento;R$ 7.566,12;15/04/2024;24
+PRJ-386;Lucas Ferreira;Blog;Em desenvolvimento;R$ 13.427,24;29/02/2024;83
+PRJ-387;Karina Ribeiro;Landing page;Entregue;R$ 11.157,06;12/06/2024;19
+PRJ-388;Lucas Araújo;Institucional;Em desenvolvimento;R$ 5.354,98;08/11/2024;25
+PRJ-389;João Ferreira;Blog;Cancelado;R$ 5.293,57;30/04/2024;89
+PRJ-390;Heitor Martins;E-commerce;Cancelado;R$ 2.672,36;27/05/2024;53
+PRJ-391;Lucas Silva;Blog;Entregue;R$ 1.698,59;08/07/2024;56
+PRJ-392;Lucas Souza;Blog;Entregue;R$ 8.764,47;17/06/2024;65
+PRJ-393;Elisa Gomes;Blog;Entregue;R$ 1.719,27;01/09/2024;84
+PRJ-394;Nicolas Ribeiro;E-commerce;Orçamento;R$ 1.367,26;16/11/2024;49
+PRJ-395;Paulo Silva;Institucional;Entregue;R$ 1.688,95;24/01/2024;62
+PRJ-396;Carla Ribeiro;Landing page;Entregue;R$ 1.515,95;09/08/2024;75
+PRJ-397;Heitor Carvalho;Landing page;Entregue;R$ 14.172,08;22/03/2024;79
+PRJ-398;Diego Lima;Blog;Cancelado;R$ 11.799,01;08/08/2024;12
+PRJ-399;Bruno Rocha;Landing page;Entregue;R$ 1.641,99;20/06/2024;79
+PRJ-400;Lucas Rocha;Landing page;Aprovado;R$ 4.708,32;14/08/2024;26
+PRJ-401;Nicolas Ribeiro;E-commerce;Entregue;R$ 11.611,52;15/11/2024;17
+PRJ-402;Ana Ferreira;Institucional;Em desenvolvimento;R$ 1.653,96;14/07/2024;79
+PRJ-403;Gabriela Carvalho;E-commerce;Em desenvolvimento;R$ 4.583,39;15/06/2024;35
+PRJ-404;Ana Carvalho;Blog;Entregue;R$ 8.915,35;06/11/2024;23
+PRJ-405;Gabriela Carvalho;Blog;Entregue;R$ 2.614,18;07/02/2024;59
+PRJ-406;Olívia Silva;Blog;Aprovado;R$ 12.419,29;12/01/2024;81
+PRJ-407;Olívia Rocha;Institucional;Entregue;R$ 11.504,65;29/10/2024;62
+PRJ-408;Nicolas Souza;Institucional;Entregue;R$ 4.894,48;09/05/2024;78
+PRJ-409;Carla Souza;Landing page;Entregue;R$ 14.107,34;27/02/2024;33
+PRJ-410;Carla Rocha;Blog;Cancelado;R$ 3.329,10;06/09/2024;90
+PRJ-411;Lucas Araújo;Blog;Entregue;R$ 1.645,07;18/05/2024;67
+PRJ-412;Carla Rocha;Blog;Orçamento;R$ 4.410,60;15/06/2024;30
+PRJ-413;Lucas Lima;Blog;Orçamento;R$ 3.294,09;07/08/2024;46
+PRJ-414;Paulo Carvalho;Blog;Em desenvolvimento;R$ 2.756,58;17/10/2024;69
+PRJ-415;Karina Martins;Blog;Em desenvolvimento;R$ 1.635,79;17/02/2024;30
+PRJ-416;Bruno Ribeiro;E-commerce;Entregue;R$ 11.124,31;31/08/2024;81
+PRJ-417;Lucas Martins;Institucional;Aprovado;R$ 1.759,16;01/03/2024;51
+PRJ-418;Íris Lima;Institucional;Entregue;R$ 12.043,48;18/08/2024;37
+PRJ-419;Nicolas Silva;Blog;Cancelado;R$ 1.365,33;20/02/2024;58
+PRJ-420;Gabriela Araújo;E-commerce;Orçamento;R$ 5.139,26;15/06/2024;13
+PRJ-421;João Silva;Institucional;Entregue;R$ 1.518,54;25/07/2024;52
+PRJ-422;Ana Lima;Blog;Entregue;R$ 1.595,46;29/07/2024;42
+PRJ-423;Diego Ferreira;Institucional;Entregue;R$ 7.709,49;30/01/2024;25
+PRJ-424;Heitor Martins;Landing page;Entregue;R$ 12.453,42;05/05/2024;59
+PRJ-425;Heitor Lima;Landing page;Em desenvolvimento;R$ 2.630,33;07/04/2024;33
+PRJ-426;Gabriela Rocha;E-commerce;Em revisão;R$ 4.515,50;17/10/2024;60
+PRJ-427;Karina Ribeiro;Institucional;Orçamento;R$ 9.101,95;05/08/2024;81
+PRJ-428;Marina Rocha;Blog;Em revisão;R$ 3.325,03;29/05/2024;73
+PRJ-429;Ana Silva;Blog;Entregue;R$ 12.805,81;19/03/2024;22
+PRJ-430;Bruno Martins;Institucional;Entregue;R$ 3.034,17;29/03/2024;52
+PRJ-431;João Ferreira;E-commerce;Entregue;R$ 2.848,02;16/02/2024;37
+PRJ-432;João Araújo;Institucional;Aprovado;R$ 7.838,35;21/08/2024;58
+PRJ-433;Diego Souza;Blog;Entregue;R$ 5.335,39;26/03/2024;45
+PRJ-434;Marina Lima;Landing page;Em revisão;R$ 4.634,62;17/03/2024;66
+PRJ-435;Diego Ribeiro;Blog;Entregue;R$ 9.403,20;04/06/2024;54
+PRJ-436;Nicolas Ribeiro;Institucional;Orçamento;R$ 3.337,85;06/09/2024;88
+PRJ-437;João Gomes;Landing page;Aprovado;R$ 10.909,02;12/09/2024;70
+PRJ-438;Karina Souza;Blog;Aprovado;R$ 1.420,63;10/05/2024;28
+PRJ-439;Heitor Souza;E-commerce;Entregue;R$ 2.549,38;31/05/2024;65

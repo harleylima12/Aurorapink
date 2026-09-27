@@ -1,0 +1,37 @@
+ESTOQUE LOJA - CONFERÊNCIA MENSAL,,,,,
+(atualizado à mão, não apagar!),,,,,
+,,,,,
+Código,Item,Categoria,Qtd em Estoque,Estoque Mínimo,Custo Unit.
+COR-000,Encordoamento violino 1,Cordas,30,20,"67,91"
+COR-001,Encordoamento violão 1,Cordas,41,15,"101,29"
+COR-002,Corda Lá avulsa 1,Cordas,51,10,"44,33"
+COR-003,Encordoamento violino 2,Cordas,44,20,"99,63"
+COR-004,Encordoamento violão 2,Cordas,15,20,"66,68"
+COR-005,Corda Lá avulsa 2,Cordas,10,5,"113,42"
+COR-006,Encordoamento violino 3,Cordas,39,10,"108,36"
+COR-007,Encordoamento violão 3,Cordas,42,10,"107,11"
+COR-008,Corda Lá avulsa 3,Cordas,3,20,"62,50"
+,Subtotal Cordas,,275,,
+,,,,,
+ACE-000,Breu 1,Acessórios,21,20,"92,26"
+ACE-001,Espaleira 1,Acessórios,22,5,"68,68"
+ACE-002,Surdina 1,Acessórios,41,20,"83,26"
+ACE-003,Afinador 1,Acessórios,49,15,"27,33"
+ACE-004,Breu 2,Acessórios,0,15,"16,41"
+ACE-005,Espaleira 2,Acessórios,55,5,"77,27"
+ACE-006,Surdina 2,Acessórios,49,5,"41,28"
+ACE-007,Afinador 2,Acessórios,10,10,"14,26"
+ACE-008,Breu 3,Acessórios,28,20,"60,34"
+ACE-009,Espaleira 3,Acessórios,28,10,"47,81"
+ACE-010,Surdina 3,Acessórios,31,20,"114,69"
+ACE-011,Afinador 3,Acessórios,26,5,"63,87"
+,Subtotal Acessórios,,360,,
+,,,,,
+PER-000,Baqueta 5A 1,Percussão,52,20,"63,44"
+PER-001,"Pele 14"" 1",Percussão,6,5,"55,00"
+PER-002,Baqueta 5A 2,Percussão,29,15,"24,48"
+PER-003,"Pele 14"" 2",Percussão,8,5,"33,66"
+PER-004,Baqueta 5A 3,Percussão,23,5,"114,65"
+PER-005,"Pele 14"" 3",Percussão,27,20,"65,86"
+,Subtotal Percussão,,145,,
+,,,,,

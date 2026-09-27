@@ -1,0 +1,27 @@
+{
+  "aulas_violino.xlsx": {
+    "tema": "educacao"
+  },
+  "projetos_sites.csv": {
+    "tema": "vendas"
+  },
+  "afiliado_shopee.csv": {
+    "tema": "vendas",
+    "aceitos": [
+      "vendas",
+      "marketing"
+    ]
+  },
+  "clinica_odonto.csv": {
+    "tema": "saude"
+  },
+  "loja_musica_vendas.csv": {
+    "tema": "vendas"
+  },
+  "estoque_baguncado.csv": {
+    "tema": "estoque"
+  },
+  "treinos_academia.csv": {
+    "tema": "generico"
+  }
+}

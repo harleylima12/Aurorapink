@@ -1,0 +1,261 @@
+Order ID,Order Date,Product Name,Category,Price,Quantity,Commission,Channel,Order Status
+SH880000,2024-10-08,Garrafa térmica,Electronics,330.93,1,9.93,WhatsApp,Completed
+SH880001,2024-08-18,Tapete de yoga,Home,364.44,1,18.22,YouTube,Cancelled
+SH880002,2024-03-11,Mochila,Home,85.57,3,12.84,TikTok,Completed
+SH880003,2024-10-12,Tapete de yoga,Electronics,280.27,2,28.03,YouTube,Completed
+SH880004,2024-05-02,Fone Bluetooth,Sports,254.66,1,20.37,TikTok,Completed
+SH880005,2024-03-12,Garrafa térmica,Home,65.49,3,15.72,TikTok,Completed
+SH880006,2024-09-24,Luminária LED,Sports,111.77,1,5.59,TikTok,Completed
+SH880007,2024-04-05,Garrafa térmica,Sports,205.18,3,30.78,Instagram,Pending
+SH880008,2024-08-07,Fone Bluetooth,Sports,186.28,3,16.77,Instagram,Completed
+SH880009,2024-09-29,Mochila,Electronics,149.83,1,7.49,Instagram,Completed
+SH880010,2024-05-22,Tapete de yoga,Home,32.18,1,1.61,TikTok,Completed
+SH880011,2024-07-31,Garrafa térmica,Electronics,166.81,3,15.01,YouTube,Completed
+SH880012,2024-08-17,Tapete de yoga,Electronics,279.65,1,22.37,WhatsApp,Cancelled
+SH880013,2024-04-26,Garrafa térmica,Sports,254.82,2,40.77,TikTok,Completed
+SH880014,2024-08-05,Fone Bluetooth,Accessories,274.7,1,21.98,TikTok,Completed
+SH880015,2024-03-22,Mochila,Accessories,135.63,1,4.07,Instagram,Cancelled
+SH880016,2024-05-16,Tapete de yoga,Electronics,350.09,1,17.5,TikTok,Completed
+SH880017,2024-08-10,Capinha,Home,260.45,3,62.51,YouTube,Completed
+SH880018,2024-09-22,Capinha,Home,97.47,2,9.75,YouTube,Completed
+SH880019,2024-03-15,Fone Bluetooth,Accessories,313.92,2,18.84,TikTok,Completed
+SH880020,2024-04-10,Luminária LED,Home,69.95,3,6.3,WhatsApp,Completed
+SH880021,2024-04-29,Fone Bluetooth,Home,107.19,3,9.65,Instagram,Completed
+SH880022,2024-04-22,Garrafa térmica,Home,164.09,3,24.61,Instagram,Completed
+SH880023,2024-06-15,Capinha,Electronics,151.93,1,7.6,Instagram,Completed
+SH880024,2024-09-10,Tapete de yoga,Sports,268.56,1,21.48,Instagram,Completed
+SH880025,2024-08-30,Garrafa térmica,Accessories,378.09,1,18.9,TikTok,Completed
+SH880026,2024-06-10,Garrafa térmica,Electronics,82.46,1,4.12,WhatsApp,Completed
+SH880027,2024-10-17,Garrafa térmica,Accessories,57.78,3,13.87,WhatsApp,Completed
+SH880028,2024-05-03,Fone Bluetooth,Electronics,231.5,1,11.58,YouTube,Completed
+SH880029,2024-03-05,Capinha,Home,157.71,3,14.19,YouTube,Completed
+SH880030,2024-09-02,Garrafa térmica,Electronics,296.59,3,71.18,TikTok,Completed
+SH880031,2024-09-24,Capinha,Accessories,274.81,2,43.97,WhatsApp,Completed
+SH880032,2024-06-20,Mochila,Home,180.24,1,5.41,TikTok,Cancelled
+SH880033,2024-09-01,Luminária LED,Home,354.79,3,31.93,TikTok,Completed
+SH880034,2024-05-17,Capinha,Sports,160.38,1,12.83,TikTok,Pending
+SH880035,2024-03-22,Fone Bluetooth,Home,390.57,1,11.72,Instagram,Completed
+SH880036,2024-08-08,Garrafa térmica,Sports,124.77,2,19.96,YouTube,Completed
+SH880037,2024-06-11,Fone Bluetooth,Home,183.65,1,9.18,Instagram,Completed
+SH880038,2024-08-21,Capinha,Sports,115.44,3,27.71,Instagram,Completed
+SH880039,2024-05-23,Garrafa térmica,Accessories,95.19,1,7.62,TikTok,Completed
+SH880040,2024-10-26,Luminária LED,Accessories,61.04,2,3.66,Instagram,Completed
+SH880041,2024-06-28,Garrafa térmica,Sports,297.64,2,29.76,Instagram,Completed
+SH880042,2024-04-21,Fone Bluetooth,Home,342.84,1,17.14,TikTok,Pending
+SH880043,2024-09-21,Mochila,Sports,213.54,1,6.41,Instagram,Completed
+SH880044,2024-03-24,Luminária LED,Electronics,356.6,2,57.06,WhatsApp,Completed
+SH880045,2024-06-01,Fone Bluetooth,Accessories,376.35,3,33.87,WhatsApp,Completed
+SH880046,2024-05-08,Fone Bluetooth,Sports,339.33,1,10.18,WhatsApp,Completed
+SH880047,2024-07-23,Capinha,Accessories,254.87,1,7.65,Instagram,Cancelled
+SH880048,2024-09-23,Garrafa térmica,Accessories,194.19,3,17.48,WhatsApp,Completed
+SH880049,2024-10-08,Capinha,Sports,254.11,3,22.87,WhatsApp,Completed
+SH880050,2024-09-09,Fone Bluetooth,Sports,222.18,3,20.0,WhatsApp,Completed
+SH880051,2024-07-24,Tapete de yoga,Electronics,220.08,3,52.82,TikTok,Completed
+SH880052,2024-03-12,Mochila,Accessories,114.4,3,10.3,YouTube,Completed
+SH880053,2024-06-25,Mochila,Home,193.41,1,15.47,YouTube,Completed
+SH880054,2024-09-21,Tapete de yoga,Sports,361.97,2,57.92,TikTok,Cancelled
+SH880055,2024-09-04,Capinha,Accessories,209.13,3,50.19,Instagram,Completed
+SH880056,2024-05-06,Tapete de yoga,Home,154.04,3,13.86,Instagram,Completed
+SH880057,2024-09-27,Garrafa térmica,Accessories,243.63,3,36.54,Instagram,Completed
+SH880058,2024-06-19,Capinha,Home,359.27,3,32.33,Instagram,Cancelled
+SH880059,2024-05-05,Capinha,Electronics,235.69,3,35.35,TikTok,Completed
+SH880060,2024-03-10,Mochila,Electronics,331.11,3,79.47,TikTok,Completed
+SH880061,2024-08-02,Garrafa térmica,Home,360.51,2,57.68,Instagram,Completed
+SH880062,2024-08-04,Mochila,Sports,37.66,3,9.04,YouTube,Completed
+SH880063,2024-06-07,Tapete de yoga,Sports,60.73,3,9.11,TikTok,Completed
+SH880064,2024-08-21,Mochila,Accessories,100.77,3,15.12,Instagram,Completed
+SH880065,2024-04-08,Fone Bluetooth,Home,47.11,2,7.54,TikTok,Completed
+SH880066,2024-06-19,Tapete de yoga,Sports,124.74,2,12.47,YouTube,Cancelled
+SH880067,2024-07-03,Garrafa térmica,Accessories,222.14,3,53.31,YouTube,Completed
+SH880068,2024-08-09,Capinha,Electronics,307.33,1,15.37,Instagram,Completed
+SH880069,2024-05-28,Mochila,Home,150.87,1,4.53,YouTube,Completed
+SH880070,2024-03-28,Luminária LED,Sports,267.33,1,21.39,WhatsApp,Pending
+SH880071,2024-07-25,Fone Bluetooth,Accessories,239.07,1,7.17,WhatsApp,Completed
+SH880072,2024-06-10,Tapete de yoga,Electronics,218.53,3,52.45,WhatsApp,Completed
+SH880073,2024-04-22,Garrafa térmica,Sports,209.52,3,18.86,WhatsApp,Completed
+SH880074,2024-08-10,Garrafa térmica,Home,160.36,2,9.62,WhatsApp,Completed
+SH880075,2024-10-03,Tapete de yoga,Electronics,281.87,2,45.1,YouTube,Completed
+SH880076,2024-08-04,Luminária LED,Electronics,242.86,3,58.29,WhatsApp,Completed
+SH880077,2024-03-09,Fone Bluetooth,Accessories,361.2,1,28.9,Instagram,Completed
+SH880078,2024-09-09,Mochila,Accessories,248.76,3,59.7,TikTok,Cancelled
+SH880079,2024-07-26,Garrafa térmica,Home,83.8,3,12.57,YouTube,Completed
+SH880080,2024-10-10,Garrafa térmica,Accessories,329.02,1,26.32,YouTube,Completed
+SH880081,2024-04-21,Capinha,Accessories,368.41,2,58.95,YouTube,Completed
+SH880082,2024-06-16,Luminária LED,Electronics,185.01,2,29.6,Instagram,Pending
+SH880083,2024-09-16,Capinha,Electronics,211.28,2,21.13,WhatsApp,Pending
+SH880084,2024-03-21,Mochila,Sports,344.47,3,31.0,YouTube,Completed
+SH880085,2024-07-06,Tapete de yoga,Home,39.3,2,2.36,YouTube,Cancelled
+SH880086,2024-08-21,Mochila,Accessories,206.07,2,12.36,TikTok,Completed
+SH880087,2024-05-04,Fone Bluetooth,Electronics,81.88,3,12.28,WhatsApp,Cancelled
+SH880088,2024-05-05,Garrafa térmica,Home,366.3,3,54.95,Instagram,Completed
+SH880089,2024-10-04,Mochila,Electronics,23.02,2,3.68,Instagram,Completed
+SH880090,2024-05-02,Capinha,Electronics,312.81,1,15.64,Instagram,Completed
+SH880091,2024-07-11,Capinha,Electronics,386.08,3,92.66,YouTube,Completed
+SH880092,2024-08-13,Fone Bluetooth,Electronics,64.43,3,9.66,TikTok,Completed
+SH880093,2024-07-05,Fone Bluetooth,Electronics,226.44,2,36.23,WhatsApp,Completed
+SH880094,2024-04-15,Capinha,Home,356.61,2,57.06,TikTok,Cancelled
+SH880095,2024-10-04,Tapete de yoga,Electronics,246.75,1,12.34,WhatsApp,Pending
+SH880096,2024-08-15,Mochila,Electronics,161.14,1,12.89,Instagram,Completed
+SH880097,2024-03-06,Mochila,Sports,31.69,2,1.9,WhatsApp,Completed
+SH880098,2024-04-18,Tapete de yoga,Sports,321.16,1,25.69,WhatsApp,Completed
+SH880099,2024-03-10,Capinha,Accessories,248.02,3,59.52,WhatsApp,Completed
+SH880100,2024-08-03,Mochila,Electronics,188.32,3,45.2,YouTube,Completed
+SH880101,2024-03-15,Garrafa térmica,Accessories,76.17,3,18.28,WhatsApp,Completed
+SH880102,2024-07-03,Luminária LED,Home,107.91,3,25.9,Instagram,Completed
+SH880103,2024-09-21,Garrafa térmica,Sports,254.0,3,38.1,Instagram,Completed
+SH880104,2024-03-20,Mochila,Sports,308.23,2,30.82,Instagram,Pending
+SH880105,2024-10-12,Fone Bluetooth,Home,333.34,1,26.67,WhatsApp,Completed
+SH880106,2024-05-12,Capinha,Sports,163.65,3,24.55,Instagram,Pending
+SH880107,2024-09-15,Fone Bluetooth,Sports,185.32,1,14.83,Instagram,Pending
+SH880108,2024-08-14,Fone Bluetooth,Sports,362.95,2,58.07,Instagram,Completed
+SH880109,2024-10-11,Mochila,Electronics,177.3,3,42.55,WhatsApp,Completed
+SH880110,2024-05-26,Garrafa térmica,Accessories,355.56,1,17.78,YouTube,Completed
+SH880111,2024-09-22,Tapete de yoga,Sports,148.12,3,35.55,YouTube,Completed
+SH880112,2024-10-05,Capinha,Sports,384.35,2,23.06,WhatsApp,Completed
+SH880113,2024-04-09,Fone Bluetooth,Electronics,353.58,1,17.68,TikTok,Completed
+SH880114,2024-04-20,Garrafa térmica,Accessories,70.48,3,16.92,YouTube,Completed
+SH880115,2024-08-16,Capinha,Home,177.95,2,17.79,TikTok,Completed
+SH880116,2024-03-14,Fone Bluetooth,Accessories,135.21,3,20.28,YouTube,Completed
+SH880117,2024-09-24,Garrafa térmica,Accessories,378.38,2,37.84,YouTube,Completed
+SH880118,2024-09-12,Tapete de yoga,Sports,249.56,1,12.48,WhatsApp,Completed
+SH880119,2024-05-05,Luminária LED,Sports,312.56,2,31.26,Instagram,Completed
+SH880120,2024-07-10,Garrafa térmica,Electronics,289.13,3,69.39,Instagram,Cancelled
+SH880121,2024-08-11,Luminária LED,Sports,40.14,3,3.61,YouTube,Completed
+SH880122,2024-07-01,Luminária LED,Accessories,341.04,1,27.28,TikTok,Completed
+SH880123,2024-03-30,Capinha,Accessories,332.38,3,29.91,TikTok,Completed
+SH880124,2024-04-03,Mochila,Accessories,100.6,2,16.1,YouTube,Pending
+SH880125,2024-05-14,Garrafa térmica,Home,314.41,3,47.16,Instagram,Completed
+SH880126,2024-08-17,Tapete de yoga,Electronics,151.73,1,12.14,WhatsApp,Completed
+SH880127,2024-03-05,Luminária LED,Home,120.33,3,10.83,TikTok,Completed
+SH880128,2024-08-24,Garrafa térmica,Electronics,86.7,2,5.2,YouTube,Completed
+SH880129,2024-10-23,Tapete de yoga,Electronics,218.72,2,13.12,Instagram,Completed
+SH880130,2024-05-05,Mochila,Sports,208.28,3,49.99,WhatsApp,Completed
+SH880131,2024-09-16,Luminária LED,Home,118.98,1,9.52,YouTube,Completed
+SH880132,2024-05-13,Fone Bluetooth,Electronics,39.83,2,6.37,Instagram,Completed
+SH880133,2024-08-30,Mochila,Accessories,388.4,2,23.3,WhatsApp,Completed
+SH880134,2024-03-14,Capinha,Electronics,242.97,3,58.31,Instagram,Pending
+SH880135,2024-04-14,Luminária LED,Accessories,67.44,1,3.37,WhatsApp,Cancelled
+SH880136,2024-03-28,Garrafa térmica,Electronics,113.02,2,11.3,Instagram,Pending
+SH880137,2024-08-11,Luminária LED,Home,179.79,1,14.38,YouTube,Pending
+SH880138,2024-07-31,Mochila,Electronics,350.49,1,17.52,WhatsApp,Completed
+SH880139,2024-08-06,Capinha,Accessories,142.52,1,7.13,YouTube,Completed
+SH880140,2024-05-16,Fone Bluetooth,Sports,368.52,3,55.28,Instagram,Completed
+SH880141,2024-03-02,Capinha,Accessories,314.2,3,75.41,YouTube,Completed
+SH880142,2024-07-30,Mochila,Accessories,251.95,2,25.2,Instagram,Completed
+SH880143,2024-08-18,Capinha,Electronics,378.49,3,90.84,YouTube,Completed
+SH880144,2024-05-20,Luminária LED,Sports,53.59,3,12.86,TikTok,Completed
+SH880145,2024-03-31,Garrafa térmica,Sports,372.66,1,18.63,TikTok,Completed
+SH880146,2024-04-26,Mochila,Electronics,310.68,1,15.53,Instagram,Completed
+SH880147,2024-05-28,Fone Bluetooth,Accessories,300.57,2,30.06,TikTok,Completed
+SH880148,2024-04-19,Mochila,Accessories,164.6,1,4.94,YouTube,Completed
+SH880149,2024-03-11,Capinha,Accessories,221.04,2,35.37,WhatsApp,Completed
+SH880150,2024-04-03,Mochila,Sports,318.78,3,47.82,WhatsApp,Completed
+SH880151,2024-05-21,Garrafa térmica,Electronics,116.3,2,18.61,YouTube,Completed
+SH880152,2024-07-27,Fone Bluetooth,Accessories,276.33,2,27.63,WhatsApp,Completed
+SH880153,2024-09-05,Garrafa térmica,Home,203.07,3,48.74,WhatsApp,Completed
+SH880154,2024-09-21,Luminária LED,Electronics,202.87,2,12.17,Instagram,Completed
+SH880155,2024-08-20,Garrafa térmica,Electronics,329.19,3,29.63,YouTube,Completed
+SH880156,2024-05-29,Luminária LED,Home,255.99,1,20.48,TikTok,Completed
+SH880157,2024-04-10,Luminária LED,Accessories,148.86,2,23.82,TikTok,Completed
+SH880158,2024-10-02,Capinha,Accessories,323.75,3,77.7,Instagram,Completed
+SH880159,2024-06-28,Luminária LED,Accessories,197.97,3,17.82,Instagram,Cancelled
+SH880160,2024-03-09,Tapete de yoga,Accessories,178.82,2,10.73,WhatsApp,Completed
+SH880161,2024-03-15,Capinha,Home,228.33,3,20.55,TikTok,Completed
+SH880162,2024-08-08,Luminária LED,Accessories,155.18,1,12.41,Instagram,Completed
+SH880163,2024-10-14,Tapete de yoga,Sports,395.5,1,31.64,Instagram,Completed
+SH880164,2024-07-22,Garrafa térmica,Home,192.42,2,19.24,WhatsApp,Completed
+SH880165,2024-09-08,Fone Bluetooth,Accessories,309.52,2,30.95,TikTok,Pending
+SH880166,2024-05-31,Mochila,Home,85.48,1,6.84,YouTube,Completed
+SH880167,2024-08-17,Luminária LED,Sports,182.77,1,14.62,Instagram,Completed
+SH880168,2024-08-31,Garrafa térmica,Home,372.59,2,37.26,TikTok,Pending
+SH880169,2024-04-20,Luminária LED,Home,330.21,2,19.81,TikTok,Completed
+SH880170,2024-04-08,Mochila,Home,200.39,3,30.06,Instagram,Completed
+SH880171,2024-08-30,Tapete de yoga,Electronics,188.24,2,11.29,WhatsApp,Completed
+SH880172,2024-04-17,Luminária LED,Electronics,44.02,3,6.6,WhatsApp,Completed
+SH880173,2024-06-17,Capinha,Accessories,200.51,1,10.03,Instagram,Pending
+SH880174,2024-07-04,Luminária LED,Sports,335.26,2,33.53,TikTok,Completed
+SH880175,2024-06-30,Capinha,Home,203.24,2,32.52,YouTube,Completed
+SH880176,2024-10-04,Capinha,Electronics,180.5,3,16.25,WhatsApp,Cancelled
+SH880177,2024-07-11,Garrafa térmica,Sports,298.65,3,71.68,WhatsApp,Completed
+SH880178,2024-05-01,Mochila,Electronics,90.62,1,7.25,YouTube,Completed
+SH880179,2024-09-02,Tapete de yoga,Home,135.05,3,32.41,YouTube,Completed
+SH880180,2024-04-22,Tapete de yoga,Electronics,171.96,2,27.51,YouTube,Pending
+SH880181,2024-05-22,Garrafa térmica,Home,87.97,1,2.64,YouTube,Completed
+SH880182,2024-05-27,Luminária LED,Electronics,107.78,3,16.17,TikTok,Completed
+SH880183,2024-05-12,Fone Bluetooth,Accessories,95.08,1,7.61,Instagram,Pending
+SH880184,2024-03-13,Mochila,Electronics,247.82,1,19.83,Instagram,Completed
+SH880185,2024-08-15,Fone Bluetooth,Home,129.2,2,20.67,TikTok,Cancelled
+SH880186,2024-05-27,Fone Bluetooth,Electronics,361.69,1,10.85,WhatsApp,Completed
+SH880187,2024-03-02,Tapete de yoga,Home,111.23,1,3.34,WhatsApp,Completed
+SH880188,2024-04-02,Luminária LED,Home,388.75,2,62.2,YouTube,Completed
+SH880189,2024-03-21,Tapete de yoga,Accessories,328.93,1,26.31,TikTok,Completed
+SH880190,2024-09-03,Mochila,Home,24.39,1,0.73,Instagram,Completed
+SH880191,2024-04-28,Tapete de yoga,Accessories,198.94,3,17.9,Instagram,Cancelled
+SH880192,2024-06-10,Tapete de yoga,Electronics,215.34,1,17.23,YouTube,Completed
+SH880193,2024-03-27,Fone Bluetooth,Accessories,358.24,3,85.98,Instagram,Completed
+SH880194,2024-08-24,Capinha,Home,370.6,3,55.59,YouTube,Completed
+SH880195,2024-05-30,Mochila,Accessories,36.06,3,3.25,TikTok,Completed
+SH880196,2024-07-21,Garrafa térmica,Home,298.01,3,26.82,Instagram,Completed
+SH880197,2024-08-22,Capinha,Accessories,148.72,3,22.31,TikTok,Completed
+SH880198,2024-03-09,Garrafa térmica,Home,220.36,3,52.89,TikTok,Completed
+SH880199,2024-07-20,Garrafa térmica,Accessories,311.75,1,24.94,TikTok,Pending
+SH880200,2024-08-27,Capinha,Sports,142.91,2,22.87,Instagram,Completed
+SH880201,2024-05-29,Capinha,Electronics,185.54,1,14.84,YouTube,Completed
+SH880202,2024-04-04,Garrafa térmica,Electronics,233.48,1,18.68,TikTok,Completed
+SH880203,2024-04-04,Luminária LED,Accessories,92.37,3,8.31,YouTube,Completed
+SH880204,2024-04-24,Tapete de yoga,Home,336.18,2,53.79,YouTube,Completed
+SH880205,2024-08-13,Garrafa térmica,Electronics,35.53,3,5.33,Instagram,Completed
+SH880206,2024-07-01,Capinha,Sports,376.77,2,22.61,YouTube,Completed
+SH880207,2024-09-03,Mochila,Accessories,204.22,3,49.01,YouTube,Completed
+SH880208,2024-06-18,Mochila,Home,175.46,1,8.77,YouTube,Completed
+SH880209,2024-06-07,Garrafa térmica,Electronics,387.7,3,58.16,Instagram,Completed
+SH880210,2024-07-30,Fone Bluetooth,Accessories,222.04,2,35.53,WhatsApp,Completed
+SH880211,2024-06-16,Tapete de yoga,Accessories,127.76,2,20.44,TikTok,Completed
+SH880212,2024-05-24,Tapete de yoga,Sports,167.14,1,8.36,TikTok,Completed
+SH880213,2024-08-18,Mochila,Accessories,214.9,1,6.45,TikTok,Completed
+SH880214,2024-08-02,Fone Bluetooth,Home,150.43,1,7.52,TikTok,Completed
+SH880215,2024-09-04,Garrafa térmica,Home,109.64,2,10.96,YouTube,Pending
+SH880216,2024-09-17,Garrafa térmica,Electronics,208.92,2,12.54,TikTok,Completed
+SH880217,2024-05-18,Tapete de yoga,Accessories,372.87,2,59.66,WhatsApp,Completed
+SH880218,2024-04-16,Luminária LED,Accessories,242.43,1,19.39,TikTok,Completed
+SH880219,2024-06-03,Luminária LED,Electronics,182.77,3,43.86,TikTok,Pending
+SH880220,2024-06-11,Fone Bluetooth,Accessories,182.1,2,10.93,TikTok,Pending
+SH880221,2024-09-14,Fone Bluetooth,Accessories,227.39,1,6.82,Instagram,Completed
+SH880222,2024-05-25,Tapete de yoga,Accessories,326.81,3,49.02,Instagram,Pending
+SH880223,2024-05-28,Fone Bluetooth,Electronics,334.11,2,53.46,WhatsApp,Pending
+SH880224,2024-09-23,Tapete de yoga,Sports,343.12,1,10.29,YouTube,Pending
+SH880225,2024-03-08,Garrafa térmica,Electronics,31.38,3,4.71,Instagram,Completed
+SH880226,2024-10-24,Luminária LED,Home,350.65,2,21.04,WhatsApp,Completed
+SH880227,2024-07-19,Fone Bluetooth,Sports,199.49,3,17.95,Instagram,Completed
+SH880228,2024-07-17,Fone Bluetooth,Home,54.28,1,2.71,TikTok,Pending
+SH880229,2024-06-22,Tapete de yoga,Sports,253.3,2,40.53,Instagram,Completed
+SH880230,2024-07-28,Mochila,Home,295.37,3,44.31,Instagram,Completed
+SH880231,2024-06-04,Tapete de yoga,Sports,367.08,3,55.06,YouTube,Pending
+SH880232,2024-08-07,Mochila,Accessories,113.74,1,3.41,YouTube,Completed
+SH880233,2024-05-16,Garrafa térmica,Electronics,246.65,3,37.0,WhatsApp,Completed
+SH880234,2024-03-12,Tapete de yoga,Electronics,161.2,1,4.84,Instagram,Pending
+SH880235,2024-08-01,Capinha,Home,242.99,1,19.44,TikTok,Completed
+SH880236,2024-10-16,Luminária LED,Home,325.13,3,29.26,Instagram,Pending
+SH880237,2024-05-23,Tapete de yoga,Home,150.21,2,24.03,TikTok,Pending
+SH880238,2024-09-11,Garrafa térmica,Electronics,62.83,3,9.42,TikTok,Completed
+SH880239,2024-05-14,Luminária LED,Accessories,181.81,2,29.09,Instagram,Cancelled
+SH880240,2024-10-18,Mochila,Home,197.44,3,47.39,WhatsApp,Completed
+SH880241,2024-07-16,Tapete de yoga,Sports,297.56,2,29.76,YouTube,Completed
+SH880242,2024-05-21,Tapete de yoga,Home,95.08,1,2.85,TikTok,Completed
+SH880243,2024-09-19,Luminária LED,Accessories,113.17,3,16.98,WhatsApp,Completed
+SH880244,2024-07-19,Fone Bluetooth,Home,148.1,1,7.41,YouTube,Pending
+SH880245,2024-03-02,Luminária LED,Accessories,258.84,1,7.77,Instagram,Cancelled
+SH880246,2024-06-07,Tapete de yoga,Home,207.74,1,6.23,Instagram,Completed
+SH880247,2024-05-02,Garrafa térmica,Accessories,274.42,1,21.95,YouTube,Cancelled
+SH880248,2024-08-05,Fone Bluetooth,Electronics,338.99,3,50.85,TikTok,Completed
+SH880249,2024-08-16,Garrafa térmica,Accessories,113.88,2,18.22,WhatsApp,Completed
+SH880250,2024-08-10,Mochila,Home,362.7,2,58.03,TikTok,Pending
+SH880251,2024-04-10,Garrafa térmica,Home,125.29,1,3.76,YouTube,Cancelled
+SH880252,2024-08-04,Tapete de yoga,Sports,337.04,2,33.7,WhatsApp,Completed
+SH880253,2024-03-25,Garrafa térmica,Home,352.59,1,17.63,YouTube,Completed
+SH880254,2024-07-06,Luminária LED,Electronics,186.01,1,14.88,Instagram,Pending
+SH880255,2024-10-15,Garrafa térmica,Electronics,285.02,3,25.65,WhatsApp,Completed
+SH880256,2024-09-30,Mochila,Electronics,211.79,2,33.89,Instagram,Cancelled
+SH880257,2024-03-31,Luminária LED,Electronics,261.05,2,26.11,Instagram,Completed
+SH880258,2024-09-04,Capinha,Home,166.1,1,8.3,WhatsApp,Pending
+SH880259,2024-06-02,Tapete de yoga,Accessories,195.98,1,9.8,Instagram,Completed
