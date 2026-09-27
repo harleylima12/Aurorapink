@@ -32,8 +32,10 @@ export interface EscolhaTema {
   tema: Tema;
   objetivo?: string;
   publico?: Publico;
-  /** Papel -> id da coluna ("" = o usuário disse que não tem). */
+  /** Papel -> id da coluna, já resolvido (automático + escolhas do usuário). */
   papeis: Papeis;
+  /** Só as escolhas feitas à mão ("" = o usuário disse que não tem). Isto é o que fica salvo no modelo. */
+  fixos?: Papeis;
 }
 
 export interface MetricaResolvida {
