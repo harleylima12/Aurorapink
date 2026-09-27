@@ -6,6 +6,8 @@ import type { LeituraPlanilha } from '../../universal/carregar';
 import type { Grupo, ParteGrupo } from '../../universal/montar';
 import { ROTULO_TIPO, TIPOS_COLUNA, type Agregacao, type ColunaConfig, type Papel, type TipoColuna } from '../../universal/perfil';
 import { setorProvavel } from '../../universal/relacoes';
+import type { EscolhaTema } from '../../universal/temas/aplicar';
+import { PerguntasTema } from './PerguntasTema';
 
 export interface KpiPrevia {
   rotulo: string;
@@ -17,6 +19,7 @@ interface Props {
   grupo: Grupo;
   aoMudar: (parte: 'principal' | number, config: ColunaConfig[]) => void;
   aoMudarSensivel: (minGroupSize: number | undefined) => void;
+  aoMudarTema: (escolha: EscolhaTema) => void;
   aoGerar: (lembrarLayout: boolean) => void;
   aoVoltar: () => void;
   previa: KpiPrevia[] | 'calculando' | { erro: string };
@@ -152,7 +155,7 @@ function Cabecalho({ parte, papel }: { parte: ParteGrupo; papel: string }) {
 }
 
 /** Tela "Entendi assim" (seção 7A item 6): revisão de 1 minuto, tudo editável, com prévia dos KPIs. */
-export function EntendiAssim({ grupo, aoMudar, aoMudarSensivel, aoGerar, aoVoltar, previa, gerando }: Props) {
+export function EntendiAssim({ grupo, aoMudar, aoMudarSensivel, aoMudarTema, aoGerar, aoVoltar, previa, gerando }: Props) {
   const [lembrar, setLembrar] = useState(true);
   return (
     <div className="entendi-assim">
@@ -167,6 +170,10 @@ export function EntendiAssim({ grupo, aoMudar, aoMudarSensivel, aoGerar, aoVolta
           </button>
         </div>
       </header>
+
+      {grupo.tema && grupo.deteccao && (
+        <PerguntasTema deteccao={grupo.deteccao} escolha={grupo.tema} perfis={grupo.principal.leitura.perfis} config={grupo.principal.config} aoMudar={aoMudarTema} />
+      )}
 
       <section className="previa-kpis" aria-label="Prévia dos KPIs" aria-live="polite">
         {previa === 'calculando' ? (
@@ -197,11 +204,11 @@ export function EntendiAssim({ grupo, aoMudar, aoMudarSensivel, aoGerar, aoVolta
       <footer className="entendi-rodape">
         <label className="alternar" data-testid="dados-sensiveis">
           <input type="checkbox" checked={grupo.minGroupSize !== undefined} onChange={(e) => aoMudarSensivel(e.target.checked ? 5 : undefined)} />
-          Dados sensíveis: esconder grupos com menos de 5 registros (e a tabela de detalhe){grupo.minGroupSize !== undefined ? ' · ligado porque a planilha tem dados pessoais ou de RH' : ''}
+          Dados sensíveis: esconder grupos com menos de 5 registros (e a tabela de detalhe){grupo.minGroupSize !== undefined ? ' · ligado porque a planilha tem dados pessoais ou é de um tema sensível (RH, educação, saúde)' : ''}
         </label>
         <label className="alternar">
           <input type="checkbox" checked={lembrar} onChange={(e) => setLembrar(e.target.checked)} />
-          Lembrar este layout (a próxima planilha igual abre direto no dashboard)
+          Lembrar este layout, o tema e as respostas (a próxima planilha igual abre direto no dashboard)
         </label>
         <button type="button" className="botao-primario" disabled={gerando} onClick={() => aoGerar(lembrar)}>
           {gerando ? 'Gerando…' : 'Gerar dashboard'}

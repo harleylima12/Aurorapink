@@ -8,6 +8,10 @@ import { descartar, montarGrupo, type Grupo, type ParteGrupo, type PlanilhaMonta
 import { configPadrao, type ColunaConfig } from '../../universal/perfil';
 import { sugerirLigacoes, type Ligacao } from '../../universal/relacoes';
 import { pareceSensivel, TAMANHO_MINIMO_PADRAO } from '../../universal/semanticaAuto';
+import type { EscolhaTema } from '../../universal/temas/aplicar';
+import { DEF_TEMAS } from '../../universal/temas/definicoes';
+import { detectarTema } from '../../universal/temas/detector';
+import { escolhaDoTema } from '../../universal/temas/escolha';
 import { guardarUltima, type ArquivoGuardado } from '../../universal/ultima';
 import { DashboardPlanilha } from './DashboardPlanilha';
 import { EntendiAssim, type KpiPrevia } from './EntendiAssim';
@@ -27,10 +31,17 @@ function parte(leitura: LeituraPlanilha, ligacao?: Ligacao): ParteGrupo {
   return { leitura, config: salvo ?? configPadrao(leitura.perfis), ligacao, reconhecido: salvo && modelo ? modelo : undefined };
 }
 
-/** Grupo novo: proteção de grupos pequenos ligada por padrão quando a planilha parece sensível. */
+/**
+ * Grupo novo: tema detectado (ou o do modelo salvo) e proteção de grupos pequenos ligada por padrão quando a
+ * planilha parece sensível (dado pessoal, salário) ou o tema é sensível (RH, educação, saúde).
+ */
 function novoGrupo(principal: ParteGrupo, juntas: ParteGrupo[]): Grupo {
-  const sensivel = [principal, ...juntas].some((p) => pareceSensivel(p.config));
-  return { principal, juntas, ...(sensivel ? { minGroupSize: TAMANHO_MINIMO_PADRAO } : {}) };
+  const { leitura, config } = principal;
+  const deteccao = detectarTema(leitura.perfis);
+  const salvo = principal.reconhecido?.tema;
+  const tema = escolhaDoTema(salvo?.tema ?? deteccao.tema, leitura.perfis, config, salvo ?? {});
+  const sensivel = [principal, ...juntas].some((p) => pareceSensivel(p.config)) || Boolean(DEF_TEMAS[tema.tema].sensivel);
+  return { principal, juntas, tema, deteccao, ...(sensivel ? { minGroupSize: TAMANHO_MINIMO_PADRAO } : {}) };
 }
 
 const nomeDoGrupo = (g: Grupo) => [g.principal, ...g.juntas].map((p) => p.leitura.nome.replace(/\.[a-z0-9]+$/i, '')).join(' + ');
@@ -124,8 +135,19 @@ export function PaginaPlanilha({ motor, aoVerDemo }: { motor: Motor; aoVerDemo: 
   const mudarConfig = (qual: 'principal' | number, config: ColunaConfig[]) => {
     if (etapa.tipo !== 'revisao') return;
     const g = etapa.grupo;
-    const grupo: Grupo = qual === 'principal' ? { ...g, principal: { ...g.principal, config } } : { ...g, juntas: g.juntas.map((j, i) => (i === qual ? { ...j, config } : j)) };
+    const grupo: Grupo =
+      qual === 'principal'
+        ? { ...g, principal: { ...g.principal, config }, ...(g.tema ? { tema: escolhaDoTema(g.tema.tema, g.principal.leitura.perfis, config, g.tema) } : {}) }
+        : { ...g, juntas: g.juntas.map((j, i) => (i === qual ? { ...j, config } : j)) };
     setEtapa({ tipo: 'revisao', grupo });
+  };
+
+  const mudarTema = (tema: EscolhaTema) => {
+    if (etapa.tipo !== 'revisao') return;
+    const g = etapa.grupo;
+    // Tema sensível liga a proteção; trocar para um tema comum não desliga sozinho (o usuário decide).
+    const minGroupSize = DEF_TEMAS[tema.tema].sensivel ? (g.minGroupSize ?? TAMANHO_MINIMO_PADRAO) : g.minGroupSize;
+    setEtapa({ tipo: 'revisao', grupo: { ...g, tema, ...(minGroupSize !== undefined ? { minGroupSize } : {}) } });
   };
 
   const gerar = async (lembrar: boolean) => {
@@ -133,8 +155,10 @@ export function PaginaPlanilha({ motor, aoVerDemo }: { motor: Motor; aoVerDemo: 
     setGerando(true);
     try {
       if (lembrar) {
+        const t = etapa.grupo.tema;
+        const temaSalvo = t ? { tema: t.tema, ...(t.objetivo ? { objetivo: t.objetivo } : {}), ...(t.publico ? { publico: t.publico } : {}), ...(t.fixos && Object.keys(t.fixos).length ? { fixos: t.fixos } : {}) } : undefined;
         for (const p of [etapa.grupo.principal, ...etapa.grupo.juntas]) {
-          salvarModelo(criarModelo(p.leitura.nome.replace(/\.[a-z0-9]+$/i, ''), impressaoDigital(p.leitura.perfis), p.config));
+          salvarModelo(criarModelo(p.leitura.nome.replace(/\.[a-z0-9]+$/i, ''), impressaoDigital(p.leitura.perfis), p.config, p === etapa.grupo.principal ? temaSalvo : undefined));
         }
       }
       await irParaDashboard(etapa.grupo, null);
@@ -176,7 +200,7 @@ export function PaginaPlanilha({ motor, aoVerDemo }: { motor: Motor; aoVerDemo: 
           }}
         />
       )}
-      {etapa.tipo === 'revisao' && <EntendiAssim grupo={etapa.grupo} aoMudarSensivel={(n) => setEtapa({ tipo: 'revisao', grupo: { ...etapa.grupo, minGroupSize: n } })} aoMudar={mudarConfig} aoGerar={(l) => void gerar(l)} aoVoltar={voltar} previa={previa} gerando={gerando} />}
+      {etapa.tipo === 'revisao' && <EntendiAssim grupo={etapa.grupo} aoMudarSensivel={(n) => setEtapa({ tipo: 'revisao', grupo: { ...etapa.grupo, minGroupSize: n } })} aoMudarTema={mudarTema} aoMudar={mudarConfig} aoGerar={(l) => void gerar(l)} aoVoltar={voltar} previa={previa} gerando={gerando} />}
       {etapa.tipo === 'pronto' && (
         <DashboardPlanilha
           motor={motor}

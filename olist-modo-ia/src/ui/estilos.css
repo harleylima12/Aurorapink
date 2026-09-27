@@ -1381,3 +1381,101 @@ button.link {
   border-color: var(--alerta);
   color: var(--alerta);
 }
+
+/* Fase 5B: tema da planilha, perguntas rápidas e painéis escondidos. */
+.tema-cartao {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.tema-cartao h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.pergunta-tema {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.pergunta-tema legend,
+.pergunta-papel > span {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.chip[aria-pressed='true'] {
+  border-color: var(--destaque);
+  background: color-mix(in srgb, var(--destaque) 18%, var(--painel));
+}
+
+.chip:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pergunta-papel select,
+.papeis-tema select,
+.trocar-tema select {
+  background: var(--fundo);
+  color: var(--texto);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 5px 8px;
+  max-width: 100%;
+}
+
+.papeis-tema ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 6px 16px;
+}
+
+.papeis-tema label {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12.5px;
+  align-items: center;
+}
+
+.trocar-tema {
+  font-size: 12.5px;
+  color: var(--texto-2);
+}
+
+.tema-linha {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--destaque);
+}
+
+.painel-escondidos ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: var(--texto-2);
+  display: grid;
+  gap: 4px;
+}
+
+.exemplos-tema {
+  margin-top: 16px;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+.exemplos-tema p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--texto-2);
+}
