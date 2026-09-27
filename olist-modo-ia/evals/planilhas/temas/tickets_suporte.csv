@@ -1,0 +1,351 @@
+Ticket,Abertura,Fechamento,Prioridade,Categoria,Agente,Status,CSAT,Tempo de Primeira Resposta (min)
+TK-20000,14/02/2024 21:53,,Baixa,Bug,Ana,Aberto,,235
+TK-20001,21/03/2024 17:55,22/03/2024 04:55,Média,Dúvida,Diego,Resolvido,5,368
+TK-20002,04/08/2024 17:35,08/08/2024 11:35,Média,Dúvida,Bruno,Resolvido,3,562
+TK-20003,08/07/2024 20:00,11/07/2024 03:00,Alta,Dúvida,Bruno,Resolvido,3,46
+TK-20004,16/04/2024 19:17,16/04/2024 20:17,Baixa,Acesso,Diego,Resolvido,3,433
+TK-20005,28/04/2024 02:09,30/04/2024 15:09,Média,Acesso,Ana,Resolvido,3,523
+TK-20006,02/05/2024 15:54,03/05/2024 11:54,Baixa,Acesso,Bruno,Resolvido,4,219
+TK-20007,08/09/2024 09:29,09/09/2024 01:29,Urgente,Cobrança,Ana,Resolvido,2,308
+TK-20008,15/08/2024 19:04,19/08/2024 06:04,Baixa,Acesso,Carla,Resolvido,4,142
+TK-20009,07/02/2024 00:06,,Alta,Bug,Carla,Aberto,,540
+TK-20010,03/10/2024 21:33,04/10/2024 06:33,Alta,Cobrança,Diego,Resolvido,3,456
+TK-20011,17/04/2024 20:01,21/04/2024 01:01,Urgente,Bug,Carla,Resolvido,5,290
+TK-20012,23/09/2024 15:33,26/09/2024 02:33,Média,Cobrança,Diego,Resolvido,5,373
+TK-20013,10/07/2024 21:24,14/07/2024 03:24,Média,Dúvida,Bruno,Resolvido,4,433
+TK-20014,26/02/2024 19:53,01/03/2024 03:53,Urgente,Dúvida,Bruno,Resolvido,2,492
+TK-20015,21/02/2024 16:38,24/02/2024 11:38,Baixa,Bug,Diego,Resolvido,3,444
+TK-20016,17/01/2024 20:04,20/01/2024 15:04,Urgente,Acesso,Diego,Resolvido,5,264
+TK-20017,03/08/2024 22:14,,Média,Acesso,Diego,Em andamento,,141
+TK-20018,18/01/2024 04:16,20/01/2024 08:16,Alta,Bug,Ana,Resolvido,2,441
+TK-20019,15/09/2024 11:50,,Alta,Acesso,Diego,Aberto,,365
+TK-20020,27/01/2024 12:16,28/01/2024 17:16,Baixa,Bug,Carla,Resolvido,5,177
+TK-20021,04/08/2024 09:57,08/08/2024 06:57,Urgente,Bug,Bruno,Resolvido,1,449
+TK-20022,05/04/2024 21:26,06/04/2024 05:26,Baixa,Dúvida,Ana,Resolvido,4,385
+TK-20023,17/05/2024 23:20,18/05/2024 18:20,Urgente,Bug,Ana,Resolvido,3,366
+TK-20024,27/03/2024 04:03,28/03/2024 14:03,Baixa,Dúvida,Bruno,Resolvido,1,514
+TK-20025,28/04/2024 22:03,01/05/2024 02:03,Urgente,Acesso,Ana,Resolvido,2,33
+TK-20026,31/07/2024 15:30,01/08/2024 01:30,Alta,Acesso,Bruno,Resolvido,4,548
+TK-20027,18/02/2024 09:55,20/02/2024 17:55,Urgente,Acesso,Diego,Resolvido,4,43
+TK-20028,06/06/2024 03:43,08/06/2024 18:43,Média,Bug,Bruno,Resolvido,3,339
+TK-20029,28/03/2024 06:53,30/03/2024 11:53,Média,Acesso,Carla,Resolvido,2,299
+TK-20030,18/01/2024 00:02,20/01/2024 18:02,Baixa,Acesso,Bruno,Resolvido,1,358
+TK-20031,12/03/2024 04:09,15/03/2024 21:09,Urgente,Acesso,Ana,Resolvido,2,358
+TK-20032,01/04/2024 12:35,,Alta,Bug,Carla,Aberto,,308
+TK-20033,12/05/2024 22:32,15/05/2024 22:32,Média,Dúvida,Diego,Resolvido,4,287
+TK-20034,05/04/2024 16:45,09/04/2024 07:45,Baixa,Acesso,Ana,Resolvido,4,510
+TK-20035,23/08/2024 08:12,,Alta,Dúvida,Bruno,Aberto,,558
+TK-20036,17/01/2024 23:24,20/01/2024 23:24,Baixa,Cobrança,Ana,Resolvido,1,83
+TK-20037,21/05/2024 18:27,24/05/2024 10:27,Urgente,Dúvida,Diego,Resolvido,5,129
+TK-20038,16/08/2024 11:56,18/08/2024 03:56,Alta,Cobrança,Diego,Resolvido,4,291
+TK-20039,18/02/2024 13:21,20/02/2024 16:21,Urgente,Dúvida,Carla,Resolvido,4,330
+TK-20040,08/07/2024 15:32,,Baixa,Dúvida,Bruno,Aberto,,228
+TK-20041,20/03/2024 16:50,22/03/2024 22:50,Média,Bug,Ana,Resolvido,2,63
+TK-20042,25/05/2024 09:27,,Alta,Cobrança,Ana,Em andamento,,556
+TK-20043,07/06/2024 07:52,07/06/2024 14:52,Baixa,Acesso,Ana,Resolvido,2,225
+TK-20044,01/02/2024 14:39,05/02/2024 11:39,Média,Cobrança,Bruno,Resolvido,3,510
+TK-20045,30/06/2024 12:18,02/07/2024 10:18,Urgente,Dúvida,Bruno,Resolvido,4,152
+TK-20046,30/06/2024 03:31,30/06/2024 09:31,Urgente,Acesso,Carla,Resolvido,2,34
+TK-20047,03/02/2024 22:26,04/02/2024 00:26,Alta,Dúvida,Carla,Resolvido,3,73
+TK-20048,23/02/2024 05:45,26/02/2024 04:45,Média,Dúvida,Diego,Resolvido,2,71
+TK-20049,29/09/2024 11:35,,Média,Bug,Bruno,Em andamento,,449
+TK-20050,28/09/2024 21:04,29/09/2024 01:04,Baixa,Bug,Bruno,Resolvido,1,426
+TK-20051,29/04/2024 05:32,29/04/2024 16:32,Urgente,Acesso,Carla,Resolvido,5,375
+TK-20052,25/07/2024 14:05,28/07/2024 12:05,Baixa,Acesso,Ana,Resolvido,1,337
+TK-20053,18/01/2024 05:23,18/01/2024 14:23,Baixa,Dúvida,Diego,Resolvido,3,472
+TK-20054,29/01/2024 08:39,29/01/2024 16:39,Alta,Cobrança,Diego,Resolvido,3,377
+TK-20055,28/02/2024 09:35,03/03/2024 08:35,Média,Dúvida,Bruno,Resolvido,5,435
+TK-20056,30/08/2024 13:49,30/08/2024 22:49,Alta,Dúvida,Carla,Resolvido,3,478
+TK-20057,07/06/2024 00:53,09/06/2024 10:53,Alta,Dúvida,Carla,Resolvido,5,315
+TK-20058,16/02/2024 07:44,19/02/2024 23:44,Urgente,Dúvida,Carla,Resolvido,1,539
+TK-20059,02/10/2024 01:33,03/10/2024 10:33,Baixa,Acesso,Carla,Resolvido,5,558
+TK-20060,08/05/2024 14:15,11/05/2024 17:15,Alta,Acesso,Ana,Resolvido,1,293
+TK-20061,19/01/2024 11:09,,Alta,Acesso,Bruno,Em andamento,,457
+TK-20062,28/03/2024 14:11,30/03/2024 14:11,Alta,Cobrança,Diego,Resolvido,2,579
+TK-20063,23/02/2024 17:56,24/02/2024 21:56,Média,Cobrança,Ana,Resolvido,3,12
+TK-20064,11/04/2024 16:17,12/04/2024 02:17,Média,Bug,Ana,Resolvido,5,588
+TK-20065,20/01/2024 23:22,22/01/2024 19:22,Baixa,Dúvida,Diego,Resolvido,5,190
+TK-20066,02/09/2024 15:06,06/09/2024 04:06,Urgente,Cobrança,Bruno,Resolvido,3,19
+TK-20067,03/04/2024 04:55,,Baixa,Dúvida,Diego,Em andamento,,399
+TK-20068,19/01/2024 23:06,23/01/2024 03:06,Média,Cobrança,Bruno,Resolvido,3,458
+TK-20069,21/05/2024 10:29,,Urgente,Dúvida,Bruno,Aberto,,588
+TK-20070,19/04/2024 23:38,23/04/2024 07:38,Alta,Dúvida,Diego,Resolvido,3,476
+TK-20071,31/08/2024 19:38,02/09/2024 23:38,Média,Acesso,Diego,Resolvido,1,226
+TK-20072,25/02/2024 17:11,27/02/2024 20:11,Baixa,Cobrança,Diego,Resolvido,3,511
+TK-20073,12/08/2024 09:42,,Baixa,Bug,Carla,Aberto,,453
+TK-20074,19/02/2024 05:07,21/02/2024 17:07,Alta,Acesso,Ana,Resolvido,1,470
+TK-20075,04/01/2024 17:55,08/01/2024 02:55,Alta,Cobrança,Diego,Resolvido,1,148
+TK-20076,20/03/2024 21:47,,Baixa,Bug,Carla,Aberto,,4
+TK-20077,01/06/2024 08:01,02/06/2024 03:01,Alta,Acesso,Bruno,Resolvido,5,402
+TK-20078,04/10/2024 12:11,04/10/2024 22:11,Média,Dúvida,Carla,Resolvido,3,140
+TK-20079,12/08/2024 08:09,13/08/2024 10:09,Urgente,Dúvida,Ana,Resolvido,2,589
+TK-20080,07/05/2024 00:15,,Média,Bug,Diego,Em andamento,,94
+TK-20081,28/07/2024 13:10,28/07/2024 23:10,Baixa,Dúvida,Diego,Resolvido,1,133
+TK-20082,19/04/2024 22:01,22/04/2024 06:01,Alta,Dúvida,Carla,Resolvido,5,463
+TK-20083,28/06/2024 12:13,01/07/2024 10:13,Baixa,Acesso,Carla,Resolvido,2,6
+TK-20084,26/07/2024 18:23,,Alta,Cobrança,Bruno,Aberto,,300
+TK-20085,06/01/2024 04:47,06/01/2024 19:47,Alta,Cobrança,Diego,Resolvido,4,363
+TK-20086,29/01/2024 19:20,,Urgente,Acesso,Carla,Aberto,,576
+TK-20087,19/03/2024 18:52,23/03/2024 14:52,Baixa,Dúvida,Ana,Resolvido,1,298
+TK-20088,04/02/2024 03:36,06/02/2024 03:36,Baixa,Cobrança,Carla,Resolvido,1,390
+TK-20089,30/03/2024 13:39,31/03/2024 10:39,Alta,Cobrança,Ana,Resolvido,1,544
+TK-20090,24/04/2024 18:55,25/04/2024 10:55,Média,Acesso,Diego,Resolvido,3,96
+TK-20091,03/06/2024 19:51,07/06/2024 16:51,Urgente,Bug,Bruno,Resolvido,5,322
+TK-20092,26/06/2024 18:48,27/06/2024 11:48,Média,Cobrança,Diego,Resolvido,4,354
+TK-20093,04/07/2024 12:40,,Alta,Cobrança,Ana,Aberto,,433
+TK-20094,02/01/2024 19:32,06/01/2024 07:32,Média,Dúvida,Bruno,Resolvido,1,333
+TK-20095,15/09/2024 11:59,15/09/2024 20:59,Média,Dúvida,Bruno,Resolvido,2,62
+TK-20096,04/03/2024 14:46,08/03/2024 13:46,Baixa,Bug,Bruno,Resolvido,4,219
+TK-20097,29/01/2024 19:14,31/01/2024 09:14,Urgente,Bug,Bruno,Resolvido,2,482
+TK-20098,17/01/2024 04:28,19/01/2024 02:28,Alta,Acesso,Bruno,Resolvido,4,304
+TK-20099,06/06/2024 12:54,10/06/2024 05:54,Baixa,Acesso,Diego,Resolvido,2,111
+TK-20100,19/04/2024 21:04,,Urgente,Acesso,Diego,Em andamento,,129
+TK-20101,28/07/2024 13:20,30/07/2024 20:20,Média,Bug,Carla,Resolvido,5,540
+TK-20102,13/02/2024 04:01,15/02/2024 15:01,Urgente,Bug,Ana,Resolvido,1,81
+TK-20103,16/08/2024 02:35,16/08/2024 05:35,Urgente,Dúvida,Carla,Resolvido,1,471
+TK-20104,26/08/2024 23:42,27/08/2024 01:42,Baixa,Dúvida,Diego,Resolvido,3,10
+TK-20105,27/06/2024 23:39,29/06/2024 13:39,Baixa,Dúvida,Bruno,Resolvido,4,27
+TK-20106,19/03/2024 02:50,19/03/2024 18:50,Alta,Cobrança,Diego,Resolvido,2,388
+TK-20107,05/09/2024 13:09,07/09/2024 18:09,Urgente,Acesso,Diego,Resolvido,5,445
+TK-20108,11/07/2024 14:18,15/07/2024 13:18,Alta,Bug,Carla,Resolvido,3,258
+TK-20109,09/08/2024 07:12,12/08/2024 05:12,Alta,Bug,Diego,Resolvido,2,193
+TK-20110,15/04/2024 03:45,,Média,Dúvida,Carla,Em andamento,,202
+TK-20111,24/02/2024 22:41,,Urgente,Acesso,Carla,Em andamento,,63
+TK-20112,10/07/2024 16:10,12/07/2024 16:10,Alta,Dúvida,Ana,Resolvido,5,485
+TK-20113,28/09/2024 16:31,30/09/2024 05:31,Urgente,Dúvida,Ana,Resolvido,3,476
+TK-20114,24/03/2024 05:17,26/03/2024 01:17,Alta,Dúvida,Diego,Resolvido,4,343
+TK-20115,14/02/2024 11:58,18/02/2024 08:58,Alta,Acesso,Diego,Resolvido,5,103
+TK-20116,04/07/2024 13:53,05/07/2024 13:53,Urgente,Cobrança,Diego,Resolvido,2,251
+TK-20117,14/07/2024 09:15,17/07/2024 11:15,Alta,Cobrança,Carla,Resolvido,2,272
+TK-20118,31/05/2024 02:09,,Baixa,Acesso,Bruno,Em andamento,,139
+TK-20119,21/08/2024 22:14,,Média,Dúvida,Carla,Aberto,,18
+TK-20120,14/05/2024 22:46,15/05/2024 04:46,Baixa,Cobrança,Carla,Resolvido,2,15
+TK-20121,13/09/2024 18:10,,Baixa,Cobrança,Carla,Em andamento,,430
+TK-20122,13/01/2024 23:12,16/01/2024 22:12,Média,Bug,Carla,Resolvido,1,543
+TK-20123,18/05/2024 22:34,,Média,Bug,Ana,Aberto,,196
+TK-20124,06/04/2024 17:42,09/04/2024 02:42,Alta,Acesso,Diego,Resolvido,1,230
+TK-20125,07/02/2024 08:47,08/02/2024 19:47,Baixa,Cobrança,Ana,Resolvido,4,353
+TK-20126,26/07/2024 15:21,30/07/2024 15:21,Média,Dúvida,Diego,Resolvido,2,520
+TK-20127,28/06/2024 14:24,,Baixa,Acesso,Diego,Em andamento,,16
+TK-20128,21/03/2024 23:17,22/03/2024 04:17,Média,Bug,Bruno,Resolvido,2,456
+TK-20129,03/07/2024 08:45,03/07/2024 18:45,Baixa,Dúvida,Ana,Resolvido,4,115
+TK-20130,02/04/2024 00:33,04/04/2024 04:33,Urgente,Acesso,Bruno,Resolvido,2,6
+TK-20131,09/05/2024 18:20,10/05/2024 01:20,Alta,Cobrança,Bruno,Resolvido,3,23
+TK-20132,02/08/2024 03:26,,Urgente,Acesso,Ana,Aberto,,402
+TK-20133,01/01/2024 20:11,,Média,Bug,Diego,Em andamento,,428
+TK-20134,14/06/2024 20:56,15/06/2024 09:56,Urgente,Acesso,Ana,Resolvido,2,553
+TK-20135,10/08/2024 15:14,11/08/2024 15:14,Média,Bug,Carla,Resolvido,3,11
+TK-20136,23/06/2024 11:23,25/06/2024 04:23,Baixa,Bug,Ana,Resolvido,1,540
+TK-20137,05/03/2024 14:01,07/03/2024 11:01,Baixa,Dúvida,Diego,Resolvido,2,271
+TK-20138,21/08/2024 02:48,21/08/2024 20:48,Urgente,Bug,Carla,Resolvido,3,267
+TK-20139,16/09/2024 08:13,17/09/2024 13:13,Urgente,Bug,Bruno,Resolvido,4,599
+TK-20140,27/07/2024 18:09,31/07/2024 14:09,Urgente,Cobrança,Bruno,Resolvido,2,332
+TK-20141,10/02/2024 07:30,12/02/2024 21:30,Baixa,Bug,Bruno,Resolvido,2,151
+TK-20142,22/02/2024 07:30,24/02/2024 21:30,Média,Acesso,Ana,Resolvido,5,134
+TK-20143,22/07/2024 06:19,23/07/2024 03:19,Urgente,Cobrança,Carla,Resolvido,1,578
+TK-20144,29/06/2024 18:53,02/07/2024 15:53,Média,Cobrança,Bruno,Resolvido,4,21
+TK-20145,29/02/2024 10:07,01/03/2024 19:07,Alta,Bug,Bruno,Resolvido,3,500
+TK-20146,30/08/2024 12:25,30/08/2024 16:25,Baixa,Dúvida,Bruno,Resolvido,4,483
+TK-20147,16/03/2024 11:31,18/03/2024 01:31,Baixa,Acesso,Diego,Resolvido,1,81
+TK-20148,24/09/2024 03:21,25/09/2024 16:21,Baixa,Dúvida,Carla,Resolvido,5,211
+TK-20149,21/06/2024 18:03,25/06/2024 02:03,Média,Dúvida,Ana,Resolvido,2,429
+TK-20150,24/06/2024 04:00,24/06/2024 21:00,Média,Acesso,Bruno,Resolvido,3,234
+TK-20151,26/06/2024 07:00,29/06/2024 21:00,Baixa,Dúvida,Ana,Resolvido,1,61
+TK-20152,02/02/2024 18:13,05/02/2024 07:13,Baixa,Cobrança,Carla,Resolvido,4,347
+TK-20153,10/03/2024 23:28,12/03/2024 04:28,Urgente,Acesso,Bruno,Resolvido,1,252
+TK-20154,02/05/2024 12:26,05/05/2024 14:26,Baixa,Dúvida,Carla,Resolvido,3,531
+TK-20155,14/05/2024 01:47,14/05/2024 22:47,Urgente,Bug,Carla,Resolvido,1,270
+TK-20156,03/01/2024 21:42,05/01/2024 18:42,Média,Acesso,Ana,Resolvido,4,385
+TK-20157,31/03/2024 03:32,31/03/2024 05:32,Média,Cobrança,Carla,Resolvido,5,282
+TK-20158,27/03/2024 06:56,,Urgente,Dúvida,Bruno,Em andamento,,156
+TK-20159,03/06/2024 04:04,,Baixa,Bug,Ana,Aberto,,314
+TK-20160,01/04/2024 18:29,03/04/2024 07:29,Urgente,Bug,Carla,Resolvido,3,362
+TK-20161,15/06/2024 09:01,15/06/2024 14:01,Baixa,Bug,Ana,Resolvido,4,549
+TK-20162,21/08/2024 09:45,,Alta,Acesso,Bruno,Aberto,,431
+TK-20163,09/02/2024 10:14,12/02/2024 04:14,Urgente,Bug,Ana,Resolvido,4,168
+TK-20164,09/03/2024 05:42,11/03/2024 11:42,Média,Cobrança,Bruno,Resolvido,3,469
+TK-20165,04/05/2024 20:49,05/05/2024 06:49,Baixa,Cobrança,Carla,Resolvido,5,113
+TK-20166,05/07/2024 04:40,05/07/2024 08:40,Urgente,Dúvida,Diego,Resolvido,3,570
+TK-20167,03/04/2024 04:36,06/04/2024 06:36,Alta,Bug,Carla,Resolvido,3,11
+TK-20168,20/07/2024 23:18,22/07/2024 20:18,Urgente,Bug,Carla,Resolvido,5,553
+TK-20169,04/05/2024 21:22,05/05/2024 11:22,Alta,Acesso,Diego,Resolvido,1,91
+TK-20170,02/10/2024 09:16,06/10/2024 07:16,Média,Bug,Bruno,Resolvido,5,129
+TK-20171,13/06/2024 14:39,14/06/2024 18:39,Baixa,Dúvida,Bruno,Resolvido,5,44
+TK-20172,20/05/2024 00:43,23/05/2024 12:43,Urgente,Cobrança,Ana,Resolvido,2,331
+TK-20173,04/05/2024 22:25,05/05/2024 19:25,Urgente,Cobrança,Diego,Resolvido,1,131
+TK-20174,06/09/2024 04:50,07/09/2024 00:50,Média,Bug,Ana,Resolvido,5,281
+TK-20175,11/06/2024 16:33,14/06/2024 06:33,Média,Dúvida,Carla,Resolvido,4,59
+TK-20176,01/03/2024 08:34,03/03/2024 17:34,Alta,Acesso,Ana,Resolvido,4,477
+TK-20177,20/08/2024 22:35,,Média,Cobrança,Ana,Em andamento,,52
+TK-20178,02/06/2024 20:24,06/06/2024 07:24,Média,Cobrança,Bruno,Resolvido,3,219
+TK-20179,29/01/2024 02:15,01/02/2024 09:15,Urgente,Dúvida,Ana,Resolvido,1,382
+TK-20180,24/04/2024 00:04,25/04/2024 20:04,Urgente,Dúvida,Carla,Resolvido,5,390
+TK-20181,27/02/2024 15:32,28/02/2024 23:32,Baixa,Cobrança,Carla,Resolvido,4,372
+TK-20182,30/07/2024 04:08,01/08/2024 00:08,Média,Bug,Diego,Resolvido,1,247
+TK-20183,07/08/2024 12:29,10/08/2024 12:29,Média,Acesso,Bruno,Resolvido,1,30
+TK-20184,13/05/2024 07:38,14/05/2024 14:38,Alta,Acesso,Carla,Resolvido,1,20
+TK-20185,15/07/2024 23:34,16/07/2024 17:34,Média,Dúvida,Ana,Resolvido,3,373
+TK-20186,06/08/2024 10:28,09/08/2024 00:28,Média,Bug,Ana,Resolvido,1,75
+TK-20187,23/06/2024 18:18,26/06/2024 23:18,Alta,Acesso,Ana,Resolvido,1,140
+TK-20188,13/06/2024 18:30,16/06/2024 07:30,Baixa,Cobrança,Diego,Resolvido,1,502
+TK-20189,17/01/2024 21:07,20/01/2024 22:07,Alta,Cobrança,Diego,Resolvido,2,510
+TK-20190,18/07/2024 03:17,20/07/2024 00:17,Alta,Cobrança,Carla,Resolvido,4,269
+TK-20191,16/02/2024 04:24,,Urgente,Cobrança,Diego,Em andamento,,510
+TK-20192,04/06/2024 04:34,,Alta,Bug,Ana,Aberto,,451
+TK-20193,30/01/2024 06:08,,Baixa,Dúvida,Diego,Aberto,,123
+TK-20194,04/10/2024 00:07,,Média,Bug,Ana,Aberto,,392
+TK-20195,17/02/2024 09:01,20/02/2024 17:01,Baixa,Cobrança,Bruno,Resolvido,2,79
+TK-20196,28/01/2024 00:12,31/01/2024 15:12,Alta,Cobrança,Bruno,Resolvido,4,393
+TK-20197,22/06/2024 08:27,,Média,Bug,Carla,Aberto,,221
+TK-20198,28/03/2024 15:20,29/03/2024 02:20,Média,Acesso,Ana,Resolvido,5,166
+TK-20199,24/06/2024 23:47,27/06/2024 06:47,Baixa,Bug,Bruno,Resolvido,4,276
+TK-20200,20/07/2024 10:53,24/07/2024 04:53,Média,Cobrança,Diego,Resolvido,3,597
+TK-20201,09/07/2024 20:13,11/07/2024 13:13,Baixa,Cobrança,Bruno,Resolvido,4,344
+TK-20202,29/03/2024 04:16,30/03/2024 12:16,Alta,Acesso,Ana,Resolvido,5,85
+TK-20203,16/03/2024 21:23,19/03/2024 20:23,Baixa,Dúvida,Ana,Resolvido,4,312
+TK-20204,02/04/2024 17:44,06/04/2024 02:44,Baixa,Acesso,Bruno,Resolvido,3,194
+TK-20205,18/07/2024 17:18,18/07/2024 21:18,Alta,Dúvida,Ana,Resolvido,2,74
+TK-20206,28/05/2024 02:31,31/05/2024 15:31,Alta,Bug,Carla,Resolvido,1,475
+TK-20207,16/01/2024 00:57,17/01/2024 20:57,Urgente,Cobrança,Ana,Resolvido,3,196
+TK-20208,15/02/2024 23:09,19/02/2024 10:09,Alta,Bug,Ana,Resolvido,2,561
+TK-20209,26/06/2024 19:40,27/06/2024 09:40,Alta,Bug,Ana,Resolvido,2,536
+TK-20210,24/02/2024 19:34,25/02/2024 12:34,Média,Acesso,Carla,Resolvido,3,277
+TK-20211,29/09/2024 07:37,29/09/2024 16:37,Urgente,Acesso,Ana,Resolvido,5,499
+TK-20212,04/10/2024 01:56,06/10/2024 01:56,Urgente,Cobrança,Carla,Resolvido,3,57
+TK-20213,29/06/2024 23:42,02/07/2024 12:42,Média,Dúvida,Bruno,Resolvido,4,254
+TK-20214,11/01/2024 01:49,14/01/2024 01:49,Baixa,Bug,Carla,Resolvido,4,258
+TK-20215,23/02/2024 07:42,25/02/2024 11:42,Média,Bug,Bruno,Resolvido,2,266
+TK-20216,08/06/2024 22:54,,Urgente,Dúvida,Carla,Aberto,,560
+TK-20217,03/05/2024 03:27,04/05/2024 21:27,Urgente,Bug,Diego,Resolvido,3,448
+TK-20218,20/06/2024 08:33,22/06/2024 10:33,Urgente,Acesso,Ana,Resolvido,3,96
+TK-20219,28/04/2024 23:28,29/04/2024 09:28,Média,Bug,Bruno,Resolvido,2,166
+TK-20220,08/02/2024 05:57,10/02/2024 01:57,Alta,Acesso,Diego,Resolvido,3,336
+TK-20221,07/09/2024 08:09,,Média,Acesso,Bruno,Em andamento,,405
+TK-20222,23/02/2024 22:24,27/02/2024 21:24,Baixa,Acesso,Ana,Resolvido,2,33
+TK-20223,07/08/2024 07:17,,Média,Dúvida,Diego,Aberto,,141
+TK-20224,20/05/2024 01:34,,Alta,Dúvida,Bruno,Em andamento,,204
+TK-20225,30/06/2024 06:45,30/06/2024 10:45,Baixa,Dúvida,Carla,Resolvido,1,326
+TK-20226,24/08/2024 22:50,28/08/2024 05:50,Média,Acesso,Diego,Resolvido,5,85
+TK-20227,25/01/2024 01:55,28/01/2024 22:55,Baixa,Acesso,Bruno,Resolvido,4,542
+TK-20228,30/07/2024 04:38,03/08/2024 04:38,Urgente,Acesso,Diego,Resolvido,5,175
+TK-20229,22/01/2024 14:06,24/01/2024 19:06,Urgente,Acesso,Bruno,Resolvido,3,281
+TK-20230,17/01/2024 09:55,17/01/2024 13:55,Baixa,Acesso,Carla,Resolvido,2,167
+TK-20231,25/03/2024 10:58,27/03/2024 02:58,Alta,Acesso,Carla,Resolvido,3,281
+TK-20232,06/07/2024 07:20,07/07/2024 15:20,Baixa,Bug,Diego,Resolvido,2,556
+TK-20233,22/08/2024 20:01,23/08/2024 06:01,Média,Acesso,Diego,Resolvido,2,150
+TK-20234,21/01/2024 06:15,24/01/2024 01:15,Baixa,Acesso,Diego,Resolvido,4,518
+TK-20235,09/05/2024 17:54,12/05/2024 20:54,Baixa,Bug,Diego,Resolvido,4,454
+TK-20236,13/06/2024 09:16,16/06/2024 16:16,Urgente,Dúvida,Ana,Resolvido,5,274
+TK-20237,05/09/2024 09:03,,Urgente,Dúvida,Carla,Em andamento,,100
+TK-20238,15/05/2024 09:45,16/05/2024 07:45,Média,Cobrança,Bruno,Resolvido,5,178
+TK-20239,13/06/2024 13:24,14/06/2024 01:24,Média,Dúvida,Bruno,Resolvido,4,386
+TK-20240,13/06/2024 13:21,,Alta,Acesso,Bruno,Aberto,,221
+TK-20241,30/09/2024 00:07,01/10/2024 11:07,Baixa,Acesso,Carla,Resolvido,1,117
+TK-20242,12/05/2024 09:44,12/05/2024 23:44,Baixa,Dúvida,Diego,Resolvido,5,315
+TK-20243,20/09/2024 03:34,,Alta,Dúvida,Diego,Em andamento,,27
+TK-20244,26/03/2024 08:20,28/03/2024 16:20,Alta,Cobrança,Diego,Resolvido,1,26
+TK-20245,23/09/2024 22:09,24/09/2024 10:09,Alta,Acesso,Bruno,Resolvido,1,506
+TK-20246,12/05/2024 11:50,14/05/2024 07:50,Urgente,Bug,Diego,Resolvido,3,332
+TK-20247,06/07/2024 23:09,,Média,Acesso,Bruno,Aberto,,301
+TK-20248,10/03/2024 12:15,10/03/2024 23:15,Média,Dúvida,Bruno,Resolvido,1,420
+TK-20249,10/05/2024 12:41,,Alta,Bug,Ana,Em andamento,,67
+TK-20250,24/02/2024 12:56,27/02/2024 22:56,Média,Acesso,Carla,Resolvido,2,234
+TK-20251,21/04/2024 22:57,22/04/2024 05:57,Urgente,Bug,Carla,Resolvido,2,284
+TK-20252,15/02/2024 18:57,19/02/2024 12:57,Alta,Bug,Diego,Resolvido,4,200
+TK-20253,29/08/2024 09:47,,Baixa,Bug,Diego,Aberto,,455
+TK-20254,01/03/2024 10:56,02/03/2024 00:56,Baixa,Acesso,Ana,Resolvido,5,401
+TK-20255,04/08/2024 16:30,08/08/2024 16:30,Média,Cobrança,Carla,Resolvido,4,574
+TK-20256,10/04/2024 22:32,13/04/2024 11:32,Alta,Bug,Bruno,Resolvido,3,112
+TK-20257,07/01/2024 16:45,,Média,Cobrança,Bruno,Em andamento,,154
+TK-20258,14/06/2024 01:06,15/06/2024 05:06,Baixa,Dúvida,Ana,Resolvido,3,447
+TK-20259,17/05/2024 07:52,18/05/2024 20:52,Alta,Dúvida,Ana,Resolvido,4,552
+TK-20260,08/09/2024 03:51,09/09/2024 19:51,Média,Dúvida,Carla,Resolvido,4,262
+TK-20261,04/05/2024 21:13,06/05/2024 18:13,Urgente,Cobrança,Bruno,Resolvido,4,551
+TK-20262,17/04/2024 05:41,20/04/2024 13:41,Baixa,Cobrança,Ana,Resolvido,3,552
+TK-20263,10/02/2024 04:17,12/02/2024 19:17,Alta,Acesso,Carla,Resolvido,4,466
+TK-20264,23/01/2024 09:19,,Alta,Dúvida,Diego,Aberto,,241
+TK-20265,20/01/2024 05:32,22/01/2024 05:32,Média,Cobrança,Carla,Resolvido,4,363
+TK-20266,10/08/2024 10:41,12/08/2024 22:41,Urgente,Acesso,Carla,Resolvido,3,200
+TK-20267,07/03/2024 14:11,10/03/2024 03:11,Baixa,Cobrança,Ana,Resolvido,3,79
+TK-20268,25/04/2024 19:09,27/04/2024 01:09,Baixa,Dúvida,Ana,Resolvido,2,398
+TK-20269,29/02/2024 20:49,04/03/2024 14:49,Alta,Dúvida,Diego,Resolvido,1,56
+TK-20270,01/05/2024 16:50,,Média,Acesso,Carla,Em andamento,,191
+TK-20271,06/04/2024 23:22,08/04/2024 10:22,Urgente,Cobrança,Diego,Resolvido,3,478
+TK-20272,15/04/2024 08:52,16/04/2024 23:52,Urgente,Dúvida,Diego,Resolvido,3,367
+TK-20273,06/07/2024 09:40,,Média,Bug,Diego,Em andamento,,575
+TK-20274,03/09/2024 23:09,04/09/2024 13:09,Alta,Cobrança,Carla,Resolvido,1,49
+TK-20275,17/06/2024 05:33,18/06/2024 16:33,Baixa,Acesso,Diego,Resolvido,5,339
+TK-20276,11/07/2024 16:22,13/07/2024 10:22,Média,Cobrança,Bruno,Resolvido,5,72
+TK-20277,02/07/2024 15:02,03/07/2024 21:02,Urgente,Acesso,Bruno,Resolvido,3,183
+TK-20278,15/03/2024 11:47,19/03/2024 04:47,Média,Bug,Bruno,Resolvido,4,394
+TK-20279,24/09/2024 22:59,25/09/2024 16:59,Alta,Bug,Carla,Resolvido,5,102
+TK-20280,02/10/2024 16:42,06/10/2024 02:42,Urgente,Acesso,Diego,Resolvido,5,111
+TK-20281,03/05/2024 19:04,,Urgente,Cobrança,Carla,Aberto,,281
+TK-20282,30/06/2024 10:48,04/07/2024 10:48,Média,Cobrança,Bruno,Resolvido,5,303
+TK-20283,12/04/2024 16:26,13/04/2024 08:26,Urgente,Dúvida,Carla,Resolvido,5,376
+TK-20284,19/01/2024 06:33,19/01/2024 08:33,Urgente,Acesso,Carla,Resolvido,3,127
+TK-20285,13/03/2024 05:17,,Urgente,Dúvida,Diego,Em andamento,,498
+TK-20286,03/05/2024 19:43,03/05/2024 23:43,Urgente,Acesso,Bruno,Resolvido,3,248
+TK-20287,03/08/2024 01:31,,Baixa,Acesso,Carla,Aberto,,477
+TK-20288,07/06/2024 20:34,08/06/2024 21:34,Média,Cobrança,Ana,Resolvido,1,415
+TK-20289,20/06/2024 06:32,,Urgente,Acesso,Carla,Aberto,,454
+TK-20290,16/06/2024 22:12,17/06/2024 08:12,Média,Dúvida,Carla,Resolvido,1,534
+TK-20291,15/09/2024 19:44,18/09/2024 06:44,Baixa,Bug,Bruno,Resolvido,4,244
+TK-20292,05/05/2024 06:25,05/05/2024 17:25,Urgente,Dúvida,Diego,Resolvido,4,526
+TK-20293,01/07/2024 15:50,04/07/2024 06:50,Média,Bug,Bruno,Resolvido,4,342
+TK-20294,17/08/2024 15:18,18/08/2024 14:18,Média,Acesso,Ana,Resolvido,5,286
+TK-20295,09/07/2024 00:49,,Urgente,Bug,Diego,Em andamento,,108
+TK-20296,22/01/2024 13:00,25/01/2024 04:00,Média,Bug,Ana,Resolvido,4,6
+TK-20297,23/04/2024 07:20,,Urgente,Acesso,Carla,Aberto,,590
+TK-20298,12/03/2024 03:02,14/03/2024 16:02,Média,Dúvida,Ana,Resolvido,1,500
+TK-20299,23/08/2024 23:25,,Urgente,Dúvida,Diego,Em andamento,,142
+TK-20300,04/03/2024 22:35,,Alta,Cobrança,Carla,Em andamento,,451
+TK-20301,18/03/2024 07:41,21/03/2024 08:41,Média,Acesso,Diego,Resolvido,4,403
+TK-20302,15/02/2024 16:39,16/02/2024 21:39,Baixa,Acesso,Bruno,Resolvido,3,101
+TK-20303,16/06/2024 03:11,18/06/2024 02:11,Urgente,Acesso,Diego,Resolvido,1,350
+TK-20304,05/08/2024 03:41,06/08/2024 04:41,Média,Bug,Carla,Resolvido,3,40
+TK-20305,23/02/2024 14:47,,Alta,Cobrança,Diego,Aberto,,215
+TK-20306,12/08/2024 19:36,14/08/2024 13:36,Baixa,Dúvida,Diego,Resolvido,4,107
+TK-20307,12/01/2024 06:27,13/01/2024 01:27,Alta,Cobrança,Carla,Resolvido,1,599
+TK-20308,24/07/2024 18:34,,Média,Dúvida,Carla,Em andamento,,86
+TK-20309,27/09/2024 14:50,30/09/2024 16:50,Urgente,Cobrança,Bruno,Resolvido,4,355
+TK-20310,02/03/2024 10:06,04/03/2024 02:06,Alta,Dúvida,Carla,Resolvido,2,236
+TK-20311,22/01/2024 03:08,,Baixa,Acesso,Carla,Em andamento,,558
+TK-20312,21/04/2024 15:40,23/04/2024 06:40,Alta,Acesso,Carla,Resolvido,4,472
+TK-20313,01/06/2024 07:25,04/06/2024 16:25,Baixa,Bug,Diego,Resolvido,1,471
+TK-20314,05/03/2024 20:10,06/03/2024 11:10,Alta,Dúvida,Carla,Resolvido,5,383
+TK-20315,23/04/2024 13:40,25/04/2024 18:40,Média,Bug,Carla,Resolvido,4,516
+TK-20316,08/08/2024 10:37,11/08/2024 19:37,Baixa,Cobrança,Diego,Resolvido,2,67
+TK-20317,02/01/2024 22:57,,Alta,Bug,Diego,Em andamento,,149
+TK-20318,15/02/2024 13:01,17/02/2024 09:01,Média,Dúvida,Carla,Resolvido,3,420
+TK-20319,23/01/2024 12:51,24/01/2024 11:51,Urgente,Bug,Bruno,Resolvido,2,75
+TK-20320,19/04/2024 10:05,,Baixa,Cobrança,Carla,Aberto,,422
+TK-20321,27/06/2024 12:43,27/06/2024 17:43,Alta,Bug,Carla,Resolvido,2,197
+TK-20322,29/09/2024 18:25,,Baixa,Dúvida,Ana,Em andamento,,469
+TK-20323,26/04/2024 15:35,30/04/2024 00:35,Média,Dúvida,Bruno,Resolvido,5,530
+TK-20324,02/02/2024 04:48,,Baixa,Acesso,Bruno,Aberto,,8
+TK-20325,21/03/2024 12:25,24/03/2024 19:25,Urgente,Acesso,Diego,Resolvido,4,268
+TK-20326,24/09/2024 14:06,,Alta,Bug,Ana,Em andamento,,174
+TK-20327,10/01/2024 04:44,,Alta,Dúvida,Bruno,Aberto,,564
+TK-20328,12/07/2024 05:40,12/07/2024 23:40,Alta,Bug,Ana,Resolvido,4,151
+TK-20329,31/03/2024 11:37,02/04/2024 01:37,Alta,Bug,Bruno,Resolvido,2,386
+TK-20330,04/05/2024 15:02,04/05/2024 17:02,Alta,Bug,Bruno,Resolvido,2,569
+TK-20331,08/04/2024 19:53,09/04/2024 21:53,Baixa,Acesso,Carla,Resolvido,2,262
+TK-20332,14/04/2024 17:15,17/04/2024 03:15,Baixa,Dúvida,Ana,Resolvido,1,82
+TK-20333,01/10/2024 11:06,05/10/2024 08:06,Urgente,Bug,Ana,Resolvido,4,238
+TK-20334,14/04/2024 00:43,17/04/2024 08:43,Alta,Bug,Bruno,Resolvido,4,119
+TK-20335,14/07/2024 18:49,18/07/2024 08:49,Alta,Cobrança,Ana,Resolvido,3,309
+TK-20336,10/06/2024 10:03,12/06/2024 22:03,Alta,Cobrança,Ana,Resolvido,3,467
+TK-20337,17/05/2024 02:27,21/05/2024 00:27,Média,Cobrança,Ana,Resolvido,5,331
+TK-20338,14/08/2024 21:22,18/08/2024 00:22,Baixa,Dúvida,Ana,Resolvido,4,27
+TK-20339,19/06/2024 07:17,20/06/2024 00:17,Baixa,Bug,Bruno,Resolvido,5,271
+TK-20340,31/03/2024 20:04,03/04/2024 15:04,Alta,Dúvida,Carla,Resolvido,1,84
+TK-20341,05/07/2024 23:25,06/07/2024 03:25,Baixa,Dúvida,Ana,Resolvido,5,67
+TK-20342,19/03/2024 12:08,20/03/2024 14:08,Baixa,Bug,Carla,Resolvido,2,197
+TK-20343,05/06/2024 09:12,05/06/2024 16:12,Urgente,Dúvida,Ana,Resolvido,2,55
+TK-20344,05/07/2024 06:19,06/07/2024 05:19,Baixa,Cobrança,Carla,Resolvido,4,556
+TK-20345,17/04/2024 23:46,18/04/2024 10:46,Média,Acesso,Diego,Resolvido,1,81
+TK-20346,21/05/2024 23:03,25/05/2024 02:03,Alta,Acesso,Ana,Resolvido,5,151
+TK-20347,02/09/2024 00:08,05/09/2024 11:08,Urgente,Dúvida,Bruno,Resolvido,3,5
+TK-20348,01/02/2024 19:48,05/02/2024 12:48,Alta,Bug,Diego,Resolvido,3,235
+TK-20349,23/05/2024 22:47,26/05/2024 17:47,Urgente,Dúvida,Carla,Resolvido,4,69

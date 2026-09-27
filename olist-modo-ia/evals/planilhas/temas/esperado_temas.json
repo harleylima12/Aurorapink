@@ -1,0 +1,77 @@
+{
+  "temas/pedidos_loja_virtual.csv": {
+    "tema": "vendas"
+  },
+  "temas/fluxo_caixa.csv": {
+    "tema": "financeiro"
+  },
+  "temas/contas_a_pagar.csv": {
+    "tema": "financeiro"
+  },
+  "temas/folha_pagamento.csv": {
+    "tema": "rh"
+  },
+  "temas/turnover.csv": {
+    "tema": "rh"
+  },
+  "temas/movimentacao_estoque.csv": {
+    "tema": "estoque"
+  },
+  "temas/inventory_en.csv": {
+    "tema": "estoque"
+  },
+  "temas/campanhas_marketing.csv": {
+    "tema": "marketing"
+  },
+  "temas/leads.csv": {
+    "tema": "marketing"
+  },
+  "temas/tickets_suporte.csv": {
+    "tema": "atendimento"
+  },
+  "temas/notas_turma.csv": {
+    "tema": "educacao"
+  },
+  "temas/atendimentos_clinica.csv": {
+    "tema": "saude"
+  },
+  "temas/exames_laboratorio.csv": {
+    "tema": "saude"
+  },
+  "temas/leituras_sensores.csv": {
+    "tema": "generico"
+  },
+  "temas/biblioteca_pessoal.csv": {
+    "tema": "generico"
+  },
+  "vendas_br.csv": {
+    "tema": "vendas"
+  },
+  "clientes.csv": {
+    "tema": "vendas"
+  },
+  "financeiro_titulo_total.csv": {
+    "tema": "financeiro"
+  },
+  "financeiro_titulo_total.xlsx": {
+    "tema": "financeiro"
+  },
+  "rh_ficticio.csv": {
+    "tema": "rh"
+  },
+  "estoque.tsv": {
+    "tema": "estoque"
+  },
+  "baguncada.csv": {
+    "tema": "vendas"
+  },
+  "cega_escola.csv": {
+    "tema": "educacao"
+  },
+  "cega_chamados.csv": {
+    "tema": "atendimento"
+  },
+  "cega_vendas_en.csv": {
+    "tema": "vendas"
+  }
+}

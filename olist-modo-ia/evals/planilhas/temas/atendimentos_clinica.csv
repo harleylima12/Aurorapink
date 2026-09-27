@@ -1,0 +1,401 @@
+Paciente;CPF do Paciente;Data da Consulta;Especialidade;Médico;Procedimento;CID;Convênio;Valor da Consulta;Retorno
+Gabriela Ribeiro;927.851.715-19;31/01/2024;Dermatologia;Dr(a). Ferreira;Consulta;L20.9;Particular;415,25;Sim
+Bruno Silva;279.637.973-67;16/10/2024;Pediatria;Dr(a). Santos;Curativo;E11.9;Bradesco Saúde;551,47;Não
+Karina Pereira;527.288.908-89;26/01/2024;Cardiologia;Dr(a). Lima;Eletrocardiograma;I10;Particular;279,59;Não
+Rafael Nascimento;917.065.028-42;19/03/2024;Ortopedia;Dr(a). Carvalho;Curativo;I10;Bradesco Saúde;545,53;Não
+Queila Souza;401.161.089-59;21/04/2024;Ortopedia;Dr(a). Martins;Eletrocardiograma;I10;Particular;161,94;Sim
+Bruno Almeida;886.291.854-22;14/08/2024;Ortopedia;Dr(a). Nascimento;Curativo;I10;SUS;379,10;Sim
+Diego Gomes;556.954.380-55;04/03/2024;Cardiologia;Dr(a). Pereira;Curativo;E11.9;Bradesco Saúde;472,20;Não
+Elisa Almeida;854.067.783-07;27/02/2024;Cardiologia;Dr(a). Gomes;Retorno;L20.9;Unimed;577,06;Sim
+Lucas Pereira;035.454.644-90;13/06/2024;Ortopedia;Dr(a). Martins;Eletrocardiograma;I10;Unimed;457,66;Sim
+Yasmin Araújo;922.549.246-48;07/01/2024;Dermatologia;Dr(a). Silva;Curativo;I10;SUS;442,95;Não
+Úrsula Ribeiro;111.334.364-80;09/05/2024;Pediatria;Dr(a). Martins;Consulta;M54.5;Particular;176,28;Não
+Sofia Araújo;730.055.920-49;29/05/2024;Pediatria;Dr(a). Souza;Eletrocardiograma;M54.5;Unimed;236,35;Não
+Gabriela Lima;889.538.386-90;16/11/2024;Dermatologia;Dr(a). Santos;Consulta;E11.9;Unimed;516,96;Não
+Vitor Ribeiro;683.011.697-02;11/01/2024;Ortopedia;Dr(a). Nascimento;Consulta;L20.9;Unimed;474,69;Não
+Olívia Nascimento;885.908.851-86;29/07/2024;Dermatologia;Dr(a). Santos;Eletrocardiograma;I10;Particular;310,63;Sim
+Tiago Ferreira;493.171.516-80;28/06/2024;Cardiologia;Dr(a). Almeida;Retorno;L20.9;SUS;276,53;Sim
+Vitor Nascimento;101.464.566-29;16/06/2024;Ortopedia;Dr(a). Ribeiro;Retorno;L20.9;Bradesco Saúde;372,99;Sim
+Ana Santos;402.784.017-83;25/08/2024;Ortopedia;Dr(a). Carvalho;Consulta;E11.9;Unimed;262,08;Não
+Vitor Carvalho;767.398.904-20;26/10/2024;Cardiologia;Dr(a). Nascimento;Retorno;L20.9;Bradesco Saúde;138,27;Sim
+Rafael Ribeiro;688.095.273-99;02/10/2024;Cardiologia;Dr(a). Pereira;Eletrocardiograma;E11.9;Bradesco Saúde;471,46;Sim
+Gabriela Pereira;544.518.152-90;09/01/2024;Pediatria;Dr(a). Almeida;Consulta;E11.9;Particular;224,99;Sim
+Diego Silva;092.330.410-00;14/09/2024;Dermatologia;Dr(a). Ribeiro;Eletrocardiograma;I10;Unimed;373,68;Sim
+Rafael Gomes;023.250.249-89;11/05/2024;Dermatologia;Dr(a). Lima;Retorno;M54.5;Particular;152,60;Não
+Rafael Rodrigues;032.250.172-56;12/05/2024;Cardiologia;Dr(a). Martins;Consulta;J06.9;SUS;550,51;Não
+Queila Oliveira;513.265.088-06;02/04/2024;Dermatologia;Dr(a). Oliveira;Retorno;L20.9;SUS;535,35;Não
+Queila Oliveira;525.421.670-01;06/10/2024;Cardiologia;Dr(a). Rodrigues;Curativo;L20.9;Particular;494,14;Sim
+Wanda Carvalho;908.885.959-05;22/06/2024;Cardiologia;Dr(a). Nascimento;Retorno;J06.9;Unimed;590,33;Sim
+Vitor Almeida;448.537.762-81;25/04/2024;Pediatria;Dr(a). Araújo;Consulta;E11.9;Unimed;488,82;Sim
+Rafael Nascimento;069.606.071-08;02/03/2024;Pediatria;Dr(a). Ferreira;Consulta;M54.5;SUS;294,91;Sim
+Úrsula Carvalho;622.692.090-44;14/01/2024;Cardiologia;Dr(a). Carvalho;Consulta;E11.9;Unimed;144,81;Sim
+Paulo Gomes;161.917.344-17;28/04/2024;Dermatologia;Dr(a). Souza;Eletrocardiograma;J06.9;Unimed;453,80;Sim
+Bruno Gomes;237.625.456-69;01/03/2024;Pediatria;Dr(a). Araújo;Consulta;I10;Bradesco Saúde;318,21;Sim
+Carla Martins;328.871.544-94;06/09/2024;Ortopedia;Dr(a). Santos;Retorno;E11.9;Particular;452,56;Não
+Heitor Santos;657.338.964-69;05/04/2024;Ortopedia;Dr(a). Martins;Retorno;E11.9;Bradesco Saúde;132,41;Sim
+Yasmin Carvalho;764.505.911-70;03/04/2024;Ortopedia;Dr(a). Araújo;Retorno;I10;Bradesco Saúde;167,41;Sim
+Ana Nascimento;049.873.236-30;06/05/2024;Dermatologia;Dr(a). Nascimento;Eletrocardiograma;M54.5;Particular;589,64;Não
+Íris Martins;040.965.080-39;01/04/2024;Cardiologia;Dr(a). Oliveira;Consulta;E11.9;Bradesco Saúde;231,91;Não
+Nicolas Ribeiro;879.869.906-78;29/08/2024;Pediatria;Dr(a). Souza;Eletrocardiograma;J06.9;Unimed;202,24;Sim
+Vitor Martins;299.203.418-51;29/08/2024;Pediatria;Dr(a). Rodrigues;Consulta;L20.9;Bradesco Saúde;129,87;Sim
+Íris Carvalho;343.516.755-60;19/09/2024;Pediatria;Dr(a). Costa;Consulta;J06.9;Particular;139,18;Sim
+Gabriela Almeida;004.615.135-44;02/01/2024;Ortopedia;Dr(a). Gomes;Curativo;M54.5;Unimed;408,85;Sim
+Lucas Gomes;038.327.984-47;13/06/2024;Dermatologia;Dr(a). Almeida;Consulta;M54.5;Unimed;417,19;Sim
+Olívia Pereira;882.536.282-00;10/09/2024;Pediatria;Dr(a). Araújo;Consulta;M54.5;Unimed;390,74;Sim
+Olívia Almeida;268.334.441-45;15/04/2024;Cardiologia;Dr(a). Ferreira;Consulta;M54.5;Unimed;416,80;Sim
+Gabriela Carvalho;364.685.441-30;19/07/2024;Cardiologia;Dr(a). Santos;Consulta;M54.5;Bradesco Saúde;125,25;Não
+Ana Santos;485.467.693-03;12/04/2024;Ortopedia;Dr(a). Oliveira;Consulta;L20.9;Bradesco Saúde;289,12;Sim
+Gabriela Ferreira;882.790.428-06;25/09/2024;Pediatria;Dr(a). Ferreira;Consulta;M54.5;Particular;597,02;Sim
+Wanda Pereira;934.170.082-55;20/11/2024;Dermatologia;Dr(a). Santos;Consulta;I10;Bradesco Saúde;572,60;Sim
+Marina Silva;366.643.350-26;21/07/2024;Pediatria;Dr(a). Oliveira;Eletrocardiograma;L20.9;Unimed;115,41;Não
+Olívia Martins;790.739.471-62;13/09/2024;Ortopedia;Dr(a). Araújo;Consulta;J06.9;Unimed;564,32;Não
+Lucas Ferreira;877.817.903-32;02/05/2024;Ortopedia;Dr(a). Rodrigues;Curativo;E11.9;Bradesco Saúde;127,78;Sim
+Wanda Lima;243.101.849-01;16/10/2024;Cardiologia;Dr(a). Souza;Eletrocardiograma;L20.9;Unimed;108,94;Sim
+Tiago Almeida;458.149.213-07;24/08/2024;Dermatologia;Dr(a). Araújo;Consulta;J06.9;Unimed;467,40;Sim
+João Carvalho;218.590.086-23;05/03/2024;Ortopedia;Dr(a). Carvalho;Retorno;J06.9;Bradesco Saúde;338,00;Não
+Yasmin Gomes;952.627.467-99;06/08/2024;Pediatria;Dr(a). Ribeiro;Curativo;L20.9;Unimed;274,94;Sim
+Úrsula Ribeiro;690.744.126-88;11/06/2024;Pediatria;Dr(a). Almeida;Curativo;J06.9;Unimed;425,20;Sim
+Nicolas Ribeiro;029.609.157-04;09/01/2024;Pediatria;Dr(a). Carvalho;Retorno;E11.9;Bradesco Saúde;204,32;Sim
+Elisa Gomes;424.980.495-09;29/01/2024;Pediatria;Dr(a). Ribeiro;Curativo;L20.9;Unimed;507,24;Não
+Nicolas Lima;842.616.659-80;24/06/2024;Cardiologia;Dr(a). Carvalho;Retorno;L20.9;Bradesco Saúde;575,34;Não
+Lucas Pereira;130.104.039-84;13/05/2024;Cardiologia;Dr(a). Almeida;Retorno;I10;Bradesco Saúde;179,98;Não
+Gabriela Silva;008.661.446-09;04/03/2024;Dermatologia;Dr(a). Martins;Retorno;J06.9;SUS;450,20;Não
+João Souza;513.485.193-04;10/01/2024;Cardiologia;Dr(a). Pereira;Retorno;I10;Particular;419,16;Não
+Diego Gomes;940.736.926-90;14/05/2024;Pediatria;Dr(a). Souza;Curativo;L20.9;SUS;399,34;Sim
+João Ferreira;168.911.764-84;16/05/2024;Cardiologia;Dr(a). Silva;Retorno;M54.5;Unimed;255,01;Sim
+Íris Lima;046.326.017-13;07/08/2024;Cardiologia;Dr(a). Araújo;Eletrocardiograma;M54.5;Unimed;443,17;Não
+Marina Nascimento;824.405.131-05;10/08/2024;Pediatria;Dr(a). Ribeiro;Retorno;I10;Unimed;229,62;Não
+Sofia Ribeiro;069.540.748-10;20/07/2024;Dermatologia;Dr(a). Martins;Retorno;L20.9;Bradesco Saúde;504,11;Sim
+Bruno Araújo;283.719.200-75;15/10/2024;Dermatologia;Dr(a). Almeida;Retorno;J06.9;Unimed;546,00;Sim
+Paulo Araújo;196.977.542-41;03/05/2024;Pediatria;Dr(a). Nascimento;Consulta;J06.9;Bradesco Saúde;123,62;Não
+Úrsula Silva;696.273.324-02;28/04/2024;Pediatria;Dr(a). Martins;Retorno;J06.9;Bradesco Saúde;207,10;Não
+Tiago Santos;357.885.397-65;23/03/2024;Dermatologia;Dr(a). Gomes;Curativo;I10;SUS;124,10;Não
+Lucas Almeida;562.218.937-39;23/06/2024;Pediatria;Dr(a). Martins;Curativo;E11.9;Bradesco Saúde;152,47;Não
+Paulo Gomes;816.948.912-16;29/06/2024;Cardiologia;Dr(a). Araújo;Curativo;J06.9;Bradesco Saúde;108,18;Sim
+Íris Ribeiro;774.989.991-02;24/09/2024;Dermatologia;Dr(a). Pereira;Curativo;M54.5;Unimed;395,73;Não
+Fábio Souza;460.889.112-04;24/08/2024;Dermatologia;Dr(a). Martins;Eletrocardiograma;L20.9;Unimed;317,41;Não
+Tiago Ribeiro;507.076.304-01;05/08/2024;Dermatologia;Dr(a). Pereira;Curativo;J06.9;Bradesco Saúde;461,36;Sim
+Elisa Araújo;992.546.144-83;29/06/2024;Pediatria;Dr(a). Martins;Retorno;M54.5;SUS;177,93;Não
+Yasmin Rodrigues;000.637.328-31;24/03/2024;Pediatria;Dr(a). Almeida;Curativo;M54.5;Unimed;556,09;Não
+Fábio Pereira;607.425.298-00;08/04/2024;Dermatologia;Dr(a). Ferreira;Curativo;E11.9;Particular;371,86;Sim
+Heitor Ferreira;108.666.876-61;26/09/2024;Dermatologia;Dr(a). Oliveira;Eletrocardiograma;J06.9;SUS;107,91;Não
+Paulo Ribeiro;796.360.514-02;18/07/2024;Ortopedia;Dr(a). Pereira;Eletrocardiograma;J06.9;SUS;229,33;Sim
+Úrsula Carvalho;258.728.274-82;27/10/2024;Dermatologia;Dr(a). Araújo;Curativo;M54.5;Bradesco Saúde;272,52;Não
+Vitor Silva;147.677.090-59;22/06/2024;Pediatria;Dr(a). Lima;Retorno;E11.9;Unimed;480,93;Sim
+Marina Martins;632.007.452-31;02/06/2024;Pediatria;Dr(a). Silva;Retorno;M54.5;Particular;319,36;Sim
+Yasmin Oliveira;767.323.419-01;28/06/2024;Cardiologia;Dr(a). Oliveira;Retorno;M54.5;Bradesco Saúde;350,53;Sim
+Gabriela Carvalho;628.918.299-48;26/03/2024;Cardiologia;Dr(a). Santos;Curativo;M54.5;Particular;532,93;Não
+Úrsula Lima;789.222.618-46;19/07/2024;Ortopedia;Dr(a). Araújo;Retorno;I10;Bradesco Saúde;336,67;Sim
+Sofia Lima;375.187.047-49;15/02/2024;Dermatologia;Dr(a). Araújo;Consulta;M54.5;SUS;481,63;Não
+Lucas Araújo;472.504.275-71;15/10/2024;Cardiologia;Dr(a). Silva;Consulta;L20.9;Bradesco Saúde;112,91;Não
+Gabriela Ferreira;946.206.423-71;02/07/2024;Cardiologia;Dr(a). Rodrigues;Consulta;L20.9;SUS;384,08;Sim
+Heitor Araújo;686.794.310-10;21/05/2024;Ortopedia;Dr(a). Araújo;Retorno;J06.9;Bradesco Saúde;388,63;Não
+Íris Silva;363.227.280-83;26/05/2024;Dermatologia;Dr(a). Souza;Eletrocardiograma;J06.9;Particular;492,41;Sim
+Úrsula Santos;535.983.951-16;31/10/2024;Ortopedia;Dr(a). Oliveira;Consulta;M54.5;SUS;570,01;Não
+Fábio Gomes;805.333.987-54;26/11/2024;Cardiologia;Dr(a). Costa;Curativo;E11.9;Particular;462,77;Sim
+João Costa;111.304.944-89;08/09/2024;Pediatria;Dr(a). Costa;Eletrocardiograma;M54.5;SUS;527,18;Sim
+Carla Rodrigues;430.453.980-90;30/05/2024;Pediatria;Dr(a). Ferreira;Retorno;I10;Bradesco Saúde;154,05;Não
+Karina Almeida;611.970.479-56;09/09/2024;Dermatologia;Dr(a). Nascimento;Curativo;E11.9;Unimed;189,44;Sim
+Elisa Pereira;116.413.718-20;22/07/2024;Dermatologia;Dr(a). Ribeiro;Retorno;L20.9;Particular;385,97;Não
+Vitor Ribeiro;469.696.849-97;03/04/2024;Ortopedia;Dr(a). Gomes;Retorno;E11.9;Bradesco Saúde;194,33;Sim
+Heitor Ribeiro;523.377.332-54;04/10/2024;Dermatologia;Dr(a). Pereira;Retorno;I10;Bradesco Saúde;440,79;Não
+Sofia Nascimento;826.836.435-19;28/01/2024;Cardiologia;Dr(a). Silva;Consulta;M54.5;Unimed;500,99;Não
+Wanda Nascimento;257.803.621-73;14/10/2024;Dermatologia;Dr(a). Nascimento;Consulta;E11.9;Bradesco Saúde;409,37;Não
+Carla Costa;194.141.681-09;21/08/2024;Cardiologia;Dr(a). Santos;Retorno;I10;SUS;542,35;Sim
+Lucas Almeida;795.469.985-40;31/05/2024;Dermatologia;Dr(a). Rodrigues;Retorno;M54.5;Particular;294,69;Não
+Gabriela Ribeiro;358.596.368-49;14/04/2024;Ortopedia;Dr(a). Souza;Consulta;J06.9;SUS;576,60;Não
+Marina Ferreira;843.650.436-41;15/01/2024;Pediatria;Dr(a). Rodrigues;Eletrocardiograma;I10;Bradesco Saúde;108,89;Sim
+João Gomes;949.009.658-04;07/11/2024;Pediatria;Dr(a). Pereira;Curativo;L20.9;Unimed;150,83;Sim
+Rafael Santos;829.878.633-57;02/09/2024;Ortopedia;Dr(a). Rodrigues;Consulta;M54.5;Particular;554,92;Sim
+Diego Lima;645.806.289-34;28/06/2024;Cardiologia;Dr(a). Costa;Curativo;M54.5;Bradesco Saúde;473,53;Não
+João Pereira;298.365.960-70;14/01/2024;Cardiologia;Dr(a). Lima;Consulta;E11.9;Particular;247,03;Não
+Gabriela Souza;065.846.171-06;27/03/2024;Ortopedia;Dr(a). Lima;Eletrocardiograma;I10;Unimed;575,44;Sim
+Heitor Rodrigues;012.600.825-63;30/03/2024;Dermatologia;Dr(a). Nascimento;Retorno;E11.9;Bradesco Saúde;218,71;Sim
+Íris Lima;980.361.183-60;07/05/2024;Dermatologia;Dr(a). Rodrigues;Retorno;L20.9;Unimed;346,35;Sim
+Karina Costa;527.367.511-16;29/07/2024;Pediatria;Dr(a). Souza;Retorno;I10;Bradesco Saúde;136,67;Sim
+Heitor Ferreira;689.651.899-50;25/05/2024;Cardiologia;Dr(a). Santos;Eletrocardiograma;M54.5;Unimed;247,41;Não
+Wanda Gomes;318.945.496-51;27/03/2024;Ortopedia;Dr(a). Martins;Curativo;L20.9;Bradesco Saúde;117,23;Não
+Vitor Oliveira;635.269.341-50;05/04/2024;Ortopedia;Dr(a). Lima;Eletrocardiograma;I10;Unimed;385,38;Sim
+Nicolas Ribeiro;773.875.986-06;27/03/2024;Pediatria;Dr(a). Ferreira;Curativo;I10;Particular;349,73;Não
+Lucas Rodrigues;426.282.533-72;09/01/2024;Dermatologia;Dr(a). Carvalho;Retorno;L20.9;SUS;481,80;Não
+Vitor Costa;649.203.425-27;18/01/2024;Dermatologia;Dr(a). Oliveira;Retorno;L20.9;SUS;551,98;Sim
+Wanda Martins;509.893.309-90;20/10/2024;Ortopedia;Dr(a). Santos;Eletrocardiograma;J06.9;Bradesco Saúde;398,85;Não
+Gabriela Santos;433.293.640-09;15/09/2024;Ortopedia;Dr(a). Silva;Retorno;L20.9;SUS;189,65;Não
+Carla Martins;666.023.010-63;11/05/2024;Pediatria;Dr(a). Lima;Eletrocardiograma;E11.9;Particular;317,41;Não
+Wanda Silva;636.299.921-53;27/01/2024;Ortopedia;Dr(a). Souza;Retorno;E11.9;Unimed;586,98;Não
+Bruno Gomes;119.878.020-71;12/09/2024;Dermatologia;Dr(a). Araújo;Curativo;I10;Unimed;444,06;Sim
+Yasmin Pereira;528.232.200-54;28/07/2024;Cardiologia;Dr(a). Rodrigues;Consulta;I10;SUS;210,32;Sim
+Bruno Martins;246.184.450-09;12/08/2024;Dermatologia;Dr(a). Carvalho;Curativo;I10;Particular;321,24;Não
+Nicolas Nascimento;238.553.871-76;07/07/2024;Pediatria;Dr(a). Araújo;Eletrocardiograma;I10;SUS;482,33;Sim
+Olívia Martins;336.752.522-72;02/04/2024;Dermatologia;Dr(a). Santos;Retorno;J06.9;Unimed;282,50;Não
+Vitor Martins;267.134.692-13;07/10/2024;Cardiologia;Dr(a). Martins;Consulta;L20.9;Unimed;576,14;Sim
+Ana Santos;711.561.836-42;02/02/2024;Pediatria;Dr(a). Pereira;Eletrocardiograma;L20.9;Unimed;545,49;Sim
+Úrsula Martins;866.163.685-05;28/03/2024;Ortopedia;Dr(a). Ribeiro;Curativo;M54.5;Particular;102,85;Sim
+Paulo Santos;229.303.077-65;24/07/2024;Cardiologia;Dr(a). Souza;Eletrocardiograma;J06.9;SUS;597,03;Sim
+Heitor Santos;354.482.829-46;27/01/2024;Pediatria;Dr(a). Santos;Retorno;I10;Bradesco Saúde;584,78;Sim
+Ana Pereira;082.032.974-63;18/02/2024;Pediatria;Dr(a). Costa;Curativo;E11.9;SUS;302,47;Não
+Elisa Souza;358.683.156-00;04/05/2024;Pediatria;Dr(a). Almeida;Eletrocardiograma;E11.9;SUS;364,77;Não
+Úrsula Carvalho;210.332.105-79;27/02/2024;Pediatria;Dr(a). Silva;Retorno;E11.9;SUS;150,39;Não
+Queila Araújo;993.216.881-53;22/01/2024;Dermatologia;Dr(a). Almeida;Retorno;J06.9;SUS;130,56;Não
+Carla Ferreira;867.487.077-57;28/10/2024;Pediatria;Dr(a). Lima;Eletrocardiograma;E11.9;Particular;99,32;Sim
+Bruno Ferreira;998.561.081-44;26/06/2024;Pediatria;Dr(a). Ribeiro;Curativo;I10;SUS;350,51;Não
+Karina Rodrigues;705.122.508-12;27/06/2024;Ortopedia;Dr(a). Ferreira;Curativo;J06.9;Bradesco Saúde;404,23;Não
+Marina Nascimento;785.233.457-10;02/03/2024;Dermatologia;Dr(a). Carvalho;Consulta;L20.9;Particular;239,59;Não
+Sofia Oliveira;201.922.012-12;04/03/2024;Pediatria;Dr(a). Almeida;Retorno;L20.9;Bradesco Saúde;568,76;Não
+Sofia Nascimento;519.411.863-51;13/03/2024;Pediatria;Dr(a). Martins;Retorno;M54.5;Bradesco Saúde;569,22;Não
+Lucas Carvalho;724.025.834-36;09/07/2024;Pediatria;Dr(a). Nascimento;Eletrocardiograma;M54.5;SUS;99,44;Sim
+Sofia Almeida;063.546.699-61;15/07/2024;Pediatria;Dr(a). Ribeiro;Retorno;I10;Particular;244,87;Não
+Sofia Lima;627.634.295-56;25/01/2024;Pediatria;Dr(a). Santos;Retorno;L20.9;Unimed;228,69;Sim
+Vitor Martins;231.148.130-46;18/05/2024;Cardiologia;Dr(a). Rodrigues;Consulta;M54.5;Bradesco Saúde;156,68;Não
+Úrsula Souza;987.696.526-35;09/09/2024;Cardiologia;Dr(a). Costa;Eletrocardiograma;E11.9;Unimed;512,93;Sim
+Fábio Santos;905.361.120-70;18/05/2024;Pediatria;Dr(a). Pereira;Eletrocardiograma;M54.5;Bradesco Saúde;548,31;Não
+Gabriela Ribeiro;349.831.253-70;28/07/2024;Pediatria;Dr(a). Lima;Retorno;I10;Particular;565,30;Sim
+Ana Gomes;568.252.674-00;27/01/2024;Ortopedia;Dr(a). Souza;Consulta;M54.5;SUS;132,99;Não
+Olívia Martins;474.421.112-70;04/09/2024;Dermatologia;Dr(a). Carvalho;Eletrocardiograma;J06.9;Unimed;492,88;Não
+Lucas Ribeiro;721.370.980-16;27/04/2024;Ortopedia;Dr(a). Lima;Eletrocardiograma;I10;Particular;248,71;Sim
+Ana Martins;226.499.962-42;12/06/2024;Pediatria;Dr(a). Rodrigues;Eletrocardiograma;M54.5;Bradesco Saúde;520,85;Sim
+Olívia Martins;113.147.207-16;15/10/2024;Pediatria;Dr(a). Carvalho;Consulta;E11.9;SUS;525,22;Sim
+Íris Souza;816.221.454-29;01/08/2024;Ortopedia;Dr(a). Souza;Consulta;J06.9;Particular;482,86;Sim
+Diego Lima;403.031.759-66;18/04/2024;Pediatria;Dr(a). Carvalho;Retorno;M54.5;Bradesco Saúde;145,50;Não
+João Gomes;159.507.925-48;13/07/2024;Dermatologia;Dr(a). Lima;Retorno;E11.9;Bradesco Saúde;201,25;Não
+Diego Araújo;192.335.321-78;21/09/2024;Pediatria;Dr(a). Lima;Eletrocardiograma;I10;Bradesco Saúde;237,81;Não
+Diego Martins;244.472.768-10;09/01/2024;Cardiologia;Dr(a). Rodrigues;Consulta;I10;Unimed;185,52;Sim
+Nicolas Souza;359.156.083-96;17/05/2024;Cardiologia;Dr(a). Araújo;Consulta;I10;Particular;306,30;Não
+Fábio Nascimento;972.511.953-30;11/04/2024;Pediatria;Dr(a). Rodrigues;Eletrocardiograma;M54.5;SUS;440,23;Sim
+Diego Costa;462.748.620-05;01/11/2024;Dermatologia;Dr(a). Souza;Curativo;L20.9;Particular;552,93;Não
+Nicolas Oliveira;600.275.118-12;14/03/2024;Dermatologia;Dr(a). Rodrigues;Consulta;M54.5;Unimed;357,30;Sim
+Tiago Silva;924.931.799-94;18/09/2024;Cardiologia;Dr(a). Araújo;Retorno;I10;Particular;516,49;Não
+Heitor Carvalho;937.052.354-51;17/08/2024;Cardiologia;Dr(a). Martins;Curativo;L20.9;SUS;264,57;Não
+João Souza;338.275.118-60;09/10/2024;Pediatria;Dr(a). Martins;Eletrocardiograma;J06.9;Bradesco Saúde;524,85;Sim
+Karina Lima;783.749.973-54;14/10/2024;Pediatria;Dr(a). Lima;Eletrocardiograma;E11.9;Unimed;458,66;Sim
+Ana Santos;313.419.729-41;25/03/2024;Pediatria;Dr(a). Martins;Consulta;E11.9;Unimed;555,75;Sim
+Olívia Costa;584.918.562-34;10/02/2024;Pediatria;Dr(a). Souza;Consulta;I10;Unimed;267,61;Não
+Marina Souza;787.216.096-08;13/11/2024;Pediatria;Dr(a). Almeida;Consulta;J06.9;Particular;573,09;Sim
+Tiago Lima;669.659.719-08;06/06/2024;Ortopedia;Dr(a). Costa;Curativo;M54.5;SUS;459,79;Não
+Fábio Oliveira;628.512.912-62;27/02/2024;Cardiologia;Dr(a). Costa;Curativo;J06.9;SUS;361,50;Não
+Íris Silva;260.290.939-40;03/04/2024;Pediatria;Dr(a). Araújo;Retorno;J06.9;SUS;95,82;Não
+Elisa Costa;145.233.046-88;22/10/2024;Cardiologia;Dr(a). Costa;Curativo;M54.5;Unimed;405,27;Sim
+Gabriela Santos;532.651.677-20;28/02/2024;Pediatria;Dr(a). Carvalho;Eletrocardiograma;I10;Unimed;221,25;Sim
+Tiago Almeida;432.973.665-91;13/11/2024;Cardiologia;Dr(a). Ferreira;Curativo;L20.9;Bradesco Saúde;432,14;Sim
+Ana Costa;162.856.748-17;12/06/2024;Ortopedia;Dr(a). Lima;Consulta;J06.9;Unimed;91,10;Não
+Fábio Carvalho;964.363.150-80;17/05/2024;Pediatria;Dr(a). Ribeiro;Eletrocardiograma;I10;Particular;354,53;Sim
+Tiago Ferreira;931.508.859-06;28/06/2024;Cardiologia;Dr(a). Costa;Consulta;I10;Bradesco Saúde;391,39;Não
+Fábio Carvalho;885.030.256-80;01/07/2024;Dermatologia;Dr(a). Carvalho;Consulta;J06.9;Bradesco Saúde;311,70;Não
+Carla Pereira;178.625.475-19;09/09/2024;Cardiologia;Dr(a). Costa;Retorno;E11.9;Unimed;480,46;Sim
+Yasmin Martins;396.174.932-92;04/10/2024;Cardiologia;Dr(a). Oliveira;Eletrocardiograma;M54.5;Unimed;135,84;Não
+Olívia Santos;189.305.972-38;09/07/2024;Cardiologia;Dr(a). Lima;Consulta;L20.9;Unimed;437,34;Sim
+Tiago Almeida;350.884.466-83;27/03/2024;Dermatologia;Dr(a). Almeida;Consulta;I10;Particular;178,92;Sim
+Fábio Gomes;247.652.548-01;18/04/2024;Dermatologia;Dr(a). Lima;Consulta;J06.9;Particular;396,54;Não
+Nicolas Souza;658.904.486-41;29/10/2024;Cardiologia;Dr(a). Gomes;Eletrocardiograma;L20.9;Bradesco Saúde;488,48;Sim
+Sofia Rodrigues;830.188.735-48;06/01/2024;Dermatologia;Dr(a). Oliveira;Consulta;E11.9;SUS;188,95;Não
+Karina Souza;594.683.931-43;16/04/2024;Ortopedia;Dr(a). Ribeiro;Eletrocardiograma;I10;Unimed;239,99;Não
+Karina Carvalho;911.913.757-57;13/08/2024;Pediatria;Dr(a). Pereira;Eletrocardiograma;M54.5;Bradesco Saúde;567,73;Sim
+Nicolas Carvalho;751.006.415-50;22/06/2024;Pediatria;Dr(a). Ribeiro;Retorno;J06.9;SUS;145,95;Não
+Karina Araújo;688.852.976-25;02/06/2024;Ortopedia;Dr(a). Carvalho;Eletrocardiograma;E11.9;SUS;199,96;Não
+Ana Souza;595.887.026-23;11/01/2024;Dermatologia;Dr(a). Gomes;Eletrocardiograma;E11.9;Bradesco Saúde;383,26;Não
+Elisa Araújo;245.854.111-94;19/08/2024;Dermatologia;Dr(a). Gomes;Eletrocardiograma;I10;Bradesco Saúde;475,78;Não
+Heitor Lima;181.148.100-09;21/08/2024;Cardiologia;Dr(a). Silva;Eletrocardiograma;I10;Bradesco Saúde;384,51;Sim
+Wanda Pereira;506.710.797-94;08/06/2024;Dermatologia;Dr(a). Silva;Retorno;M54.5;SUS;524,86;Sim
+Vitor Souza;112.037.789-70;27/10/2024;Cardiologia;Dr(a). Ferreira;Consulta;I10;Particular;116,67;Não
+Olívia Pereira;683.593.222-87;06/04/2024;Ortopedia;Dr(a). Ribeiro;Retorno;M54.5;SUS;256,52;Sim
+Karina Nascimento;017.155.554-65;01/11/2024;Pediatria;Dr(a). Oliveira;Eletrocardiograma;L20.9;Particular;511,99;Não
+Úrsula Carvalho;979.796.226-18;22/08/2024;Dermatologia;Dr(a). Carvalho;Consulta;M54.5;Bradesco Saúde;489,81;Não
+Carla Martins;342.598.332-60;15/01/2024;Dermatologia;Dr(a). Gomes;Eletrocardiograma;E11.9;Bradesco Saúde;149,53;Não
+Lucas Pereira;928.114.483-22;11/03/2024;Dermatologia;Dr(a). Gomes;Eletrocardiograma;E11.9;Bradesco Saúde;396,90;Não
+Íris Santos;472.608.861-02;07/07/2024;Cardiologia;Dr(a). Gomes;Consulta;M54.5;SUS;490,21;Não
+Carla Araújo;652.211.565-47;24/08/2024;Pediatria;Dr(a). Ferreira;Consulta;M54.5;Unimed;320,08;Não
+João Oliveira;612.670.155-00;09/06/2024;Cardiologia;Dr(a). Gomes;Curativo;I10;Particular;113,19;Não
+Sofia Carvalho;060.990.121-41;06/04/2024;Cardiologia;Dr(a). Oliveira;Curativo;E11.9;SUS;474,15;Sim
+Sofia Rodrigues;652.840.734-79;06/01/2024;Pediatria;Dr(a). Gomes;Eletrocardiograma;E11.9;Unimed;163,76;Não
+Diego Ribeiro;622.962.587-35;06/10/2024;Ortopedia;Dr(a). Oliveira;Consulta;E11.9;Unimed;173,46;Não
+Tiago Pereira;952.032.469-04;23/07/2024;Dermatologia;Dr(a). Santos;Eletrocardiograma;J06.9;Particular;409,93;Não
+Bruno Nascimento;839.761.482-61;26/08/2024;Dermatologia;Dr(a). Silva;Consulta;I10;SUS;542,25;Não
+Úrsula Almeida;520.147.545-00;31/10/2024;Ortopedia;Dr(a). Lima;Retorno;M54.5;Unimed;94,16;Sim
+Úrsula Carvalho;614.381.054-01;18/09/2024;Pediatria;Dr(a). Ribeiro;Consulta;M54.5;Unimed;316,32;Sim
+Lucas Rodrigues;558.781.553-62;18/02/2024;Pediatria;Dr(a). Silva;Consulta;L20.9;Unimed;471,96;Não
+Yasmin Ribeiro;817.867.337-14;26/03/2024;Pediatria;Dr(a). Santos;Curativo;E11.9;Unimed;258,77;Sim
+João Santos;403.381.039-02;23/08/2024;Pediatria;Dr(a). Oliveira;Retorno;E11.9;Unimed;299,46;Não
+Gabriela Almeida;663.099.827-88;05/05/2024;Dermatologia;Dr(a). Costa;Consulta;J06.9;Particular;187,17;Não
+Tiago Rodrigues;828.066.676-15;31/05/2024;Dermatologia;Dr(a). Carvalho;Retorno;J06.9;Particular;469,83;Sim
+Bruno Pereira;589.494.613-15;02/11/2024;Dermatologia;Dr(a). Carvalho;Curativo;I10;Unimed;409,27;Sim
+Bruno Rodrigues;170.922.947-03;30/03/2024;Cardiologia;Dr(a). Almeida;Retorno;M54.5;SUS;564,48;Não
+Karina Rodrigues;280.661.239-06;08/03/2024;Ortopedia;Dr(a). Gomes;Consulta;I10;Bradesco Saúde;593,87;Não
+Paulo Araújo;185.479.879-08;04/10/2024;Ortopedia;Dr(a). Ribeiro;Retorno;I10;Bradesco Saúde;434,18;Não
+Marina Ribeiro;935.140.531-11;06/03/2024;Cardiologia;Dr(a). Pereira;Eletrocardiograma;I10;Unimed;522,84;Sim
+Sofia Santos;123.608.397-05;29/07/2024;Ortopedia;Dr(a). Martins;Retorno;J06.9;Bradesco Saúde;193,72;Sim
+Olívia Carvalho;923.406.930-71;31/03/2024;Dermatologia;Dr(a). Costa;Eletrocardiograma;L20.9;Unimed;422,51;Sim
+Úrsula Pereira;829.576.188-93;25/10/2024;Dermatologia;Dr(a). Gomes;Retorno;E11.9;Particular;505,62;Não
+Sofia Nascimento;692.442.886-05;14/01/2024;Dermatologia;Dr(a). Martins;Retorno;E11.9;Bradesco Saúde;190,72;Sim
+Gabriela Santos;465.200.225-43;22/05/2024;Pediatria;Dr(a). Almeida;Curativo;E11.9;SUS;582,86;Não
+Carla Rodrigues;003.021.631-15;11/03/2024;Cardiologia;Dr(a). Pereira;Retorno;E11.9;Particular;496,94;Não
+Heitor Ribeiro;309.170.211-18;15/11/2024;Ortopedia;Dr(a). Silva;Curativo;L20.9;Particular;236,89;Sim
+Vitor Nascimento;736.719.381-37;27/02/2024;Ortopedia;Dr(a). Oliveira;Consulta;L20.9;Particular;265,95;Não
+Sofia Silva;990.824.173-75;18/09/2024;Cardiologia;Dr(a). Gomes;Consulta;J06.9;Unimed;266,91;Não
+Sofia Carvalho;974.138.931-00;14/03/2024;Pediatria;Dr(a). Araújo;Eletrocardiograma;I10;SUS;508,74;Não
+Elisa Pereira;278.020.103-73;23/08/2024;Dermatologia;Dr(a). Nascimento;Retorno;E11.9;Unimed;205,47;Não
+Karina Oliveira;897.993.109-38;30/04/2024;Ortopedia;Dr(a). Santos;Eletrocardiograma;M54.5;Particular;456,17;Não
+Tiago Pereira;473.199.809-32;10/09/2024;Ortopedia;Dr(a). Pereira;Consulta;I10;Bradesco Saúde;305,39;Não
+João Ferreira;206.174.695-04;12/01/2024;Pediatria;Dr(a). Nascimento;Eletrocardiograma;L20.9;SUS;263,00;Não
+Carla Souza;406.555.729-10;29/03/2024;Dermatologia;Dr(a). Souza;Eletrocardiograma;I10;Particular;413,88;Não
+Heitor Martins;814.002.153-90;04/09/2024;Pediatria;Dr(a). Lima;Retorno;E11.9;SUS;191,84;Não
+Lucas Pereira;376.921.799-30;27/04/2024;Dermatologia;Dr(a). Costa;Consulta;L20.9;Particular;236,19;Sim
+Lucas Araújo;798.570.495-75;10/01/2024;Ortopedia;Dr(a). Carvalho;Curativo;I10;Unimed;370,29;Sim
+Gabriela Araújo;159.376.840-01;12/01/2024;Cardiologia;Dr(a). Carvalho;Retorno;M54.5;Bradesco Saúde;280,34;Não
+Olívia Silva;461.732.215-94;09/07/2024;Cardiologia;Dr(a). Pereira;Retorno;L20.9;Unimed;371,52;Sim
+Bruno Oliveira;925.425.325-16;08/10/2024;Cardiologia;Dr(a). Lima;Consulta;I10;Bradesco Saúde;225,49;Sim
+Karina Costa;821.126.520-60;24/11/2024;Pediatria;Dr(a). Costa;Consulta;E11.9;Unimed;525,71;Sim
+Tiago Oliveira;231.688.983-25;20/08/2024;Dermatologia;Dr(a). Ribeiro;Retorno;I10;Bradesco Saúde;114,94;Não
+Nicolas Ribeiro;380.160.649-06;01/06/2024;Dermatologia;Dr(a). Pereira;Retorno;J06.9;Bradesco Saúde;296,30;Sim
+Olívia Martins;494.281.465-01;01/08/2024;Dermatologia;Dr(a). Ferreira;Retorno;E11.9;SUS;296,10;Sim
+Wanda Souza;797.991.629-80;01/04/2024;Cardiologia;Dr(a). Costa;Eletrocardiograma;I10;Bradesco Saúde;566,93;Sim
+Wanda Almeida;965.863.437-04;07/03/2024;Ortopedia;Dr(a). Almeida;Retorno;M54.5;Unimed;211,54;Não
+Queila Araújo;523.067.828-30;05/08/2024;Pediatria;Dr(a). Gomes;Curativo;E11.9;Bradesco Saúde;483,72;Não
+Heitor Costa;946.141.976-71;17/08/2024;Ortopedia;Dr(a). Costa;Curativo;J06.9;Bradesco Saúde;522,44;Não
+Diego Almeida;834.307.767-91;22/05/2024;Cardiologia;Dr(a). Oliveira;Eletrocardiograma;M54.5;Unimed;218,24;Sim
+Yasmin Almeida;480.032.299-52;13/09/2024;Dermatologia;Dr(a). Gomes;Curativo;J06.9;SUS;286,84;Sim
+Wanda Rodrigues;786.605.361-85;02/04/2024;Ortopedia;Dr(a). Carvalho;Retorno;M54.5;Particular;527,52;Não
+João Lima;394.141.194-26;30/05/2024;Dermatologia;Dr(a). Martins;Curativo;M54.5;Unimed;131,93;Sim
+Queila Costa;689.625.944-20;13/05/2024;Dermatologia;Dr(a). Ferreira;Consulta;M54.5;Bradesco Saúde;213,21;Sim
+Wanda Souza;796.015.455-49;10/07/2024;Pediatria;Dr(a). Nascimento;Consulta;M54.5;Particular;428,17;Não
+Carla Pereira;353.313.742-20;21/02/2024;Cardiologia;Dr(a). Ferreira;Curativo;L20.9;SUS;369,21;Sim
+Ana Santos;838.653.893-76;18/02/2024;Pediatria;Dr(a). Rodrigues;Retorno;L20.9;SUS;413,95;Sim
+Fábio Oliveira;538.685.658-84;22/06/2024;Dermatologia;Dr(a). Silva;Eletrocardiograma;I10;SUS;182,02;Sim
+Marina Rodrigues;143.647.744-13;07/04/2024;Pediatria;Dr(a). Oliveira;Consulta;E11.9;Bradesco Saúde;411,39;Sim
+Ana Lima;034.816.234-02;29/05/2024;Dermatologia;Dr(a). Martins;Consulta;L20.9;SUS;172,68;Sim
+Nicolas Santos;128.214.061-26;27/05/2024;Pediatria;Dr(a). Costa;Retorno;E11.9;Particular;574,24;Não
+Fábio Oliveira;182.240.772-92;15/02/2024;Pediatria;Dr(a). Oliveira;Curativo;L20.9;Unimed;223,70;Sim
+Bruno Almeida;112.841.979-30;08/04/2024;Ortopedia;Dr(a). Carvalho;Curativo;I10;Bradesco Saúde;337,44;Sim
+Rafael Ferreira;605.301.873-29;10/04/2024;Dermatologia;Dr(a). Silva;Eletrocardiograma;I10;Bradesco Saúde;556,03;Sim
+Diego Rodrigues;614.958.282-55;20/11/2024;Ortopedia;Dr(a). Santos;Retorno;J06.9;Particular;593,79;Sim
+Elisa Costa;164.427.503-10;30/06/2024;Dermatologia;Dr(a). Silva;Eletrocardiograma;I10;Bradesco Saúde;165,38;Sim
+Queila Lima;896.684.132-53;28/01/2024;Dermatologia;Dr(a). Santos;Curativo;M54.5;SUS;570,11;Não
+Nicolas Almeida;818.842.212-62;07/09/2024;Pediatria;Dr(a). Souza;Consulta;I10;Bradesco Saúde;370,92;Sim
+Ana Martins;320.670.851-66;24/06/2024;Ortopedia;Dr(a). Carvalho;Eletrocardiograma;E11.9;Bradesco Saúde;558,46;Sim
+Yasmin Gomes;101.566.555-19;31/05/2024;Cardiologia;Dr(a). Santos;Consulta;M54.5;Particular;222,39;Sim
+Queila Carvalho;060.880.174-73;31/10/2024;Dermatologia;Dr(a). Souza;Consulta;J06.9;Bradesco Saúde;158,16;Não
+Diego Pereira;801.912.167-63;11/04/2024;Cardiologia;Dr(a). Pereira;Curativo;L20.9;Particular;161,60;Sim
+Diego Costa;472.645.777-24;19/09/2024;Ortopedia;Dr(a). Ribeiro;Curativo;I10;Particular;312,79;Sim
+Nicolas Nascimento;705.214.367-45;30/05/2024;Ortopedia;Dr(a). Pereira;Curativo;E11.9;Unimed;457,79;Sim
+Elisa Nascimento;372.060.349-00;01/01/2024;Ortopedia;Dr(a). Souza;Curativo;J06.9;Particular;415,34;Não
+Heitor Nascimento;429.949.332-09;08/06/2024;Dermatologia;Dr(a). Nascimento;Retorno;L20.9;Bradesco Saúde;557,71;Sim
+Carla Souza;034.909.457-86;27/01/2024;Pediatria;Dr(a). Ferreira;Eletrocardiograma;I10;Particular;296,85;Não
+João Ferreira;872.043.133-30;17/04/2024;Ortopedia;Dr(a). Costa;Consulta;L20.9;Particular;397,65;Sim
+Nicolas Gomes;935.161.615-07;06/02/2024;Dermatologia;Dr(a). Lima;Eletrocardiograma;I10;SUS;315,01;Não
+João Lima;357.596.478-57;06/02/2024;Dermatologia;Dr(a). Araújo;Consulta;L20.9;Unimed;487,72;Sim
+Elisa Oliveira;892.288.649-82;11/06/2024;Ortopedia;Dr(a). Almeida;Eletrocardiograma;M54.5;Bradesco Saúde;153,87;Não
+Tiago Rodrigues;427.883.932-45;01/04/2024;Ortopedia;Dr(a). Araújo;Eletrocardiograma;E11.9;Particular;492,29;Sim
+Fábio Gomes;379.879.676-96;30/03/2024;Cardiologia;Dr(a). Nascimento;Retorno;E11.9;Particular;363,40;Não
+Sofia Pereira;662.001.823-88;12/04/2024;Cardiologia;Dr(a). Oliveira;Consulta;L20.9;Particular;192,40;Não
+Elisa Santos;885.369.357-66;08/06/2024;Dermatologia;Dr(a). Rodrigues;Consulta;I10;SUS;300,65;Sim
+Úrsula Gomes;734.022.182-40;27/07/2024;Cardiologia;Dr(a). Silva;Curativo;I10;Unimed;291,29;Sim
+Lucas Silva;129.387.789-10;06/08/2024;Cardiologia;Dr(a). Rodrigues;Consulta;L20.9;Bradesco Saúde;203,33;Não
+Elisa Pereira;719.902.956-06;19/11/2024;Dermatologia;Dr(a). Almeida;Consulta;I10;SUS;497,08;Não
+Vitor Carvalho;573.473.694-52;09/01/2024;Cardiologia;Dr(a). Santos;Retorno;M54.5;Particular;238,42;Sim
+Ana Pereira;023.115.064-47;27/03/2024;Dermatologia;Dr(a). Rodrigues;Retorno;M54.5;Unimed;368,94;Não
+Sofia Ribeiro;836.653.091-40;30/01/2024;Dermatologia;Dr(a). Silva;Eletrocardiograma;I10;Particular;231,60;Sim
+Elisa Carvalho;569.484.050-02;15/02/2024;Pediatria;Dr(a). Lima;Consulta;L20.9;Bradesco Saúde;143,99;Não
+Bruno Gomes;013.310.223-80;17/09/2024;Ortopedia;Dr(a). Oliveira;Curativo;L20.9;Unimed;500,17;Sim
+Úrsula Ferreira;953.319.447-28;04/10/2024;Dermatologia;Dr(a). Silva;Consulta;J06.9;SUS;145,80;Sim
+Íris Silva;631.451.108-96;01/07/2024;Dermatologia;Dr(a). Santos;Consulta;M54.5;Bradesco Saúde;344,32;Sim
+Ana Ferreira;132.518.241-98;01/08/2024;Pediatria;Dr(a). Almeida;Curativo;I10;Unimed;567,44;Sim
+Ana Ferreira;709.239.687-50;04/08/2024;Ortopedia;Dr(a). Pereira;Retorno;L20.9;Unimed;580,72;Sim
+Olívia Martins;108.653.663-06;21/02/2024;Dermatologia;Dr(a). Santos;Consulta;M54.5;Particular;295,52;Sim
+João Gomes;940.355.226-35;16/07/2024;Pediatria;Dr(a). Souza;Retorno;M54.5;Particular;321,75;Sim
+Fábio Araújo;780.023.181-02;18/01/2024;Pediatria;Dr(a). Carvalho;Curativo;M54.5;SUS;349,17;Sim
+Yasmin Oliveira;951.048.477-64;21/05/2024;Dermatologia;Dr(a). Santos;Eletrocardiograma;E11.9;Unimed;382,91;Não
+Sofia Silva;450.159.739-93;27/08/2024;Cardiologia;Dr(a). Rodrigues;Consulta;M54.5;Unimed;187,12;Sim
+Yasmin Souza;255.937.011-56;05/01/2024;Cardiologia;Dr(a). Carvalho;Retorno;E11.9;Unimed;254,22;Não
+Heitor Lima;697.616.080-93;27/09/2024;Pediatria;Dr(a). Oliveira;Retorno;I10;Bradesco Saúde;227,74;Sim
+Nicolas Lima;933.923.035-34;04/08/2024;Dermatologia;Dr(a). Pereira;Consulta;I10;Unimed;312,62;Não
+Ana Santos;760.060.474-46;31/08/2024;Dermatologia;Dr(a). Oliveira;Eletrocardiograma;E11.9;Particular;252,41;Sim
+Nicolas Martins;874.380.313-06;11/08/2024;Pediatria;Dr(a). Silva;Eletrocardiograma;L20.9;Unimed;595,84;Não
+Fábio Pereira;414.913.864-87;10/04/2024;Ortopedia;Dr(a). Ferreira;Consulta;M54.5;Bradesco Saúde;358,70;Sim
+Diego Souza;741.052.642-49;18/03/2024;Cardiologia;Dr(a). Santos;Eletrocardiograma;L20.9;Particular;302,27;Não
+Queila Almeida;706.712.821-82;31/08/2024;Pediatria;Dr(a). Araújo;Consulta;E11.9;Bradesco Saúde;555,92;Não
+Ana Almeida;081.703.489-78;20/01/2024;Ortopedia;Dr(a). Ribeiro;Retorno;J06.9;Unimed;112,77;Sim
+Bruno Costa;233.695.616-03;08/07/2024;Pediatria;Dr(a). Lima;Consulta;J06.9;Particular;247,34;Sim
+Gabriela Nascimento;604.565.127-80;13/05/2024;Cardiologia;Dr(a). Costa;Curativo;I10;Particular;473,23;Sim
+Wanda Silva;808.416.435-04;18/11/2024;Dermatologia;Dr(a). Costa;Consulta;J06.9;Unimed;318,68;Não
+João Pereira;038.658.271-87;03/10/2024;Ortopedia;Dr(a). Oliveira;Curativo;M54.5;SUS;460,72;Não
+Bruno Ribeiro;095.403.550-01;22/09/2024;Dermatologia;Dr(a). Costa;Curativo;M54.5;SUS;208,73;Não
+Wanda Oliveira;478.366.697-00;07/03/2024;Ortopedia;Dr(a). Santos;Retorno;E11.9;Particular;110,95;Sim
+Vitor Silva;656.815.011-83;24/04/2024;Cardiologia;Dr(a). Rodrigues;Curativo;J06.9;SUS;392,06;Sim
+Lucas Oliveira;460.153.082-22;11/07/2024;Dermatologia;Dr(a). Costa;Curativo;L20.9;Particular;262,56;Não
+Tiago Silva;469.653.088-42;21/11/2024;Ortopedia;Dr(a). Araújo;Curativo;M54.5;SUS;141,50;Sim
+Carla Ferreira;446.167.960-84;12/04/2024;Dermatologia;Dr(a). Araújo;Eletrocardiograma;J06.9;Bradesco Saúde;267,07;Sim
+Úrsula Oliveira;262.573.274-15;09/05/2024;Ortopedia;Dr(a). Martins;Eletrocardiograma;L20.9;SUS;563,69;Não
+João Silva;235.614.822-10;21/09/2024;Dermatologia;Dr(a). Gomes;Retorno;M54.5;Unimed;346,72;Não
+Íris Gomes;241.020.161-04;01/05/2024;Dermatologia;Dr(a). Oliveira;Retorno;I10;Particular;455,03;Sim
+Fábio Rodrigues;504.167.140-05;26/04/2024;Dermatologia;Dr(a). Santos;Consulta;M54.5;Particular;442,89;Sim
+João Gomes;516.705.402-86;26/04/2024;Cardiologia;Dr(a). Rodrigues;Retorno;L20.9;SUS;391,16;Não
+Lucas Silva;366.218.811-26;25/05/2024;Dermatologia;Dr(a). Ribeiro;Curativo;L20.9;SUS;121,00;Sim
+Gabriela Souza;028.413.951-38;30/08/2024;Dermatologia;Dr(a). Martins;Retorno;L20.9;Bradesco Saúde;275,95;Não
+Paulo Ribeiro;129.593.409-49;04/10/2024;Cardiologia;Dr(a). Lima;Eletrocardiograma;M54.5;Unimed;420,78;Sim
+Olívia Rodrigues;229.680.477-28;13/03/2024;Cardiologia;Dr(a). Gomes;Eletrocardiograma;M54.5;Bradesco Saúde;284,40;Sim
+Íris Oliveira;162.263.930-84;19/04/2024;Ortopedia;Dr(a). Almeida;Retorno;L20.9;Particular;252,49;Não
+Bruno Carvalho;168.296.741-74;28/03/2024;Pediatria;Dr(a). Lima;Eletrocardiograma;J06.9;Bradesco Saúde;252,61;Não
+Íris Lima;754.450.972-93;13/03/2024;Ortopedia;Dr(a). Almeida;Consulta;E11.9;SUS;447,77;Não
+Fábio Lima;133.739.541-26;10/07/2024;Cardiologia;Dr(a). Silva;Retorno;E11.9;Bradesco Saúde;249,05;Não
+Tiago Souza;231.861.196-34;31/10/2024;Dermatologia;Dr(a). Pereira;Curativo;E11.9;SUS;197,34;Sim
+Wanda Almeida;586.326.207-97;29/04/2024;Pediatria;Dr(a). Silva;Curativo;L20.9;Unimed;557,07;Não
+Sofia Souza;641.285.812-16;31/08/2024;Ortopedia;Dr(a). Carvalho;Eletrocardiograma;E11.9;Particular;449,95;Não
+Olívia Rodrigues;216.955.107-71;09/11/2024;Pediatria;Dr(a). Ferreira;Retorno;M54.5;SUS;338,92;Sim
+Lucas Souza;865.561.065-85;09/09/2024;Ortopedia;Dr(a). Gomes;Curativo;J06.9;SUS;586,42;Não
+Nicolas Pereira;129.486.469-60;09/03/2024;Cardiologia;Dr(a). Ferreira;Consulta;M54.5;Unimed;592,37;Não
+Úrsula Costa;495.633.161-42;16/09/2024;Pediatria;Dr(a). Souza;Consulta;L20.9;Bradesco Saúde;274,74;Não
+Úrsula Pereira;364.892.049-91;27/10/2024;Dermatologia;Dr(a). Pereira;Eletrocardiograma;M54.5;SUS;214,12;Sim
+Rafael Lima;686.211.460-37;12/07/2024;Cardiologia;Dr(a). Oliveira;Curativo;E11.9;SUS;407,03;Não
+Gabriela Oliveira;516.110.292-60;07/02/2024;Ortopedia;Dr(a). Ferreira;Consulta;E11.9;SUS;424,05;Sim
+Olívia Santos;592.319.624-77;06/04/2024;Ortopedia;Dr(a). Martins;Consulta;L20.9;SUS;305,47;Não
+Carla Carvalho;649.354.798-92;17/01/2024;Dermatologia;Dr(a). Ferreira;Consulta;I10;SUS;100,02;Sim
+Paulo Araújo;334.611.916-55;29/02/2024;Cardiologia;Dr(a). Santos;Curativo;I10;Bradesco Saúde;444,62;Não
+Rafael Rodrigues;856.178.524-18;10/08/2024;Dermatologia;Dr(a). Silva;Consulta;I10;Bradesco Saúde;522,06;Sim
+Ana Pereira;132.318.409-02;14/02/2024;Cardiologia;Dr(a). Almeida;Consulta;I10;SUS;301,30;Sim
+Karina Nascimento;058.878.967-44;11/08/2024;Ortopedia;Dr(a). Costa;Curativo;I10;Bradesco Saúde;230,13;Não
+Elisa Lima;439.627.424-68;22/07/2024;Pediatria;Dr(a). Martins;Consulta;M54.5;SUS;257,88;Sim
+Vitor Ferreira;509.854.502-15;16/04/2024;Pediatria;Dr(a). Costa;Retorno;I10;Particular;130,33;Sim
+Karina Ferreira;199.162.720-34;03/04/2024;Pediatria;Dr(a). Costa;Curativo;L20.9;Bradesco Saúde;537,63;Sim
+Elisa Pereira;305.298.757-72;20/08/2024;Ortopedia;Dr(a). Ferreira;Retorno;M54.5;Bradesco Saúde;560,91;Não
+Lucas Silva;234.900.764-27;17/07/2024;Pediatria;Dr(a). Almeida;Curativo;E11.9;Bradesco Saúde;425,23;Sim
+Carla Almeida;971.610.409-06;06/02/2024;Dermatologia;Dr(a). Araújo;Eletrocardiograma;M54.5;SUS;532,44;Sim
+Rafael Rodrigues;373.308.347-42;20/06/2024;Pediatria;Dr(a). Silva;Consulta;J06.9;Bradesco Saúde;290,37;Não
+Queila Santos;472.668.192-37;10/02/2024;Cardiologia;Dr(a). Rodrigues;Retorno;M54.5;SUS;348,90;Não
+Queila Costa;829.780.389-93;02/08/2024;Dermatologia;Dr(a). Almeida;Consulta;L20.9;Bradesco Saúde;178,96;Sim
+Ana Ribeiro;758.969.462-28;22/09/2024;Pediatria;Dr(a). Rodrigues;Retorno;J06.9;Particular;125,74;Sim
+Wanda Pereira;741.755.523-32;28/08/2024;Cardiologia;Dr(a). Pereira;Consulta;I10;SUS;531,39;Sim
+Úrsula Souza;516.837.258-91;24/03/2024;Dermatologia;Dr(a). Santos;Eletrocardiograma;I10;Particular;132,13;Sim
+Sofia Martins;302.556.223-41;11/04/2024;Pediatria;Dr(a). Silva;Retorno;I10;Particular;110,63;Sim
+Sofia Oliveira;350.196.857-47;19/03/2024;Dermatologia;Dr(a). Martins;Retorno;E11.9;Particular;300,84;Sim
+Vitor Ribeiro;596.230.774-75;10/08/2024;Dermatologia;Dr(a). Gomes;Consulta;J06.9;Bradesco Saúde;570,97;Sim
+Wanda Rodrigues;924.051.582-80;07/11/2024;Dermatologia;Dr(a). Pereira;Curativo;M54.5;Bradesco Saúde;160,87;Sim
+João Martins;001.297.598-21;03/07/2024;Cardiologia;Dr(a). Santos;Consulta;I10;Bradesco Saúde;251,36;Sim
+Karina Souza;436.529.078-92;13/04/2024;Ortopedia;Dr(a). Araújo;Consulta;L20.9;Unimed;483,01;Não
+Lucas Ribeiro;655.537.674-07;01/01/2024;Pediatria;Dr(a). Carvalho;Retorno;I10;Particular;284,71;Sim
+Heitor Souza;294.123.348-26;18/06/2024;Cardiologia;Dr(a). Nascimento;Eletrocardiograma;E11.9;Unimed;338,02;Não
+Tiago Carvalho;907.421.710-94;07/07/2024;Dermatologia;Dr(a). Nascimento;Retorno;I10;Bradesco Saúde;566,82;Não
+Queila Pereira;774.215.173-16;22/04/2024;Pediatria;Dr(a). Gomes;Curativo;M54.5;Bradesco Saúde;303,76;Não
+Rafael Rodrigues;399.158.316-09;30/08/2024;Cardiologia;Dr(a). Araújo;Retorno;I10;Particular;252,78;Sim
+Rafael Lima;431.858.984-60;27/07/2024;Dermatologia;Dr(a). Martins;Consulta;L20.9;Bradesco Saúde;112,91;Não
+Olívia Almeida;931.736.555-83;25/05/2024;Pediatria;Dr(a). Pereira;Curativo;M54.5;Unimed;496,80;Sim
+Diego Souza;854.291.880-00;21/03/2024;Cardiologia;Dr(a). Ribeiro;Retorno;I10;Particular;109,60;Não
+Fábio Costa;636.000.001-60;11/08/2024;Cardiologia;Dr(a). Santos;Curativo;E11.9;Unimed;532,93;Sim
+Yasmin Nascimento;134.018.581-49;01/08/2024;Dermatologia;Dr(a). Pereira;Curativo;M54.5;Bradesco Saúde;316,91;Sim
+Rafael Lima;986.447.767-62;14/03/2024;Pediatria;Dr(a). Santos;Consulta;E11.9;Unimed;546,25;Não
+Heitor Ferreira;147.799.643-50;16/11/2024;Dermatologia;Dr(a). Lima;Curativo;L20.9;SUS;365,10;Não
+Tiago Lima;160.371.763-37;03/06/2024;Pediatria;Dr(a). Ferreira;Retorno;E11.9;Bradesco Saúde;160,40;Não
+Sofia Oliveira;931.962.017-24;18/06/2024;Dermatologia;Dr(a). Ferreira;Consulta;E11.9;Particular;401,30;Não
+Lucas Ribeiro;321.258.455-63;16/04/2024;Cardiologia;Dr(a). Silva;Eletrocardiograma;J06.9;Unimed;443,05;Não
+Lucas Souza;615.154.788-82;25/05/2024;Pediatria;Dr(a). Carvalho;Consulta;I10;Particular;541,98;Sim
+Sofia Santos;118.814.882-68;07/01/2024;Ortopedia;Dr(a). Pereira;Retorno;L20.9;Particular;247,75;Sim
+Olívia Rodrigues;704.485.350-17;19/03/2024;Ortopedia;Dr(a). Ferreira;Retorno;J06.9;Bradesco Saúde;273,50;Sim
+Nicolas Nascimento;463.943.416-22;02/05/2024;Cardiologia;Dr(a). Martins;Eletrocardiograma;I10;Unimed;181,05;Não
+Fábio Carvalho;636.668.880-03;14/03/2024;Dermatologia;Dr(a). Carvalho;Consulta;J06.9;Bradesco Saúde;407,33;Não
+Ana Lima;753.841.858-05;07/01/2024;Dermatologia;Dr(a). Ferreira;Curativo;E11.9;Unimed;592,93;Sim
+Úrsula Silva;927.342.684-00;20/07/2024;Ortopedia;Dr(a). Nascimento;Curativo;J06.9;Bradesco Saúde;160,16;Não
+Gabriela Pereira;861.990.649-68;09/04/2024;Ortopedia;Dr(a). Lima;Eletrocardiograma;M54.5;Bradesco Saúde;136,55;Não
+Yasmin Nascimento;675.371.871-00;01/02/2024;Ortopedia;Dr(a). Oliveira;Curativo;L20.9;Particular;313,94;Sim
+Rafael Lima;039.990.953-26;02/10/2024;Ortopedia;Dr(a). Ferreira;Eletrocardiograma;E11.9;Particular;477,70;Sim
+Ana Rodrigues;074.615.707-06;07/01/2024;Cardiologia;Dr(a). Souza;Consulta;I10;SUS;218,79;Sim
+Bruno Ribeiro;558.148.012-55;30/03/2024;Ortopedia;Dr(a). Oliveira;Retorno;M54.5;Particular;195,27;Sim
+Queila Pereira;899.081.866-47;19/05/2024;Pediatria;Dr(a). Nascimento;Consulta;I10;SUS;119,74;Não
+Sofia Rodrigues;032.144.771-96;17/05/2024;Pediatria;Dr(a). Silva;Consulta;E11.9;Unimed;500,33;Não

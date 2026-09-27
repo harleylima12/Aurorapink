@@ -1,0 +1,301 @@
+ID Paciente,Data de Coleta,Exame,Resultado,Unidade,Valor de Referência,Laboratório
+P210,2024-04-30,Hemoglobina,107.5,g/dL,12-17,Lab Central
+P100,2024-05-12,Glicemia,146.5,mg/dL,70-99,Lab Vida
+P213,2024-06-03,Hemoglobina,209.9,g/dL,12-17,Lab Central
+P171,2024-05-18,Hemoglobina,167.5,g/dL,12-17,Lab Vida
+P104,2024-04-27,Hemoglobina,202.6,g/dL,12-17,Lab Vida
+P189,2024-02-03,Glicemia,243.6,mg/dL,70-99,Lab Central
+P183,2024-06-09,Glicemia,222.3,mg/dL,70-99,Lab Central
+P221,2024-05-11,Glicemia,230.7,mg/dL,70-99,Lab Vida
+P227,2024-05-22,Glicemia,146.3,mg/dL,70-99,Lab Central
+P222,2024-05-14,Colesterol total,163.4,mg/dL,<190,Lab Vida
+P183,2024-05-19,Colesterol total,215.4,mg/dL,<190,Lab Central
+P230,2024-04-20,Glicemia,120.3,mg/dL,70-99,Lab Vida
+P215,2024-06-15,Colesterol total,119.0,mg/dL,<190,Lab Central
+P189,2024-03-10,Hemoglobina,82.0,g/dL,12-17,Lab Vida
+P220,2024-03-10,Colesterol total,144.5,mg/dL,<190,Lab Vida
+P135,2024-03-31,Colesterol total,231.8,mg/dL,<190,Lab Central
+P184,2024-06-03,Hemoglobina,231.7,g/dL,12-17,Lab Central
+P240,2024-04-13,Hemoglobina,149.3,g/dL,12-17,Lab Vida
+P241,2024-03-09,Hemoglobina,87.4,g/dL,12-17,Lab Central
+P248,2024-07-23,Hemoglobina,99.9,g/dL,12-17,Lab Vida
+P226,2024-05-31,Glicemia,196.9,mg/dL,70-99,Lab Central
+P240,2024-03-03,Glicemia,227.2,mg/dL,70-99,Lab Central
+P235,2024-05-03,Glicemia,216.7,mg/dL,70-99,Lab Central
+P259,2024-05-05,Colesterol total,228.2,mg/dL,<190,Lab Central
+P116,2024-03-10,Colesterol total,227.0,mg/dL,<190,Lab Central
+P204,2024-07-01,Glicemia,147.3,mg/dL,70-99,Lab Vida
+P225,2024-03-23,Colesterol total,220.5,mg/dL,<190,Lab Vida
+P220,2024-03-24,Hemoglobina,244.7,g/dL,12-17,Lab Central
+P246,2024-05-06,Colesterol total,159.2,mg/dL,<190,Lab Vida
+P162,2024-07-02,Hemoglobina,169.1,g/dL,12-17,Lab Central
+P207,2024-06-01,Hemoglobina,238.0,g/dL,12-17,Lab Central
+P251,2024-02-08,Hemoglobina,67.4,g/dL,12-17,Lab Vida
+P238,2024-05-31,Glicemia,214.7,mg/dL,70-99,Lab Vida
+P136,2024-03-01,Hemoglobina,104.1,g/dL,12-17,Lab Central
+P210,2024-04-09,Glicemia,87.2,mg/dL,70-99,Lab Vida
+P165,2024-05-20,Colesterol total,143.6,mg/dL,<190,Lab Central
+P193,2024-02-01,Colesterol total,175.2,mg/dL,<190,Lab Vida
+P160,2024-03-10,Glicemia,168.5,mg/dL,70-99,Lab Vida
+P116,2024-05-04,Glicemia,248.8,mg/dL,70-99,Lab Vida
+P245,2024-07-12,Hemoglobina,240.4,g/dL,12-17,Lab Central
+P117,2024-06-25,Glicemia,120.1,mg/dL,70-99,Lab Central
+P216,2024-06-29,Colesterol total,108.3,mg/dL,<190,Lab Central
+P221,2024-06-01,Glicemia,115.7,mg/dL,70-99,Lab Vida
+P243,2024-07-31,Colesterol total,240.8,mg/dL,<190,Lab Central
+P154,2024-05-29,Hemoglobina,86.3,g/dL,12-17,Lab Vida
+P238,2024-05-13,Colesterol total,79.8,mg/dL,<190,Lab Central
+P220,2024-04-11,Hemoglobina,155.8,g/dL,12-17,Lab Central
+P197,2024-05-01,Hemoglobina,83.9,g/dL,12-17,Lab Vida
+P217,2024-06-14,Glicemia,174.3,mg/dL,70-99,Lab Central
+P115,2024-05-18,Hemoglobina,135.1,g/dL,12-17,Lab Central
+P106,2024-04-11,Colesterol total,248.5,mg/dL,<190,Lab Central
+P156,2024-06-24,Glicemia,68.0,mg/dL,70-99,Lab Vida
+P155,2024-02-01,Hemoglobina,229.8,g/dL,12-17,Lab Vida
+P232,2024-05-07,Glicemia,226.4,mg/dL,70-99,Lab Central
+P216,2024-04-12,Hemoglobina,234.8,g/dL,12-17,Lab Vida
+P246,2024-05-24,Glicemia,205.6,mg/dL,70-99,Lab Vida
+P147,2024-08-05,Colesterol total,151.1,mg/dL,<190,Lab Vida
+P217,2024-04-23,Glicemia,144.3,mg/dL,70-99,Lab Central
+P138,2024-06-13,Colesterol total,241.2,mg/dL,<190,Lab Vida
+P214,2024-03-03,Hemoglobina,169.6,g/dL,12-17,Lab Vida
+P243,2024-05-08,Glicemia,168.7,mg/dL,70-99,Lab Vida
+P114,2024-05-19,Colesterol total,147.6,mg/dL,<190,Lab Central
+P210,2024-03-14,Glicemia,157.9,mg/dL,70-99,Lab Vida
+P240,2024-03-21,Hemoglobina,174.3,g/dL,12-17,Lab Central
+P207,2024-02-04,Hemoglobina,164.6,g/dL,12-17,Lab Vida
+P242,2024-07-26,Colesterol total,85.9,mg/dL,<190,Lab Vida
+P230,2024-08-02,Glicemia,69.9,mg/dL,70-99,Lab Central
+P121,2024-06-14,Colesterol total,212.8,mg/dL,<190,Lab Central
+P250,2024-06-11,Colesterol total,101.6,mg/dL,<190,Lab Central
+P224,2024-07-30,Colesterol total,210.4,mg/dL,<190,Lab Central
+P210,2024-08-16,Hemoglobina,95.8,g/dL,12-17,Lab Vida
+P218,2024-04-14,Glicemia,104.6,mg/dL,70-99,Lab Vida
+P151,2024-03-27,Glicemia,179.4,mg/dL,70-99,Lab Vida
+P161,2024-05-02,Colesterol total,215.5,mg/dL,<190,Lab Vida
+P152,2024-05-12,Glicemia,163.0,mg/dL,70-99,Lab Vida
+P244,2024-04-26,Hemoglobina,119.4,g/dL,12-17,Lab Central
+P203,2024-03-21,Colesterol total,129.5,mg/dL,<190,Lab Central
+P237,2024-03-23,Colesterol total,192.2,mg/dL,<190,Lab Central
+P243,2024-03-03,Hemoglobina,178.9,g/dL,12-17,Lab Central
+P130,2024-06-29,Hemoglobina,91.1,g/dL,12-17,Lab Vida
+P107,2024-07-12,Hemoglobina,65.8,g/dL,12-17,Lab Central
+P204,2024-06-23,Hemoglobina,156.2,g/dL,12-17,Lab Central
+P104,2024-04-15,Hemoglobina,66.8,g/dL,12-17,Lab Vida
+P157,2024-03-22,Colesterol total,68.3,mg/dL,<190,Lab Vida
+P231,2024-05-18,Colesterol total,116.5,mg/dL,<190,Lab Central
+P117,2024-03-06,Hemoglobina,222.2,g/dL,12-17,Lab Central
+P167,2024-03-08,Glicemia,61.9,mg/dL,70-99,Lab Central
+P231,2024-02-25,Colesterol total,137.8,mg/dL,<190,Lab Central
+P240,2024-04-06,Hemoglobina,190.7,g/dL,12-17,Lab Vida
+P202,2024-07-06,Hemoglobina,135.8,g/dL,12-17,Lab Central
+P114,2024-05-20,Glicemia,221.6,mg/dL,70-99,Lab Vida
+P124,2024-02-18,Hemoglobina,136.1,g/dL,12-17,Lab Central
+P117,2024-07-31,Colesterol total,183.2,mg/dL,<190,Lab Vida
+P143,2024-02-24,Hemoglobina,205.6,g/dL,12-17,Lab Central
+P139,2024-07-03,Hemoglobina,147.5,g/dL,12-17,Lab Central
+P123,2024-06-28,Glicemia,140.6,mg/dL,70-99,Lab Central
+P122,2024-05-31,Glicemia,96.4,mg/dL,70-99,Lab Central
+P161,2024-02-29,Colesterol total,199.2,mg/dL,<190,Lab Vida
+P133,2024-02-11,Colesterol total,65.8,mg/dL,<190,Lab Central
+P224,2024-07-08,Hemoglobina,148.9,g/dL,12-17,Lab Vida
+P219,2024-02-29,Glicemia,158.5,mg/dL,70-99,Lab Vida
+P150,2024-04-28,Glicemia,82.1,mg/dL,70-99,Lab Vida
+P215,2024-05-08,Glicemia,119.7,mg/dL,70-99,Lab Central
+P108,2024-07-17,Colesterol total,193.8,mg/dL,<190,Lab Central
+P171,2024-07-08,Colesterol total,180.8,mg/dL,<190,Lab Central
+P258,2024-05-15,Glicemia,187.2,mg/dL,70-99,Lab Vida
+P248,2024-07-11,Glicemia,136.3,mg/dL,70-99,Lab Vida
+P189,2024-02-20,Glicemia,121.4,mg/dL,70-99,Lab Central
+P105,2024-04-29,Colesterol total,71.9,mg/dL,<190,Lab Central
+P242,2024-05-05,Colesterol total,147.5,mg/dL,<190,Lab Central
+P183,2024-05-30,Hemoglobina,188.7,g/dL,12-17,Lab Vida
+P194,2024-02-10,Glicemia,238.8,mg/dL,70-99,Lab Vida
+P206,2024-06-08,Hemoglobina,112.0,g/dL,12-17,Lab Vida
+P227,2024-03-31,Colesterol total,115.4,mg/dL,<190,Lab Central
+P119,2024-08-01,Colesterol total,75.8,mg/dL,<190,Lab Central
+P226,2024-02-27,Hemoglobina,185.2,g/dL,12-17,Lab Central
+P144,2024-02-23,Glicemia,139.6,mg/dL,70-99,Lab Central
+P193,2024-02-01,Glicemia,81.1,mg/dL,70-99,Lab Vida
+P240,2024-02-25,Hemoglobina,233.6,g/dL,12-17,Lab Vida
+P215,2024-03-22,Colesterol total,133.0,mg/dL,<190,Lab Vida
+P256,2024-06-12,Hemoglobina,78.1,g/dL,12-17,Lab Vida
+P243,2024-06-05,Hemoglobina,245.4,g/dL,12-17,Lab Central
+P110,2024-02-02,Hemoglobina,213.3,g/dL,12-17,Lab Central
+P141,2024-08-07,Colesterol total,160.7,mg/dL,<190,Lab Vida
+P181,2024-03-25,Glicemia,80.3,mg/dL,70-99,Lab Vida
+P247,2024-06-28,Colesterol total,60.0,mg/dL,<190,Lab Central
+P222,2024-04-13,Hemoglobina,97.0,g/dL,12-17,Lab Central
+P115,2024-03-28,Hemoglobina,198.6,g/dL,12-17,Lab Vida
+P252,2024-04-28,Colesterol total,91.0,mg/dL,<190,Lab Central
+P236,2024-08-05,Glicemia,166.9,mg/dL,70-99,Lab Vida
+P114,2024-05-20,Colesterol total,146.9,mg/dL,<190,Lab Vida
+P185,2024-03-18,Glicemia,146.3,mg/dL,70-99,Lab Central
+P184,2024-07-28,Colesterol total,175.1,mg/dL,<190,Lab Central
+P227,2024-04-24,Glicemia,133.9,mg/dL,70-99,Lab Vida
+P140,2024-06-22,Colesterol total,216.6,mg/dL,<190,Lab Vida
+P241,2024-07-13,Hemoglobina,89.4,g/dL,12-17,Lab Vida
+P187,2024-03-02,Hemoglobina,227.6,g/dL,12-17,Lab Vida
+P241,2024-08-01,Hemoglobina,233.5,g/dL,12-17,Lab Central
+P214,2024-04-28,Glicemia,245.1,mg/dL,70-99,Lab Vida
+P211,2024-07-05,Glicemia,64.3,mg/dL,70-99,Lab Vida
+P143,2024-04-22,Glicemia,206.7,mg/dL,70-99,Lab Vida
+P115,2024-03-27,Hemoglobina,76.8,g/dL,12-17,Lab Central
+P155,2024-04-16,Hemoglobina,75.5,g/dL,12-17,Lab Central
+P181,2024-06-04,Hemoglobina,64.6,g/dL,12-17,Lab Vida
+P232,2024-03-15,Colesterol total,226.3,mg/dL,<190,Lab Vida
+P242,2024-06-21,Colesterol total,130.3,mg/dL,<190,Lab Vida
+P210,2024-07-08,Colesterol total,206.6,mg/dL,<190,Lab Vida
+P238,2024-02-27,Colesterol total,119.9,mg/dL,<190,Lab Central
+P240,2024-02-16,Glicemia,102.8,mg/dL,70-99,Lab Vida
+P220,2024-06-28,Glicemia,248.2,mg/dL,70-99,Lab Vida
+P212,2024-03-10,Hemoglobina,63.9,g/dL,12-17,Lab Vida
+P233,2024-06-03,Glicemia,90.9,mg/dL,70-99,Lab Central
+P256,2024-03-15,Glicemia,164.9,mg/dL,70-99,Lab Vida
+P187,2024-05-20,Colesterol total,229.8,mg/dL,<190,Lab Central
+P224,2024-02-23,Glicemia,103.5,mg/dL,70-99,Lab Vida
+P120,2024-08-18,Colesterol total,180.0,mg/dL,<190,Lab Central
+P251,2024-02-11,Hemoglobina,86.5,g/dL,12-17,Lab Vida
+P101,2024-03-11,Glicemia,125.8,mg/dL,70-99,Lab Central
+P148,2024-08-19,Colesterol total,78.2,mg/dL,<190,Lab Vida
+P112,2024-06-01,Glicemia,67.1,mg/dL,70-99,Lab Central
+P215,2024-04-08,Colesterol total,66.8,mg/dL,<190,Lab Central
+P196,2024-02-18,Colesterol total,136.3,mg/dL,<190,Lab Central
+P114,2024-02-13,Glicemia,110.6,mg/dL,70-99,Lab Central
+P199,2024-02-27,Colesterol total,114.9,mg/dL,<190,Lab Vida
+P183,2024-08-11,Glicemia,62.8,mg/dL,70-99,Lab Vida
+P152,2024-06-19,Hemoglobina,111.5,g/dL,12-17,Lab Central
+P145,2024-04-01,Hemoglobina,74.8,g/dL,12-17,Lab Vida
+P137,2024-05-22,Colesterol total,150.7,mg/dL,<190,Lab Vida
+P202,2024-04-30,Colesterol total,154.4,mg/dL,<190,Lab Central
+P129,2024-06-25,Colesterol total,173.7,mg/dL,<190,Lab Vida
+P215,2024-02-21,Hemoglobina,128.2,g/dL,12-17,Lab Central
+P121,2024-05-13,Glicemia,188.9,mg/dL,70-99,Lab Central
+P224,2024-06-09,Hemoglobina,229.2,g/dL,12-17,Lab Vida
+P216,2024-02-02,Hemoglobina,71.4,g/dL,12-17,Lab Central
+P141,2024-06-09,Colesterol total,213.1,mg/dL,<190,Lab Central
+P247,2024-04-14,Colesterol total,90.7,mg/dL,<190,Lab Central
+P112,2024-05-20,Colesterol total,116.7,mg/dL,<190,Lab Central
+P121,2024-02-22,Colesterol total,212.6,mg/dL,<190,Lab Central
+P251,2024-07-16,Colesterol total,234.3,mg/dL,<190,Lab Vida
+P108,2024-02-02,Glicemia,212.9,mg/dL,70-99,Lab Central
+P105,2024-03-14,Glicemia,63.5,mg/dL,70-99,Lab Vida
+P129,2024-02-13,Hemoglobina,189.8,g/dL,12-17,Lab Vida
+P253,2024-02-16,Hemoglobina,62.6,g/dL,12-17,Lab Central
+P104,2024-02-25,Colesterol total,129.7,mg/dL,<190,Lab Vida
+P185,2024-05-29,Colesterol total,158.9,mg/dL,<190,Lab Central
+P101,2024-05-27,Hemoglobina,188.9,g/dL,12-17,Lab Central
+P194,2024-05-12,Colesterol total,223.7,mg/dL,<190,Lab Central
+P233,2024-06-30,Hemoglobina,104.5,g/dL,12-17,Lab Vida
+P162,2024-06-23,Hemoglobina,131.4,g/dL,12-17,Lab Central
+P166,2024-03-03,Colesterol total,118.1,mg/dL,<190,Lab Central
+P189,2024-08-10,Colesterol total,73.8,mg/dL,<190,Lab Central
+P200,2024-06-13,Glicemia,149.5,mg/dL,70-99,Lab Vida
+P202,2024-04-10,Glicemia,162.3,mg/dL,70-99,Lab Central
+P190,2024-07-24,Glicemia,210.5,mg/dL,70-99,Lab Vida
+P223,2024-05-06,Glicemia,166.9,mg/dL,70-99,Lab Central
+P171,2024-04-25,Glicemia,163.7,mg/dL,70-99,Lab Vida
+P133,2024-07-23,Colesterol total,193.3,mg/dL,<190,Lab Central
+P152,2024-03-26,Glicemia,125.0,mg/dL,70-99,Lab Central
+P196,2024-04-23,Colesterol total,124.2,mg/dL,<190,Lab Central
+P241,2024-02-22,Hemoglobina,64.4,g/dL,12-17,Lab Central
+P259,2024-08-17,Hemoglobina,77.4,g/dL,12-17,Lab Central
+P152,2024-08-15,Glicemia,236.7,mg/dL,70-99,Lab Vida
+P142,2024-07-20,Glicemia,126.8,mg/dL,70-99,Lab Central
+P260,2024-06-08,Hemoglobina,62.2,g/dL,12-17,Lab Central
+P239,2024-07-31,Colesterol total,205.4,mg/dL,<190,Lab Vida
+P115,2024-05-01,Glicemia,91.8,mg/dL,70-99,Lab Central
+P125,2024-04-15,Glicemia,166.4,mg/dL,70-99,Lab Vida
+P213,2024-04-01,Glicemia,134.6,mg/dL,70-99,Lab Vida
+P201,2024-04-14,Glicemia,146.2,mg/dL,70-99,Lab Central
+P235,2024-02-02,Glicemia,120.1,mg/dL,70-99,Lab Vida
+P196,2024-05-24,Glicemia,211.5,mg/dL,70-99,Lab Central
+P221,2024-07-26,Glicemia,98.9,mg/dL,70-99,Lab Central
+P211,2024-06-05,Colesterol total,158.7,mg/dL,<190,Lab Vida
+P193,2024-03-31,Glicemia,137.8,mg/dL,70-99,Lab Vida
+P179,2024-05-09,Hemoglobina,223.0,g/dL,12-17,Lab Central
+P194,2024-02-27,Hemoglobina,150.5,g/dL,12-17,Lab Vida
+P192,2024-08-12,Colesterol total,154.1,mg/dL,<190,Lab Central
+P101,2024-03-21,Glicemia,230.7,mg/dL,70-99,Lab Central
+P207,2024-04-30,Glicemia,147.2,mg/dL,70-99,Lab Vida
+P176,2024-06-06,Colesterol total,185.3,mg/dL,<190,Lab Central
+P218,2024-02-12,Glicemia,88.6,mg/dL,70-99,Lab Vida
+P202,2024-02-20,Hemoglobina,160.8,g/dL,12-17,Lab Central
+P153,2024-06-14,Colesterol total,191.0,mg/dL,<190,Lab Vida
+P213,2024-08-11,Hemoglobina,135.4,g/dL,12-17,Lab Vida
+P202,2024-04-21,Hemoglobina,162.1,g/dL,12-17,Lab Vida
+P111,2024-06-15,Colesterol total,119.4,mg/dL,<190,Lab Central
+P234,2024-03-14,Colesterol total,72.3,mg/dL,<190,Lab Central
+P145,2024-05-04,Glicemia,133.9,mg/dL,70-99,Lab Central
+P181,2024-03-13,Hemoglobina,237.7,g/dL,12-17,Lab Central
+P161,2024-05-02,Hemoglobina,243.5,g/dL,12-17,Lab Vida
+P229,2024-06-06,Glicemia,219.5,mg/dL,70-99,Lab Central
+P199,2024-06-28,Hemoglobina,154.7,g/dL,12-17,Lab Vida
+P104,2024-05-15,Glicemia,122.6,mg/dL,70-99,Lab Central
+P205,2024-05-31,Colesterol total,158.6,mg/dL,<190,Lab Central
+P175,2024-05-14,Colesterol total,119.2,mg/dL,<190,Lab Central
+P205,2024-04-06,Glicemia,156.4,mg/dL,70-99,Lab Central
+P118,2024-04-10,Colesterol total,131.9,mg/dL,<190,Lab Vida
+P123,2024-05-31,Colesterol total,132.3,mg/dL,<190,Lab Central
+P208,2024-03-05,Glicemia,129.7,mg/dL,70-99,Lab Central
+P118,2024-05-05,Hemoglobina,71.3,g/dL,12-17,Lab Central
+P172,2024-03-04,Colesterol total,126.0,mg/dL,<190,Lab Vida
+P201,2024-02-12,Colesterol total,170.8,mg/dL,<190,Lab Central
+P260,2024-05-18,Glicemia,82.5,mg/dL,70-99,Lab Vida
+P222,2024-02-17,Glicemia,127.8,mg/dL,70-99,Lab Vida
+P149,2024-02-05,Colesterol total,215.0,mg/dL,<190,Lab Vida
+P233,2024-03-25,Glicemia,245.9,mg/dL,70-99,Lab Central
+P147,2024-07-05,Glicemia,112.7,mg/dL,70-99,Lab Central
+P190,2024-03-25,Hemoglobina,98.1,g/dL,12-17,Lab Vida
+P235,2024-05-28,Colesterol total,165.5,mg/dL,<190,Lab Central
+P196,2024-04-26,Glicemia,89.8,mg/dL,70-99,Lab Vida
+P173,2024-07-05,Hemoglobina,170.1,g/dL,12-17,Lab Vida
+P111,2024-04-17,Glicemia,182.4,mg/dL,70-99,Lab Vida
+P170,2024-02-04,Glicemia,218.1,mg/dL,70-99,Lab Central
+P102,2024-02-19,Colesterol total,176.3,mg/dL,<190,Lab Central
+P244,2024-07-23,Glicemia,146.5,mg/dL,70-99,Lab Vida
+P237,2024-06-07,Glicemia,136.6,mg/dL,70-99,Lab Vida
+P102,2024-03-14,Glicemia,227.6,mg/dL,70-99,Lab Central
+P198,2024-03-15,Colesterol total,96.5,mg/dL,<190,Lab Vida
+P227,2024-02-12,Colesterol total,248.6,mg/dL,<190,Lab Central
+P119,2024-05-31,Hemoglobina,86.3,g/dL,12-17,Lab Vida
+P104,2024-02-17,Colesterol total,244.8,mg/dL,<190,Lab Central
+P215,2024-06-18,Colesterol total,170.3,mg/dL,<190,Lab Central
+P156,2024-02-20,Glicemia,111.0,mg/dL,70-99,Lab Central
+P240,2024-08-04,Hemoglobina,181.0,g/dL,12-17,Lab Vida
+P184,2024-02-09,Colesterol total,75.5,mg/dL,<190,Lab Central
+P140,2024-03-26,Colesterol total,212.6,mg/dL,<190,Lab Vida
+P126,2024-04-08,Colesterol total,242.6,mg/dL,<190,Lab Vida
+P227,2024-05-25,Glicemia,96.8,mg/dL,70-99,Lab Vida
+P122,2024-07-14,Hemoglobina,149.4,g/dL,12-17,Lab Central
+P120,2024-05-24,Colesterol total,245.5,mg/dL,<190,Lab Central
+P222,2024-05-27,Hemoglobina,229.1,g/dL,12-17,Lab Central
+P112,2024-07-27,Glicemia,95.2,mg/dL,70-99,Lab Vida
+P206,2024-04-20,Colesterol total,173.7,mg/dL,<190,Lab Central
+P248,2024-06-10,Hemoglobina,181.0,g/dL,12-17,Lab Central
+P195,2024-07-24,Colesterol total,176.3,mg/dL,<190,Lab Vida
+P260,2024-03-15,Colesterol total,127.3,mg/dL,<190,Lab Central
+P174,2024-05-30,Glicemia,101.9,mg/dL,70-99,Lab Vida
+P225,2024-02-20,Colesterol total,131.6,mg/dL,<190,Lab Central
+P124,2024-02-09,Hemoglobina,137.0,g/dL,12-17,Lab Central
+P125,2024-08-11,Glicemia,88.9,mg/dL,70-99,Lab Central
+P109,2024-07-22,Colesterol total,225.9,mg/dL,<190,Lab Central
+P258,2024-05-03,Colesterol total,244.8,mg/dL,<190,Lab Central
+P165,2024-07-24,Hemoglobina,136.2,g/dL,12-17,Lab Central
+P114,2024-02-06,Hemoglobina,231.9,g/dL,12-17,Lab Central
+P101,2024-03-18,Glicemia,188.0,mg/dL,70-99,Lab Vida
+P229,2024-03-30,Hemoglobina,242.2,g/dL,12-17,Lab Vida
+P197,2024-06-24,Hemoglobina,204.8,g/dL,12-17,Lab Vida
+P179,2024-03-26,Glicemia,202.4,mg/dL,70-99,Lab Central
+P112,2024-03-10,Glicemia,192.1,mg/dL,70-99,Lab Central
+P130,2024-06-19,Colesterol total,101.4,mg/dL,<190,Lab Vida
+P127,2024-05-19,Colesterol total,179.8,mg/dL,<190,Lab Vida
+P182,2024-07-10,Hemoglobina,209.0,g/dL,12-17,Lab Central
+P242,2024-08-08,Glicemia,138.2,mg/dL,70-99,Lab Central
+P213,2024-08-02,Glicemia,141.4,mg/dL,70-99,Lab Central
+P193,2024-07-11,Hemoglobina,154.0,g/dL,12-17,Lab Central
+P156,2024-06-19,Glicemia,65.3,mg/dL,70-99,Lab Central
+P131,2024-04-04,Colesterol total,80.0,mg/dL,<190,Lab Vida
+P238,2024-07-04,Hemoglobina,94.8,g/dL,12-17,Lab Vida
+P124,2024-07-20,Colesterol total,63.0,mg/dL,<190,Lab Vida
+P179,2024-08-03,Glicemia,62.5,mg/dL,70-99,Lab Vida

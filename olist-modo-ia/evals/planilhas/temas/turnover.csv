@@ -1,0 +1,151 @@
+ID Funcionário,Data de Admissão,Data de Desligamento,Motivo do Desligamento,Área,Gestor,Tempo de Casa (meses)
+F3000,2023-02-17,2023-08-25,Pedido de demissão,Vendas,Vitor Gomes,73
+F3001,2020-02-05,2020-11-10,Fim de contrato,Vendas,Úrsula Pereira,25
+F3002,2018-05-17,2018-08-01,Pedido de demissão,Tecnologia,Íris Gomes,22
+F3003,2018-04-30,,,Vendas,João Costa,76
+F3004,2021-12-08,,,Logística,Diego Martins,9
+F3005,2020-10-05,2024-10-10,Dispensa,Financeiro,Karina Silva,72
+F3006,2022-03-30,,,Tecnologia,Íris Santos,70
+F3007,2023-01-22,,,Vendas,Tiago Carvalho,69
+F3008,2021-12-02,2025-07-28,Fim de contrato,Tecnologia,Bruno Araújo,21
+F3009,2018-09-13,,,Vendas,Lucas Almeida,19
+F3010,2022-02-01,2023-09-25,Fim de contrato,Tecnologia,Diego Rodrigues,47
+F3011,2019-03-08,2019-10-21,Dispensa,Financeiro,Yasmin Nascimento,77
+F3012,2020-09-23,2022-01-20,Dispensa,Vendas,Wanda Nascimento,21
+F3013,2019-09-08,,,Financeiro,Fábio Almeida,49
+F3014,2018-10-09,2021-09-05,Pedido de demissão,Financeiro,Yasmin Pereira,17
+F3015,2023-01-09,2025-04-24,Dispensa,Vendas,Lucas Martins,6
+F3016,2018-05-28,,,Tecnologia,Carla Pereira,35
+F3017,2020-05-03,,,Tecnologia,Diego Almeida,65
+F3018,2020-03-08,,,Financeiro,Fábio Lima,70
+F3019,2022-05-18,,,Vendas,Elisa Souza,13
+F3020,2020-06-25,2021-12-10,Fim de contrato,Logística,Sofia Rodrigues,73
+F3021,2021-04-01,,,Tecnologia,Nicolas Martins,53
+F3022,2022-06-14,,,Financeiro,Lucas Nascimento,55
+F3023,2021-02-23,2022-12-16,Dispensa,Vendas,Sofia Rodrigues,9
+F3024,2020-10-09,,,Vendas,Carla Lima,24
+F3025,2022-02-09,,,Financeiro,Paulo Rodrigues,3
+F3026,2021-05-16,,,Logística,Úrsula Rodrigues,70
+F3027,2020-04-20,,,Tecnologia,Fábio Almeida,50
+F3028,2020-10-07,,,Financeiro,Gabriela Lima,41
+F3029,2019-11-29,,,Logística,Ana Gomes,26
+F3030,2022-10-25,2024-04-17,Fim de contrato,Logística,Bruno Rodrigues,65
+F3031,2018-08-24,,,Financeiro,Vitor Souza,26
+F3032,2021-04-25,,,Vendas,Wanda Oliveira,66
+F3033,2020-09-25,,,Logística,Carla Lima,63
+F3034,2019-05-15,2022-05-24,Fim de contrato,Vendas,Queila Nascimento,31
+F3035,2019-09-23,,,Logística,Tiago Araújo,18
+F3036,2022-04-14,2023-03-10,Dispensa,Financeiro,Ana Santos,24
+F3037,2018-12-04,2020-01-19,Pedido de demissão,Tecnologia,Vitor Ribeiro,27
+F3038,2021-08-11,,,Financeiro,Elisa Araújo,24
+F3039,2022-11-15,,,Tecnologia,Bruno Martins,79
+F3040,2021-04-23,2024-06-13,Fim de contrato,Vendas,João Souza,28
+F3041,2020-05-11,2020-07-30,Pedido de demissão,Tecnologia,Queila Ribeiro,15
+F3042,2021-06-16,,,Financeiro,Lucas Santos,26
+F3043,2018-03-11,,,Vendas,Rafael Gomes,71
+F3044,2022-05-03,,,Vendas,Íris Rodrigues,79
+F3045,2020-04-22,,,Financeiro,Gabriela Souza,25
+F3046,2022-12-06,2023-05-24,Dispensa,Financeiro,Queila Ferreira,8
+F3047,2022-08-17,,,Financeiro,Ana Carvalho,2
+F3048,2021-12-10,,,Financeiro,Íris Ribeiro,19
+F3049,2022-07-22,,,Tecnologia,Sofia Almeida,67
+F3050,2022-08-01,,,Tecnologia,Diego Nascimento,39
+F3051,2019-11-17,,,Vendas,Gabriela Martins,31
+F3052,2019-02-26,2019-08-23,Fim de contrato,Logística,Wanda Costa,2
+F3053,2018-10-31,2019-06-27,Dispensa,Tecnologia,Bruno Araújo,10
+F3054,2019-09-29,2022-11-18,Dispensa,Vendas,Gabriela Carvalho,25
+F3055,2018-06-26,,,Logística,Diego Souza,20
+F3056,2020-03-18,,,Logística,Gabriela Souza,62
+F3057,2019-01-08,2021-08-31,Fim de contrato,Logística,Rafael Costa,10
+F3058,2021-10-22,2023-01-10,Fim de contrato,Tecnologia,Vitor Araújo,44
+F3059,2021-08-14,2025-04-28,Pedido de demissão,Vendas,Lucas Martins,18
+F3060,2021-10-15,,,Tecnologia,Bruno Souza,4
+F3061,2023-02-15,2023-11-28,Fim de contrato,Tecnologia,Gabriela Araújo,43
+F3062,2020-11-17,,,Vendas,João Santos,76
+F3063,2018-11-17,2020-08-18,Pedido de demissão,Financeiro,Yasmin Oliveira,34
+F3064,2019-03-06,2019-09-30,Pedido de demissão,Tecnologia,Gabriela Martins,15
+F3065,2019-06-28,2021-05-05,Fim de contrato,Financeiro,João Costa,57
+F3066,2020-10-10,2021-06-19,Pedido de demissão,Logística,Wanda Araújo,22
+F3067,2018-03-20,,,Tecnologia,Gabriela Rodrigues,40
+F3068,2018-10-07,,,Tecnologia,Heitor Ribeiro,42
+F3069,2020-08-13,,,Logística,Paulo Silva,43
+F3070,2019-06-09,,,Financeiro,Nicolas Ribeiro,31
+F3071,2023-02-09,,,Logística,Ana Pereira,17
+F3072,2021-10-02,,,Tecnologia,Paulo Pereira,2
+F3073,2020-08-30,,,Vendas,Rafael Costa,29
+F3074,2019-08-29,2019-11-17,Dispensa,Logística,Sofia Carvalho,9
+F3075,2021-11-18,,,Vendas,Paulo Martins,19
+F3076,2023-05-28,2024-07-04,Pedido de demissão,Financeiro,Diego Gomes,11
+F3077,2019-03-13,2022-04-27,Dispensa,Financeiro,Bruno Nascimento,50
+F3078,2018-11-12,,,Financeiro,Sofia Lima,11
+F3079,2020-09-11,,,Vendas,Marina Santos,7
+F3080,2023-02-12,,,Logística,Bruno Carvalho,31
+F3081,2019-08-10,,,Logística,Elisa Silva,46
+F3082,2019-05-16,2020-10-12,Dispensa,Logística,Heitor Martins,21
+F3083,2018-08-28,,,Vendas,Bruno Araújo,60
+F3084,2021-08-09,,,Tecnologia,Vitor Araújo,41
+F3085,2019-02-06,2022-05-21,Dispensa,Vendas,Diego Araújo,77
+F3086,2018-02-17,,,Logística,Queila Lima,48
+F3087,2021-04-26,2025-03-16,Dispensa,Financeiro,Vitor Gomes,68
+F3088,2022-01-06,,,Vendas,Karina Silva,9
+F3089,2018-09-14,2021-12-06,Pedido de demissão,Financeiro,Heitor Nascimento,9
+F3090,2021-03-07,,,Tecnologia,Gabriela Souza,39
+F3091,2021-11-23,,,Financeiro,Elisa Pereira,53
+F3092,2021-09-24,,,Tecnologia,Íris Silva,76
+F3093,2018-07-05,2019-10-29,Dispensa,Vendas,Gabriela Rodrigues,24
+F3094,2021-09-24,2023-04-24,Fim de contrato,Logística,Elisa Rodrigues,10
+F3095,2019-10-13,2022-11-12,Fim de contrato,Tecnologia,Lucas Costa,50
+F3096,2018-08-12,,,Tecnologia,João Costa,19
+F3097,2020-11-04,2024-07-13,Fim de contrato,Financeiro,Íris Pereira,2
+F3098,2020-05-08,2023-01-07,Fim de contrato,Financeiro,Lucas Ribeiro,21
+F3099,2021-08-10,,,Vendas,Fábio Carvalho,73
+F3100,2021-10-02,,,Financeiro,Yasmin Nascimento,45
+F3101,2021-08-28,,,Tecnologia,João Martins,55
+F3102,2020-07-16,2023-12-03,Dispensa,Vendas,Íris Pereira,51
+F3103,2021-06-18,,,Tecnologia,Queila Ferreira,56
+F3104,2021-06-05,,,Tecnologia,Carla Ferreira,61
+F3105,2020-06-29,2021-06-08,Dispensa,Financeiro,Bruno Costa,53
+F3106,2019-08-05,,,Financeiro,Bruno Martins,52
+F3107,2023-04-16,2024-08-26,Dispensa,Tecnologia,Queila Pereira,14
+F3108,2020-11-09,2023-04-18,Pedido de demissão,Financeiro,Carla Carvalho,33
+F3109,2023-02-26,,,Tecnologia,Wanda Silva,50
+F3110,2018-04-09,,,Vendas,Úrsula Silva,21
+F3111,2018-12-01,,,Vendas,Ana Martins,75
+F3112,2018-08-25,,,Financeiro,Olívia Pereira,70
+F3113,2022-10-05,,,Tecnologia,João Almeida,73
+F3114,2020-10-18,2021-12-12,Pedido de demissão,Vendas,Marina Nascimento,6
+F3115,2022-11-26,,,Vendas,Heitor Souza,55
+F3116,2020-12-19,2023-03-24,Fim de contrato,Vendas,Heitor Costa,53
+F3117,2021-11-20,,,Logística,Tiago Ribeiro,30
+F3118,2021-03-11,2022-02-10,Dispensa,Financeiro,Diego Costa,30
+F3119,2021-12-09,,,Tecnologia,Yasmin Ribeiro,13
+F3120,2020-12-01,2021-09-09,Pedido de demissão,Logística,Rafael Silva,6
+F3121,2019-05-07,,,Tecnologia,Sofia Pereira,14
+F3122,2022-02-09,,,Financeiro,Bruno Almeida,21
+F3123,2023-04-25,,,Vendas,Olívia Lima,67
+F3124,2021-04-20,,,Tecnologia,Rafael Araújo,28
+F3125,2018-09-10,,,Logística,Vitor Araújo,18
+F3126,2022-10-24,,,Financeiro,Lucas Rodrigues,34
+F3127,2018-05-12,,,Financeiro,Sofia Nascimento,36
+F3128,2023-03-11,2027-03-30,Fim de contrato,Vendas,Vitor Souza,66
+F3129,2019-09-08,2020-05-08,Dispensa,Vendas,Heitor Gomes,66
+F3130,2022-06-21,,,Logística,Olívia Gomes,76
+F3131,2020-02-06,,,Vendas,Yasmin Silva,40
+F3132,2018-09-03,,,Logística,Tiago Silva,9
+F3133,2023-05-25,2024-08-12,Pedido de demissão,Vendas,Íris Ferreira,5
+F3134,2021-01-02,,,Logística,Wanda Gomes,35
+F3135,2018-04-19,2021-09-16,Pedido de demissão,Financeiro,Heitor Souza,61
+F3136,2021-08-31,,,Financeiro,Úrsula Souza,35
+F3137,2021-06-25,2025-07-29,Pedido de demissão,Tecnologia,Carla Almeida,8
+F3138,2023-04-06,,,Tecnologia,Paulo Costa,7
+F3139,2020-07-01,,,Logística,Heitor Carvalho,26
+F3140,2020-06-25,2023-01-19,Dispensa,Tecnologia,Lucas Costa,40
+F3141,2021-10-21,,,Logística,Carla Ribeiro,36
+F3142,2018-06-25,,,Tecnologia,Tiago Lima,54
+F3143,2021-03-31,2025-05-08,Dispensa,Financeiro,Íris Costa,33
+F3144,2019-06-17,2023-06-15,Fim de contrato,Logística,Olívia Pereira,2
+F3145,2023-03-16,,,Vendas,Lucas Lima,23
+F3146,2019-07-30,2022-03-25,Dispensa,Financeiro,Elisa Almeida,76
+F3147,2021-03-12,,,Tecnologia,Olívia Oliveira,33
+F3148,2019-06-21,2022-10-13,Fim de contrato,Logística,Gabriela Santos,56
+F3149,2022-03-16,2022-06-09,Pedido de demissão,Logística,Íris Costa,35
