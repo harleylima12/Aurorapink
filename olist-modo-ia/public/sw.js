@@ -54,11 +54,20 @@ function guardavel(url, pedido) {
   return true;
 }
 
-async function daRedeOuCache(pedido, chave) {
+/**
+ * Guarda a cópia no cache EM SEGUNDO PLANO (waitUntil) e devolve a resposta na hora. Esperar o cache.put antes
+ * de responder segurava o WASM de 34 MB até o fim do download + gravação, e o navegador não compilava em
+ * streaming (Fase 7, D59).
+ */
+function guardarDepois(evento, cache, chave, resposta) {
+  if (resposta.ok && resposta.type === 'basic') evento.waitUntil(cache.put(chave, resposta.clone()).catch(() => undefined));
+}
+
+async function daRedeOuCache(evento, pedido, chave) {
   const cache = await caches.open(CACHE);
   try {
     const resposta = await fetch(pedido);
-    if (resposta.ok && resposta.type === 'basic') await cache.put(chave ?? pedido, resposta.clone());
+    guardarDepois(evento, cache, chave ?? pedido, resposta);
     return resposta;
   } catch (erro) {
     const guardada = await cache.match(chave ?? pedido);
@@ -67,12 +76,12 @@ async function daRedeOuCache(pedido, chave) {
   }
 }
 
-async function doCacheOuRede(pedido) {
+async function doCacheOuRede(evento, pedido) {
   const cache = await caches.open(CACHE);
   const guardada = await cache.match(pedido);
   if (guardada) return guardada;
   const resposta = await fetch(pedido);
-  if (resposta.ok && resposta.type === 'basic') await cache.put(pedido, resposta.clone());
+  guardarDepois(evento, cache, pedido, resposta);
   return resposta;
 }
 
@@ -101,11 +110,11 @@ self.addEventListener('fetch', (evento) => {
   if (!guardavel(url, pedido)) return;
   if (pedido.mode === 'navigate') {
     // Página: rede primeiro (versão nova), cache se estiver offline. Toda rota do app usa o mesmo index.html.
-    evento.respondWith(daRedeOuCache(pedido, '/index.html'));
+    evento.respondWith(daRedeOuCache(evento, pedido, '/index.html'));
   } else if (url.pathname.startsWith('/assets/')) {
     // Nome com hash: nunca muda, cache primeiro.
-    evento.respondWith(doCacheOuRede(pedido));
+    evento.respondWith(doCacheOuRede(evento, pedido));
   } else {
-    evento.respondWith(daRedeOuCache(pedido));
+    evento.respondWith(daRedeOuCache(evento, pedido));
   }
 });

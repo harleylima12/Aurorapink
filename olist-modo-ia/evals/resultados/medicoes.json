@@ -1,80 +1,116 @@
 {
   "rodadas": 5,
   "fria": {
-    "fcp": 224,
-    "motorPronto": 2226,
-    "graficosProntos": 2522
+    "fcp": 280,
+    "firewall": 287,
+    "duckdb": 1963,
+    "dados": 2425,
+    "motorPronto": 2655,
+    "graficosProntos": 3010
   },
   "quente": {
-    "fcp": 188,
-    "motorPronto": 1871,
-    "graficosProntos": 2126
+    "fcp": 220,
+    "firewall": 195,
+    "duckdb": 1598,
+    "dados": 1995,
+    "motorPronto": 2251,
+    "graficosProntos": 2545
   },
   "trocaDeFiltroMs": {
-    "mediana": 182,
-    "max": 199
+    "mediana": 225,
+    "max": 260
   },
   "brutos": {
     "frias": [
       {
-        "fcp": 216,
-        "motorPronto": 2414,
-        "graficosProntos": 2756
+        "fcp": 280,
+        "firewall": 298,
+        "duckdb": 2033,
+        "dados": 2447,
+        "motorPronto": 2666,
+        "graficosProntos": 3024
       },
       {
-        "fcp": 232,
-        "motorPronto": 2174,
-        "graficosProntos": 2456
+        "fcp": 280,
+        "firewall": 287,
+        "duckdb": 1963,
+        "dados": 2350,
+        "motorPronto": 2560,
+        "graficosProntos": 2900
       },
       {
-        "fcp": 224,
-        "motorPronto": 2346,
-        "graficosProntos": 2622
+        "fcp": 356,
+        "firewall": 343,
+        "duckdb": 2018,
+        "dados": 2441,
+        "motorPronto": 2655,
+        "graficosProntos": 3010
       },
       {
-        "fcp": 212,
-        "motorPronto": 2221,
-        "graficosProntos": 2498
+        "fcp": 256,
+        "firewall": 268,
+        "duckdb": 1952,
+        "dados": 2414,
+        "motorPronto": 2640,
+        "graficosProntos": 3008
       },
       {
-        "fcp": 224,
-        "motorPronto": 2226,
-        "graficosProntos": 2522
+        "fcp": 260,
+        "firewall": 269,
+        "duckdb": 1893,
+        "dados": 2425,
+        "motorPronto": 2664,
+        "graficosProntos": 3026
       }
     ],
     "quentes": [
       {
-        "fcp": 208,
-        "motorPronto": 1871,
-        "graficosProntos": 2130
+        "fcp": 196,
+        "firewall": 1867,
+        "duckdb": 3199,
+        "dados": 3587,
+        "motorPronto": 3788,
+        "graficosProntos": 4066
       },
       {
-        "fcp": 216,
-        "motorPronto": 1897,
-        "graficosProntos": 2137
+        "fcp": 192,
+        "firewall": 174,
+        "duckdb": 1531,
+        "dados": 1917,
+        "motorPronto": 2144,
+        "graficosProntos": 2504
       },
       {
-        "fcp": 180,
-        "motorPronto": 1895,
-        "graficosProntos": 2126
+        "fcp": 220,
+        "firewall": 195,
+        "duckdb": 1577,
+        "dados": 1981,
+        "motorPronto": 2209,
+        "graficosProntos": 2509
       },
       {
-        "fcp": 188,
-        "motorPronto": 1662,
-        "graficosProntos": 1876
+        "fcp": 224,
+        "firewall": 191,
+        "duckdb": 1598,
+        "dados": 1995,
+        "motorPronto": 2251,
+        "graficosProntos": 2545
       },
       {
-        "fcp": 184,
-        "motorPronto": 1742,
-        "graficosProntos": 1976
+        "fcp": 256,
+        "firewall": 227,
+        "duckdb": 1751,
+        "dados": 2264,
+        "motorPronto": 2479,
+        "graficosProntos": 2824
       }
     ],
     "filtros": [
-      181,
-      199,
-      182,
-      196,
-      177
+      211,
+      225,
+      208,
+      260,
+      257
     ]
   }
 }
