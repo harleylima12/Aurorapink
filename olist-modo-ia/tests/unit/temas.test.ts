@@ -71,7 +71,7 @@ describe('detector de tema (sem IA)', () => {
     const taxa = acertos / linhas.length;
     writeFileSync(
       path.join(RAIZ, 'evals', 'resultados', 'temas.json'),
-      `${JSON.stringify({ gerado_em: new Date().toISOString(), modo: 'camada0_sem_ia', acertos, total: linhas.length, taxa: Math.round(taxa * 1000) / 10, planilhas: linhas }, null, 2)}\n`,
+      `${JSON.stringify({ gerado_em: 'npm test', modo: 'camada0_sem_ia', acertos, total: linhas.length, taxa: Math.round(taxa * 1000) / 10, planilhas: linhas }, null, 2)}\n`,
     );
     for (const l of linhas.filter((x) => !x.acertou)) console.log(`ERRO ${l.arquivo}: esperado ${l.esperado}, veio ${l.detectado}`, JSON.stringify(l.ranking));
     console.log(`Tema: ${acertos}/${linhas.length} (${(taxa * 100).toFixed(1)}%)`);
