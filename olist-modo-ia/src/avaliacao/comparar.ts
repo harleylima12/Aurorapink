@@ -16,6 +16,10 @@ export interface PerguntaAvaliacao {
   categoria: string;
   pergunta: string;
   anterior?: string;
+  /** Escrita sem rodar o roteador antes. */
+  cega?: boolean;
+  /** "fase7": lote novo, commitado antes da 1ª rodada. */
+  lote?: string;
   esperado: Esperado;
 }
 

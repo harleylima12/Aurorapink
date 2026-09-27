@@ -70,14 +70,14 @@ const PALAVRAS: Record<string, string[]> = {
   comparacao: ['vs', 'versus', 'x', 'comparar', 'compare', 'compara', 'comparacao', 'comparando', 'diferenca', 'contra', 'comparativo', 'entre'],
   explicar: ['por que', 'porque', 'por qual motivo', 'o que explica', 'explica', 'explique', 'motivo', 'causa', 'o que aconteceu', 'caiu', 'cairam', 'queda', 'subiu', 'aumentou', 'diminuiu', 'despencou', 'piorou', 'melhorou'],
   distribuicao: ['distribuicao', 'histograma', 'faixas'],
-  kpi: ['quanto', 'quantos', 'quantas', 'qual o total', 'total'],
+  kpi: ['quanto', 'quantos', 'quantas', 'qual o total', 'total', 'qnto', 'qnta', 'qntos', 'qntas', 'qto', 'qta', 'qtos', 'qtas', 'qnt'],
   // Verbos de venda sem métrica explícita = faturamento ("quanto faturamos?").
-  vendas: ['vendemos', 'vendeu', 'venderam', 'faturamos', 'faturou', 'faturaram', 'vendi', 'faturei', 'entrou', 'entraram'],
+  vendas: ['vendemos', 'vendeu', 'venderam', 'vendem', 'vende', 'vendendo', 'faturamos', 'faturou', 'faturaram', 'fatura', 'faturam', 'vendi', 'faturei', 'entrou', 'entraram'],
   medio: ['medio', 'media', 'em media', 'por pedido'],
   onde: ['onde', 'em que lugar', 'em que regiao', 'regiao', 'regioes'],
   vendedor: ['vendedor', 'vendedores', 'lojista', 'lojistas', 'seller'],
   cidade: ['cidade', 'cidades', 'municipio', 'municipios', 'capital'],
-  vago: ['como estamos', 'como vamos', 'como esta', 'como anda', 'como andam', 'resumo', 'me conta', 'novidades', 'e ai', 'tudo bem', 'oi', 'ola', 'ajuda', 'o que voce sabe', 'o que da pra ver', 'me surpreenda', 'algo interessante', 'insights', 'relatorio'],
+  vago: ['como estamos', 'como vamos', 'como esta', 'como anda', 'como andam', 'resumo', 'me conta', 'novidades', 'e ai', 'tudo bem', 'oi', 'ola', 'ajuda', 'o que voce sabe', 'o que da pra ver', 'me surpreenda', 'algo interessante', 'insights', 'relatorio', 'me fala', 'fala ai', 'visao geral', 'panorama'],
 };
 
 /** Coisas que a base não tem (além de out_of_scope_hints do semantic.json). */
@@ -327,6 +327,27 @@ export function criarRoteador(semantica: Semantica, valores: Valores, ancora: st
       return { spec: { intent: 'fora_de_escopo', metrics: [], dimensions: [], filters: [], out_of_scope_reason: motivo }, confianca: 0.95, rastro };
     }
 
+    // --- Follow-up que só troca a métrica ("e os pedidos?"): mantém dimensões, período e filtros --------
+    const soTrocaMetrica =
+      anterior &&
+      /^(e|agora|e agora)\b/.test(norm) &&
+      metricas.length === 1 &&
+      !dimensoes.length &&
+      !valoresPorDim.size &&
+      !tempo.periodo &&
+      !tempo.serie &&
+      limite === undefined &&
+      !desconhecidas.length &&
+      !palavras.has('vago') &&
+      !palavras.has('explicar');
+    if (anterior && soTrocaMetrica && anterior.metrics.length) {
+      const [m] = metricas as [string];
+      const novo: QuerySpec = { ...structuredClone(anterior), metrics: [m] };
+      if (novo.sort && anterior.metrics.includes(novo.sort.by)) novo.sort = { ...novo.sort, by: m };
+      rastro.push(`continuação: troca a métrica para ${m}`);
+      return { spec: novo, confianca: 0.8, rotuloPeriodo: tempo.periodo?.rotulo, rastro };
+    }
+
     // --- Follow-up ("e só em SP?", "e em 2018?", "e por estado?") ---------------------
     const ehContinuacao = /^(e|e so|e se|agora|so|e no|e na|e em|e para|e pro|e pra|mas)\b/.test(norm) && metricas.length === 0;
     if (anterior && ehContinuacao && !palavras.has('vago')) {
@@ -473,10 +494,12 @@ export function criarRoteador(semantica: Semantica, valores: Valores, ancora: st
     if (confianca < LIMIAR_CONFIANCA) {
       const [m] = metricas;
       const rotulo = semantica.metrics[m ?? 'faturamento']?.label ?? 'Faturamento';
+      // "Frete total" + " total" = "Frete total total": o rótulo que já diz "total" fica como está.
+      const total = /\btotal$/i.test(rotulo) ? rotulo : `${rotulo} total`;
       const duvida = esclarecer(
         'Não tenho certeza do que você quer ver. Seria um destes?',
-        [`${rotulo} total`, `${rotulo} mês a mês`, `${rotulo} por estado`],
-        [`${rotulo} total`, `${rotulo} mês a mês`, `${rotulo} por estado`],
+        [total, `${rotulo} mês a mês`, `${rotulo} por estado`],
+        [total, `${rotulo} mês a mês`, `${rotulo} por estado`],
         confianca,
         rastro,
       );

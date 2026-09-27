@@ -47,7 +47,9 @@ export const PARADA = new Set(
     'agora hoje vez vezes lado seu sua seus suas dele dela nele nela qual e o aquele aquela coisa coisas ' +
     'vendemos vendeu venderam faturamos faturou faturaram teve tivemos temos fizemos fez anda andou estamos estou ' +
     'pago pagos paga pagas recebeu receberam recebido compraram comprou entrou entraram gerou geraram registrou ' +
-    'unico unicos fica ficou ficaram deu deram tiver ter tido cliente'
+    'unico unicos fica ficou ficaram deu deram tiver ter tido cliente ' +
+    // Gíria/abreviação e modificadores que não mudam a conta ("percentual de", "a gnt pagou").
+    'gnt pagou pagamos pagaram percentual porcentagem'
   )
     .split(' ')
     .filter(Boolean),
