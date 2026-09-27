@@ -224,3 +224,14 @@ nuvem estava mais lenta que na Fase 6, então compare só as duas colunas entre 
 | SheetJS (Excel) | 492 kB | 157 kB | ao soltar um `.xlsx` |
 | Página `/avaliacao` (suíte + executor) | 36 kB | 9 kB | ao abrir `/avaliacao` |
 | WebLLM (página + worker) | 6,0 MB cada | 2,15 MB cada | só depois de "Ativar IA local" |
+
+## Fase 5C: gráficos por tema
+
+| Item | Resultado |
+|---|---:|
+| Paletas por tema (9) que passam em contraste AA, daltonismo (ΔE ≥ 8) e visão normal (ΔE ≥ 15) | 9/9 |
+| Planilhas no estilo do Harley (fictícias), tema certo na 1ª rodada | 7/7 |
+| Acessibilidade (axe, WCAG 2.1 A/AA) em 3 dashboards de temas diferentes | 0 violações |
+| Pacote principal (depois / antes da 5C) | 1,21 MB · 380 kB gzip / 1,18 MB · 367 kB gzip |
+| Pacote do Modo Universal (depois / antes) | 269 kB · 86 kB gzip / 125 kB · 39 kB gzip |
+| Dashboard por tema montado (tabela, semântica, faixas do histograma) | 26–73 ms (prints da galeria) |

@@ -726,3 +726,89 @@ Formato: **contexto → decisão → alternativa descartada**. As decisões da F
 - **SEO:** Open Graph, Twitter card, link canônico, `robots.txt` e `sitemap.xml` (conferidos em `seo.spec.ts`).
 - **Descartado:** vídeo MP4 (o GitHub mostra o GIF direto no README) e imagem montada à mão (desatualiza quando a
   tela muda).
+
+## Fase 5C: identidade visual e gráficos próprios por tema
+
+### D64. Paletas por tema calculadas, não escolhidas no olho
+
+- **Contexto:** cada tema precisava parecer um produto da sua área, sem perder legibilidade no fundo escuro
+  nem para quem tem daltonismo.
+- **Decisão:** cada tema tem uma **cor de destaque** (interface e gráficos de uma série) e uma **paleta categórica**
+  de 7 cores, sem vermelho (`src/charts/paletas.ts`). A ordem das cores de cada tema saiu de testar as 720
+  permutações com o validador do método de dataviz; só ficaram as que passam:
+  - contraste ≥ 3:1 no painel (destaque ≥ 4,5:1, porque também aparece em texto);
+  - vizinhas distintas simulando protanopia e deuteranopia (ΔE ≥ 8, OKLab ×100) e na visão normal (ΔE ≥ 15);
+  - luminosidade do modo escuro.
+
+  `tests/unit/paletas.test.ts` recalcula tudo.
+- **Ajustes forçados pelos números** (as sugestões do Harley eram o ponto de partida):
+  - Financeiro: verde + âmbar lado a lado dava ΔE 6,9 com daltonismo (só valeria com rótulo). Ficou
+    **verde-água (entradas) + âmbar (saídas)**, com ΔE 8,4.
+  - Estoque (laranja) e Marketing (rosa): ficavam a ΔE ~10 do vermelho de alerta. Viraram **âmbar** e **fúcsia**.
+  - Saúde: azul-petróleo `#4fb3c8`.
+- **Vermelho só em alerta**, e só em gráfico de uma série, ao lado do destaque (par ≥ 15). Laranja, magenta e âmbar
+  categóricos ficam a ≥ 10 do vermelho e nunca dividem gráfico com ele; alerta sempre leva ícone ou rótulo.
+- **Descartado:** rodar a mesma paleta começando em outra cor. Cada rotação põe o violeta ao lado do azul
+  (ΔE 1,9 com protanopia).
+
+### D65. Gráfico escolhido pelos dados, declarado na receita
+
+- **Decisão:** cada seção da receita declara uma `forma`, validada pelo Zod com as métricas extras e as dimensões
+  que ela exige. Formas: funil, curva ABC, cascata, mapa de calor, histograma, caixa, bullet, treemap, empilhado,
+  dispersão, média móvel, acumulado e medidor.
+
+  A forma especial só vale quando o papel existe:
+  - **mapa dia × hora:** só se a data tiver hora; senão, dia × mês;
+  - **funil:** só se o status tiver 3 ou mais etapas conhecidas (orçamento → aprovado → entregue…); "cancelado"
+    fica fora e é citado;
+  - **histograma:** só com coluna numérica.
+
+  Sem o papel, a seção vira o gráfico simples e o **subtítulo explica** (plano B), ou o painel some com o motivo.
+- **Números:** tudo vem do DuckDB pelo compilador.
+  - Dia da semana, mês e hora são dimensões com SQL fixo.
+  - As faixas do histograma saem dos percentis 2 e 98 calculados no banco.
+  - Os quartis da "caixa" são `quantile_cont` no SQL.
+  - O que o gráfico faz sobre as linhas (participação acumulada da curva ABC, média móvel, soma corrida, "quantos
+    chegaram a cada etapa") são funções puras testadas (`src/charts/contas.ts`).
+  - A IA não escolhe cor nem gráfico.
+- **Honesto no desenho:**
+  - A curva ABC **não usa segundo eixo** (dois eixos enganam): barras pintadas pela classe A/B/C, com o acumulado
+    no tooltip.
+  - A "caixa" mostra mediana e metade do meio (p25–p75), **sem bigodes**, e o subtítulo diz isso.
+  - "Receita × despesa" fica **lado a lado**, não empilhado: somar entrada com saída não significa nada.
+  - O SLA usa uma **meta assumida** pela unidade da coluna (h → 24 h; min → 4 h), escrita no rótulo.
+- **Degradação:** tamanho mínimo de grupo continua valendo; no mapa de calor de tema sensível, o quadrado vazio
+  é explicado ("menos de 5 registros").
+
+### D66. O objetivo escolhe o gráfico principal; o tema escolhe o layout
+
+- Cada objetivo tem um `hero`, que vai para o topo, largo e mais alto, com borda da cor do tema. Exemplos:
+  - Vendas, "Achar os produtos campeões": curva ABC.
+  - RH, "Analisar salários": distribuição salarial.
+  - Estoque, "Evitar falta": atual × mínimo.
+  - Atendimento, "Volume": mapa dia × hora.
+- **KPIs por tema:**
+  - Financeiro abre com o **saldo** em cartão largo.
+  - Estoque transforma "itens abaixo do mínimo" em **cartão de alerta** ("⚠ atenção") quando passa de zero.
+  - No celular, tudo vira uma coluna (teste de rolagem lateral no e2e).
+- O grid preenche os buracos (`grid-auto-flow: dense`) quando um painel de meia largura precede um largo.
+- **Pacote:** os módulos novos do ECharts (mapa de calor, treemap, funil, caixa, legenda) só carregam no Modo
+  Universal. O pacote principal cresceu 25 kB (13 kB gzip), só com o código das paletas e dos gráficos; sem
+  essa separação seriam 147 kB.
+
+### D67. Planilhas no estilo do Harley, recriadas e medidas às cegas
+
+- `scripts/gerar_planilhas_harley.py` recria, com dados **fictícios**, os formatos que o Harley descreveu:
+  - aulas de violino em Excel com título e linha TOTAL;
+  - projetos de sites em `;` + Latin-1 + R$ com status em etapas;
+  - afiliado Shopee em inglês;
+  - clínica odontológica com telefone e e-mail;
+  - loja de música em 2 arquivos;
+  - estoque bagunçado com subtotais;
+  - treinos de academia.
+
+  O tema esperado foi commitado antes de rodar (`cf1649f`).
+- **1ª rodada: 7/7 temas.** Não é o arquivo real do Harley: é a minha imitação, então pode estar mais "limpa".
+  Vale conferir com as planilhas de verdade no PC.
+- **Ajuste depois da rodada** (sem mudar o tema detectado): as aulas de violino só davam 2 painéis. Agora
+  "Nível" conta como turma, e "Presença: Presente/Faltou" vira frequência (papel `presenca`). O resultado são 6 painéis.
