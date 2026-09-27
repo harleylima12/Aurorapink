@@ -2,6 +2,7 @@
  * As 3 páginas do dashboard, descritas como QuerySpecs. Nada é pré-calculado:
  * cada KPI e cada gráfico passa pelo mesmo compilador que o Modo IA vai usar.
  */
+import type { Forma } from '../universal/temas/receitas';
 import type { QuerySpec } from '../query/spec';
 
 export type IdPagina = 'visao-geral' | 'produtos' | 'logistica';
@@ -24,6 +25,21 @@ export interface DefinicaoVisual {
   alerta?: boolean;
   /** Valores da dimensão pintados de vermelho (ex.: "Atrasado"). */
   valoresAlerta?: string[];
+  /** Fase 5C: gráfico próprio do tema (funil, curva ABC, mapa de calor…). Sem isso, o gráfico de `tipo`. */
+  forma?: Forma;
+  extra?: {
+    /** Funil: os valores do status em ordem de etapa; e os de saída (cancelado), fora do funil. */
+    etapas?: string[];
+    fora?: string[];
+    /** Medidor: o que é a meta (texto). */
+    meta?: string;
+  };
+  /** Emoji do título (decorativo). */
+  icone?: string;
+  /** Gráfico principal do objetivo: topo, largo e mais alto. */
+  hero?: boolean;
+  /** Plano B: por que o gráfico especial não pôde ser usado. */
+  nota?: string;
 }
 
 export interface DefinicaoPagina {
