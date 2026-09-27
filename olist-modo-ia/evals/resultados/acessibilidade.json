@@ -1,0 +1,14 @@
+{
+  "padrao": "WCAG 2.1 A/AA (axe-core)",
+  "regrasOkPorTela": {
+    "visão geral": 29,
+    "produtos": 29,
+    "logística": 29,
+    "modo IA": 32,
+    "planilha: entrada": 20,
+    "planilha: entendi assim": 26,
+    "planilha: dashboard": 26,
+    "avaliação": 16
+  },
+  "violacoes": []
+}
