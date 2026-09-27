@@ -20,6 +20,7 @@
     "baixar-modelo": "node scripts/baixar-modelo.mjs",
     "gerar-planilhas-teste": "python scripts/gerar_planilhas_teste.py",
     "gerar-planilhas-temas": "python scripts/gerar_planilhas_temas.py",
+    "gerar-planilhas-harley": "python scripts/gerar_planilhas_harley.py",
     "gerar-vercel-json": "node --experimental-strip-types scripts/gerar-vercel-json.mjs"
   },
   "dependencies": {

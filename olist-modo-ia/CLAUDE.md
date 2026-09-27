@@ -62,6 +62,12 @@ Web app de portfólio do Harley (analista de dados júnior): dashboard da base O
   D62), SEO + `public/og-image.png` + GIF gerados do app (`PRINTS=1 npx playwright test portfolio` e
   `.venv/bin/python scripts/montar_gif.py`, D63). Testes: `npm test` (195), `npx playwright test` (36 + 4 pulados:
   prints, GIF e og-image com `PRINTS=1`; limite com `LIMITE=1`), `python -m pytest tests/dados` (57).
+- **Fase 5C (identidade e gráficos por tema):** concluída, aguardando o OK do Harley. Paletas por tema validadas
+  (`src/charts/paletas.ts`, D64), formas de gráfico declaradas nas receitas e escolhidas pelos dados com plano B
+  explicado (`receitas.ts`, `aplicar.ts`, `src/charts/especiais.ts`, `contas.ts`, `src/ui/especial.ts`, D65),
+  hero por objetivo e layout de KPIs por tema (D66), planilhas no estilo do Harley (fictícias,
+  `npm run gerar-planilhas-harley`): 7/7 na 1ª rodada (D67). Galeria em `docs/prints/fase5c/` (`PRINTS=1 npx
+  playwright test galeria`). Testes: `npm test` (224), `npx playwright test` (39 + 13 pulados sem `PRINTS`/`LIMITE`), `python -m pytest tests/dados` (57).
 - **Caminho de dados:** caminho FINAL ativo desde 26/09 (extensão parquet em `public/duckdb-extensions/`, SHA-256 no lock). O `.duckdb` provisório fica como plano B automático (decisão do Harley).
 - **Publicação (D52):** repositório público `HarleylimaDados/olist-modo-ia` (branch `main`, raiz = esta pasta) e deploy na Vercel (time SiteUp), modo demo. `vercel.json` é gerado por `npm run gerar-vercel-json`; teste local como a Vercel: `npm run build && node scripts/servir-como-vercel.mjs`.
 - **Rede da nuvem:** o Harley liberou `cdn.sheetjs.com`, `extensions.duckdb.org`, `huggingface.co` e `*.hf.co`. O `curl` passa direto; o Node precisa de `NODE_USE_ENV_PROXY=1` nesta nuvem (no PC, não).
