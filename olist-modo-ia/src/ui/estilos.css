@@ -1029,6 +1029,11 @@ button.link {
   border-color: var(--destaque);
 }
 
+/* Os dois atalhos do fim da barra (planilha e avaliação) ficam juntos, como um grupo. */
+.link-planilha + .link-planilha {
+  margin-top: -8px;
+}
+
 .pagina-planilha {
   min-height: 100vh;
   background: var(--fundo);
