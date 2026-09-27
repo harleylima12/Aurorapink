@@ -55,6 +55,10 @@ test('arrastar -> Entendi assim -> dashboard automático, com números conferido
   await expect(page.locator('tr[data-coluna="Valor Total"]')).toHaveAttribute('data-tipo', 'dinheiro');
   await expect(page.locator('tr[data-coluna="Data da Venda"]')).toHaveAttribute('data-papel', 'tempo');
   await expect(page.locator('tr[data-coluna="Pago?"]')).toHaveAttribute('data-tipo', 'booleano');
+  // Fase 5B: o tema (vendas) é detectado; aqui o teste troca para o painel genérico, que usa as colunas como estão.
+  await expect(page.locator('.tema-cartao')).toHaveAttribute('data-tema', 'vendas');
+  await expect(page.locator('.kpi-previa').first()).toContainText('Faturamento');
+  await page.getByRole('combobox', { name: 'Tema da planilha' }).selectOption('generico');
   await expect(page.locator('.kpi-previa').first()).toContainText('Valor Total');
   const total = ESPERADO['vendas_br.csv']?.totais?.['Valor Total'] ?? 0;
   await expect(page.locator('.kpi-previa').first()).toContainText(brl(total).replace(/\s/g, ' '));
@@ -119,7 +123,9 @@ test('vários arquivos: vendas + clientes ligados por "Cliente ID", RH sem rela�
   await expect(page.getByRole('heading', { name: 'Entendi assim' })).toBeVisible();
   await page.getByRole('button', { name: 'Gerar dashboard' }).click();
   await expect(page.getByRole('heading', { name: 'vendas_br + clientes' })).toBeVisible({ timeout: 30_000 });
-  await expect(page.locator('.kpi[data-metrica="registros"] .kpi-valor')).toHaveAttribute('data-valor', '1500');
+  // A junção (LEFT JOIN) não duplica linhas: o faturamento do tema vendas é o mesmo da planilha sozinha.
+  const total = ESPERADO['vendas_br.csv']?.totais?.['Valor Total'] ?? 0;
+  await expect.poll(async () => Number(await page.locator('.kpi[data-metrica="t_faturamento"] .kpi-valor').getAttribute('data-valor'))).toBeCloseTo(total, 2);
 });
 
 test('limites honestos: planilha "desenhada" avisa; Excel com título e aba "Leia-me" é lido', async ({ page }) => {
