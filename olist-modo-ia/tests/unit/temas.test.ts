@@ -136,9 +136,9 @@ describe('receitas por tema', () => {
 
   it('objetivo muda a ordem; público "cliente" esconde painéis internos e corta para 3', async () => {
     const campeoes = await montarComTema('vendas_br.csv', { objetivo: 'campeoes' });
-    expect(campeoes.painel.visuais[0]?.id).toBe('tema-produtos');
+    expect(campeoes.painel.visuais[0]).toMatchObject({ id: 'tema-curva_abc', forma: 'pareto', hero: true });
     const sazonal = await montarComTema('vendas_br.csv', { objetivo: 'sazonalidade' });
-    expect(sazonal.painel.visuais[0]?.id).toBe('tema-volume_mes');
+    expect(sazonal.painel.visuais[0]).toMatchObject({ id: 'tema-agenda_vendas', forma: 'heatmap_semana_mes', hero: true });
     const cliente = await montarComTema('vendas_br.csv', { publico: 'cliente' as Publico });
     expect(cliente.painel.visuais.length).toBeLessThanOrEqual(3);
     expect(cliente.painel.visuais.map((v) => v.id)).not.toContain('tema-vendedores');
@@ -169,7 +169,8 @@ describe('receitas por tema', () => {
     expect(fluxo.montada.semantica.metrics.t_total).toBeUndefined();
     const titulo = await montarComTema('financeiro_titulo_total.csv');
     expect(titulo.papeis).toMatchObject({ receita: 'receita', despesa: 'despesa', centro_custo: 'centro_de_custo' });
-    expect(titulo.painel.kpis.map((x) => x.metrica).slice(0, 3)).toEqual(['t_entradas', 't_saidas', 't_saldo']);
+    expect(titulo.painel.kpis.map((x) => x.metrica).slice(0, 3)).toEqual(['t_saldo', 't_entradas', 't_saidas']);
+    expect(titulo.painel.layoutKpis).toBe('saldo');
   });
 
   it('saúde: modo sensível ligado; paciente com nome (dado pessoal) NÃO vira contagem de pacientes', async () => {
@@ -234,5 +235,82 @@ describe('tema pela IA local (Camada 1, opcional)', () => {
     const fantasma = await sugerirTemaIA(criarMotorFalso({ modo: 'valor-inexistente' }), l.perfis, config);
     expect(fantasma.sugestao?.rotulos.map((r) => r.coluna)).not.toContain('coluna_fantasma');
     expect((await sugerirTemaIA(criarMotorFalso({ modo: 'erro' }), l.perfis, config)).erros[0]).toMatch(/falhou/);
+  });
+});
+
+describe('gráficos por tema (Fase 5C)', () => {
+  const formas = (p: PainelTema) => Object.fromEntries(p.visuais.map((v) => [v.id.replace('tema-', ''), v.forma]));
+
+  it('o gráfico sai dos dados: hora vira mapa dia × hora; sem hora, dia × mês com a explicação', async () => {
+    const comHora = await montarComTema('temas/tickets_suporte.csv', { objetivo: 'volume' });
+    expect(comHora.painel.visuais[0]).toMatchObject({ id: 'tema-heatmap_horario', forma: 'heatmap_semana_hora', hero: true });
+    const semHora = await montarComTema('temas/atendimentos_clinica.csv', { objetivo: 'demanda' });
+    expect(semHora.painel.visuais[0]).toMatchObject({ id: 'tema-agenda', forma: 'heatmap_semana_mes' });
+    // Mapa de calor dia × hora: 2 dimensões, os dias na ordem Seg..Dom.
+    const linhas = await executar(comHora.montada, comHora.painel.visuais[0]!.spec);
+    const dias = [...new Set(linhas.map((l) => String(Object.values(l)[0])))];
+    expect(dias.every((d) => ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'].includes(d))).toBe(true);
+    const total = linhas.reduce((t, l) => t + Number(l.t_chamados), 0);
+    const [d] = await banco.executar(`SELECT COUNT(DISTINCT ticket) AS n FROM ${comHora.montada.tabela} WHERE abertura IS NOT NULL`);
+    expect(total).toBe(Number(d?.n));
+  });
+
+  it('cada objetivo muda o gráfico principal (hero)', async () => {
+    const heroi = async (nome: string, objetivo: string) => (await montarComTema(nome, { objetivo })).painel.visuais[0];
+    expect(await heroi('temas/fluxo_caixa.csv', 'caixa')).toMatchObject({ forma: 'cascata', hero: true });
+    expect(await heroi('temas/fluxo_caixa.csv', 'despesas')).toMatchObject({ forma: 'treemap' });
+    expect(await heroi('temas/folha_pagamento.csv', 'salarios')).toMatchObject({ forma: 'histograma' });
+    expect(await heroi('temas/inventory_en.csv', 'reposicao')).toMatchObject({ forma: 'bullet' });
+    expect(await heroi('temas/campanhas_marketing.csv', 'retorno')).toMatchObject({ forma: 'dispersao' });
+    expect(await heroi('temas/notas_turma.csv', 'desempenho')).toMatchObject({ forma: 'histograma' });
+  });
+
+  it('3 temas, 3 conjuntos de gráficos diferentes', async () => {
+    const v = formas((await montarComTema('vendas_br.csv', { objetivo: 'campeoes' })).painel);
+    const f = formas((await montarComTema('temas/fluxo_caixa.csv', { objetivo: 'caixa' })).painel);
+    const e = formas((await montarComTema('estoque.tsv', { objetivo: 'reposicao' })).painel);
+    expect(Object.values(v)).toContain('pareto');
+    expect(Object.values(f)).toEqual(expect.arrayContaining(['cascata', 'lado_a_lado', 'acumulado']));
+    expect(Object.values(e)).toEqual(expect.arrayContaining(['bullet', 'tabela_alerta']));
+  });
+
+  it('cascata: entradas, saídas e saldo do DuckDB batem entre si; histograma soma todas as linhas', async () => {
+    const { montada, painel } = await montarComTema('temas/fluxo_caixa.csv', { objetivo: 'caixa' });
+    const cascata = painel.visuais.find((x) => x.forma === 'cascata')!;
+    const [k] = await executar(montada, cascata.spec);
+    expect(Number(k?.t_entradas) - Number(k?.t_saidas)).toBeCloseTo(Number(k?.t_saldo), 2);
+    const folha = await montarComTema('temas/folha_pagamento.csv', { objetivo: 'salarios' });
+    const hist = folha.painel.visuais.find((x) => x.forma === 'histograma')!;
+    const faixas = await executar(folha.montada, hist.spec);
+    expect(faixas.length).toBeGreaterThanOrEqual(3);
+    // Tamanho mínimo de grupo (RH é sensível): faixa com menos de 5 pessoas não aparece; o resto soma certo.
+    const [total] = await banco.executar(`SELECT COUNT(salario_base) AS n FROM ${folha.montada.tabela}`);
+    expect(faixas.reduce((t, l) => t + Number(l.registros), 0)).toBeLessThanOrEqual(Number(total?.n));
+    expect(faixas.every((l) => Number(l.registros) >= 5)).toBe(true);
+  });
+
+  it('caixa por cargo: p25 ≤ mediana ≤ p75, calculados no DuckDB', async () => {
+    const { montada, painel } = await montarComTema('temas/folha_pagamento.csv', { objetivo: 'salarios' });
+    const caixa = painel.visuais.find((x) => x.forma === 'caixa')!;
+    for (const l of await executar(montada, caixa.spec)) {
+      expect(Number(l.t_salario_p25)).toBeLessThanOrEqual(Number(l.t_salario_mediana));
+      expect(Number(l.t_salario_mediana)).toBeLessThanOrEqual(Number(l.t_salario_p75));
+    }
+  });
+
+  it('funil só com etapas de verdade; senão, gráfico simples e a explicação no subtítulo', async () => {
+    const lojas = await montarComTema('temas/pedidos_loja_virtual.csv', { objetivo: 'faturamento' });
+    const funil = lojas.painel.visuais.find((x) => x.id === 'tema-funil_status');
+    expect(funil).toBeDefined();
+    if (funil!.forma === 'funil_etapas') expect(funil!.extra?.etapas?.length).toBeGreaterThanOrEqual(3);
+    else expect(funil!.nota).toMatch(/não parecem etapas/);
+    const leads = await montarComTema('temas/leads.csv', { objetivo: 'leads' });
+    expect(leads.painel.visuais[0]?.id).toBe('tema-funil_leads');
+  });
+
+  it('SLA só com unidade conhecida: "(min)" vira meta de 4 h; o rótulo diz a meta', async () => {
+    const { montada } = await montarComTema('temas/tickets_suporte.csv');
+    expect(montada.semantica.metrics.t_dentro_sla?.label).toBe('% dentro do SLA (≤ 4 h (240 min))');
+    expect(montada.semantica.metrics.t_dentro_sla?.sql).toContain('<= 240');
   });
 });
