@@ -15,7 +15,7 @@ test.skip(!process.env.PRINTS, 'só com PRINTS=1');
 
 const PASTA = path.join(RAIZ, 'docs', 'prints', 'fase5c');
 /** O exemplo de estoque é de MOVIMENTOS (sem estoque atual/mínimo): a galeria usa a foto de estoque estoque.tsv. */
-const ARQUIVO: Record<string, string> = { estoque: 'estoque.tsv' };
+const ARQUIVO: Record<string, string> = { estoque: 'estoque.tsv', generico: 'harley/treinos_academia.csv' };
 
 async function soltar(page: Page, nome: string) {
   const base64 = readFileSync(path.join(RAIZ, 'evals', 'planilhas', nome)).toString('base64');
@@ -39,6 +39,7 @@ const OBJETIVOS: [string, string][] = [
   ['atendimento', 'Entender o volume de chamados'],
   ['educacao', 'Acompanhar o desempenho'],
   ['saude', 'Entender a demanda'],
+  ['generico', ''],
 ];
 
 for (const [tema, objetivo] of OBJETIVOS) {
@@ -54,10 +55,11 @@ for (const [tema, objetivo] of OBJETIVOS) {
     else await page.locator(`[data-exemplo="${tema}"]`).click();
     const cartao = page.locator('.tema-cartao');
     await expect(cartao).toHaveAttribute('data-tema', tema, { timeout: 30_000 });
-    await cartao.locator('[data-pergunta="objetivo"]').getByRole('button', { name: objetivo }).click();
+    if (objetivo) await cartao.locator('[data-pergunta="objetivo"]').getByRole('button', { name: objetivo }).click();
     await page.getByRole('button', { name: 'Gerar dashboard' }).click();
-    await expect(page.getByTestId('tema-dashboard')).toBeVisible({ timeout: 30_000 });
-    await expect(page.locator('.painel.hero')).toBeVisible();
+    // Genérico: layout automático de antes, só com a paleta neutra (sem gráfico principal).
+    if (objetivo) await expect(page.locator('.painel.hero')).toBeVisible({ timeout: 30_000 });
+    else await expect(page.locator('.app-planilha[data-tema="generico"] [data-visual] canvas').first()).toBeVisible({ timeout: 30_000 });
     await page.waitForTimeout(1500);
     await page.screenshot({ path: path.join(PASTA, `tema-${tema}.png`), fullPage: true });
     expect(erros).toEqual([]);
