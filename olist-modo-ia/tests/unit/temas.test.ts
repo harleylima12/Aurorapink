@@ -314,3 +314,29 @@ describe('gráficos por tema (Fase 5C)', () => {
     expect(montada.semantica.metrics.t_dentro_sla?.sql).toContain('<= 240');
   });
 });
+
+describe('planilhas no estilo do Harley (fictícias, Fase 5C)', () => {
+  const PASTA_H = path.join(PASTA, 'harley');
+  const ESP = JSON.parse(readFileSync(path.join(PASTA_H, 'esperado.json'), 'utf8')) as Record<string, { tema: string; aceitos?: string[] }>;
+
+  it('tema e gráficos (resultado em evals/resultados/temas-harley.json)', async () => {
+    const linhas = [];
+    for (const [nome, e] of Object.entries(ESP)) {
+      const leitura = await lerPlanilha({ nome, bytes: new Uint8Array(readFileSync(path.join(PASTA_H, nome))) }, banco);
+      leituras.set(`harley/${nome}`, leitura);
+      const r = detectarTema(leitura.perfis);
+      const acertou = (e.aceitos ?? [e.tema]).includes(r.tema);
+      let formas: string[] = [];
+      if (r.tema !== 'generico') {
+        const { painel } = await montarComTema(`harley/${nome}`, { tema: r.tema as Tema });
+        formas = painel.visuais.map((v) => `${v.id.replace('tema-', '')}:${v.forma}`);
+      }
+      linhas.push({ arquivo: nome, esperado: e.aceitos ?? e.tema, detectado: r.tema, acertou, confianca: r.confianca, porque: r.porque, linhasLidas: leitura.linhas, resumo: leitura.resumo, formas });
+    }
+    const acertos = linhas.filter((l) => l.acertou).length;
+    writeFileSync(path.join(RAIZ, 'evals', 'resultados', 'temas-harley.json'), `${JSON.stringify({ gerado_em: 'npm test', acertos, total: linhas.length, planilhas: linhas }, null, 2)}\n`);
+    console.log(JSON.stringify(linhas, null, 1));
+    // 1ª rodada (expectativa commitada antes, cf1649f): 7/7.
+    expect(acertos).toBeGreaterThanOrEqual(Math.ceil(0.9 * linhas.length));
+  }, 60_000);
+});

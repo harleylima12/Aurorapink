@@ -1,0 +1,166 @@
+{
+  "gerado_em": "npm test",
+  "acertos": 7,
+  "total": 7,
+  "planilhas": [
+    {
+      "arquivo": "aulas_violino.xlsx",
+      "esperado": "educacao",
+      "detectado": "educacao",
+      "acertou": true,
+      "confianca": 0.92,
+      "porque": [
+        "encontrei Aluno, Professor e Nota da Avaliação"
+      ],
+      "linhasLidas": 220,
+      "resumo": [
+        "Excel: dados lidos da aba \"Aulas\".",
+        "2 linhas de título puladas antes do cabeçalho.",
+        "1 linha de total/subtotal removida (evita contar em dobro)."
+      ],
+      "formas": [
+        "hist_notas:histograma",
+        "mapa_turma_disciplina:auto",
+        "media_turma:auto",
+        "media_tempo:auto",
+        "freq_turma:auto",
+        "calendario_frequencia:heatmap_semana_mes"
+      ]
+    },
+    {
+      "arquivo": "projetos_sites.csv",
+      "esperado": "vendas",
+      "detectado": "vendas",
+      "acertou": true,
+      "confianca": 0.94,
+      "porque": [
+        "encontrei Nº Pedido, Data do Pedido e Cliente"
+      ],
+      "linhasLidas": 140,
+      "resumo": [
+        "Arquivo em Latin-1 (padrão do Excel no Brasil), convertido para UTF-8, separador \";\"."
+      ],
+      "formas": [
+        "evolucao:media_movel",
+        "funil_status:funil_etapas",
+        "status:auto",
+        "volume_mes:auto",
+        "agenda_vendas:heatmap_semana_mes"
+      ]
+    },
+    {
+      "arquivo": "afiliado_shopee.csv",
+      "esperado": [
+        "vendas",
+        "marketing"
+      ],
+      "detectado": "vendas",
+      "acertou": true,
+      "confianca": 1,
+      "porque": [
+        "encontrei Order ID, Order Date, Product Name e Price e mais 1"
+      ],
+      "linhasLidas": 260,
+      "resumo": [
+        "Arquivo em UTF-8, separador \",\"."
+      ],
+      "formas": [
+        "evolucao:media_movel",
+        "treemap_categorias:treemap",
+        "funil_status:auto",
+        "categorias:auto",
+        "produtos:auto",
+        "status:auto",
+        "volume_mes:auto",
+        "unidades_produto:auto"
+      ]
+    },
+    {
+      "arquivo": "clinica_odonto.csv",
+      "esperado": "saude",
+      "detectado": "saude",
+      "acertou": true,
+      "confianca": 1,
+      "porque": [
+        "encontrei Paciente, Data da Consulta, Convênio e Procedimento",
+        "nomes de convênio em \"Convênio\""
+      ],
+      "linhasLidas": 420,
+      "resumo": [
+        "Arquivo em UTF-8, separador \";\"."
+      ],
+      "formas": [
+        "agenda:heatmap_semana_mes",
+        "proc_convenio:empilhado",
+        "atend_procedimento:auto",
+        "atend_convenio:auto",
+        "atend_tempo:media_movel",
+        "fat_convenio:auto",
+        "atend_profissional:auto"
+      ]
+    },
+    {
+      "arquivo": "loja_musica_vendas.csv",
+      "esperado": "vendas",
+      "detectado": "vendas",
+      "acertou": true,
+      "confianca": 1,
+      "porque": [
+        "encontrei Nº Venda, Data da Venda, ID Cliente e Produto e mais 2"
+      ],
+      "linhasLidas": 380,
+      "resumo": [
+        "Arquivo em UTF-8, separador \",\"."
+      ],
+      "formas": [
+        "evolucao:media_movel",
+        "treemap_categorias:treemap",
+        "categorias:auto",
+        "produtos:auto",
+        "volume_mes:auto",
+        "unidades_produto:auto",
+        "curva_abc:pareto",
+        "agenda_vendas:heatmap_semana_mes"
+      ]
+    },
+    {
+      "arquivo": "estoque_baguncado.csv",
+      "esperado": "estoque",
+      "detectado": "estoque",
+      "acertou": true,
+      "confianca": 0.69,
+      "porque": [
+        "encontrei Qtd em Estoque e Estoque Mínimo"
+      ],
+      "linhasLidas": 27,
+      "resumo": [
+        "Arquivo em UTF-8, separador \",\".",
+        "3 linhas de título puladas antes do cabeçalho.",
+        "3 linhas vazias removidas.",
+        "3 linhas de total/subtotal removidas (evita contar em dobro)."
+      ],
+      "formas": [
+        "bullet_itens:bullet",
+        "alerta_itens:tabela_alerta",
+        "abaixo_categoria:auto",
+        "valor_categoria:auto",
+        "abc_valor:pareto"
+      ]
+    },
+    {
+      "arquivo": "treinos_academia.csv",
+      "esperado": "generico",
+      "detectado": "generico",
+      "acertou": true,
+      "confianca": 1,
+      "porque": [
+        "nenhuma coluna com nome de um tema conhecido"
+      ],
+      "linhasLidas": 200,
+      "resumo": [
+        "Arquivo em UTF-8, separador \",\"."
+      ],
+      "formas": []
+    }
+  ]
+}
